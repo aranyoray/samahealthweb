@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState, useMemo, useCallback } from "react";
+import { useEffect, useState, useMemo, useCallback, useRef } from "react";
 
 type Img = {
   file: string;
@@ -27,6 +27,8 @@ export function CampGallery({ events, images }: { events: EventMeta[]; images: I
   const [locationFilter, setLocationFilter] = useState<string>("");
   const [lightbox, setLightbox] = useState<number | null>(null);
   const [expanded, setExpanded] = useState<Set<number>>(new Set());
+  const closeBtnRef = useRef<HTMLButtonElement>(null);
+  const openerRef = useRef<HTMLElement | null>(null);
 
   const toggleExpand = useCallback((eventId: number) => {
     setExpanded((prev) => {
@@ -70,12 +72,18 @@ export function CampGallery({ events, images }: { events: EventMeta[]; images: I
     return Array.from(s).sort();
   }, [images]);
 
-  const openLb = useCallback((file: string) => {
+  const openLb = useCallback((file: string, trigger: HTMLElement | null) => {
     const idx = visibleImages.findIndex((i) => i.file === file);
-    if (idx >= 0) setLightbox(idx);
+    if (idx >= 0) {
+      openerRef.current = trigger;
+      setLightbox(idx);
+    }
   }, [visibleImages]);
 
-  const closeLb = useCallback(() => setLightbox(null), []);
+  const closeLb = useCallback(() => {
+    setLightbox(null);
+    requestAnimationFrame(() => openerRef.current?.focus());
+  }, []);
   const prev = useCallback(() => setLightbox((i) => (i === null ? null : (i - 1 + visibleImages.length) % visibleImages.length)), [visibleImages.length]);
   const next = useCallback(() => setLightbox((i) => (i === null ? null : (i + 1) % visibleImages.length)), [visibleImages.length]);
 
@@ -85,9 +93,14 @@ export function CampGallery({ events, images }: { events: EventMeta[]; images: I
       if (e.key === "Escape") closeLb();
       if (e.key === "ArrowLeft") prev();
       if (e.key === "ArrowRight") next();
+      if (e.key === "Tab") {
+        e.preventDefault();
+        closeBtnRef.current?.focus();
+      }
     };
     window.addEventListener("keydown", onKey);
     document.body.style.overflow = "hidden";
+    requestAnimationFrame(() => closeBtnRef.current?.focus());
     return () => {
       window.removeEventListener("keydown", onKey);
       document.body.style.overflow = "";
@@ -265,7 +278,7 @@ export function CampGallery({ events, images }: { events: EventMeta[]; images: I
                       return (
                         <button
                           key={img.file}
-                          onClick={() => openLb(img.file)}
+                          onClick={(e) => openLb(img.file, e.currentTarget)}
                           style={{
                             all: "unset",
                             cursor: "zoom-in",
@@ -415,6 +428,9 @@ export function CampGallery({ events, images }: { events: EventMeta[]; images: I
       {lightbox !== null && visibleImages[lightbox] && (
         <div
           onClick={closeLb}
+          role="dialog"
+          aria-modal="true"
+          aria-label={`Camp photo ${lightbox + 1} of ${visibleImages.length}: ${visibleImages[lightbox].caption}`}
           style={{
             position: "fixed",
             inset: 0,
@@ -438,8 +454,9 @@ export function CampGallery({ events, images }: { events: EventMeta[]; images: I
             style={lightboxBtn("right")}
           >›</button>
           <button
+            ref={closeBtnRef}
             onClick={closeLb}
-            aria-label="Close"
+            aria-label="Close lightbox"
             style={{ ...lightboxBtn("right"), top: 24, right: 24, transform: "none", width: 44, height: 44, fontSize: 18 }}
           >✕</button>
 
