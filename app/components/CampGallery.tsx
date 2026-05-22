@@ -291,9 +291,13 @@ export function CampGallery({ events, images }: { events: EventMeta[]; images: I
                             )}
                             <img
                               src={`/events/${img.file}`}
-                              alt={`${img.caption} — ${img.location} blood donation camp`}
+                              alt={isDoc
+                                ? img.caption
+                                : `${img.caption} — ${img.location} blood donation camp`}
                               loading={eager ? "eager" : "lazy"}
                               fetchPriority={eager ? "high" : "auto"}
+                              width={isDoc ? 600 : 800}
+                              height={isDoc ? 800 : 600}
                               style={{
                                 width: "100%",
                                 height: "100%",
