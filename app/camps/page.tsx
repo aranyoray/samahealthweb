@@ -18,6 +18,22 @@ export const metadata: Metadata = {
     "anemia screening donor camp",
     "Ranaghat Barasat Barrackpore Birati Madhyamgram blood camp",
   ],
+  openGraph: {
+    title: "30 blood donation camps — Anubhav CMC × SamaBeat",
+    description:
+      "Anubhav Cardiometabolic Clinic ran free pre-donation screening (sugar, anemia, body composition) at 30 donor camps across North 24 Parganas. Field gallery of 209 frames.",
+    url: "/camps",
+    siteName: "SamaHealth",
+    type: "website",
+    images: [{ url: "/events/anubhav-cmc-001.jpg", width: 1200, height: 630, alt: "Anubhav CMC team at a blood donation camp" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "30 blood donation camps — Anubhav CMC × SamaBeat",
+    description: "Field gallery from 30 donor camps across North 24 Parganas. Free cardiometabolic screening on SamaBeat clip.",
+    images: ["/events/anubhav-cmc-001.jpg"],
+  },
+  alternates: { canonical: "/camps" },
 };
 
 type Img = {
@@ -40,8 +56,34 @@ export default function CampsPage() {
   const events = data.events as EventMeta[];
   const images = data.images as Img[];
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "ImageGallery",
+    name: "Anubhav CMC blood donation camps — field gallery",
+    description:
+      "Photo gallery from 30 blood donation camps across North 24 Parganas, with free cardiometabolic screening from the SamaBeat 5-wavelength PPG + ECG + BIA clip.",
+    url: "https://samahealth.in/camps",
+    numberOfItems: images.length,
+    isPartOf: { "@type": "WebSite", name: "SamaHealth", url: "https://samahealth.in" },
+    about: events.map((ev) => ({
+      "@type": "Event",
+      name: `Blood donation camp — ${ev.location}`,
+      location: { "@type": "Place", name: ev.location, addressRegion: "West Bengal", addressCountry: "IN" },
+      organizer: ev.independent
+        ? { "@type": "Organization", name: "Anubhav Cardiometabolic Clinic" }
+        : [
+            { "@type": "Organization", name: "Anubhav Cardiometabolic Clinic" },
+            { "@type": "Organization", name: "Barasat Blood Bank" },
+          ],
+    })),
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <Nav variant="light" />
       <main id="main">
         <header
