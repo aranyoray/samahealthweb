@@ -31,8 +31,14 @@ export function CampGallery({ events, images }: { events: EventMeta[]; images: I
   const toggleExpand = useCallback((eventId: number) => {
     setExpanded((prev) => {
       const next = new Set(prev);
-      if (next.has(eventId)) next.delete(eventId);
+      const willCollapse = next.has(eventId);
+      if (willCollapse) next.delete(eventId);
       else next.add(eventId);
+      if (willCollapse) {
+        requestAnimationFrame(() => {
+          document.getElementById(`camp-${eventId}`)?.scrollIntoView({ block: "start", behavior: "smooth" });
+        });
+      }
       return next;
     });
   }, []);
@@ -163,7 +169,7 @@ export function CampGallery({ events, images }: { events: EventMeta[]; images: I
         )}
 
         {groupedByEvent.map(({ ev, imgs }, evIdx) => (
-          <div key={ev.id} style={{ marginBottom: 64 }} className="reveal">
+          <div key={ev.id} id={`camp-${ev.id}`} style={{ marginBottom: 64, scrollMarginTop: 160 }} className="reveal">
             <div
               className="camp-event-head"
               style={{
