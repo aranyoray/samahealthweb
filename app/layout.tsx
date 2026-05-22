@@ -52,6 +52,21 @@ export const metadata: Metadata = {
     url: "https://samahealth.in",
     siteName: "SamaHealth",
     type: "website",
+    images: [
+      {
+        url: "/events/anubhav-cmc-001.jpg",
+        width: 1200,
+        height: 630,
+        alt: "SamaHealth field team at an Anubhav CMC blood donation camp",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "SamaHealth — Cardiac screening for every clinic in India",
+    description:
+      "Offline-first cardiac screening for ASHA workers and primary clinics. DPDPA-compliant, deployed in asia-south1.",
+    images: ["/events/anubhav-cmc-001.jpg"],
   },
 };
 
