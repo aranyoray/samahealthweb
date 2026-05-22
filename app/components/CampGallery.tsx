@@ -8,7 +8,10 @@ type Img = {
   independent: boolean;
   caption: string;
   partnerTag: string;
+  type?: "photo" | "doc" | "news" | "poster" | "team";
 };
+
+const PREVIEW_PER_EVENT = 6;
 
 type EventMeta = {
   id: number;
@@ -23,6 +26,16 @@ export function CampGallery({ events, images }: { events: EventMeta[]; images: I
   const [filter, setFilter] = useState<Filter>("all");
   const [locationFilter, setLocationFilter] = useState<string>("");
   const [lightbox, setLightbox] = useState<number | null>(null);
+  const [expanded, setExpanded] = useState<Set<number>>(new Set());
+
+  const toggleExpand = useCallback((eventId: number) => {
+    setExpanded((prev) => {
+      const next = new Set(prev);
+      if (next.has(eventId)) next.delete(eventId);
+      else next.add(eventId);
+      return next;
+    });
+  }, []);
 
   const visibleImages = useMemo(() => {
     return images.filter((img) => {
@@ -176,89 +189,153 @@ export function CampGallery({ events, images }: { events: EventMeta[]; images: I
               </span>
             </div>
 
-            <div
-              style={{
-                display: "grid",
-                gridTemplateColumns: "repeat(auto-fill, minmax(260px, 1fr))",
-                gap: 16,
-              }}
-            >
-              {imgs.map((img) => (
-                <button
-                  key={img.file}
-                  onClick={() => openLb(img.file)}
-                  style={{
-                    all: "unset",
-                    cursor: "zoom-in",
-                    display: "block",
-                    borderRadius: 12,
-                    overflow: "hidden",
-                    border: "1px solid var(--ink-100)",
-                    background: "#fff",
-                    transition: "transform .2s ease, box-shadow .2s ease, border-color .2s ease",
-                  }}
-                  onMouseEnter={(e) => {
-                    (e.currentTarget as HTMLElement).style.transform = "translateY(-3px)";
-                    (e.currentTarget as HTMLElement).style.boxShadow =
-                      "0 14px 32px -18px rgba(15,118,110,0.35)";
-                    (e.currentTarget as HTMLElement).style.borderColor = "var(--brand-2)";
-                  }}
-                  onMouseLeave={(e) => {
-                    (e.currentTarget as HTMLElement).style.transform = "";
-                    (e.currentTarget as HTMLElement).style.boxShadow = "";
-                    (e.currentTarget as HTMLElement).style.borderColor = "var(--ink-100)";
-                  }}
-                >
+            {(() => {
+              const isExpanded = expanded.has(ev.id);
+              const hidden = Math.max(0, imgs.length - PREVIEW_PER_EVENT);
+              const visible = isExpanded ? imgs : imgs.slice(0, PREVIEW_PER_EVENT);
+              return (
+                <>
                   <div
                     style={{
-                      width: "100%",
-                      aspectRatio: "4/3",
-                      background: "var(--ink-50)",
-                      overflow: "hidden",
+                      display: "grid",
+                      gridTemplateColumns: "repeat(auto-fill, minmax(260px, 1fr))",
+                      gap: 16,
                     }}
                   >
-                    <img
-                      src={`/events/${img.file}`}
-                      alt={`${img.caption} — ${img.location} blood donation camp`}
-                      loading="lazy"
-                      style={{
-                        width: "100%",
-                        height: "100%",
-                        objectFit: "cover",
-                        display: "block",
-                      }}
-                    />
+                    {visible.map((img) => {
+                      const isDoc = img.type === "doc" || img.type === "news" || img.type === "poster";
+                      return (
+                        <button
+                          key={img.file}
+                          onClick={() => openLb(img.file)}
+                          style={{
+                            all: "unset",
+                            cursor: "zoom-in",
+                            display: "block",
+                            borderRadius: 12,
+                            overflow: "hidden",
+                            border: "1px solid var(--ink-100)",
+                            background: "#fff",
+                            transition: "transform .2s ease, box-shadow .2s ease, border-color .2s ease",
+                          }}
+                          onMouseEnter={(e) => {
+                            (e.currentTarget as HTMLElement).style.transform = "translateY(-3px)";
+                            (e.currentTarget as HTMLElement).style.boxShadow =
+                              "0 14px 32px -18px rgba(15,118,110,0.35)";
+                            (e.currentTarget as HTMLElement).style.borderColor = "var(--brand-2)";
+                          }}
+                          onMouseLeave={(e) => {
+                            (e.currentTarget as HTMLElement).style.transform = "";
+                            (e.currentTarget as HTMLElement).style.boxShadow = "";
+                            (e.currentTarget as HTMLElement).style.borderColor = "var(--ink-100)";
+                          }}
+                        >
+                          <div
+                            style={{
+                              width: "100%",
+                              aspectRatio: isDoc ? "3/4" : "4/3",
+                              background: isDoc ? "#F8FAFC" : "var(--ink-50)",
+                              overflow: "hidden",
+                              display: "flex",
+                              alignItems: "center",
+                              justifyContent: "center",
+                              position: "relative",
+                            }}
+                          >
+                            {isDoc && (
+                              <span
+                                style={{
+                                  position: "absolute",
+                                  top: 8,
+                                  left: 8,
+                                  fontSize: 10,
+                                  fontWeight: 600,
+                                  letterSpacing: "0.08em",
+                                  textTransform: "uppercase",
+                                  padding: "3px 7px",
+                                  borderRadius: 4,
+                                  background: "rgba(15,118,110,0.92)",
+                                  color: "#fff",
+                                  zIndex: 1,
+                                }}
+                                className="mono"
+                              >
+                                {img.type === "news" ? "Press" : img.type === "poster" ? "Poster" : "Letter"}
+                              </span>
+                            )}
+                            <img
+                              src={`/events/${img.file}`}
+                              alt={`${img.caption} — ${img.location} blood donation camp`}
+                              loading="lazy"
+                              style={{
+                                width: "100%",
+                                height: "100%",
+                                objectFit: isDoc ? "contain" : "cover",
+                                display: "block",
+                              }}
+                            />
+                          </div>
+                          <div style={{ padding: "12px 14px 14px" }}>
+                            <p
+                              style={{
+                                fontSize: 13.5,
+                                lineHeight: 1.45,
+                                color: "var(--ink-700)",
+                                margin: 0,
+                              }}
+                            >
+                              {img.caption}
+                            </p>
+                            <div
+                              style={{
+                                marginTop: 8,
+                                display: "flex",
+                                gap: 8,
+                                alignItems: "center",
+                                fontSize: 11,
+                                color: "var(--ink-400)",
+                              }}
+                              className="mono"
+                            >
+                              <span>{img.location}</span>
+                              <span style={{ opacity: 0.4 }}>·</span>
+                              <span>{img.file.replace(/\.(jpe?g|png)$/i, "")}</span>
+                            </div>
+                          </div>
+                        </button>
+                      );
+                    })}
                   </div>
-                  <div style={{ padding: "12px 14px 14px" }}>
-                    <p
+                  {hidden > 0 && (
+                    <button
+                      onClick={() => toggleExpand(ev.id)}
                       style={{
-                        fontSize: 13.5,
-                        lineHeight: 1.45,
+                        marginTop: 18,
+                        padding: "10px 22px",
+                        borderRadius: 999,
+                        border: "1px solid var(--ink-200)",
+                        background: "#fff",
                         color: "var(--ink-700)",
-                        margin: 0,
+                        fontSize: 13,
+                        fontWeight: 600,
+                        cursor: "pointer",
+                        transition: "all .15s ease",
+                      }}
+                      onMouseEnter={(e) => {
+                        (e.currentTarget as HTMLElement).style.borderColor = "var(--brand)";
+                        (e.currentTarget as HTMLElement).style.color = "var(--brand)";
+                      }}
+                      onMouseLeave={(e) => {
+                        (e.currentTarget as HTMLElement).style.borderColor = "var(--ink-200)";
+                        (e.currentTarget as HTMLElement).style.color = "var(--ink-700)";
                       }}
                     >
-                      {img.caption}
-                    </p>
-                    <div
-                      style={{
-                        marginTop: 8,
-                        display: "flex",
-                        gap: 8,
-                        alignItems: "center",
-                        fontSize: 11,
-                        color: "var(--ink-400)",
-                      }}
-                      className="mono"
-                    >
-                      <span>{img.location}</span>
-                      <span style={{ opacity: 0.4 }}>·</span>
-                      <span>{img.file.replace(/\.(jpe?g|png)$/i, "")}</span>
-                    </div>
-                  </div>
-                </button>
-              ))}
-            </div>
+                      {isExpanded ? `Show fewer` : `View all ${imgs.length} frames →`}
+                    </button>
+                  )}
+                </>
+              );
+            })()}
           </div>
         ))}
       </div>
