@@ -91,11 +91,20 @@ export function CampGallery({ events, images }: { events: EventMeta[]; images: I
           .camp-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 10px !important; }
           .camp-grid p { font-size: 12px !important; line-height: 1.35 !important; }
           .camp-grid .mono { font-size: 10px !important; }
+          .camp-filter-bar { padding: 10px 12px !important; gap: 8px !important; flex-wrap: nowrap !important; }
+          .camp-filter-chips { flex: 1 1 auto; overflow-x: auto; -webkit-overflow-scrolling: touch; flex-wrap: nowrap !important; scrollbar-width: none; }
+          .camp-filter-chips::-webkit-scrollbar { display: none; }
+          .camp-filter-chips button { white-space: nowrap; font-size: 12px !important; padding: 7px 12px !important; }
+          .camp-filter-select { font-size: 12px !important; padding: 7px 10px !important; flex-shrink: 0; max-width: 130px; }
+          .camp-event-head h3 { font-size: 18px !important; }
+          .camp-event-head .mono { font-size: 9px !important; }
+          .camp-event-head span[style*="brand"], .camp-event-head span[style*="rgba(220"] { font-size: 10px !important; padding: 3px 7px !important; }
         }
       `}</style>
       <div className="container">
         {/* Filter bar */}
         <div
+          className="camp-filter-bar"
           style={{
             display: "flex",
             flexWrap: "wrap",
@@ -113,7 +122,7 @@ export function CampGallery({ events, images }: { events: EventMeta[]; images: I
             backdropFilter: "blur(8px)",
           }}
         >
-          <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+          <div className="camp-filter-chips" style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
             <FilterChip active={filter === "all"} onClick={() => setFilter("all")}>
               All camps · {events.length}
             </FilterChip>
@@ -125,6 +134,7 @@ export function CampGallery({ events, images }: { events: EventMeta[]; images: I
             </FilterChip>
           </div>
           <select
+            className="camp-filter-select"
             value={locationFilter}
             onChange={(e) => setLocationFilter(e.target.value)}
             style={{
@@ -155,6 +165,7 @@ export function CampGallery({ events, images }: { events: EventMeta[]; images: I
         {groupedByEvent.map(({ ev, imgs }) => (
           <div key={ev.id} style={{ marginBottom: 64 }} className="reveal">
             <div
+              className="camp-event-head"
               style={{
                 display: "flex",
                 alignItems: "baseline",
