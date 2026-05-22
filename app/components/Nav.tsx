@@ -109,7 +109,9 @@ export function Nav({ variant = "light" }: { variant?: "light" | "dark" | "hero"
             Book demo →
           </Link>
           <button
-            aria-label="Menu"
+            aria-label={open ? "Close menu" : "Open menu"}
+            aria-expanded={open}
+            aria-controls="mobile-nav"
             onClick={() => setOpen((v) => !v)}
             className="menu-btn"
             style={{
@@ -133,7 +135,7 @@ export function Nav({ variant = "light" }: { variant?: "light" | "dark" | "hero"
       </div>
 
       {open && (
-        <div style={{ borderTop: `1px solid ${onDark ? "rgba(255,255,255,0.08)" : "var(--ink-100)"}`, background: onDark ? "rgba(7,9,14,0.96)" : "#fff" }}>
+        <div id="mobile-nav" style={{ borderTop: `1px solid ${onDark ? "rgba(255,255,255,0.08)" : "var(--ink-100)"}`, background: onDark ? "rgba(7,9,14,0.96)" : "#fff" }}>
           <div className="container" style={{ display: "grid", gap: 0, padding: "8px 28px 20px" }}>
             {links.map((l) => (
               <Link
