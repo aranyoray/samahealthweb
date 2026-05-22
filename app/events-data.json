@@ -1,0 +1,1858 @@
+{
+ "events": [
+  {
+   "id": 1,
+   "location": "Ashoknagar",
+   "independent": true,
+   "imageCount": 16
+  },
+  {
+   "id": 2,
+   "location": "Kalyani",
+   "independent": false,
+   "imageCount": 1
+  },
+  {
+   "id": 3,
+   "location": "Aminpur",
+   "independent": true,
+   "imageCount": 3
+  },
+  {
+   "id": 4,
+   "location": "Nilganj",
+   "independent": false,
+   "imageCount": 1
+  },
+  {
+   "id": 5,
+   "location": "Badu",
+   "independent": false,
+   "imageCount": 3
+  },
+  {
+   "id": 6,
+   "location": "Maslandapur",
+   "independent": false,
+   "imageCount": 1
+  },
+  {
+   "id": 7,
+   "location": "Golabari",
+   "independent": true,
+   "imageCount": 2
+  },
+  {
+   "id": 8,
+   "location": "Santoshpur",
+   "independent": false,
+   "imageCount": 3
+  },
+  {
+   "id": 9,
+   "location": "Guma",
+   "independent": true,
+   "imageCount": 25
+  },
+  {
+   "id": 10,
+   "location": "Ghola",
+   "independent": false,
+   "imageCount": 11
+  },
+  {
+   "id": 11,
+   "location": "Duttapukur",
+   "independent": false,
+   "imageCount": 6
+  },
+  {
+   "id": 12,
+   "location": "Habra",
+   "independent": true,
+   "imageCount": 4
+  },
+  {
+   "id": 13,
+   "location": "Hridaypur",
+   "independent": true,
+   "imageCount": 16
+  },
+  {
+   "id": 14,
+   "location": "Ranaghat",
+   "independent": false,
+   "imageCount": 14
+  },
+  {
+   "id": 15,
+   "location": "Amdanga",
+   "independent": false,
+   "imageCount": 9
+  },
+  {
+   "id": 16,
+   "location": "Chakla",
+   "independent": true,
+   "imageCount": 5
+  },
+  {
+   "id": 17,
+   "location": "Birati",
+   "independent": true,
+   "imageCount": 2
+  },
+  {
+   "id": 18,
+   "location": "Barrackpore",
+   "independent": false,
+   "imageCount": 5
+  },
+  {
+   "id": 19,
+   "location": "Barasat",
+   "independent": false,
+   "imageCount": 2
+  },
+  {
+   "id": 20,
+   "location": "Deganga",
+   "independent": false,
+   "imageCount": 38
+  },
+  {
+   "id": 21,
+   "location": "Madhyamgram",
+   "independent": false,
+   "imageCount": 3
+  },
+  {
+   "id": 22,
+   "location": "Bira",
+   "independent": false,
+   "imageCount": 6
+  },
+  {
+   "id": 23,
+   "location": "Badu",
+   "independent": true,
+   "imageCount": 4
+  },
+  {
+   "id": 24,
+   "location": "Aminpur",
+   "independent": true,
+   "imageCount": 7
+  },
+  {
+   "id": 25,
+   "location": "Aminpur",
+   "independent": false,
+   "imageCount": 10
+  },
+  {
+   "id": 26,
+   "location": "Ghola",
+   "independent": false,
+   "imageCount": 1
+  },
+  {
+   "id": 27,
+   "location": "Barasat",
+   "independent": false,
+   "imageCount": 3
+  },
+  {
+   "id": 28,
+   "location": "Ghola",
+   "independent": true,
+   "imageCount": 4
+  },
+  {
+   "id": 29,
+   "location": "Ghola",
+   "independent": true,
+   "imageCount": 1
+  },
+  {
+   "id": 30,
+   "location": "Deganga",
+   "independent": false,
+   "imageCount": 3
+  }
+ ],
+ "images": [
+  {
+   "file": "anubhav-cmc-001.jpg",
+   "event": 1,
+   "location": "Ashoknagar",
+   "independent": true,
+   "caption": "Anubhav CMC team at the planning table before the camp \u2014 flow, screening order, bed assignments.",
+   "partnerTag": ""
+  },
+  {
+   "file": "anubhav-cmc-002.jpg",
+   "event": 1,
+   "location": "Ashoknagar",
+   "independent": true,
+   "caption": "Donor giving a thumbs-up halfway through the pull.",
+   "partnerTag": ""
+  },
+  {
+   "file": "anubhav-cmc-003.jpg",
+   "event": 1,
+   "location": "Ashoknagar",
+   "independent": true,
+   "caption": "Registration desk at the front \u2014 donor cards being filled out as the queue builds.",
+   "partnerTag": ""
+  },
+  {
+   "file": "anubhav-cmc-004.jpeg",
+   "event": 1,
+   "location": "Ashoknagar",
+   "independent": true,
+   "caption": "Post-donation rest with juice and a quiet sit-back.",
+   "partnerTag": ""
+  },
+  {
+   "file": "anubhav-cmc-005.jpg",
+   "event": 1,
+   "location": "Ashoknagar",
+   "independent": true,
+   "caption": "Quick anemia + obesity screen on the SamaBeat clip \u2014 passes the donor through to the bed if cleared.",
+   "partnerTag": ""
+  },
+  {
+   "file": "anubhav-cmc-006.jpg",
+   "event": 1,
+   "location": "Ashoknagar",
+   "independent": true,
+   "caption": "Friends turned up together \u2014 one donating, one cheering from the next bed.",
+   "partnerTag": ""
+  },
+  {
+   "file": "anubhav-cmc-007.jpg",
+   "event": 1,
+   "location": "Ashoknagar",
+   "independent": true,
+   "caption": "Phlebotomist prepping the arm \u2014 antiseptic wipe, vein found.",
+   "partnerTag": ""
+  },
+  {
+   "file": "anubhav-cmc-008.jpg",
+   "event": 1,
+   "location": "Ashoknagar",
+   "independent": true,
+   "caption": "Volunteer settling in for the draw, team checking tube clamp and flow.",
+   "partnerTag": ""
+  },
+  {
+   "file": "anubhav-cmc-009.jpg",
+   "event": 1,
+   "location": "Ashoknagar",
+   "independent": true,
+   "caption": "Donor finishing screening \u2014 sugar normal, hemoglobin cleared, on to the bed.",
+   "partnerTag": ""
+  },
+  {
+   "file": "anubhav-cmc-010.jpg",
+   "event": 1,
+   "location": "Ashoknagar",
+   "independent": true,
+   "caption": "Bedside body-composition check while the donor waits \u2014 fat mass, muscle mass, hydration on one tap.",
+   "partnerTag": ""
+  },
+  {
+   "file": "anubhav-cmc-011.jpg",
+   "event": 1,
+   "location": "Ashoknagar",
+   "independent": true,
+   "caption": "Cardiometabolic snapshot at intake \u2014 every donor gets numbers they can take home.",
+   "partnerTag": ""
+  },
+  {
+   "file": "anubhav-cmc-012.jpg",
+   "event": 1,
+   "location": "Ashoknagar",
+   "independent": true,
+   "caption": "Team huddle before doors open \u2014 bed count, screening flow, who is at which station.",
+   "partnerTag": ""
+  },
+  {
+   "file": "anubhav-cmc-013.jpg",
+   "event": 1,
+   "location": "Ashoknagar",
+   "independent": true,
+   "caption": "End of the bag \u2014 clamp going on, gauze ready, donor about to sit up.",
+   "partnerTag": ""
+  },
+  {
+   "file": "anubhav-cmc-014.jpg",
+   "event": 1,
+   "location": "Ashoknagar",
+   "independent": true,
+   "caption": "Friends turned up together \u2014 one donating, one cheering from the next bed.",
+   "partnerTag": ""
+  },
+  {
+   "file": "anubhav-cmc-015.jpg",
+   "event": 1,
+   "location": "Ashoknagar",
+   "independent": true,
+   "caption": "Quick coordination between the Anubhav CMC team and camp organisers.",
+   "partnerTag": ""
+  },
+  {
+   "file": "anubhav-cmc-016.jpg",
+   "event": 1,
+   "location": "Ashoknagar",
+   "independent": true,
+   "caption": "End of the bag \u2014 clamp going on, gauze ready, donor about to sit up.",
+   "partnerTag": ""
+  },
+  {
+   "file": "anubhav-cmc-017.jpg",
+   "event": 2,
+   "location": "Kalyani",
+   "independent": false,
+   "caption": "Volunteer settling in for the draw, team checking tube clamp and flow.",
+   "partnerTag": " \u00b7 with Barasat Blood Bank"
+  },
+  {
+   "file": "anubhav-cmc-018.jpg",
+   "event": 3,
+   "location": "Aminpur",
+   "independent": true,
+   "caption": "Phlebotomist prepping the arm \u2014 antiseptic wipe, vein found.",
+   "partnerTag": ""
+  },
+  {
+   "file": "anubhav-cmc-019.jpg",
+   "event": 3,
+   "location": "Aminpur",
+   "independent": true,
+   "caption": "Volunteer settling in for the draw, team checking tube clamp and flow.",
+   "partnerTag": ""
+  },
+  {
+   "file": "anubhav-cmc-020.jpg",
+   "event": 3,
+   "location": "Aminpur",
+   "independent": true,
+   "caption": "Quick anemia + obesity screen on the SamaBeat clip \u2014 passes the donor through to the bed if cleared.",
+   "partnerTag": ""
+  },
+  {
+   "file": "anubhav-cmc-021.jpg",
+   "event": 4,
+   "location": "Nilganj",
+   "independent": false,
+   "caption": "Donor giving a thumbs-up halfway through the pull.",
+   "partnerTag": " \u00b7 with Barasat Blood Bank"
+  },
+  {
+   "file": "anubhav-cmc-022.jpg",
+   "event": 5,
+   "location": "Badu",
+   "independent": false,
+   "caption": "Donor finishing screening \u2014 sugar normal, hemoglobin cleared, on to the bed.",
+   "partnerTag": " \u00b7 with Barasat Blood Bank"
+  },
+  {
+   "file": "anubhav-cmc-023.jpg",
+   "event": 5,
+   "location": "Badu",
+   "independent": false,
+   "caption": "Friends turned up together \u2014 one donating, one cheering from the next bed.",
+   "partnerTag": " \u00b7 with Barasat Blood Bank"
+  },
+  {
+   "file": "anubhav-cmc-024.jpg",
+   "event": 5,
+   "location": "Badu",
+   "independent": false,
+   "caption": "Cardiometabolic snapshot at intake \u2014 every donor gets numbers they can take home.",
+   "partnerTag": " \u00b7 with Barasat Blood Bank"
+  },
+  {
+   "file": "anubhav-cmc-025.jpg",
+   "event": 6,
+   "location": "Maslandapur",
+   "independent": false,
+   "caption": "Documentation under way \u2014 donor logs, screening sheets, post-donation slips.",
+   "partnerTag": " \u00b7 with Barasat Blood Bank"
+  },
+  {
+   "file": "anubhav-cmc-026.jpg",
+   "event": 7,
+   "location": "Golabari",
+   "independent": true,
+   "caption": "Pre-donation screening at the Anubhav CMC counter \u2014 fasting/random sugar from a single fingerprick.",
+   "partnerTag": ""
+  },
+  {
+   "file": "anubhav-cmc-027.jpg",
+   "event": 7,
+   "location": "Golabari",
+   "independent": true,
+   "caption": "Quick anemia + obesity screen on the SamaBeat clip \u2014 passes the donor through to the bed if cleared.",
+   "partnerTag": ""
+  },
+  {
+   "file": "anubhav-cmc-028.jpg",
+   "event": 8,
+   "location": "Santoshpur",
+   "independent": false,
+   "caption": "Anubhav CMC desk running back-to-back screenings \u2014 sugar, hemoglobin, BIA for every donor in queue.",
+   "partnerTag": " \u00b7 with Barasat Blood Bank"
+  },
+  {
+   "file": "anubhav-cmc-029.jpg",
+   "event": 8,
+   "location": "Santoshpur",
+   "independent": false,
+   "caption": "Volunteers laying out the bed grid and setting tube trays before donors arrive.",
+   "partnerTag": " \u00b7 with Barasat Blood Bank"
+  },
+  {
+   "file": "anubhav-cmc-030.jpg",
+   "event": 8,
+   "location": "Santoshpur",
+   "independent": false,
+   "caption": "Cardiometabolic snapshot at intake \u2014 every donor gets numbers they can take home.",
+   "partnerTag": " \u00b7 with Barasat Blood Bank"
+  },
+  {
+   "file": "anubhav-cmc-031.jpg",
+   "event": 9,
+   "location": "Guma",
+   "independent": true,
+   "caption": "Quick coordination between the Anubhav CMC team and camp organisers.",
+   "partnerTag": ""
+  },
+  {
+   "file": "anubhav-cmc-032.jpg",
+   "event": 9,
+   "location": "Guma",
+   "independent": true,
+   "caption": "Quiet stretch of the camp \u2014 three beds in parallel, all running smoothly.",
+   "partnerTag": ""
+  },
+  {
+   "file": "anubhav-cmc-033.jpg",
+   "event": 9,
+   "location": "Guma",
+   "independent": true,
+   "caption": "Phlebotomist prepping the arm \u2014 antiseptic wipe, vein found.",
+   "partnerTag": ""
+  },
+  {
+   "file": "anubhav-cmc-034.jpg",
+   "event": 9,
+   "location": "Guma",
+   "independent": true,
+   "caption": "Friends turned up together \u2014 one donating, one cheering from the next bed.",
+   "partnerTag": ""
+  },
+  {
+   "file": "anubhav-cmc-035.jpg",
+   "event": 9,
+   "location": "Guma",
+   "independent": true,
+   "caption": "Quiet stretch of the camp \u2014 three beds in parallel, all running smoothly.",
+   "partnerTag": ""
+  },
+  {
+   "file": "anubhav-cmc-036.jpg",
+   "event": 9,
+   "location": "Guma",
+   "independent": true,
+   "caption": "Mid-camp throughput: multiple beds running, attendants rotating.",
+   "partnerTag": ""
+  },
+  {
+   "file": "anubhav-cmc-037.jpg",
+   "event": 9,
+   "location": "Guma",
+   "independent": true,
+   "caption": "Free glucose + anemia check before donation \u2014 donors getting their numbers in under a minute.",
+   "partnerTag": ""
+  },
+  {
+   "file": "anubhav-cmc-038.jpg",
+   "event": 9,
+   "location": "Guma",
+   "independent": true,
+   "caption": "Anubhav CMC desk running back-to-back screenings \u2014 sugar, hemoglobin, BIA for every donor in queue.",
+   "partnerTag": ""
+  },
+  {
+   "file": "anubhav-cmc-039.jpg",
+   "event": 9,
+   "location": "Guma",
+   "independent": true,
+   "caption": "Free glucose + anemia check before donation \u2014 donors getting their numbers in under a minute.",
+   "partnerTag": ""
+  },
+  {
+   "file": "anubhav-cmc-040.jpg",
+   "event": 9,
+   "location": "Guma",
+   "independent": true,
+   "caption": "Pre-donation screening at the Anubhav CMC counter \u2014 fasting/random sugar from a single fingerprick.",
+   "partnerTag": ""
+  },
+  {
+   "file": "anubhav-cmc-041.jpg",
+   "event": 9,
+   "location": "Guma",
+   "independent": true,
+   "caption": "Bedside body-composition check while the donor waits \u2014 fat mass, muscle mass, hydration on one tap.",
+   "partnerTag": ""
+  },
+  {
+   "file": "anubhav-cmc-042.jpg",
+   "event": 9,
+   "location": "Guma",
+   "independent": true,
+   "caption": "Friends turned up together \u2014 one donating, one cheering from the next bed.",
+   "partnerTag": ""
+  },
+  {
+   "file": "anubhav-cmc-043.jpg",
+   "event": 9,
+   "location": "Guma",
+   "independent": true,
+   "caption": "Familiar scene by mid-morning \u2014 beds full, technicians moving between them.",
+   "partnerTag": ""
+  },
+  {
+   "file": "anubhav-cmc-044.jpg",
+   "event": 9,
+   "location": "Guma",
+   "independent": true,
+   "caption": "Donor on the bed mid-collection \u2014 vitals stable, conversation steady.",
+   "partnerTag": ""
+  },
+  {
+   "file": "anubhav-cmc-045.jpg",
+   "event": 9,
+   "location": "Guma",
+   "independent": true,
+   "caption": "Familiar scene by mid-morning \u2014 beds full, technicians moving between them.",
+   "partnerTag": ""
+  },
+  {
+   "file": "anubhav-cmc-046.jpg",
+   "event": 9,
+   "location": "Guma",
+   "independent": true,
+   "caption": "Volunteers laying out the bed grid and setting tube trays before donors arrive.",
+   "partnerTag": ""
+  },
+  {
+   "file": "anubhav-cmc-047.jpg",
+   "event": 9,
+   "location": "Guma",
+   "independent": true,
+   "caption": "Volunteers laying out the bed grid and setting tube trays before donors arrive.",
+   "partnerTag": ""
+  },
+  {
+   "file": "anubhav-cmc-048.jpg",
+   "event": 9,
+   "location": "Guma",
+   "independent": true,
+   "caption": "Donor on the bed mid-collection \u2014 vitals stable, conversation steady.",
+   "partnerTag": ""
+  },
+  {
+   "file": "anubhav-cmc-049.jpg",
+   "event": 9,
+   "location": "Guma",
+   "independent": true,
+   "caption": "Anubhav CMC desk running back-to-back screenings \u2014 sugar, hemoglobin, BIA for every donor in queue.",
+   "partnerTag": ""
+  },
+  {
+   "file": "anubhav-cmc-050.jpg",
+   "event": 9,
+   "location": "Guma",
+   "independent": true,
+   "caption": "Team huddle before doors open \u2014 bed count, screening flow, who is at which station.",
+   "partnerTag": ""
+  },
+  {
+   "file": "anubhav-cmc-051.jpg",
+   "event": 9,
+   "location": "Guma",
+   "independent": true,
+   "caption": "Team huddle before doors open \u2014 bed count, screening flow, who is at which station.",
+   "partnerTag": ""
+  },
+  {
+   "file": "anubhav-cmc-052.jpg",
+   "event": 9,
+   "location": "Guma",
+   "independent": true,
+   "caption": "Free glucose + anemia check before donation \u2014 donors getting their numbers in under a minute.",
+   "partnerTag": ""
+  },
+  {
+   "file": "anubhav-cmc-053.jpg",
+   "event": 9,
+   "location": "Guma",
+   "independent": true,
+   "caption": "Friends turned up together \u2014 one donating, one cheering from the next bed.",
+   "partnerTag": ""
+  },
+  {
+   "file": "anubhav-cmc-054.jpg",
+   "event": 9,
+   "location": "Guma",
+   "independent": true,
+   "caption": "Volunteer settling in for the draw, team checking tube clamp and flow.",
+   "partnerTag": ""
+  },
+  {
+   "file": "anubhav-cmc-055.jpg",
+   "event": 9,
+   "location": "Guma",
+   "independent": true,
+   "caption": "End of the bag \u2014 clamp going on, gauze ready, donor about to sit up.",
+   "partnerTag": ""
+  },
+  {
+   "file": "anubhav-cmc-056.jpg",
+   "event": 10,
+   "location": "Ghola",
+   "independent": false,
+   "caption": "Quick coordination between the Anubhav CMC team and camp organisers.",
+   "partnerTag": " \u00b7 with Barasat Blood Bank"
+  },
+  {
+   "file": "anubhav-cmc-057.jpg",
+   "event": 10,
+   "location": "Ghola",
+   "independent": false,
+   "caption": "End of the bag \u2014 clamp going on, gauze ready, donor about to sit up.",
+   "partnerTag": " \u00b7 with Barasat Blood Bank"
+  },
+  {
+   "file": "anubhav-cmc-058.jpg",
+   "event": 10,
+   "location": "Ghola",
+   "independent": false,
+   "caption": "Team huddle before doors open \u2014 bed count, screening flow, who is at which station.",
+   "partnerTag": " \u00b7 with Barasat Blood Bank"
+  },
+  {
+   "file": "anubhav-cmc-059.jpg",
+   "event": 10,
+   "location": "Ghola",
+   "independent": false,
+   "caption": "Cardiometabolic snapshot at intake \u2014 every donor gets numbers they can take home.",
+   "partnerTag": " \u00b7 with Barasat Blood Bank"
+  },
+  {
+   "file": "anubhav-cmc-060.jpg",
+   "event": 10,
+   "location": "Ghola",
+   "independent": false,
+   "caption": "Donor giving a thumbs-up halfway through the pull.",
+   "partnerTag": " \u00b7 with Barasat Blood Bank"
+  },
+  {
+   "file": "anubhav-cmc-061.jpg",
+   "event": 10,
+   "location": "Ghola",
+   "independent": false,
+   "caption": "Phlebotomist prepping the arm \u2014 antiseptic wipe, vein found.",
+   "partnerTag": " \u00b7 with Barasat Blood Bank"
+  },
+  {
+   "file": "anubhav-cmc-062.jpg",
+   "event": 10,
+   "location": "Ghola",
+   "independent": false,
+   "caption": "SamaBeat clip on the finger \u2014 5-wavelength PPG + ECG + BIA reading body composition before the donor walks in.",
+   "partnerTag": " \u00b7 with Barasat Blood Bank"
+  },
+  {
+   "file": "anubhav-cmc-063.jpg",
+   "event": 10,
+   "location": "Ghola",
+   "independent": false,
+   "caption": "Phlebotomist prepping the arm \u2014 antiseptic wipe, vein found.",
+   "partnerTag": " \u00b7 with Barasat Blood Bank"
+  },
+  {
+   "file": "anubhav-cmc-064.jpg",
+   "event": 10,
+   "location": "Ghola",
+   "independent": false,
+   "caption": "Mid-camp throughput: multiple beds running, attendants rotating.",
+   "partnerTag": " \u00b7 with Barasat Blood Bank"
+  },
+  {
+   "file": "anubhav-cmc-065.jpg",
+   "event": 10,
+   "location": "Ghola",
+   "independent": false,
+   "caption": "Post-donation rest with juice and a quiet sit-back.",
+   "partnerTag": " \u00b7 with Barasat Blood Bank"
+  },
+  {
+   "file": "anubhav-cmc-066.jpg",
+   "event": 10,
+   "location": "Ghola",
+   "independent": false,
+   "caption": "Familiar scene by mid-morning \u2014 beds full, technicians moving between them.",
+   "partnerTag": " \u00b7 with Barasat Blood Bank"
+  },
+  {
+   "file": "anubhav-cmc-067.jpg",
+   "event": 11,
+   "location": "Duttapukur",
+   "independent": false,
+   "caption": "Documentation under way \u2014 donor logs, screening sheets, post-donation slips.",
+   "partnerTag": " \u00b7 with Barasat Blood Bank"
+  },
+  {
+   "file": "anubhav-cmc-068.jpg",
+   "event": 11,
+   "location": "Duttapukur",
+   "independent": false,
+   "caption": "Familiar scene by mid-morning \u2014 beds full, technicians moving between them.",
+   "partnerTag": " \u00b7 with Barasat Blood Bank"
+  },
+  {
+   "file": "anubhav-cmc-069.jpg",
+   "event": 11,
+   "location": "Duttapukur",
+   "independent": false,
+   "caption": "SamaBeat clip on the finger \u2014 5-wavelength PPG + ECG + BIA reading body composition before the donor walks in.",
+   "partnerTag": " \u00b7 with Barasat Blood Bank"
+  },
+  {
+   "file": "anubhav-cmc-070.jpg",
+   "event": 11,
+   "location": "Duttapukur",
+   "independent": false,
+   "caption": "Phlebotomist prepping the arm \u2014 antiseptic wipe, vein found.",
+   "partnerTag": " \u00b7 with Barasat Blood Bank"
+  },
+  {
+   "file": "anubhav-cmc-071.jpg",
+   "event": 11,
+   "location": "Duttapukur",
+   "independent": false,
+   "caption": "Mid-camp throughput: multiple beds running, attendants rotating.",
+   "partnerTag": " \u00b7 with Barasat Blood Bank"
+  },
+  {
+   "file": "anubhav-cmc-072.jpg",
+   "event": 11,
+   "location": "Duttapukur",
+   "independent": false,
+   "caption": "Registration desk at the front \u2014 donor cards being filled out as the queue builds.",
+   "partnerTag": " \u00b7 with Barasat Blood Bank"
+  },
+  {
+   "file": "anubhav-cmc-073.jpg",
+   "event": 12,
+   "location": "Habra",
+   "independent": true,
+   "caption": "Documentation under way \u2014 donor logs, screening sheets, post-donation slips.",
+   "partnerTag": ""
+  },
+  {
+   "file": "anubhav-cmc-074.jpg",
+   "event": 12,
+   "location": "Habra",
+   "independent": true,
+   "caption": "Registration desk at the front \u2014 donor cards being filled out as the queue builds.",
+   "partnerTag": ""
+  },
+  {
+   "file": "anubhav-cmc-075.jpg",
+   "event": 12,
+   "location": "Habra",
+   "independent": true,
+   "caption": "Post-donation rest with juice and a quiet sit-back.",
+   "partnerTag": ""
+  },
+  {
+   "file": "anubhav-cmc-076.jpg",
+   "event": 12,
+   "location": "Habra",
+   "independent": true,
+   "caption": "Quiet stretch of the camp \u2014 three beds in parallel, all running smoothly.",
+   "partnerTag": ""
+  },
+  {
+   "file": "anubhav-cmc-077.jpg",
+   "event": 13,
+   "location": "Hridaypur",
+   "independent": true,
+   "caption": "Registration desk at the front \u2014 donor cards being filled out as the queue builds.",
+   "partnerTag": ""
+  },
+  {
+   "file": "anubhav-cmc-078.jpg",
+   "event": 13,
+   "location": "Hridaypur",
+   "independent": true,
+   "caption": "Cardiometabolic snapshot at intake \u2014 every donor gets numbers they can take home.",
+   "partnerTag": ""
+  },
+  {
+   "file": "anubhav-cmc-079.jpg",
+   "event": 13,
+   "location": "Hridaypur",
+   "independent": true,
+   "caption": "Team huddle before doors open \u2014 bed count, screening flow, who is at which station.",
+   "partnerTag": ""
+  },
+  {
+   "file": "anubhav-cmc-080.jpg",
+   "event": 13,
+   "location": "Hridaypur",
+   "independent": true,
+   "caption": "Phlebotomist prepping the arm \u2014 antiseptic wipe, vein found.",
+   "partnerTag": ""
+  },
+  {
+   "file": "anubhav-cmc-081.jpg",
+   "event": 13,
+   "location": "Hridaypur",
+   "independent": true,
+   "caption": "Post-donation rest with juice and a quiet sit-back.",
+   "partnerTag": ""
+  },
+  {
+   "file": "anubhav-cmc-082.jpg",
+   "event": 13,
+   "location": "Hridaypur",
+   "independent": true,
+   "caption": "Friends turned up together \u2014 one donating, one cheering from the next bed.",
+   "partnerTag": ""
+  },
+  {
+   "file": "anubhav-cmc-083.jpg",
+   "event": 13,
+   "location": "Hridaypur",
+   "independent": true,
+   "caption": "Quick coordination between the Anubhav CMC team and camp organisers.",
+   "partnerTag": ""
+  },
+  {
+   "file": "anubhav-cmc-084.jpg",
+   "event": 13,
+   "location": "Hridaypur",
+   "independent": true,
+   "caption": "Friends turned up together \u2014 one donating, one cheering from the next bed.",
+   "partnerTag": ""
+  },
+  {
+   "file": "anubhav-cmc-085.jpg",
+   "event": 13,
+   "location": "Hridaypur",
+   "independent": true,
+   "caption": "SamaBeat clip on the finger \u2014 5-wavelength PPG + ECG + BIA reading body composition before the donor walks in.",
+   "partnerTag": ""
+  },
+  {
+   "file": "anubhav-cmc-086.jpg",
+   "event": 13,
+   "location": "Hridaypur",
+   "independent": true,
+   "caption": "Anubhav CMC desk running back-to-back screenings \u2014 sugar, hemoglobin, BIA for every donor in queue.",
+   "partnerTag": ""
+  },
+  {
+   "file": "anubhav-cmc-087.jpg",
+   "event": 13,
+   "location": "Hridaypur",
+   "independent": true,
+   "caption": "Volunteers laying out the bed grid and setting tube trays before donors arrive.",
+   "partnerTag": ""
+  },
+  {
+   "file": "anubhav-cmc-088.jpg",
+   "event": 13,
+   "location": "Hridaypur",
+   "independent": true,
+   "caption": "End of the bag \u2014 clamp going on, gauze ready, donor about to sit up.",
+   "partnerTag": ""
+  },
+  {
+   "file": "anubhav-cmc-089.jpg",
+   "event": 13,
+   "location": "Hridaypur",
+   "independent": true,
+   "caption": "Donor giving a thumbs-up halfway through the pull.",
+   "partnerTag": ""
+  },
+  {
+   "file": "anubhav-cmc-090.jpg",
+   "event": 13,
+   "location": "Hridaypur",
+   "independent": true,
+   "caption": "Friends turned up together \u2014 one donating, one cheering from the next bed.",
+   "partnerTag": ""
+  },
+  {
+   "file": "anubhav-cmc-091.jpg",
+   "event": 13,
+   "location": "Hridaypur",
+   "independent": true,
+   "caption": "Volunteer settling in for the draw, team checking tube clamp and flow.",
+   "partnerTag": ""
+  },
+  {
+   "file": "anubhav-cmc-092.jpg",
+   "event": 13,
+   "location": "Hridaypur",
+   "independent": true,
+   "caption": "Volunteer settling in for the draw, team checking tube clamp and flow.",
+   "partnerTag": ""
+  },
+  {
+   "file": "anubhav-cmc-093.jpg",
+   "event": 14,
+   "location": "Ranaghat",
+   "independent": false,
+   "caption": "Registration desk at the front \u2014 donor cards being filled out as the queue builds.",
+   "partnerTag": " \u00b7 with Barasat Blood Bank"
+  },
+  {
+   "file": "anubhav-cmc-094.jpg",
+   "event": 14,
+   "location": "Ranaghat",
+   "independent": false,
+   "caption": "Mid-camp throughput: multiple beds running, attendants rotating.",
+   "partnerTag": " \u00b7 with Barasat Blood Bank"
+  },
+  {
+   "file": "anubhav-cmc-095.jpg",
+   "event": 14,
+   "location": "Ranaghat",
+   "independent": false,
+   "caption": "Quick coordination between the Anubhav CMC team and camp organisers.",
+   "partnerTag": " \u00b7 with Barasat Blood Bank"
+  },
+  {
+   "file": "anubhav-cmc-096.jpg",
+   "event": 14,
+   "location": "Ranaghat",
+   "independent": false,
+   "caption": "Donor finishing screening \u2014 sugar normal, hemoglobin cleared, on to the bed.",
+   "partnerTag": " \u00b7 with Barasat Blood Bank"
+  },
+  {
+   "file": "anubhav-cmc-097.jpg",
+   "event": 14,
+   "location": "Ranaghat",
+   "independent": false,
+   "caption": "Volunteer settling in for the draw, team checking tube clamp and flow.",
+   "partnerTag": " \u00b7 with Barasat Blood Bank"
+  },
+  {
+   "file": "anubhav-cmc-098.jpg",
+   "event": 14,
+   "location": "Ranaghat",
+   "independent": false,
+   "caption": "Mid-camp throughput: multiple beds running, attendants rotating.",
+   "partnerTag": " \u00b7 with Barasat Blood Bank"
+  },
+  {
+   "file": "anubhav-cmc-099.jpg",
+   "event": 14,
+   "location": "Ranaghat",
+   "independent": false,
+   "caption": "Donor on the bed mid-collection \u2014 vitals stable, conversation steady.",
+   "partnerTag": " \u00b7 with Barasat Blood Bank"
+  },
+  {
+   "file": "anubhav-cmc-100.jpg",
+   "event": 14,
+   "location": "Ranaghat",
+   "independent": false,
+   "caption": "Cardiometabolic snapshot at intake \u2014 every donor gets numbers they can take home.",
+   "partnerTag": " \u00b7 with Barasat Blood Bank"
+  },
+  {
+   "file": "anubhav-cmc-101.jpg",
+   "event": 14,
+   "location": "Ranaghat",
+   "independent": false,
+   "caption": "Mid-camp throughput: multiple beds running, attendants rotating.",
+   "partnerTag": " \u00b7 with Barasat Blood Bank"
+  },
+  {
+   "file": "anubhav-cmc-102.jpg",
+   "event": 14,
+   "location": "Ranaghat",
+   "independent": false,
+   "caption": "End of the bag \u2014 clamp going on, gauze ready, donor about to sit up.",
+   "partnerTag": " \u00b7 with Barasat Blood Bank"
+  },
+  {
+   "file": "anubhav-cmc-103.jpg",
+   "event": 14,
+   "location": "Ranaghat",
+   "independent": false,
+   "caption": "Friends turned up together \u2014 one donating, one cheering from the next bed.",
+   "partnerTag": " \u00b7 with Barasat Blood Bank"
+  },
+  {
+   "file": "anubhav-cmc-104.jpg",
+   "event": 14,
+   "location": "Ranaghat",
+   "independent": false,
+   "caption": "Free glucose + anemia check before donation \u2014 donors getting their numbers in under a minute.",
+   "partnerTag": " \u00b7 with Barasat Blood Bank"
+  },
+  {
+   "file": "anubhav-cmc-105.jpg",
+   "event": 14,
+   "location": "Ranaghat",
+   "independent": false,
+   "caption": "SamaBeat clip on the finger \u2014 5-wavelength PPG + ECG + BIA reading body composition before the donor walks in.",
+   "partnerTag": " \u00b7 with Barasat Blood Bank"
+  },
+  {
+   "file": "anubhav-cmc-106.jpg",
+   "event": 14,
+   "location": "Ranaghat",
+   "independent": false,
+   "caption": "Mid-camp throughput: multiple beds running, attendants rotating.",
+   "partnerTag": " \u00b7 with Barasat Blood Bank"
+  },
+  {
+   "file": "anubhav-cmc-107.jpg",
+   "event": 15,
+   "location": "Amdanga",
+   "independent": false,
+   "caption": "Registration desk at the front \u2014 donor cards being filled out as the queue builds.",
+   "partnerTag": " \u00b7 with Barasat Blood Bank"
+  },
+  {
+   "file": "anubhav-cmc-108.jpg",
+   "event": 15,
+   "location": "Amdanga",
+   "independent": false,
+   "caption": "Post-donation rest with juice and a quiet sit-back.",
+   "partnerTag": " \u00b7 with Barasat Blood Bank"
+  },
+  {
+   "file": "anubhav-cmc-109.jpg",
+   "event": 15,
+   "location": "Amdanga",
+   "independent": false,
+   "caption": "Anubhav CMC desk running back-to-back screenings \u2014 sugar, hemoglobin, BIA for every donor in queue.",
+   "partnerTag": " \u00b7 with Barasat Blood Bank"
+  },
+  {
+   "file": "anubhav-cmc-110.jpg",
+   "event": 15,
+   "location": "Amdanga",
+   "independent": false,
+   "caption": "Anubhav CMC desk running back-to-back screenings \u2014 sugar, hemoglobin, BIA for every donor in queue.",
+   "partnerTag": " \u00b7 with Barasat Blood Bank"
+  },
+  {
+   "file": "anubhav-cmc-111.jpg",
+   "event": 15,
+   "location": "Amdanga",
+   "independent": false,
+   "caption": "Friends turned up together \u2014 one donating, one cheering from the next bed.",
+   "partnerTag": " \u00b7 with Barasat Blood Bank"
+  },
+  {
+   "file": "anubhav-cmc-112.jpg",
+   "event": 15,
+   "location": "Amdanga",
+   "independent": false,
+   "caption": "Donor finishing screening \u2014 sugar normal, hemoglobin cleared, on to the bed.",
+   "partnerTag": " \u00b7 with Barasat Blood Bank"
+  },
+  {
+   "file": "anubhav-cmc-113.jpg",
+   "event": 15,
+   "location": "Amdanga",
+   "independent": false,
+   "caption": "Donor on the bed mid-collection \u2014 vitals stable, conversation steady.",
+   "partnerTag": " \u00b7 with Barasat Blood Bank"
+  },
+  {
+   "file": "anubhav-cmc-114.jpg",
+   "event": 15,
+   "location": "Amdanga",
+   "independent": false,
+   "caption": "Friends turned up together \u2014 one donating, one cheering from the next bed.",
+   "partnerTag": " \u00b7 with Barasat Blood Bank"
+  },
+  {
+   "file": "anubhav-cmc-115.jpg",
+   "event": 15,
+   "location": "Amdanga",
+   "independent": false,
+   "caption": "End of the bag \u2014 clamp going on, gauze ready, donor about to sit up.",
+   "partnerTag": " \u00b7 with Barasat Blood Bank"
+  },
+  {
+   "file": "anubhav-cmc-116.jpg",
+   "event": 16,
+   "location": "Chakla",
+   "independent": true,
+   "caption": "Documentation under way \u2014 donor logs, screening sheets, post-donation slips.",
+   "partnerTag": ""
+  },
+  {
+   "file": "anubhav-cmc-117.jpg",
+   "event": 16,
+   "location": "Chakla",
+   "independent": true,
+   "caption": "Documentation under way \u2014 donor logs, screening sheets, post-donation slips.",
+   "partnerTag": ""
+  },
+  {
+   "file": "anubhav-cmc-118.jpg",
+   "event": 16,
+   "location": "Chakla",
+   "independent": true,
+   "caption": "Free glucose + anemia check before donation \u2014 donors getting their numbers in under a minute.",
+   "partnerTag": ""
+  },
+  {
+   "file": "anubhav-cmc-119.jpg",
+   "event": 16,
+   "location": "Chakla",
+   "independent": true,
+   "caption": "Donor on the bed mid-collection \u2014 vitals stable, conversation steady.",
+   "partnerTag": ""
+  },
+  {
+   "file": "anubhav-cmc-120.jpg",
+   "event": 16,
+   "location": "Chakla",
+   "independent": true,
+   "caption": "Mid-camp throughput: multiple beds running, attendants rotating.",
+   "partnerTag": ""
+  },
+  {
+   "file": "anubhav-cmc-121.jpg",
+   "event": 17,
+   "location": "Birati",
+   "independent": true,
+   "caption": "Mid-camp throughput: multiple beds running, attendants rotating.",
+   "partnerTag": ""
+  },
+  {
+   "file": "anubhav-cmc-122.jpg",
+   "event": 17,
+   "location": "Birati",
+   "independent": true,
+   "caption": "Cardiometabolic snapshot at intake \u2014 every donor gets numbers they can take home.",
+   "partnerTag": ""
+  },
+  {
+   "file": "anubhav-cmc-123.jpg",
+   "event": 18,
+   "location": "Barrackpore",
+   "independent": false,
+   "caption": "Team huddle before doors open \u2014 bed count, screening flow, who is at which station.",
+   "partnerTag": " \u00b7 with Barasat Blood Bank"
+  },
+  {
+   "file": "anubhav-cmc-124.jpg",
+   "event": 18,
+   "location": "Barrackpore",
+   "independent": false,
+   "caption": "Friends turned up together \u2014 one donating, one cheering from the next bed.",
+   "partnerTag": " \u00b7 with Barasat Blood Bank"
+  },
+  {
+   "file": "anubhav-cmc-125.jpg",
+   "event": 18,
+   "location": "Barrackpore",
+   "independent": false,
+   "caption": "Familiar scene by mid-morning \u2014 beds full, technicians moving between them.",
+   "partnerTag": " \u00b7 with Barasat Blood Bank"
+  },
+  {
+   "file": "anubhav-cmc-126.jpg",
+   "event": 18,
+   "location": "Barrackpore",
+   "independent": false,
+   "caption": "Volunteer settling in for the draw, team checking tube clamp and flow.",
+   "partnerTag": " \u00b7 with Barasat Blood Bank"
+  },
+  {
+   "file": "anubhav-cmc-127.jpg",
+   "event": 18,
+   "location": "Barrackpore",
+   "independent": false,
+   "caption": "Donor on the bed mid-collection \u2014 vitals stable, conversation steady.",
+   "partnerTag": " \u00b7 with Barasat Blood Bank"
+  },
+  {
+   "file": "anubhav-cmc-128.jpg",
+   "event": 19,
+   "location": "Barasat",
+   "independent": false,
+   "caption": "Quick anemia + obesity screen on the SamaBeat clip \u2014 passes the donor through to the bed if cleared.",
+   "partnerTag": " \u00b7 with Barasat Blood Bank"
+  },
+  {
+   "file": "anubhav-cmc-129.jpg",
+   "event": 19,
+   "location": "Barasat",
+   "independent": false,
+   "caption": "SamaBeat clip on the finger \u2014 5-wavelength PPG + ECG + BIA reading body composition before the donor walks in.",
+   "partnerTag": " \u00b7 with Barasat Blood Bank"
+  },
+  {
+   "file": "anubhav-cmc-130.jpg",
+   "event": 20,
+   "location": "Deganga",
+   "independent": false,
+   "caption": "Application letter to Barasat Govt Medical College Blood Bank from partner foundation, formalising the upcoming camp",
+   "partnerTag": " \u00b7 with Barasat Blood Bank"
+  },
+  {
+   "file": "anubhav-cmc-131.jpg",
+   "event": 20,
+   "location": "Deganga",
+   "independent": false,
+   "caption": "Familiar scene by mid-morning \u2014 beds full, technicians moving between them.",
+   "partnerTag": " \u00b7 with Barasat Blood Bank"
+  },
+  {
+   "file": "anubhav-cmc-132.jpg",
+   "event": 20,
+   "location": "Deganga",
+   "independent": false,
+   "caption": "SamaBeat clip on the finger \u2014 5-wavelength PPG + ECG + BIA reading body composition before the donor walks in.",
+   "partnerTag": " \u00b7 with Barasat Blood Bank"
+  },
+  {
+   "file": "anubhav-cmc-133.jpg",
+   "event": 20,
+   "location": "Deganga",
+   "independent": false,
+   "caption": "Documentation under way \u2014 donor logs, screening sheets, post-donation slips.",
+   "partnerTag": " \u00b7 with Barasat Blood Bank"
+  },
+  {
+   "file": "anubhav-cmc-134.jpg",
+   "event": 20,
+   "location": "Deganga",
+   "independent": false,
+   "caption": "End of the bag \u2014 clamp going on, gauze ready, donor about to sit up.",
+   "partnerTag": " \u00b7 with Barasat Blood Bank"
+  },
+  {
+   "file": "anubhav-cmc-135.jpg",
+   "event": 20,
+   "location": "Deganga",
+   "independent": false,
+   "caption": "Phlebotomist prepping the arm \u2014 antiseptic wipe, vein found.",
+   "partnerTag": " \u00b7 with Barasat Blood Bank"
+  },
+  {
+   "file": "anubhav-cmc-136.jpg",
+   "event": 20,
+   "location": "Deganga",
+   "independent": false,
+   "caption": "Familiar scene by mid-morning \u2014 beds full, technicians moving between them.",
+   "partnerTag": " \u00b7 with Barasat Blood Bank"
+  },
+  {
+   "file": "anubhav-cmc-137.jpg",
+   "event": 20,
+   "location": "Deganga",
+   "independent": false,
+   "caption": "Familiar scene by mid-morning \u2014 beds full, technicians moving between them.",
+   "partnerTag": " \u00b7 with Barasat Blood Bank"
+  },
+  {
+   "file": "anubhav-cmc-138.jpg",
+   "event": 20,
+   "location": "Deganga",
+   "independent": false,
+   "caption": "Familiar scene by mid-morning \u2014 beds full, technicians moving between them.",
+   "partnerTag": " \u00b7 with Barasat Blood Bank"
+  },
+  {
+   "file": "anubhav-cmc-139.jpg",
+   "event": 20,
+   "location": "Deganga",
+   "independent": false,
+   "caption": "Phlebotomist prepping the arm \u2014 antiseptic wipe, vein found.",
+   "partnerTag": " \u00b7 with Barasat Blood Bank"
+  },
+  {
+   "file": "anubhav-cmc-140.jpg",
+   "event": 20,
+   "location": "Deganga",
+   "independent": false,
+   "caption": "Post-donation rest with juice and a quiet sit-back.",
+   "partnerTag": " \u00b7 with Barasat Blood Bank"
+  },
+  {
+   "file": "anubhav-cmc-141.jpg",
+   "event": 20,
+   "location": "Deganga",
+   "independent": false,
+   "caption": "Mid-camp throughput: multiple beds running, attendants rotating.",
+   "partnerTag": " \u00b7 with Barasat Blood Bank"
+  },
+  {
+   "file": "anubhav-cmc-142.jpg",
+   "event": 20,
+   "location": "Deganga",
+   "independent": false,
+   "caption": "Volunteers laying out the bed grid and setting tube trays before donors arrive.",
+   "partnerTag": " \u00b7 with Barasat Blood Bank"
+  },
+  {
+   "file": "anubhav-cmc-143.jpg",
+   "event": 20,
+   "location": "Deganga",
+   "independent": false,
+   "caption": "Team huddle before doors open \u2014 bed count, screening flow, who is at which station.",
+   "partnerTag": " \u00b7 with Barasat Blood Bank"
+  },
+  {
+   "file": "anubhav-cmc-144.jpg",
+   "event": 20,
+   "location": "Deganga",
+   "independent": false,
+   "caption": "Quiet stretch of the camp \u2014 three beds in parallel, all running smoothly.",
+   "partnerTag": " \u00b7 with Barasat Blood Bank"
+  },
+  {
+   "file": "anubhav-cmc-145.jpg",
+   "event": 20,
+   "location": "Deganga",
+   "independent": false,
+   "caption": "Quick anemia + obesity screen on the SamaBeat clip \u2014 passes the donor through to the bed if cleared.",
+   "partnerTag": " \u00b7 with Barasat Blood Bank"
+  },
+  {
+   "file": "anubhav-cmc-146.jpg",
+   "event": 20,
+   "location": "Deganga",
+   "independent": false,
+   "caption": "Mid-camp throughput: multiple beds running, attendants rotating.",
+   "partnerTag": " \u00b7 with Barasat Blood Bank"
+  },
+  {
+   "file": "anubhav-cmc-147.jpg",
+   "event": 20,
+   "location": "Deganga",
+   "independent": false,
+   "caption": "Friends turned up together \u2014 one donating, one cheering from the next bed.",
+   "partnerTag": " \u00b7 with Barasat Blood Bank"
+  },
+  {
+   "file": "anubhav-cmc-148.jpg",
+   "event": 20,
+   "location": "Deganga",
+   "independent": false,
+   "caption": "Free glucose + anemia check before donation \u2014 donors getting their numbers in under a minute.",
+   "partnerTag": " \u00b7 with Barasat Blood Bank"
+  },
+  {
+   "file": "anubhav-cmc-149.jpg",
+   "event": 20,
+   "location": "Deganga",
+   "independent": false,
+   "caption": "Post-donation rest with juice and a quiet sit-back.",
+   "partnerTag": " \u00b7 with Barasat Blood Bank"
+  },
+  {
+   "file": "anubhav-cmc-150.jpg",
+   "event": 20,
+   "location": "Deganga",
+   "independent": false,
+   "caption": "Volunteer settling in for the draw, team checking tube clamp and flow.",
+   "partnerTag": " \u00b7 with Barasat Blood Bank"
+  },
+  {
+   "file": "anubhav-cmc-151.jpg",
+   "event": 20,
+   "location": "Deganga",
+   "independent": false,
+   "caption": "Volunteers laying out the bed grid and setting tube trays before donors arrive.",
+   "partnerTag": " \u00b7 with Barasat Blood Bank"
+  },
+  {
+   "file": "anubhav-cmc-152.jpg",
+   "event": 20,
+   "location": "Deganga",
+   "independent": false,
+   "caption": "Anubhav CMC desk running back-to-back screenings \u2014 sugar, hemoglobin, BIA for every donor in queue.",
+   "partnerTag": " \u00b7 with Barasat Blood Bank"
+  },
+  {
+   "file": "anubhav-cmc-153.jpg",
+   "event": 20,
+   "location": "Deganga",
+   "independent": false,
+   "caption": "Donor finishing screening \u2014 sugar normal, hemoglobin cleared, on to the bed.",
+   "partnerTag": " \u00b7 with Barasat Blood Bank"
+  },
+  {
+   "file": "anubhav-cmc-154.jpg",
+   "event": 20,
+   "location": "Deganga",
+   "independent": false,
+   "caption": "Quiet stretch of the camp \u2014 three beds in parallel, all running smoothly.",
+   "partnerTag": " \u00b7 with Barasat Blood Bank"
+  },
+  {
+   "file": "anubhav-cmc-155.jpg",
+   "event": 20,
+   "location": "Deganga",
+   "independent": false,
+   "caption": "Registration desk at the front \u2014 donor cards being filled out as the queue builds.",
+   "partnerTag": " \u00b7 with Barasat Blood Bank"
+  },
+  {
+   "file": "anubhav-cmc-156.jpg",
+   "event": 20,
+   "location": "Deganga",
+   "independent": false,
+   "caption": "Team huddle before doors open \u2014 bed count, screening flow, who is at which station.",
+   "partnerTag": " \u00b7 with Barasat Blood Bank"
+  },
+  {
+   "file": "anubhav-cmc-157.jpg",
+   "event": 20,
+   "location": "Deganga",
+   "independent": false,
+   "caption": "Donor on the bed mid-collection \u2014 vitals stable, conversation steady.",
+   "partnerTag": " \u00b7 with Barasat Blood Bank"
+  },
+  {
+   "file": "anubhav-cmc-158.jpg",
+   "event": 20,
+   "location": "Deganga",
+   "independent": false,
+   "caption": "Volunteers laying out the bed grid and setting tube trays before donors arrive.",
+   "partnerTag": " \u00b7 with Barasat Blood Bank"
+  },
+  {
+   "file": "anubhav-cmc-159.jpg",
+   "event": 20,
+   "location": "Deganga",
+   "independent": false,
+   "caption": "Team huddle before doors open \u2014 bed count, screening flow, who is at which station.",
+   "partnerTag": " \u00b7 with Barasat Blood Bank"
+  },
+  {
+   "file": "anubhav-cmc-160.jpg",
+   "event": 20,
+   "location": "Deganga",
+   "independent": false,
+   "caption": "Documentation under way \u2014 donor logs, screening sheets, post-donation slips.",
+   "partnerTag": " \u00b7 with Barasat Blood Bank"
+  },
+  {
+   "file": "anubhav-cmc-161.jpg",
+   "event": 20,
+   "location": "Deganga",
+   "independent": false,
+   "caption": "Familiar scene by mid-morning \u2014 beds full, technicians moving between them.",
+   "partnerTag": " \u00b7 with Barasat Blood Bank"
+  },
+  {
+   "file": "anubhav-cmc-162.jpg",
+   "event": 20,
+   "location": "Deganga",
+   "independent": false,
+   "caption": "Volunteer settling in for the draw, team checking tube clamp and flow.",
+   "partnerTag": " \u00b7 with Barasat Blood Bank"
+  },
+  {
+   "file": "anubhav-cmc-163.jpg",
+   "event": 20,
+   "location": "Deganga",
+   "independent": false,
+   "caption": "Post-donation rest with juice and a quiet sit-back.",
+   "partnerTag": " \u00b7 with Barasat Blood Bank"
+  },
+  {
+   "file": "anubhav-cmc-164.jpg",
+   "event": 20,
+   "location": "Deganga",
+   "independent": false,
+   "caption": "Volunteer settling in for the draw, team checking tube clamp and flow.",
+   "partnerTag": " \u00b7 with Barasat Blood Bank"
+  },
+  {
+   "file": "anubhav-cmc-165.jpg",
+   "event": 20,
+   "location": "Deganga",
+   "independent": false,
+   "caption": "Quick anemia + obesity screen on the SamaBeat clip \u2014 passes the donor through to the bed if cleared.",
+   "partnerTag": " \u00b7 with Barasat Blood Bank"
+  },
+  {
+   "file": "anubhav-cmc-166.jpg",
+   "event": 20,
+   "location": "Deganga",
+   "independent": false,
+   "caption": "Free glucose + anemia check before donation \u2014 donors getting their numbers in under a minute.",
+   "partnerTag": " \u00b7 with Barasat Blood Bank"
+  },
+  {
+   "file": "anubhav-cmc-167.jpg",
+   "event": 20,
+   "location": "Deganga",
+   "independent": false,
+   "caption": "Free glucose + anemia check before donation \u2014 donors getting their numbers in under a minute.",
+   "partnerTag": " \u00b7 with Barasat Blood Bank"
+  },
+  {
+   "file": "anubhav-cmc-168.jpg",
+   "event": 21,
+   "location": "Madhyamgram",
+   "independent": false,
+   "caption": "Local daily covers the Barasat Medical College donation drive \u2014 donor turnout, partner mention",
+   "partnerTag": " \u00b7 with Barasat Blood Bank"
+  },
+  {
+   "file": "anubhav-cmc-169.jpg",
+   "event": 21,
+   "location": "Madhyamgram",
+   "independent": false,
+   "caption": "Bengali press coverage of the Barasat camp \u2014 principal & MSVP commend voluntary donors",
+   "partnerTag": " \u00b7 with Barasat Blood Bank"
+  },
+  {
+   "file": "anubhav-cmc-170.jpg",
+   "event": 21,
+   "location": "Madhyamgram",
+   "independent": false,
+   "caption": "Sakaler Shironam, 01 May 2026 \u2014 front-page write-up on the summer blood-crisis camp",
+   "partnerTag": " \u00b7 with Barasat Blood Bank"
+  },
+  {
+   "file": "anubhav-cmc-171.jpg",
+   "event": 22,
+   "location": "Bira",
+   "independent": false,
+   "caption": "Quick coordination between the Anubhav CMC team and camp organisers.",
+   "partnerTag": " \u00b7 with Barasat Blood Bank"
+  },
+  {
+   "file": "anubhav-cmc-172.jpg",
+   "event": 22,
+   "location": "Bira",
+   "independent": false,
+   "caption": "Documentation under way \u2014 donor logs, screening sheets, post-donation slips.",
+   "partnerTag": " \u00b7 with Barasat Blood Bank"
+  },
+  {
+   "file": "anubhav-cmc-173.jpg",
+   "event": 22,
+   "location": "Bira",
+   "independent": false,
+   "caption": "End of the bag \u2014 clamp going on, gauze ready, donor about to sit up.",
+   "partnerTag": " \u00b7 with Barasat Blood Bank"
+  },
+  {
+   "file": "anubhav-cmc-174.jpg",
+   "event": 22,
+   "location": "Bira",
+   "independent": false,
+   "caption": "Friends turned up together \u2014 one donating, one cheering from the next bed.",
+   "partnerTag": " \u00b7 with Barasat Blood Bank"
+  },
+  {
+   "file": "anubhav-cmc-175.jpg",
+   "event": 22,
+   "location": "Bira",
+   "independent": false,
+   "caption": "Pre-donation screening at the Anubhav CMC counter \u2014 fasting/random sugar from a single fingerprick.",
+   "partnerTag": " \u00b7 with Barasat Blood Bank"
+  },
+  {
+   "file": "anubhav-cmc-176.jpg",
+   "event": 22,
+   "location": "Bira",
+   "independent": false,
+   "caption": "Mid-camp throughput: multiple beds running, attendants rotating.",
+   "partnerTag": " \u00b7 with Barasat Blood Bank"
+  },
+  {
+   "file": "anubhav-cmc-177.jpg",
+   "event": 23,
+   "location": "Badu",
+   "independent": true,
+   "caption": "Team huddle before doors open \u2014 bed count, screening flow, who is at which station.",
+   "partnerTag": ""
+  },
+  {
+   "file": "anubhav-cmc-178.jpg",
+   "event": 23,
+   "location": "Badu",
+   "independent": true,
+   "caption": "Pre-donation screening at the Anubhav CMC counter \u2014 fasting/random sugar from a single fingerprick.",
+   "partnerTag": ""
+  },
+  {
+   "file": "anubhav-cmc-179.jpg",
+   "event": 23,
+   "location": "Badu",
+   "independent": true,
+   "caption": "Phlebotomist prepping the arm \u2014 antiseptic wipe, vein found.",
+   "partnerTag": ""
+  },
+  {
+   "file": "anubhav-cmc-180.jpg",
+   "event": 23,
+   "location": "Badu",
+   "independent": true,
+   "caption": "Anubhav CMC desk running back-to-back screenings \u2014 sugar, hemoglobin, BIA for every donor in queue.",
+   "partnerTag": ""
+  },
+  {
+   "file": "anubhav-cmc-181.jpg",
+   "event": 24,
+   "location": "Aminpur",
+   "independent": true,
+   "caption": "Team huddle before doors open \u2014 bed count, screening flow, who is at which station.",
+   "partnerTag": ""
+  },
+  {
+   "file": "anubhav-cmc-182.jpg",
+   "event": 24,
+   "location": "Aminpur",
+   "independent": true,
+   "caption": "Friends turned up together \u2014 one donating, one cheering from the next bed.",
+   "partnerTag": ""
+  },
+  {
+   "file": "anubhav-cmc-183.jpg",
+   "event": 24,
+   "location": "Aminpur",
+   "independent": true,
+   "caption": "Quiet stretch of the camp \u2014 three beds in parallel, all running smoothly.",
+   "partnerTag": ""
+  },
+  {
+   "file": "anubhav-cmc-184.jpg",
+   "event": 24,
+   "location": "Aminpur",
+   "independent": true,
+   "caption": "Phlebotomist prepping the arm \u2014 antiseptic wipe, vein found.",
+   "partnerTag": ""
+  },
+  {
+   "file": "anubhav-cmc-185.jpg",
+   "event": 24,
+   "location": "Aminpur",
+   "independent": true,
+   "caption": "Donor on the bed mid-collection \u2014 vitals stable, conversation steady.",
+   "partnerTag": ""
+  },
+  {
+   "file": "anubhav-cmc-186.jpg",
+   "event": 24,
+   "location": "Aminpur",
+   "independent": true,
+   "caption": "Post-donation rest with juice and a quiet sit-back.",
+   "partnerTag": ""
+  },
+  {
+   "file": "anubhav-cmc-187.jpg",
+   "event": 24,
+   "location": "Aminpur",
+   "independent": true,
+   "caption": "Mid-camp throughput: multiple beds running, attendants rotating.",
+   "partnerTag": ""
+  },
+  {
+   "file": "anubhav-cmc-188.jpg",
+   "event": 25,
+   "location": "Aminpur",
+   "independent": false,
+   "caption": "Registration desk at the front \u2014 donor cards being filled out as the queue builds.",
+   "partnerTag": " \u00b7 with Barasat Blood Bank"
+  },
+  {
+   "file": "anubhav-cmc-189.jpg",
+   "event": 25,
+   "location": "Aminpur",
+   "independent": false,
+   "caption": "Quick anemia + obesity screen on the SamaBeat clip \u2014 passes the donor through to the bed if cleared.",
+   "partnerTag": " \u00b7 with Barasat Blood Bank"
+  },
+  {
+   "file": "anubhav-cmc-190.jpg",
+   "event": 25,
+   "location": "Aminpur",
+   "independent": false,
+   "caption": "Familiar scene by mid-morning \u2014 beds full, technicians moving between them.",
+   "partnerTag": " \u00b7 with Barasat Blood Bank"
+  },
+  {
+   "file": "anubhav-cmc-191.jpg",
+   "event": 25,
+   "location": "Aminpur",
+   "independent": false,
+   "caption": "Phlebotomist prepping the arm \u2014 antiseptic wipe, vein found.",
+   "partnerTag": " \u00b7 with Barasat Blood Bank"
+  },
+  {
+   "file": "anubhav-cmc-192.jpg",
+   "event": 25,
+   "location": "Aminpur",
+   "independent": false,
+   "caption": "Registration desk at the front \u2014 donor cards being filled out as the queue builds.",
+   "partnerTag": " \u00b7 with Barasat Blood Bank"
+  },
+  {
+   "file": "anubhav-cmc-193.jpg",
+   "event": 25,
+   "location": "Aminpur",
+   "independent": false,
+   "caption": "Pre-donation screening at the Anubhav CMC counter \u2014 fasting/random sugar from a single fingerprick.",
+   "partnerTag": " \u00b7 with Barasat Blood Bank"
+  },
+  {
+   "file": "anubhav-cmc-194.jpg",
+   "event": 25,
+   "location": "Aminpur",
+   "independent": false,
+   "caption": "Donor on the bed mid-collection \u2014 vitals stable, conversation steady.",
+   "partnerTag": " \u00b7 with Barasat Blood Bank"
+  },
+  {
+   "file": "anubhav-cmc-195.jpg",
+   "event": 25,
+   "location": "Aminpur",
+   "independent": false,
+   "caption": "Anubhav CMC desk running back-to-back screenings \u2014 sugar, hemoglobin, BIA for every donor in queue.",
+   "partnerTag": " \u00b7 with Barasat Blood Bank"
+  },
+  {
+   "file": "anubhav-cmc-196.jpg",
+   "event": 25,
+   "location": "Aminpur",
+   "independent": false,
+   "caption": "Post-donation rest with juice and a quiet sit-back.",
+   "partnerTag": " \u00b7 with Barasat Blood Bank"
+  },
+  {
+   "file": "anubhav-cmc-197.jpg",
+   "event": 25,
+   "location": "Aminpur",
+   "independent": false,
+   "caption": "Volunteer settling in for the draw, team checking tube clamp and flow.",
+   "partnerTag": " \u00b7 with Barasat Blood Bank"
+  },
+  {
+   "file": "anubhav-cmc-198.jpg",
+   "event": 26,
+   "location": "Ghola",
+   "independent": false,
+   "caption": "Thalassemia Welfare Society of India announcement \u2014 Eid-ul-Azha donation drive, Ghidah Mudi Bari",
+   "partnerTag": " \u00b7 with Barasat Blood Bank"
+  },
+  {
+   "file": "anubhav-cmc-199.jpg",
+   "event": 27,
+   "location": "Barasat",
+   "independent": false,
+   "caption": "Quiet stretch of the camp \u2014 three beds in parallel, all running smoothly.",
+   "partnerTag": " \u00b7 with Barasat Blood Bank"
+  },
+  {
+   "file": "anubhav-cmc-200.jpg",
+   "event": 27,
+   "location": "Barasat",
+   "independent": false,
+   "caption": "Familiar scene by mid-morning \u2014 beds full, technicians moving between them.",
+   "partnerTag": " \u00b7 with Barasat Blood Bank"
+  },
+  {
+   "file": "anubhav-cmc-201.jpg",
+   "event": 27,
+   "location": "Barasat",
+   "independent": false,
+   "caption": "Quiet stretch of the camp \u2014 three beds in parallel, all running smoothly.",
+   "partnerTag": " \u00b7 with Barasat Blood Bank"
+  },
+  {
+   "file": "anubhav-cmc-202.jpg",
+   "event": 28,
+   "location": "Ghola",
+   "independent": true,
+   "caption": "Quick coordination between the Anubhav CMC team and camp organisers.",
+   "partnerTag": ""
+  },
+  {
+   "file": "anubhav-cmc-203.jpg",
+   "event": 28,
+   "location": "Ghola",
+   "independent": true,
+   "caption": "Post-donation rest with juice and a quiet sit-back.",
+   "partnerTag": ""
+  },
+  {
+   "file": "anubhav-cmc-204.jpg",
+   "event": 28,
+   "location": "Ghola",
+   "independent": true,
+   "caption": "Registration desk at the front \u2014 donor cards being filled out as the queue builds.",
+   "partnerTag": ""
+  },
+  {
+   "file": "anubhav-cmc-205.jpg",
+   "event": 28,
+   "location": "Ghola",
+   "independent": true,
+   "caption": "Quick coordination between the Anubhav CMC team and camp organisers.",
+   "partnerTag": ""
+  },
+  {
+   "file": "anubhav-cmc-206.jpg",
+   "event": 29,
+   "location": "Ghola",
+   "independent": true,
+   "caption": "West Bengal Voluntary Blood Donors' Forum notice \u2014 World Thalassemia Day observation & HPLC screening, 8 May 2026",
+   "partnerTag": ""
+  },
+  {
+   "file": "anubhav-cmc-207.jpg",
+   "event": 30,
+   "location": "Deganga",
+   "independent": false,
+   "caption": "Mid-camp throughput: multiple beds running, attendants rotating.",
+   "partnerTag": " \u00b7 with Barasat Blood Bank"
+  },
+  {
+   "file": "anubhav-cmc-208.jpg",
+   "event": 30,
+   "location": "Deganga",
+   "independent": false,
+   "caption": "Quick anemia + obesity screen on the SamaBeat clip \u2014 passes the donor through to the bed if cleared.",
+   "partnerTag": " \u00b7 with Barasat Blood Bank"
+  },
+  {
+   "file": "anubhav-cmc-209.jpg",
+   "event": 30,
+   "location": "Deganga",
+   "independent": false,
+   "caption": "Team huddle before doors open \u2014 bed count, screening flow, who is at which station.",
+   "partnerTag": " \u00b7 with Barasat Blood Bank"
+  }
+ ]
+}

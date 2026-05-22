@@ -6,6 +6,7 @@ const links = [
   { href: "/#platform", label: "Platform" },
   { href: "/#parameters", label: "What we track" },
   { href: "/#outcomes", label: "Outcomes" },
+  { href: "/camps", label: "Field camps" },
   { href: "/research", label: "Science" },
   { href: "/#contact", label: "Contact" },
 ];
