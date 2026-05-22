@@ -100,8 +100,9 @@ export function CampGallery({ events, images }: { events: EventMeta[]; images: I
           .camp-filter-bar { padding: 10px 12px !important; gap: 8px !important; flex-wrap: nowrap !important; }
           .camp-filter-chips { flex: 1 1 auto; overflow-x: auto; -webkit-overflow-scrolling: touch; flex-wrap: nowrap !important; scrollbar-width: none; }
           .camp-filter-chips::-webkit-scrollbar { display: none; }
-          .camp-filter-chips button { white-space: nowrap; font-size: 12px !important; padding: 7px 12px !important; }
-          .camp-filter-select { font-size: 12px !important; padding: 7px 10px !important; flex-shrink: 0; max-width: 130px; }
+          .camp-filter-chips button { white-space: nowrap; font-size: 12px !important; padding: 11px 14px !important; min-height: 44px; }
+          .camp-filter-select { font-size: 12px !important; padding: 11px 12px !important; min-height: 44px; flex-shrink: 0; max-width: 130px; }
+          .camp-filter-bar { padding: 8px 10px !important; }
           .camp-event-head h2 { font-size: 18px !important; }
           .camp-event-head .mono { font-size: 9px !important; }
           .camp-event-head span[style*="brand"], .camp-event-head span[style*="rgba(220"] { font-size: 10px !important; padding: 3px 7px !important; }
