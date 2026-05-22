@@ -75,7 +75,7 @@ export function Nav({ variant = "light" }: { variant?: "light" | "dark" | "hero"
 
         <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
           <Link
-            href="#contact"
+            href="/#contact"
             className="btn"
             style={{
               background: onDark ? "#fff" : "var(--ink)",
