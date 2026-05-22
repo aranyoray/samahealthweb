@@ -97,6 +97,33 @@ export function CampGallery({ events, images }: { events: EventMeta[]; images: I
   return (
     <section style={{ padding: "56px 0 120px" }}>
       <style>{`
+        @keyframes campShimmer {
+          0% { background-position: 200% 0; }
+          100% { background-position: -200% 0; }
+        }
+        .camp-img-wrap {
+          background: linear-gradient(90deg, var(--ink-50) 0%, var(--ink-100) 50%, var(--ink-50) 100%);
+          background-size: 200% 100%;
+          animation: campShimmer 1.6s linear infinite;
+        }
+        .camp-img-wrap.doc {
+          background: linear-gradient(90deg, #F8FAFC 0%, #EEF2F6 50%, #F8FAFC 100%);
+          background-size: 200% 100%;
+        }
+        .camp-img-wrap img {
+          opacity: 0;
+          transition: opacity .35s ease;
+        }
+        .camp-img-wrap.loaded {
+          animation: none;
+          background: var(--ink-50);
+        }
+        .camp-img-wrap.doc.loaded { background: #F8FAFC; }
+        .camp-img-wrap.loaded img { opacity: 1; }
+        @media (prefers-reduced-motion: reduce) {
+          .camp-img-wrap { animation: none; }
+          .camp-img-wrap img { transition: none; }
+        }
         @media (max-width: 640px) {
           .camp-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 10px !important; }
           .camp-grid p { font-size: 12px !important; line-height: 1.35 !important; }
@@ -234,7 +261,7 @@ export function CampGallery({ events, images }: { events: EventMeta[]; images: I
                   >
                     {visible.map((img, imgIdx) => {
                       const isDoc = img.type === "doc" || img.type === "news" || img.type === "poster";
-                      const eager = evIdx === 0 && imgIdx < 4;
+                      const eager = evIdx === 0 && imgIdx < 6;
                       return (
                         <button
                           key={img.file}
@@ -262,10 +289,10 @@ export function CampGallery({ events, images }: { events: EventMeta[]; images: I
                           }}
                         >
                           <div
+                            className={`camp-img-wrap${isDoc ? " doc" : ""}`}
                             style={{
                               width: "100%",
                               aspectRatio: isDoc ? "3/4" : "4/3",
-                              background: isDoc ? "#F8FAFC" : "var(--ink-50)",
                               overflow: "hidden",
                               display: "flex",
                               alignItems: "center",
@@ -301,8 +328,16 @@ export function CampGallery({ events, images }: { events: EventMeta[]; images: I
                                 : `${img.caption} — ${img.location} blood donation camp`}
                               loading={eager ? "eager" : "lazy"}
                               fetchPriority={eager ? "high" : "auto"}
+                              decoding="async"
                               width={isDoc ? 600 : 800}
                               height={isDoc ? 800 : 600}
+                              ref={(node) => {
+                                if (node?.complete && node.naturalHeight > 0) {
+                                  node.parentElement?.classList.add("loaded");
+                                }
+                              }}
+                              onLoad={(e) => e.currentTarget.parentElement?.classList.add("loaded")}
+                              onError={(e) => e.currentTarget.parentElement?.classList.add("loaded")}
                               style={{
                                 width: "100%",
                                 height: "100%",
