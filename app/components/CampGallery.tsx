@@ -35,8 +35,12 @@ export function CampGallery({ events, images }: { events: EventMeta[]; images: I
       if (willCollapse) next.delete(eventId);
       else next.add(eventId);
       if (willCollapse) {
+        const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
         requestAnimationFrame(() => {
-          document.getElementById(`camp-${eventId}`)?.scrollIntoView({ block: "start", behavior: "smooth" });
+          document.getElementById(`camp-${eventId}`)?.scrollIntoView({
+            block: "start",
+            behavior: reduceMotion ? "auto" : "smooth",
+          });
         });
       }
       return next;
