@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, JetBrains_Mono, Instrument_Serif } from "next/font/google";
+import { Inter, JetBrains_Mono, Fraunces } from "next/font/google";
 import "./globals.css";
 
 const inter = Inter({
@@ -16,12 +16,13 @@ const mono = JetBrains_Mono({
   display: "swap",
 });
 
-const display = Instrument_Serif({
+const display = Fraunces({
   variable: "--font-display",
   subsets: ["latin"],
-  weight: ["400"],
+  weight: ["400", "500", "600", "700"],
   style: ["normal", "italic"],
   display: "swap",
+  axes: ["opsz", "SOFT"],
 });
 
 export const viewport: Viewport = {
