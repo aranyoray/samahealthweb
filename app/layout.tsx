@@ -19,7 +19,6 @@ const mono = JetBrains_Mono({
 const display = Fraunces({
   variable: "--font-display",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
   style: ["normal", "italic"],
   display: "swap",
   axes: ["opsz", "SOFT"],
