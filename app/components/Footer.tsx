@@ -39,7 +39,7 @@ export function Footer() {
           <Col title="Science" links={[
             { href: "/research", label: "Research" },
             { href: "/research#validation", label: "Validation" },
-            { href: "/research#papers", label: "Publications" },
+            { href: "/blog", label: "Blog" },
           ]} />
           <Col title="Company" links={[
             { href: "/#contact", label: "Contact" },
