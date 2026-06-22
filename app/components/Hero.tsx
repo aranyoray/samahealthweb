@@ -9,10 +9,16 @@ export function Hero() {
             <span className="dot pulse" style={{ background: "#14B8A6" }} />
             Now piloting · Bihar & Karnataka
           </span>
-          <h1 style={{ marginTop: 32, color: "#fff", textWrap: "balance" as never }}>
-            The smart clinic, <em style={{ fontStyle: "italic", color: "#A7F3D0", fontWeight: 400 }}>built for Bharat.</em>
+          <span className="mono" style={{ marginTop: 28, fontSize: 13, letterSpacing: "0.05em", fontStyle: "italic", color: "rgba(255,255,255,0.6)" }}>
+            dic·tion·ar·y of dis·ease&nbsp;&nbsp;|&nbsp;&nbsp;/ˈdɪk.ʃə.ner.i əv dɪˈziːz/
+          </span>
+          <h1 style={{ marginTop: 12, color: "#fff", textWrap: "balance" as never }}>
+            Dictionary<Sep />of<Sep />Disease
           </h1>
-          <p style={{ marginTop: 28, fontSize: 20, color: "rgba(255,255,255,0.78)", lineHeight: 1.55, maxWidth: 720 }}>
+          <p style={{ marginTop: 22, fontSize: 19, lineHeight: 1.5, fontStyle: "italic", color: "rgba(255,255,255,0.82)", maxWidth: 760 }}>
+            <b style={{ fontStyle: "normal", fontWeight: 600, color: "#fff" }}>noun.</b> the practice of reading human health by translating a small, foundational vocabulary of vital signs into clear medical meaning.
+          </p>
+          <p style={{ marginTop: 22, fontSize: 20, color: "rgba(255,255,255,0.78)", lineHeight: 1.55, maxWidth: 720 }}>
             Every primary clinic. Every ASHA visit. A four-minute cardiac screening,
             offline-first, triaged by AI, escalated to a cardiologist when it matters.
           </p>
@@ -37,6 +43,10 @@ export function Hero() {
       <BottomFade />
     </section>
   );
+}
+
+function Sep() {
+  return <span style={{ color: "#A7F3D0", fontWeight: 300, padding: "0 0.04em" }}>·</span>;
 }
 
 function Stat({ n, l }: { n: string; l: string }) {

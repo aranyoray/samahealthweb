@@ -17,7 +17,10 @@ export function Footer() {
               <Mark />
               SamaHealth
             </div>
-            <p style={{ marginTop: 18, color: "rgba(255,255,255,0.55)", fontSize: 14, maxWidth: 360 }}>
+            <p style={{ marginTop: 16, fontFamily: "var(--font-display)", fontSize: 22, fontStyle: "italic", lineHeight: 1.2, letterSpacing: "-0.02em", color: "#A7F3D0", maxWidth: 360 }}>
+              The smart clinic, built for Bharat.
+            </p>
+            <p style={{ marginTop: 14, color: "rgba(255,255,255,0.55)", fontSize: 14, maxWidth: 360 }}>
               Cardiac screening built for India's last-mile. Offline-first, clinical-grade, DPDPA-compliant.
               Bengaluru + Patna.
             </p>
