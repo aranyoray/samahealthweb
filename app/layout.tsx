@@ -9,23 +9,24 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://samahealth.in"),
-  title: "SamaHealth — Cardiac screening for every clinic in India",
+  title: "SamaHealth — Non-invasive screening for anaemia, heart & cardiometabolic risk",
   description:
-    "SamaHealth equips primary clinics and ASHA workers with offline-first cardiac screening, AI triage, and supervisor oversight — built for India's last-mile.",
+    "SamaHealth brings painless, low-cost, non-invasive screening — anaemia, blood oxygen, heart rhythm and diabetes risk — to clinics and camps across Barasat and North 24 Parganas, validated against the NABL-accredited lab at Anubhav Life Care.",
   keywords: [
-    "cardiac screening India",
-    "ASHA worker app",
-    "primary clinic AI",
-    "rural cardiology",
+    "anaemia screening West Bengal",
+    "non-invasive haemoglobin testing",
+    "cardiometabolic screening India",
+    "preventive health Barasat",
+    "North 24 Parganas health",
+    "Anubhav Life Care",
     "SamaHealth",
-    "SamaBeat",
-    "DPDPA compliant health",
+    "SamaClip",
   ],
   authors: [{ name: "SamaHealth" }],
   openGraph: {
-    title: "SamaHealth — Cardiac screening for every clinic in India",
+    title: "SamaHealth — Non-invasive screening that finds illness early",
     description:
-      "Offline-first cardiac screening for ASHA workers and primary clinics. Clinical-grade AI, DPDPA-compliant, deployed in asia-south1.",
+      "Painless, low-cost screening for anaemia, blood oxygen, heart rhythm and diabetes risk across Barasat and North 24 Parganas — validated against an NABL-accredited lab.",
     url: "https://samahealth.in",
     siteName: "SamaHealth",
     type: "website",
@@ -34,15 +35,15 @@ export const metadata: Metadata = {
         url: "/events/anubhav-cmc-001.jpg",
         width: 1200,
         height: 630,
-        alt: "SamaHealth field team at an Anubhav CMC blood donation camp",
+        alt: "SamaHealth team screening at an Anubhav Life Care community camp in North 24 Parganas",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "SamaHealth — Cardiac screening for every clinic in India",
+    title: "SamaHealth — Non-invasive screening that finds illness early",
     description:
-      "Offline-first cardiac screening for ASHA workers and primary clinics. DPDPA-compliant, deployed in asia-south1.",
+      "Painless, low-cost screening for anaemia, heart and cardiometabolic risk across Barasat and North 24 Parganas — checked against an NABL-accredited lab.",
     images: ["/events/anubhav-cmc-001.jpg"],
   },
 };

@@ -96,18 +96,15 @@ export default function CampsPage() {
           }}
         >
           <div className="container" style={{ maxWidth: 920 }}>
-            <div className="eyebrow" style={{ marginBottom: 18 }}>
-              Anubhav CMC · Field gallery
-            </div>
             <h1
               style={{
-                fontSize: "clamp(40px, 6vw, 72px)",
-                lineHeight: 1.02,
-                letterSpacing: "-0.035em",
+                fontSize: "clamp(38px, 5.4vw, 64px)",
+                lineHeight: 1.04,
+                letterSpacing: "-0.03em",
                 marginBottom: 22,
               }}
             >
-              30 blood donation camps. <em>One clinic on the floor.</em>
+              Free screening at 30 blood donation camps
             </h1>
             <p
               style={{
@@ -143,7 +140,7 @@ export default function CampsPage() {
               }}
             >
               <Stat label="Camps" value={String(events.length)} />
-              <Stat label="Donors screened" value={String(images.length)} />
+              <Stat label="Frames in this gallery" value={String(images.length)} />
               <Stat label="Districts touched" value="22 localities" />
               <Stat label="Tech" value="SamaBeat clip" />
             </div>

@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" role="img" aria-label="Laboratory centrifuge">
+  <ellipse cx="200" cy="262" rx="150" ry="14" fill="#0F766E" opacity="0.10"/>
+  <!-- base -->
+  <path d="M70 250 Q70 150 200 150 Q330 150 330 250 Z" fill="#EDF1F5" stroke="#CBD5E1" stroke-width="2"/>
+  <!-- lid -->
+  <path d="M78 158 Q200 96 322 158" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="2"/>
+  <path d="M78 158 Q200 120 322 158 L322 168 Q200 130 78 168 Z" fill="#1F2937"/>
+  <!-- rotor opening -->
+  <ellipse cx="200" cy="172" rx="92" ry="26" fill="#0B1220"/>
+  <ellipse cx="200" cy="170" rx="84" ry="22" fill="#11202B"/>
+  <!-- sample tubes around rotor -->
+  <g fill="#B11226">
+    <rect x="150" y="156" width="9" height="20" rx="4" transform="rotate(-18 154 166)"/>
+    <rect x="196" y="150" width="9" height="22" rx="4"/>
+    <rect x="240" y="156" width="9" height="20" rx="4" transform="rotate(18 244 166)"/>
+  </g>
+  <circle cx="200" cy="170" r="6" fill="#14B8A6"/>
+  <!-- control panel -->
+  <rect x="250" y="206" width="60" height="34" rx="6" fill="#0B1220"/>
+  <rect x="258" y="213" width="44" height="14" rx="3" fill="#14B8A6" opacity="0.85"/>
+  <circle cx="266" cy="234" r="3" fill="#94A3B8"/><circle cx="278" cy="234" r="3" fill="#94A3B8"/>
+  <!-- start button -->
+  <circle cx="110" cy="220" r="11" fill="#0F766E"/>
+</svg>

@@ -3,11 +3,11 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 
 const links = [
-  { href: "/#platform", label: "Platform" },
-  { href: "/#parameters", label: "What we track" },
-  { href: "/#outcomes", label: "Outcomes" },
+  { href: "/#platform", label: "What we screen" },
+  { href: "/#outcomes", label: "How we reach" },
   { href: "/camps", label: "Field camps" },
-  { href: "/research", label: "Science" },
+  { href: "/research", label: "Validation" },
+  { href: "/blog", label: "Journal" },
   { href: "/#contact", label: "Contact" },
 ];
 
@@ -106,7 +106,7 @@ export function Nav({ variant = "light" }: { variant?: "light" | "dark" | "hero"
               fontSize: 14,
             }}
           >
-            Book demo →
+            Get in touch
           </Link>
           <button
             aria-label={open ? "Close menu" : "Open menu"}

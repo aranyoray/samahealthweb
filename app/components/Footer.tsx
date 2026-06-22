@@ -17,38 +17,40 @@ export function Footer() {
               <Mark />
               SamaHealth
             </div>
-            <p style={{ marginTop: 18, color: "rgba(255,255,255,0.55)", fontSize: 14, maxWidth: 360 }}>
-              Cardiac screening built for India's last-mile. Offline-first, clinical-grade, DPDPA-compliant.
-              Bengaluru + Patna.
+            <p style={{ marginTop: 16, fontFamily: "var(--font-display)", fontSize: 20, fontStyle: "italic", lineHeight: 1.25, letterSpacing: "-0.02em", color: "#A7F3D0", maxWidth: 360 }}>
+              The smart clinic, built for Bharat.
+            </p>
+            <p style={{ marginTop: 14, color: "rgba(255,255,255,0.55)", fontSize: 14, maxWidth: 360 }}>
+              Painless, non-invasive screening for anaemia, heart and cardiometabolic risk — built around
+              the NABL-accredited lab at Anubhav Life Care, Barasat, West Bengal.
             </p>
             <div style={{ marginTop: 28, display: "flex", gap: 10, flexWrap: "wrap" }}>
-              <Pill>asia-south1</Pill>
-              <Pill>DPDPA</Pill>
-              <Pill>ISO 13485 (in progress)</Pill>
+              <Pill>NABL-accredited lab</Pill>
+              <Pill>Barasat · West Bengal</Pill>
+              <Pill>Screening, not diagnosis</Pill>
             </div>
           </div>
 
           <Col title="Platform" links={[
-            { href: "/#platform", label: "Application scenarios" },
-            { href: "/#parameters", label: "What we track" },
-            { href: "/#outcomes", label: "Outcomes" },
+            { href: "/#platform", label: "What we screen" },
+            { href: "/#outcomes", label: "Hub-and-spoke" },
+            { href: "/camps", label: "Field camps" },
           ]} />
           <Col title="Science" links={[
-            { href: "/research", label: "Research" },
             { href: "/research#validation", label: "Validation" },
-            { href: "/research#papers", label: "Publications" },
+            { href: "/research#lab", label: "The lab & devices" },
+            { href: "/blog", label: "Journal" },
           ]} />
           <Col title="Company" links={[
             { href: "/#contact", label: "Contact" },
             { href: "mailto:hello@samahealth.in", label: "hello@samahealth.in" },
-            { href: "/research#partners", label: "Partners" },
           ]} />
         </div>
 
         <hr style={{ border: 0, height: 1, background: "rgba(255,255,255,0.08)", margin: "56px 0 24px" }} />
         <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "space-between", gap: 12, fontSize: 13, color: "rgba(255,255,255,0.45)" }}>
           <span>© {new Date().getFullYear()} SamaHealth Technologies Pvt Ltd</span>
-          <span className="mono">Made in India · for India · v0.1</span>
+          <span className="mono">Made in India · for India</span>
         </div>
       </div>
       <style>{`

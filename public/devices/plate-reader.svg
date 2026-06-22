@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" role="img" aria-label="ELISA microplate reader">
+  <defs>
+    <linearGradient id="scr5" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#14B8A6"/><stop offset="100%" stop-color="#0F766E"/>
+    </linearGradient>
+  </defs>
+  <ellipse cx="200" cy="258" rx="140" ry="13" fill="#0F766E" opacity="0.10"/>
+  <!-- body -->
+  <rect x="74" y="116" width="252" height="128" rx="12" fill="#EDF1F5" stroke="#CBD5E1" stroke-width="2"/>
+  <rect x="74" y="116" width="252" height="28" rx="12" fill="#1F2937"/>
+  <rect x="74" y="132" width="252" height="12" fill="#1F2937"/>
+  <circle cx="308" cy="130" r="5" fill="#14B8A6"/>
+  <!-- screen -->
+  <rect x="226" y="158" width="84" height="70" rx="7" fill="#0B1220"/>
+  <rect x="233" y="165" width="70" height="56" rx="4" fill="url(#scr5)" opacity="0.9"/>
+  <text x="268" y="198" text-anchor="middle" font-family="monospace" font-size="13" fill="#ECFEFF">OD</text>
+  <!-- microplate drawer -->
+  <rect x="92" y="172" width="118" height="56" rx="6" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="2"/>
+  <g fill="#0EA5E9" opacity="0.85">
+    <g>
+      <circle cx="106" cy="186" r="3.4"/><circle cx="118" cy="186" r="3.4"/><circle cx="130" cy="186" r="3.4"/><circle cx="142" cy="186" r="3.4"/><circle cx="154" cy="186" r="3.4"/><circle cx="166" cy="186" r="3.4"/><circle cx="178" cy="186" r="3.4"/><circle cx="190" cy="186" r="3.4"/>
+    </g>
+    <g fill="#14B8A6">
+      <circle cx="106" cy="200" r="3.4"/><circle cx="118" cy="200" r="3.4"/><circle cx="130" cy="200" r="3.4"/><circle cx="142" cy="200" r="3.4"/><circle cx="154" cy="200" r="3.4"/><circle cx="166" cy="200" r="3.4"/><circle cx="178" cy="200" r="3.4"/><circle cx="190" cy="200" r="3.4"/>
+    </g>
+    <g fill="#B11226">
+      <circle cx="106" cy="214" r="3.4"/><circle cx="118" cy="214" r="3.4"/><circle cx="130" cy="214" r="3.4"/><circle cx="142" cy="214" r="3.4"/><circle cx="154" cy="214" r="3.4"/><circle cx="166" cy="214" r="3.4"/><circle cx="178" cy="214" r="3.4"/><circle cx="190" cy="214" r="3.4"/>
+    </g>
+  </g>
+</svg>

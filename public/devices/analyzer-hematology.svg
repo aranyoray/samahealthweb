@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" role="img" aria-label="Benchtop haematology analyser">
+  <defs>
+    <linearGradient id="scr" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#14B8A6"/><stop offset="100%" stop-color="#0F766E"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="300" fill="none"/>
+  <!-- bench shadow -->
+  <ellipse cx="200" cy="262" rx="150" ry="14" fill="#0F766E" opacity="0.10"/>
+  <!-- body -->
+  <rect x="70" y="70" width="260" height="180" rx="12" fill="#EDF1F5" stroke="#CBD5E1" stroke-width="2"/>
+  <rect x="70" y="70" width="260" height="34" rx="12" fill="#1F2937"/>
+  <rect x="70" y="92" width="260" height="12" fill="#1F2937"/>
+  <!-- screen -->
+  <rect x="90" y="120" width="120" height="96" rx="8" fill="#0B1220"/>
+  <rect x="98" y="128" width="104" height="80" rx="5" fill="url(#scr)" opacity="0.9"/>
+  <polyline points="104,188 118,188 124,164 132,200 140,150 148,196 156,178 168,178 182,178 196,178"
+            fill="none" stroke="#ECFEFF" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- sample rack -->
+  <rect x="232" y="150" width="78" height="66" rx="6" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="2"/>
+  <g fill="#B11226">
+    <rect x="242" y="158" width="8" height="26" rx="3"/><rect x="258" y="158" width="8" height="26" rx="3"/>
+    <rect x="274" y="158" width="8" height="26" rx="3"/><rect x="290" y="158" width="8" height="26" rx="3"/>
+  </g>
+  <g fill="#94A3B8"><rect x="242" y="196" width="56" height="4" rx="2"/><rect x="242" y="204" width="40" height="4" rx="2"/></g>
+  <!-- status light -->
+  <circle cx="312" cy="87" r="5" fill="#14B8A6"/>
+  <rect x="232" y="124" width="78" height="8" rx="4" fill="#E2E8F0"/>
+</svg>

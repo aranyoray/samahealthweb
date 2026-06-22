@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" role="img" aria-label="Compact bench analyser">
+  <defs>
+    <linearGradient id="scr4" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#14B8A6"/><stop offset="100%" stop-color="#0F766E"/>
+    </linearGradient>
+  </defs>
+  <ellipse cx="200" cy="258" rx="130" ry="13" fill="#0F766E" opacity="0.10"/>
+  <!-- body -->
+  <path d="M96 244 L96 120 Q96 108 108 108 L292 108 Q304 108 304 120 L304 244 Z" fill="#EDF1F5" stroke="#CBD5E1" stroke-width="2"/>
+  <!-- top angled panel -->
+  <path d="M108 108 L292 108 L292 92 Q292 82 280 82 L120 82 Q108 82 108 92 Z" fill="#1F2937"/>
+  <circle cx="278" cy="96" r="5" fill="#14B8A6"/>
+  <!-- screen -->
+  <rect x="116" y="130" width="120" height="92" rx="8" fill="#0B1220"/>
+  <rect x="124" y="138" width="104" height="76" rx="5" fill="url(#scr4)" opacity="0.9"/>
+  <g stroke="#ECFEFF" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <polyline points="132,196 150,196 156,170 164,206 172,158 180,200 188,184 220,184"/>
+  </g>
+  <rect x="132" y="148" width="44" height="6" rx="3" fill="#ECFEFF" opacity="0.8"/>
+  <!-- sample port + probe -->
+  <rect x="250" y="150" width="40" height="64" rx="6" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="2"/>
+  <rect x="266" y="120" width="4" height="44" rx="2" fill="#94A3B8"/>
+  <rect x="262" y="170" width="9" height="30" rx="4" fill="#B11226"/>
+  <!-- buttons -->
+  <circle cx="258" cy="232" r="4" fill="#0F766E"/><circle cx="274" cy="232" r="4" fill="#94A3B8"/><circle cx="290" cy="232" r="4" fill="#94A3B8"/>
+</svg>
