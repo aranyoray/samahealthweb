@@ -1,20 +1,19 @@
 import { Nav } from "./components/Nav";
 import { Footer } from "./components/Footer";
 import { Hero } from "./components/Hero";
-import { LogoMarquee, Scenarios, HowItWorks, Parameters, Outcomes, Quote, CTA } from "./components/Sections";
+import { CredibilityStrip, WhatWeScreen, HowItWorks, Reach, Quote, CTA } from "./components/Sections";
 import { RevealOnScroll } from "./components/Reveal";
 
 export default function HomePage() {
   return (
     <>
-      <Nav variant="hero" />
+      <Nav variant="light" />
       <main id="main">
         <Hero />
-        <LogoMarquee />
-        <Scenarios />
+        <CredibilityStrip />
+        <WhatWeScreen />
         <HowItWorks />
-        <Parameters />
-        <Outcomes />
+        <Reach />
         <Quote />
         <CTA />
       </main>

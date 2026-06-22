@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" role="img" aria-label="Binocular laboratory microscope">
+  <ellipse cx="200" cy="266" rx="120" ry="13" fill="#0F766E" opacity="0.10"/>
+  <!-- base -->
+  <path d="M120 252 Q120 224 160 222 L256 222 Q288 224 288 252 Z" fill="#1F2937"/>
+  <rect x="150" y="206" width="110" height="22" rx="6" fill="#EDF1F5" stroke="#CBD5E1" stroke-width="2"/>
+  <!-- arm -->
+  <path d="M196 206 Q176 150 196 96 L216 96 Q210 150 224 206 Z" fill="#EDF1F5" stroke="#CBD5E1" stroke-width="2"/>
+  <!-- eyepiece -->
+  <rect x="186" y="64" width="40" height="20" rx="6" fill="#1F2937"/>
+  <rect x="178" y="50" width="28" height="20" rx="6" transform="rotate(-22 192 60)" fill="#1F2937"/>
+  <!-- head/nosepiece -->
+  <circle cx="206" cy="118" r="20" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="2"/>
+  <!-- objectives -->
+  <rect x="190" y="132" width="8" height="24" rx="4" fill="#0F766E"/>
+  <rect x="204" y="134" width="8" height="28" rx="4" fill="#14B8A6"/>
+  <rect x="218" y="132" width="8" height="24" rx="4" fill="#B11226"/>
+  <!-- stage -->
+  <rect x="160" y="168" width="92" height="14" rx="4" fill="#E2E8F0" stroke="#CBD5E1" stroke-width="2"/>
+  <rect x="196" y="172" width="22" height="6" rx="2" fill="#0EA5E9"/>
+  <!-- focus knob -->
+  <circle cx="176" cy="150" r="9" fill="#94A3B8"/>
+  <!-- light glow under stage -->
+  <ellipse cx="206" cy="190" rx="16" ry="5" fill="#14B8A6" opacity="0.5"/>
+</svg>
