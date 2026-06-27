@@ -8,6 +8,7 @@ const links = [
   { href: "/#outcomes", label: "How we reach" },
   { href: "/camps", label: "Field camps" },
   { href: "/research", label: "Validation" },
+  { href: "/data", label: "Lab data" },
   { href: "/blog", label: "Journal" },
   { href: "/#contact", label: "Contact" },
 ];
