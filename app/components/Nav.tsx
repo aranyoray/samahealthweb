@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 
 const links = [
+  { href: "/samaclip", label: "SamaClip" },
   { href: "/#platform", label: "What we screen" },
   { href: "/#outcomes", label: "How we reach" },
   { href: "/camps", label: "Field camps" },
