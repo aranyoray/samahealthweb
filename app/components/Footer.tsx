@@ -40,6 +40,8 @@ export function Footer() {
           <Col title="Science" links={[
             { href: "/research#validation", label: "Validation" },
             { href: "/research#lab", label: "The lab & devices" },
+            { href: "/data#anemia", label: "Anaemia dashboard" },
+            { href: "/data#tb", label: "Tuberculosis dashboard" },
             { href: "/blog", label: "Journal" },
           ]} />
           <Col title="Company" links={[
