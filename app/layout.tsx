@@ -9,9 +9,9 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://samahealth.in"),
-  title: "SamaHealth — Non-invasive screening for anaemia, heart & cardiometabolic risk",
+  title: "SamaHealth. Non-invasive screening for anaemia, heart and cardiometabolic risk",
   description:
-    "SamaHealth brings painless, low-cost, non-invasive screening — anaemia, blood oxygen, heart rhythm and diabetes risk — to clinics and camps across Barasat and North 24 Parganas, validated against the NABL-accredited lab at Anubhav Life Care.",
+    "SamaHealth brings painless, low-cost, non-invasive screening for anaemia, blood oxygen, heart rhythm and diabetes risk to clinics and camps across Barasat and North 24 Parganas, validated against the NABL-accredited lab at Anubhav Life Care.",
   keywords: [
     "anaemia screening West Bengal",
     "non-invasive haemoglobin testing",
@@ -24,9 +24,9 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "SamaHealth" }],
   openGraph: {
-    title: "SamaHealth — Non-invasive screening that finds illness early",
+    title: "SamaHealth. Non-invasive screening that finds illness early",
     description:
-      "Painless, low-cost screening for anaemia, blood oxygen, heart rhythm and diabetes risk across Barasat and North 24 Parganas — validated against an NABL-accredited lab.",
+      "Painless, low-cost screening for anaemia, blood oxygen, heart rhythm and diabetes risk across Barasat and North 24 Parganas, validated against an NABL-accredited lab.",
     url: "https://samahealth.in",
     siteName: "SamaHealth",
     type: "website",
@@ -41,9 +41,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "SamaHealth — Non-invasive screening that finds illness early",
+    title: "SamaHealth. Non-invasive screening that finds illness early",
     description:
-      "Painless, low-cost screening for anaemia, heart and cardiometabolic risk across Barasat and North 24 Parganas — checked against an NABL-accredited lab.",
+      "Painless, low-cost screening for anaemia, heart and cardiometabolic risk across Barasat and North 24 Parganas, checked against an NABL-accredited lab.",
     images: ["/events/anubhav-cmc-001.jpg"],
   },
 };

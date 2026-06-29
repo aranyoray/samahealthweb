@@ -6,9 +6,9 @@ import { RevealOnScroll } from "../components/Reveal";
 import { SamaClipFaq } from "./SamaClipFaq";
 
 export const metadata: Metadata = {
-  title: "SamaClip — One finger. 120 seconds. A full health screen.",
+  title: "SamaClip. One finger. 120 seconds. A full health screen.",
   description:
-    "SamaClip is a battery-free, smartphone-powered fingertip sensor that screens for anaemia, oxygen, diabetes risk, heart rhythm and autonomic vitals in a single 120-second test — for under ₹125 a person. Validated at an NABL-accredited centre in Barasat, West Bengal.",
+    "SamaClip is a battery-free, smartphone-powered fingertip sensor that screens for anaemia, oxygen, diabetes risk, heart rhythm and autonomic vitals in a single 120-second test, for under ₹125 a person. Validated at an NABL-accredited centre in Barasat, West Bengal.",
   keywords: [
     "SamaClip",
     "anaemia screening India",
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     "SamaHealth",
   ],
   openGraph: {
-    title: "SamaClip — One finger. 120 seconds. A full health screen.",
+    title: "SamaClip. One finger. 120 seconds. A full health screen.",
     description:
       "A battery-free, smartphone-powered fingertip sensor: anaemia, oxygen, diabetes risk, heart rhythm and autonomic vitals from a single 120-second recording, for under ₹125 a person.",
     url: "/samaclip",
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "SamaClip — One finger. 120 seconds. A full health screen.",
+    title: "SamaClip. One finger. 120 seconds. A full health screen.",
     description:
       "Battery-free fingertip sensor: anaemia, oxygen, diabetes risk, heart rhythm and autonomic vitals in one 120-second test, under ₹125 a person.",
     images: ["/events/anubhav-cmc-001.jpg"],
@@ -62,8 +62,6 @@ export default function SamaClipPage() {
   );
 }
 
-/* ─────────────────────────── Hero ─────────────────────────── */
-
 function Hero() {
   return (
     <section className="hero-clinical" style={{ paddingTop: 120 }}>
@@ -81,13 +79,8 @@ function Hero() {
         }}
       >
         <div>
-          <span className="kbd-pill kbd-pill-dark">
-            <span className="dot pulse" style={{ background: "#14B8A6" }} />
-            SamaHealth · Community screening platform
-          </span>
           <h1
             style={{
-              marginTop: 28,
               color: "#fff",
               fontSize: "clamp(40px, 5.4vw, 76px)",
               lineHeight: 0.98,
@@ -95,12 +88,11 @@ function Hero() {
               textWrap: "balance" as never,
             }}
           >
-            One finger. 120 seconds.{" "}
-            <em style={{ fontStyle: "italic", color: "#A7F3D0", fontWeight: 400 }}>A full health screen.</em>
+            One finger. 120 seconds. A full health screen.
           </h1>
           <p style={{ marginTop: 26, fontSize: 19, color: "rgba(255,255,255,0.8)", lineHeight: 1.6, maxWidth: 620 }}>
             SamaClip is a battery-free, smartphone-powered sensor that screens for anaemia, oxygen, diabetes risk,
-            heart rhythm and autonomic vitals in a single painless test — built for women and families across West
+            heart rhythm and autonomic vitals in a single painless test. It is built for women and families across West
             Bengal, where more than half the women we see are anaemic and most have never been screened for heart or
             metabolic risk.
           </p>
@@ -149,25 +141,13 @@ function DeviceReadout() {
         gap: 18,
       }}
     >
-      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-        <div>
-          <div style={{ fontSize: 11, letterSpacing: "0.18em", textTransform: "uppercase", color: "var(--ink-400)", fontWeight: 600 }}>
-            SamaClip · live screen
-          </div>
-          <div style={{ fontFamily: "var(--font-display)", fontSize: 22, marginTop: 4, letterSpacing: "-0.02em" }}>
-            Fingertip · one recording
-          </div>
+      <div>
+        <div style={{ fontFamily: "var(--font-display)", fontSize: 22, letterSpacing: "-0.02em" }}>
+          Fingertip, one recording
         </div>
-        <span className="kbd-pill" style={{ fontSize: 11, padding: "5px 10px" }}>
-          <span className="dot pulse" style={{ background: "var(--panic)" }} /> Recording · 118 / 120 s
-        </span>
       </div>
 
       <div style={{ background: "var(--paper-2)", borderRadius: 16, padding: "14px 16px", border: "1px solid var(--ink-100)" }}>
-        <div style={{ display: "flex", justifyContent: "space-between", fontSize: 11, color: "var(--ink-400)", letterSpacing: "0.04em" }}>
-          <span className="mono">PPG · multi-wavelength</span>
-          <span className="mono">ECG · single-lead</span>
-        </div>
         <WaveTrace />
       </div>
 
@@ -196,11 +176,6 @@ function DeviceReadout() {
           </div>
         ))}
       </div>
-
-      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", fontSize: 12, color: "var(--ink-400)" }}>
-        <span className="mono">No battery · powered by the phone</span>
-        <span className="mono" style={{ color: "var(--brand)" }}>under ₹125</span>
-      </div>
     </div>
   );
 }
@@ -225,7 +200,6 @@ function WaveTrace() {
           <line key={y} x1="0" x2="460" y1={y} y2={y} />
         ))}
       </g>
-      {/* PPG — smooth pulse wave (top) */}
       <path
         className="ecg-path"
         d="M0 40 Q20 12 40 40 T80 40 T120 40 T160 40 T200 40 T240 40 T280 40 T320 40 T360 40 T400 40 T440 40 L460 40"
@@ -236,7 +210,6 @@ function WaveTrace() {
         strokeLinejoin="round"
         style={{ animationDuration: "3s" }}
       />
-      {/* ECG — single-lead trace (bottom) */}
       <path
         className="ecg-path"
         d="M0 92 L46 92 L54 88 L62 96 L70 64 L78 116 L86 72 L98 92 L168 92 L176 88 L184 96 L192 64 L200 116 L208 72 L220 92 L290 92 L298 88 L306 96 L314 64 L322 116 L330 72 L342 92 L460 92"
@@ -267,13 +240,11 @@ function BottomFade() {
   );
 }
 
-/* ─────────────────────────── Stat strip ─────────────────────────── */
-
 function StatStrip() {
   const stats = [
-    { n: "< ₹125", l: "Full screening per person — the cost of a bus ride" },
+    { n: "< ₹125", l: "Full screening per person, the cost of a bus ride" },
     { n: "120 sec", l: "One painless finger-clip test, no needle" },
-    { n: "No plug", l: "Runs off a phone — no batteries, no charging" },
+    { n: "No plug", l: "Runs off a phone. No batteries, no charging" },
     { n: "175", l: "Adults screened in our validation study at the centre" },
   ];
   return (
@@ -311,8 +282,6 @@ function StatStrip() {
   );
 }
 
-/* ─────────────────────────── What it screens ─────────────────────────── */
-
 function WhatItScreens() {
   const params = [
     { icon: <IconDroplet />, title: "Anaemia", body: "Estimates haemoglobin without a blood draw, flagging anaemia early in the women who need it most." },
@@ -326,12 +295,11 @@ function WhatItScreens() {
     <section id="screens" className="section reveal">
       <div className="container">
         <div style={{ maxWidth: 860, margin: "0 auto 56px", textAlign: "center", display: "grid", placeItems: "center" }}>
-          <div className="eyebrow">One device, one test</div>
-          <h2 style={{ marginTop: 18 }}>
-            Four machines and a lab visit, <em style={{ fontStyle: "italic", color: "var(--brand)" }}>replaced by a fingertip.</em>
+          <h2>
+            Four machines and a lab visit, replaced by a fingertip.
           </h2>
           <p style={{ marginTop: 20, fontSize: 18, color: "var(--ink-500)", maxWidth: 680 }}>
-            SamaClip captures everything below from a single 120-second recording — work that normally needs a pulse
+            SamaClip captures everything below from a single 120-second recording. The same work normally needs a pulse
             oximeter, a blood test, an HbA1c analyser and an ECG machine.
           </p>
         </div>
@@ -348,7 +316,6 @@ function WhatItScreens() {
           ))}
         </div>
 
-        {/* The same recording, more signals */}
         <div
           className="sc-autonomic"
           style={{
@@ -364,25 +331,23 @@ function WhatItScreens() {
           }}
         >
           <div>
-            <div className="eyebrow">The same recording, more signals</div>
-            <h3 style={{ marginTop: 14, fontSize: 26, fontFamily: "var(--font-display)", fontWeight: 500, letterSpacing: "-0.02em" }}>
+            <h3 style={{ fontSize: 26, fontFamily: "var(--font-display)", fontWeight: 500, letterSpacing: "-0.02em" }}>
               One reading also reveals how the body is regulating itself.
             </h3>
             <p style={{ marginTop: 14, fontSize: 16, color: "var(--ink-500)", maxWidth: 560 }}>
               Because SamaClip captures both a multi-wavelength light pulse (PPG) and a single-lead ECG, one
-              120-second reading also yields autonomic vitals — including heart rate variability, a recognised window
+              120-second reading also yields autonomic vitals, including heart rate variability, a recognised window
               on how the autonomic nervous system is functioning, and respiratory rate. Together these move each
               screen beyond a one-off snapshot toward a picture of how the body is actually regulating itself.
             </p>
           </div>
           <div style={{ display: "grid", gap: 12 }}>
             {[
-              { k: "HRV", v: "Heart rate variability" },
-              { k: "RESP", v: "Respiratory rate" },
-              { k: "PPG + ECG", v: "Two signals, one finger" },
+              { v: "Heart rate variability" },
+              { v: "Respiratory rate" },
+              { v: "PPG and ECG together, one finger" },
             ].map((r) => (
-              <div key={r.k} style={{ display: "grid", gridTemplateColumns: "92px 1fr", gap: 14, alignItems: "center", background: "#fff", borderRadius: 12, padding: "14px 16px", border: "1px solid rgba(15,118,110,0.12)" }}>
-                <span className="mono" style={{ fontSize: 11.5, color: "var(--brand)", letterSpacing: "0.1em", fontWeight: 600 }}>{r.k}</span>
+              <div key={r.v} style={{ background: "#fff", borderRadius: 12, padding: "14px 16px", border: "1px solid rgba(15,118,110,0.12)" }}>
                 <span style={{ fontSize: 14.5, color: "var(--ink-700)", fontWeight: 500 }}>{r.v}</span>
               </div>
             ))}
@@ -392,17 +357,12 @@ function WhatItScreens() {
         <div
           style={{
             marginTop: 24,
-            display: "flex",
-            alignItems: "center",
-            gap: 16,
-            flexWrap: "wrap",
             padding: "22px 28px",
             borderRadius: 16,
             background: "var(--ink)",
             color: "#fff",
           }}
         >
-          <span className="mono" style={{ fontSize: 11, letterSpacing: "0.18em", textTransform: "uppercase", color: "var(--brand-2)" }}>All in one test</span>
           <span style={{ fontSize: 16, color: "rgba(255,255,255,0.85)" }}>
             Clip it on a fingertip, plug into any Android phone, wait 120 seconds. Results at the point of care.
           </span>
@@ -416,8 +376,6 @@ function WhatItScreens() {
     </section>
   );
 }
-
-/* ─────────────────────────── TB triage signal ─────────────────────────── */
 
 function TriageSignal() {
   const signals = [
@@ -439,9 +397,8 @@ function TriageSignal() {
       />
       <div className="container" style={{ position: "relative" }}>
         <div style={{ maxWidth: 820, marginBottom: 48 }}>
-          <div className="eyebrow" style={{ color: "var(--brand-2)" }}>Beyond screening</div>
-          <h2 style={{ marginTop: 18, color: "#fff" }}>
-            An early triage signal for <em style={{ fontStyle: "italic", color: "#A7F3D0" }}>infectious disease.</em>
+          <h2 style={{ color: "#fff" }}>
+            An early triage signal for infectious disease.
           </h2>
         </div>
 
@@ -451,18 +408,17 @@ function TriageSignal() {
               SamaClip is not a test for tuberculosis or any other infection, and it does not diagnose one. But active
               TB very often shows up as exactly the pattern SamaClip is built to catch: anaemia together with a raised
               heart rate and raised breathing rate, and sometimes lower oxygen. Anaemia alone affects roughly
-              two-thirds of people with TB — around 72% in Indian studies.
+              two-thirds of people with TB, around 72% in Indian studies.
             </p>
             <p style={{ fontSize: 17, color: "rgba(255,255,255,0.78)", lineHeight: 1.65 }}>
-              So a rapid, sub-₹125 multi-parameter screen can act as an early triage signal: quietly flagging people
+              So a rapid, sub-₹125 multi-parameter screen can act as an early triage signal, quietly flagging people
               whose combination of anaemia and abnormal vitals warrants referral for proper TB diagnostics such as
               sputum testing or chest imaging. In a high-burden, under-screened population, that turns a routine health
-              check into a chance to catch infection earlier — and the same logic extends to other conditions that
+              check into a chance to catch infection earlier, and the same logic extends to other conditions that
               present with anaemia and disturbed vitals.
             </p>
           </div>
 
-          {/* signal → referral diagram */}
           <div
             style={{
               background: "rgba(255,255,255,0.04)",
@@ -471,9 +427,6 @@ function TriageSignal() {
               padding: 28,
             }}
           >
-            <div className="mono" style={{ fontSize: 11, letterSpacing: "0.16em", textTransform: "uppercase", color: "rgba(255,255,255,0.5)", marginBottom: 18 }}>
-              Pattern SamaClip catches
-            </div>
             <div style={{ display: "grid", gap: 10 }}>
               {signals.map((s) => (
                 <div key={s.label} style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 12, background: "rgba(20,184,166,0.08)", border: "1px solid rgba(20,184,166,0.22)", borderRadius: 12, padding: "13px 16px" }}>
@@ -489,11 +442,11 @@ function TriageSignal() {
               <ReferIcon />
               <div>
                 <div style={{ fontSize: 15, fontWeight: 700, color: "#fff" }}>Refer for TB diagnostics</div>
-                <div style={{ fontSize: 12.5, color: "rgba(255,255,255,0.85)" }}>sputum testing · chest imaging</div>
+                <div style={{ fontSize: 12.5, color: "rgba(255,255,255,0.85)" }}>sputum testing, chest imaging</div>
               </div>
             </div>
             <p style={{ marginTop: 16, fontSize: 12, color: "rgba(255,255,255,0.5)", lineHeight: 1.5 }}>
-              A triage and referral signal — never a diagnosis.
+              A triage and referral signal, never a diagnosis.
             </p>
           </div>
         </div>
@@ -507,16 +460,13 @@ function TriageSignal() {
   );
 }
 
-/* ─────────────────────────── Questions (FAQ) ─────────────────────────── */
-
 function Questions() {
   return (
     <section id="questions" className="section reveal" style={{ background: "var(--paper-2)" }}>
       <div className="container" style={{ maxWidth: 980 }}>
         <div style={{ maxWidth: 760, margin: "0 auto 48px", textAlign: "center", display: "grid", placeItems: "center" }}>
-          <div className="eyebrow">Everything you might ask</div>
-          <h2 style={{ marginTop: 18 }}>
-            The questions, <em style={{ fontStyle: "italic", color: "var(--brand)" }}>answered plainly.</em>
+          <h2>
+            The questions, answered plainly.
           </h2>
           <p style={{ marginTop: 20, fontSize: 17, color: "var(--ink-500)", maxWidth: 600 }}>
             From what SamaClip measures to how communities actually reach it. Tap any question to open it.
@@ -528,17 +478,14 @@ function Questions() {
   );
 }
 
-/* ─────────────────────────── Impact ─────────────────────────── */
-
 function Impact() {
   return (
     <section id="impact" className="section reveal">
       <div className="container">
         <div style={{ maxWidth: 920, margin: "0 auto" }}>
-          <div className="eyebrow" style={{ textAlign: "center" }}>Why Barasat, why now</div>
           <blockquote
             style={{
-              margin: "22px 0 0",
+              margin: 0,
               textAlign: "center",
               fontFamily: "var(--font-display)",
               fontSize: "clamp(26px, 4vw, 46px)",
@@ -548,8 +495,7 @@ function Impact() {
               fontWeight: 500,
             }}
           >
-            More than half the women who come to us for a routine blood test are{" "}
-            <em style={{ fontStyle: "italic", color: "var(--brand)" }}>anaemic.</em> Most never knew.
+            More than half the women who come to us for a routine blood test are anaemic. Most never knew.
           </blockquote>
         </div>
 
@@ -567,14 +513,14 @@ function Impact() {
 
         <div style={{ maxWidth: 760, margin: "48px auto 0", display: "grid", gap: 20 }}>
           <p style={{ fontSize: 17, color: "var(--ink-500)", lineHeight: 1.7 }}>
-            SamaHealth operates in North 24 Parganas, West Bengal — a largely semi-urban, lower-income catchment where
+            SamaHealth operates in North 24 Parganas, West Bengal, a largely semi-urban, lower-income catchment where
             good diagnostics are expensive, lab-bound and often far away. Standard equipment frequently reads
             inaccurately on darker skin, so even the screening that does happen can fail the people it is meant to serve.
           </p>
           <p style={{ fontSize: 17, color: "var(--ink-500)", lineHeight: 1.7 }}>
             Our NABL-accredited Anubhav centre already sees hundreds of patients a day. By adding SamaClip to routine
             visits and carrying it into community camps, a woman attending for antenatal or routine bloodwork can be
-            screened for anaemia, oxygen, diabetes risk and heart rhythm in the same short visit — painlessly, and for
+            screened for anaemia, oxygen, diabetes risk and heart rhythm in the same short visit, painlessly, and for
             the cost of a bus ride.
           </p>
           <p style={{ fontSize: 17, color: "var(--ink-700)", lineHeight: 1.7, fontWeight: 500 }}>
@@ -587,46 +533,37 @@ function Impact() {
   );
 }
 
-/* ─────────────────────────── The model ─────────────────────────── */
-
 function Model() {
   const steps = [
     {
       n: "01",
-      kicker: "Devices",
       title: "Screening at the edge.",
-      body: "SamaClip brings a full anaemia-and-NCD screen to a fingertip, at a fraction of the cost and complexity of the machines it replaces. No infrastructure required beyond a phone.",
+      body: "SamaClip brings a full anaemia and NCD screen to a fingertip, at a fraction of the cost and complexity of the machines it replaces. No infrastructure required beyond a phone.",
     },
     {
       n: "02",
-      kicker: "Micro-clinics",
       title: "A hub-and-spoke network.",
       body: "One NABL-accredited centre anchors a growing network of community micro-clinics and camps across North 24 Parganas, with free transport to the hub for those who need it most.",
     },
     {
       n: "03",
-      kicker: "People",
       title: "Train the trainer.",
-      body: "Local operators are trained to run standardised screening themselves and to train the next cohort — so the model grows from inside the community, not above it.",
+      body: "Local operators are trained to run standardised screening themselves and to train the next cohort, so the model grows from inside the community, not above it.",
     },
   ];
   return (
     <section id="model" className="section reveal" style={{ background: "var(--paper-2)" }}>
       <div className="container">
         <div style={{ maxWidth: 820, margin: "0 auto 56px", textAlign: "center", display: "grid", placeItems: "center" }}>
-          <div className="eyebrow">How it scales</div>
-          <h2 style={{ marginTop: 18 }}>
-            Devices, micro-clinics, and <em style={{ fontStyle: "italic", color: "var(--brand)" }}>the people who run them.</em>
+          <h2>
+            Devices, micro-clinics, and the people who run them.
           </h2>
         </div>
 
         <div className="grid grid-3">
           {steps.map((s) => (
             <div key={s.n} className="card" style={{ padding: 32, display: "grid", gap: 14 }}>
-              <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-                <span className="mono" style={{ fontSize: 12, color: "var(--brand)", letterSpacing: "0.16em" }}>{s.n}</span>
-                <span className="eyebrow" style={{ fontSize: 11 }}>{s.kicker}</span>
-              </div>
+              <span className="mono" style={{ fontSize: 12, color: "var(--brand)", letterSpacing: "0.16em" }}>{s.n}</span>
               <h3 style={{ fontSize: 24, fontFamily: "var(--font-display)", fontWeight: 500, letterSpacing: "-0.02em" }}>{s.title}</h3>
               <p style={{ color: "var(--ink-500)", fontSize: 15 }}>{s.body}</p>
             </div>
@@ -636,22 +573,15 @@ function Model() {
         <div
           style={{
             marginTop: 24,
-            display: "grid",
-            gridTemplateColumns: "auto 1fr",
-            gap: 18,
-            alignItems: "start",
             padding: "22px 26px",
             borderRadius: 16,
             border: "1px dashed var(--ink-200)",
             background: "#fff",
           }}
         >
-          <span className="mono" style={{ fontSize: 11, color: "var(--brand)", letterSpacing: "0.14em", textTransform: "uppercase", whiteSpace: "nowrap", paddingTop: 2 }}>
-            Follow-up only
-          </span>
           <p style={{ fontSize: 14.5, color: "var(--ink-500)", lineHeight: 1.6 }}>
             <strong style={{ color: "var(--ink-700)" }}>SamaBand</strong> is the wrist-worn companion for continuous,
-            at-home monitoring of patients already flagged by SamaClip. It keeps an eye on people over time — it is not
+            at-home monitoring of patients already flagged by SamaClip. It keeps an eye on people over time. It is not
             a diagnostic screening device, and the accuracy figures above belong to SamaClip alone.
           </p>
         </div>
@@ -660,18 +590,15 @@ function Model() {
   );
 }
 
-/* ─────────────────────────── CTA ─────────────────────────── */
-
 function CTA() {
   return (
     <section id="contact" className="section reveal" style={{ background: "linear-gradient(135deg, #052E2A 0%, #0F766E 100%)", color: "#fff", position: "relative", overflow: "hidden" }}>
       <div className="container" style={{ position: "relative", maxWidth: 940, textAlign: "center" }}>
-        <div className="eyebrow" style={{ color: "rgba(255,255,255,0.7)" }}>Call to action</div>
-        <h2 style={{ marginTop: 16, color: "#fff" }}>
-          Bring validated screening to <em style={{ fontStyle: "italic", color: "#A7F3D0" }}>your community.</em>
+        <h2 style={{ color: "#fff" }}>
+          Bring validated screening to your community.
         </h2>
         <p style={{ marginTop: 22, color: "rgba(255,255,255,0.82)", fontSize: 18, maxWidth: 660, margin: "22px auto 0", lineHeight: 1.6 }}>
-          Whether you are a health system, a funder, a researcher or a community partner — let&apos;s talk about
+          Whether you are a health system, a funder, a researcher or a community partner, let&apos;s talk about
           putting a full health screen within reach of the families who need it.
         </p>
         <div style={{ display: "flex", flexWrap: "wrap", gap: 14, marginTop: 36, justifyContent: "center" }}>
@@ -685,25 +612,20 @@ function CTA() {
   );
 }
 
-/* ─────────────────────────── Notes & sources ─────────────────────────── */
-
 function NotesSources() {
   const notes = [
     {
       k: "Accuracy attribution",
-      v: "All validated diagnostic figures (anaemia ~89% / haemoglobin, SpO₂ across skin tones, the HbA1c diabetes-risk proxy, and atrial fibrillation ~94%) come from the 175-adult validation study at the NABL-accredited Barasat centre. Autonomic vitals (heart rate variability, respiratory rate) are signals the PPG + ECG platform captures; they are presented as capabilities, not as separately validated accuracy claims. SamaBand carries no accuracy claims — follow-up monitoring only.",
+      v: "All validated diagnostic figures (anaemia ~89% / haemoglobin, SpO₂ across skin tones, the HbA1c diabetes-risk proxy, and atrial fibrillation ~94%) come from the 175-adult validation study at the NABL-accredited Barasat centre. Autonomic vitals (heart rate variability, respiratory rate) are signals the PPG + ECG platform captures; they are presented as capabilities, not as separately validated accuracy claims. SamaBand carries no accuracy claims, follow-up monitoring only.",
     },
     {
       k: "TB figure",
-      v: "Anaemia in tuberculosis: the global pooled prevalence is roughly 62% (systematic review/meta-analysis, 41 studies), with Indian studies reporting around 72%. The copy uses the conservative “roughly two-thirds / ~72% in India” framing. TB is framed as a triage/referral signal, never as a diagnosis.",
+      v: "Anaemia in tuberculosis: the global pooled prevalence is roughly 62% (systematic review/meta-analysis, 41 studies), with Indian studies reporting around 72%. The copy uses the conservative \"roughly two-thirds / ~72% in India\" framing. TB is framed as a triage/referral signal, never as a diagnosis.",
     },
   ];
   return (
     <section className="section-sm" style={{ background: "var(--paper)", borderTop: "1px solid var(--ink-100)" }}>
       <div className="container" style={{ maxWidth: 980 }}>
-        <div className="mono" style={{ fontSize: 11, letterSpacing: "0.18em", textTransform: "uppercase", color: "var(--ink-400)", marginBottom: 20 }}>
-          Notes &amp; sources
-        </div>
         <div style={{ display: "grid", gap: 14 }}>
           {notes.map((n) => (
             <div key={n.k} style={{ display: "grid", gridTemplateColumns: "180px 1fr", gap: 20, alignItems: "start" }} className="sc-note-row">
@@ -721,8 +643,6 @@ function NotesSources() {
     </section>
   );
 }
-
-/* ─────────────────────────── icons ─────────────────────────── */
 
 function ShieldCheck() {
   return (
