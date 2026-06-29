@@ -25,6 +25,7 @@ type Person = {
   role: string;
   cred: string;
   body: string;
+  img?: string;
   link?: { href: string; label: string };
 };
 
@@ -33,6 +34,7 @@ const FOUNDERS: Person[] = [
     name: "Aranyo Ray",
     role: "Cofounder & CEO",
     cred: "Yale '24 · CS + Psychology",
+    img: "/team/aranyo.jpg",
     body:
       "Leads AI/ML architecture, clinical study design, and regulatory strategy (CDSCO, FDA). Built SamaClip's optical stack and led the n=175 validation study at Anubhav Life Care for non-invasive, skin-tone-agnostic haemoglobin tracking.",
   },
@@ -40,6 +42,7 @@ const FOUNDERS: Person[] = [
     name: "Pushti Desai, MEng",
     role: "Cofounder & CTO",
     cred: "Biomedical Engineering, Duke · BEng, Georgia Tech",
+    img: "/team/pushti.jpg",
     body:
       "Patent pending on the Tonsiliscope, a 3D-printed oropharyngeal imaging device for remote ENT exams. Research Scientist III at Boston Scientific (precision diagnostics), ML algorithm development on Medtronic's NIM Vital nerve-monitoring system, and AI/ML at Restor3d. Leads hardware, PCB, and cartridge design.",
     link: { href: "https://pdesai.vercel.app", label: "pdesai.vercel.app" },
@@ -58,6 +61,7 @@ const ADVISORS: Person[] = [
     name: "Dr. Aniket Halder, MD, DNB (Pathology)",
     role: "Clinical advisor · Pathology",
     cred: "Assistant Professor of GI Pathology, IPGMER / SSKM, Kolkata",
+    img: "/team/aniket-halder.png",
     body:
       "FNAC expert with 28+ publications and TB-relevant work distinguishing intestinal TB from Crohn's (a circulating miRNA + chemokine panel, Scientific Reports 2021) and on pulmonary-TB drug-resistance correlates. Principal investigator on the SamaBeat clinical validation study.",
   },
@@ -170,7 +174,7 @@ function Group({
           {people.map((p) => (
             <article key={p.name} className="card" style={{ padding: 32, display: "grid", gap: 12 }}>
               <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
-                <Avatar name={p.name} />
+                <Avatar name={p.name} img={p.img} />
                 <div>
                   <h3 style={{ fontSize: 20, fontFamily: "var(--font-display)", fontWeight: 500, letterSpacing: "-0.02em" }}>{p.name}</h3>
                   <div style={{ fontSize: 13.5, color: "var(--brand)", fontWeight: 600, marginTop: 2 }}>{p.role}</div>
@@ -191,7 +195,27 @@ function Group({
   );
 }
 
-function Avatar({ name }: { name: string }) {
+function Avatar({ name, img }: { name: string; img?: string }) {
+  if (img) {
+    return (
+      <img
+        src={img}
+        alt={name}
+        width={52}
+        height={52}
+        loading="lazy"
+        style={{
+          width: 52,
+          height: 52,
+          flexShrink: 0,
+          borderRadius: 14,
+          objectFit: "cover",
+          objectPosition: "center top",
+          background: "var(--paper-3)",
+        }}
+      />
+    );
+  }
   const initials = name
     .replace(/^Dr\.\s*/, "")
     .split(" ")
