@@ -360,19 +360,8 @@ export function CampGallery({ events, images }: { events: EventMeta[]; images: I
                             />
                           </div>
                           <div style={{ padding: "12px 14px 14px" }}>
-                            <p
-                              style={{
-                                fontSize: 13.5,
-                                lineHeight: 1.45,
-                                color: "var(--ink-700)",
-                                margin: 0,
-                              }}
-                            >
-                              {img.caption}
-                            </p>
                             <div
                               style={{
-                                marginTop: 8,
                                 display: "flex",
                                 gap: 8,
                                 alignItems: "center",
@@ -490,10 +479,8 @@ export function CampGallery({ events, images }: { events: EventMeta[]; images: I
                 opacity: 0.92,
               }}
             >
-              {visibleImages[lightbox].caption}
               <div
                 style={{
-                  marginTop: 6,
                   fontSize: 12,
                   letterSpacing: "0.12em",
                   textTransform: "uppercase",
