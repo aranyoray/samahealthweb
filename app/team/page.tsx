@@ -118,7 +118,7 @@ function Hero() {
             textWrap: "balance" as never,
           }}
         >
-          Women-led engineering. <em style={{ fontStyle: "italic", color: "#A7F3D0", fontWeight: 400 }}>Clinically grounded.</em>
+          Frugal, frontier engineering. <em style={{ fontStyle: "italic", color: "#A7F3D0", fontWeight: 400 }}>Clinically grounded.</em>
         </h1>
         <p style={{ marginTop: 26, fontSize: 19, color: "rgba(255,255,255,0.8)", lineHeight: 1.6, maxWidth: 640 }}>
           A small technical team building non-invasive diagnostics, backed by clinical leadership across tertiary care,
