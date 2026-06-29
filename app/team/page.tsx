@@ -5,11 +5,11 @@ import { Footer } from "../components/Footer";
 import { RevealOnScroll } from "../components/Reveal";
 
 export const metadata: Metadata = {
-  title: "Team — SamaHealth",
+  title: "Team. SamaHealth",
   description:
     "The people building SamaHealth: a frugal, frontier engineering team and clinical advisors spanning tertiary care, district public health, and US infectious-disease academic medicine.",
   openGraph: {
-    title: "Team — SamaHealth",
+    title: "Team. SamaHealth",
     description:
       "Frugal, frontier engineering and clinical advisors across tertiary care, district public health, and US infectious-disease academic medicine.",
     url: "/team",
@@ -52,7 +52,7 @@ const FOUNDERS: Person[] = [
 const ADVISORS: Person[] = [
   {
     name: "Dr. Minghsun Liu, MD PhD",
-    role: "Clinical advisor · Infectious disease",
+    role: "Clinical advisor, infectious disease",
     cred: "MIT · MD-PhD UCLA · ID fellowship, Stanford",
     img: "/team/minghsun-liu.jpg",
     body:
@@ -60,7 +60,7 @@ const ADVISORS: Person[] = [
   },
   {
     name: "Dr. Aniket Halder, MD, DNB (Pathology)",
-    role: "Clinical advisor · Pathology",
+    role: "Clinical advisor, pathology",
     cred: "Assistant Professor of GI Pathology, IPGMER / SSKM, Kolkata",
     img: "/team/aniket-halder.png",
     body:
@@ -68,14 +68,14 @@ const ADVISORS: Person[] = [
   },
   {
     name: "Dr. Sabitra Patra, MD (Pathology)",
-    role: "Clinical advisor · Pathology",
+    role: "Clinical advisor, pathology",
     cred: "Pathology lead, Anubhav (NABL-accredited validation site)",
     body:
       "Owns diagnostic interpretation at our validation site and runs cartridge-readout cross-validation against gold-standard methods.",
   },
   {
     name: "Dr. Indira Mukherjee, MD (Microbiology)",
-    role: "Clinical advisor · Microbiology",
+    role: "Clinical advisor, microbiology",
     cred: "Senior Resident, Barasat Govt Medical College & Hospital",
     img: "/team/indira-mukherjee.jpg",
     body:
@@ -89,9 +89,8 @@ export default function TeamPage() {
       <Nav variant="hero" />
       <main id="main">
         <Hero />
-        <Group eyebrow="Founders" title="The people building it." people={FOUNDERS} cols={2} />
+        <Group title="The people building it." people={FOUNDERS} cols={2} />
         <Group
-          eyebrow="Clinical & scientific advisors"
           title="Anchored in real clinical practice."
           people={ADVISORS}
           cols={2}
@@ -110,13 +109,8 @@ function Hero() {
   return (
     <section className="hero-clinical" style={{ paddingTop: 120 }}>
       <div className="container" style={{ position: "relative", zIndex: 2, paddingTop: 72, paddingBottom: 100, maxWidth: 900 }}>
-        <span className="kbd-pill kbd-pill-dark">
-          <span className="dot pulse" style={{ background: "#14B8A6" }} />
-          SamaHealth · Team
-        </span>
         <h1
           style={{
-            marginTop: 28,
             color: "#fff",
             fontSize: "clamp(40px, 5.2vw, 70px)",
             lineHeight: 1.0,
@@ -124,7 +118,7 @@ function Hero() {
             textWrap: "balance" as never,
           }}
         >
-          Frugal, frontier engineering. <em style={{ fontStyle: "italic", color: "#A7F3D0", fontWeight: 400 }}>Clinically grounded.</em>
+          Frugal, frontier engineering. Clinically grounded.
         </h1>
         <p style={{ marginTop: 26, fontSize: 19, color: "rgba(255,255,255,0.8)", lineHeight: 1.6, maxWidth: 640 }}>
           A small technical team building non-invasive diagnostics, backed by clinical leadership across tertiary care,
@@ -154,12 +148,10 @@ function BottomFade() {
 }
 
 function Group({
-  eyebrow,
   title,
   people,
   alt,
 }: {
-  eyebrow: string;
   title: string;
   people: Person[];
   cols: number;
@@ -169,8 +161,7 @@ function Group({
     <section className="section reveal" style={alt ? { background: "var(--paper-2)" } : undefined}>
       <div className="container">
         <div style={{ maxWidth: 820, margin: "0 auto 48px", textAlign: "center", display: "grid", placeItems: "center" }}>
-          <div className="eyebrow">{eyebrow}</div>
-          <h2 style={{ marginTop: 18 }}>{title}</h2>
+          <h2>{title}</h2>
         </div>
         <div className="grid grid-2" style={{ maxWidth: 980, marginInline: "auto" }}>
           {people.map((p) => (
@@ -266,9 +257,8 @@ function CTA() {
   return (
     <section id="contact" className="section reveal" style={{ background: "linear-gradient(135deg, #052E2A 0%, #0F766E 100%)", color: "#fff", position: "relative", overflow: "hidden" }}>
       <div className="container" style={{ position: "relative", maxWidth: 940, textAlign: "center" }}>
-        <div className="eyebrow" style={{ color: "rgba(255,255,255,0.7)" }}>Get in touch</div>
-        <h2 style={{ marginTop: 16, color: "#fff" }}>
-          Want to build this <em style={{ fontStyle: "italic", color: "#A7F3D0" }}>with us?</em>
+        <h2 style={{ color: "#fff" }}>
+          Want to build this with us?
         </h2>
         <p style={{ marginTop: 22, color: "rgba(255,255,255,0.82)", fontSize: 18, maxWidth: 640, margin: "22px auto 0", lineHeight: 1.6 }}>
           We work with health systems, funders, researchers and community partners across India.
