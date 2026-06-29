@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     title: "ParakhTB — One visit. One finger-clip. A TB triage call.",
     description:
       "A single-visit triage signal for tuberculosis: a urine strip plus a 60-second finger-clip read decide who needs a confirmatory TB test — built for primary health centres in high-burden communities.",
-    url: "/tb",
+    url: "/parakhTB",
     siteName: "SamaHealth",
     type: "website",
     images: [{ url: "/events/anubhav-cmc-001.jpg", width: 1200, height: 630, alt: "SamaHealth community screening" }],
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
       "A single-visit triage signal for tuberculosis: urine strip + 60-second finger-clip read decide who needs a confirmatory TB test.",
     images: ["/events/anubhav-cmc-001.jpg"],
   },
-  alternates: { canonical: "/tb" },
+  alternates: { canonical: "/parakhTB" },
 };
 
 const DEMO = "mailto:hello@samahealth.in?subject=ParakhTB%20demo%20request";
