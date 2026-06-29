@@ -33,7 +33,7 @@ export function Footer() {
 
           <Col title="Platform" links={[
             { href: "/samaclip", label: "SamaClip" },
-            { href: "/#platform", label: "What we screen" },
+            { href: "/tb", label: "ParakhTB · TB triage" },
             { href: "/#outcomes", label: "Hub-and-spoke" },
             { href: "/camps", label: "Field camps" },
           ]} />
@@ -43,6 +43,7 @@ export function Footer() {
             { href: "/blog", label: "Journal" },
           ]} />
           <Col title="Company" links={[
+            { href: "/team", label: "Team" },
             { href: "/#contact", label: "Contact" },
             { href: "mailto:hello@samahealth.in", label: "hello@samahealth.in" },
           ]} />
