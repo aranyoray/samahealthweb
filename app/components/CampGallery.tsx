@@ -359,22 +359,6 @@ export function CampGallery({ events, images }: { events: EventMeta[]; images: I
                               }}
                             />
                           </div>
-                          <div style={{ padding: "12px 14px 14px" }}>
-                            <div
-                              style={{
-                                display: "flex",
-                                gap: 8,
-                                alignItems: "center",
-                                fontSize: 11,
-                                color: "var(--ink-400)",
-                              }}
-                              className="mono"
-                            >
-                              <span>{img.location}</span>
-                              <span style={{ opacity: 0.4 }}>·</span>
-                              <span>{img.file.replace(/\.(jpe?g|png)$/i, "")}</span>
-                            </div>
-                          </div>
                         </button>
                       );
                     })}
@@ -465,32 +449,11 @@ export function CampGallery({ events, images }: { events: EventMeta[]; images: I
               alt={visibleImages[lightbox].caption}
               style={{
                 maxWidth: "100%",
-                maxHeight: "75vh",
+                maxHeight: "85vh",
                 objectFit: "contain",
                 borderRadius: 8,
               }}
             />
-            <figcaption
-              style={{
-                color: "#fff",
-                fontSize: 15,
-                lineHeight: 1.5,
-                textAlign: "center",
-                opacity: 0.92,
-              }}
-            >
-              <div
-                style={{
-                  fontSize: 12,
-                  letterSpacing: "0.12em",
-                  textTransform: "uppercase",
-                  opacity: 0.6,
-                }}
-                className="mono"
-              >
-                {visibleImages[lightbox].location} · {lightbox + 1}/{visibleImages.length}
-              </div>
-            </figcaption>
           </figure>
         </div>
       )}
