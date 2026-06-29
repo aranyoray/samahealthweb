@@ -7,11 +7,11 @@ import { RevealOnScroll } from "../components/Reveal";
 export const metadata: Metadata = {
   title: "Team — SamaHealth",
   description:
-    "The people building SamaHealth: women-led technical leadership and clinical advisors spanning tertiary care, district public health, and US infectious-disease academic medicine.",
+    "The people building SamaHealth: a frugal, frontier engineering team and clinical advisors spanning tertiary care, district public health, and US infectious-disease academic medicine.",
   openGraph: {
     title: "Team — SamaHealth",
     description:
-      "Women-led technical leadership and clinical advisors across tertiary care, district public health, and US infectious-disease academic medicine.",
+      "Frugal, frontier engineering and clinical advisors across tertiary care, district public health, and US infectious-disease academic medicine.",
     url: "/team",
     siteName: "SamaHealth",
     type: "website",
@@ -228,8 +228,8 @@ function Closing() {
     <section className="section-sm reveal">
       <div className="container" style={{ maxWidth: 820, textAlign: "center" }}>
         <p style={{ fontSize: 17, color: "var(--ink-500)", lineHeight: 1.7 }}>
-          Women-led technical leadership, with clinical leadership anchored in tertiary care (IPGMER / SSKM), district
-          public health (Barasat GMCH), and US infectious-disease academic medicine.
+          Frugal, frontier engineering, paired with clinical leadership anchored in tertiary care (IPGMER / SSKM),
+          district public health (Barasat GMCH), and US infectious-disease academic medicine.
         </p>
       </div>
     </section>
