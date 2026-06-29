@@ -10,10 +10,10 @@ export function Hero() {
               Non-invasive screening that finds illness early.
             </h1>
             <p style={{ marginTop: 26, fontSize: 19, lineHeight: 1.6, color: "var(--ink-500)", maxWidth: 560 }}>
-              SamaHealth brings painless, low-cost screening — anaemia, blood oxygen, heart rhythm
-              and diabetes risk — to clinics and community camps across Barasat and North&nbsp;24 Parganas.
+              SamaHealth brings painless, low-cost screening for anaemia, blood oxygen, heart rhythm
+              and diabetes risk to clinics and community camps across Barasat and North&nbsp;24 Parganas.
               It is built around <strong style={{ color: "var(--ink)" }}>Anubhav Life Care</strong>, an
-              NABL-accredited diagnostic lab, so a flag becomes a confirmed test — and care — before a crisis.
+              NABL-accredited diagnostic lab, so a flag becomes a confirmed test, and care, before a crisis.
             </p>
             <div style={{ display: "flex", gap: 14, marginTop: 32, flexWrap: "wrap" }}>
               <Link href="/research" className="btn btn-primary">See how it’s validated</Link>
@@ -36,9 +36,6 @@ export function Hero() {
               height={690}
               style={{ width: "100%", height: "auto", borderRadius: 18, border: "1px solid var(--ink-100)", display: "block" }}
             />
-            <figcaption style={{ marginTop: 12, fontSize: 13, color: "var(--ink-400)" }}>
-              A community screening camp in North 24 Parganas, West Bengal.
-            </figcaption>
           </figure>
         </div>
       </div>

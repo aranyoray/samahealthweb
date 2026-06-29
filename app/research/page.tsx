@@ -5,7 +5,7 @@ import { Footer } from "../components/Footer";
 import { RevealOnScroll } from "../components/Reveal";
 
 export const metadata: Metadata = {
-  title: "Validation & the lab behind it — SamaHealth",
+  title: "Validation and the lab behind it. SamaHealth",
   description:
     "How SamaClip's non-invasive screening was checked against the gold-standard reference instruments in the NABL-accredited lab at Anubhav Life Care, Barasat (n=175).",
   alternates: { canonical: "/research" },
@@ -36,12 +36,12 @@ function ResearchHero() {
       <p style={{ marginTop: 24, fontSize: 20, lineHeight: 1.55, color: "var(--ink-500)", maxWidth: 720 }}>
         SamaClip is a painless, non-invasive fingertip screen. It is developed alongside{" "}
         <strong style={{ color: "var(--ink)" }}>Anubhav Life Care</strong>, an NABL-accredited diagnostic
-        centre in Barasat, North&nbsp;24 Parganas — and every signal it produces is benchmarked against the
+        centre in Barasat, North&nbsp;24 Parganas. Every signal it produces is benchmarked against the
         gold-standard instruments that same lab uses for routine diagnostics. A screen is only as honest as
         what you check it against.
       </p>
       <p className="mono" style={{ marginTop: 22, fontSize: 13, color: "var(--ink-400)" }}>
-        2/8 Jessore Road, Ganji Mill, Barasat, WB 700124 · validation cohort n = 175 · Oct–Dec 2025
+        2/8 Jessore Road, Ganji Mill, Barasat, WB 700124 · validation cohort n = 175 · Oct to Dec 2025
       </p>
     </header>
   );
@@ -49,9 +49,9 @@ function ResearchHero() {
 
 function WhatItScreens() {
   const params = [
-    { k: "Haemoglobin & anaemia", v: "Non-invasive haemoglobin estimate for fast anaemia screening — no needle, no fasting." },
+    { k: "Haemoglobin and anaemia", v: "Non-invasive haemoglobin estimate for fast anaemia screening, with no needle and no fasting." },
     { k: "SpO₂", v: "Blood-oxygen saturation, validated for consistency across skin tone." },
-    { k: "Heart rate & rhythm", v: "Pulse and an atrial-fibrillation flag that prompts a referral, not a diagnosis." },
+    { k: "Heart rate and rhythm", v: "Pulse and an atrial-fibrillation flag that prompts a referral, not a diagnosis." },
     { k: "Diabetes risk", v: "An HbA1c-proxy signal that flags who should have a confirmatory blood test." },
   ];
   return (
@@ -60,7 +60,7 @@ function WhatItScreens() {
         <h2 style={{ maxWidth: 760 }}>What one SamaClip screen reads</h2>
         <p style={{ marginTop: 20, fontSize: 17, color: "var(--ink-500)", maxWidth: 680 }}>
           A single ~2-minute fingertip reading. Each output is a <strong style={{ color: "var(--ink)" }}>screening
-          signal, not a diagnosis</strong> — anything it flags is confirmed in the lab before any treatment decision.
+          signal, not a diagnosis</strong>. Anything it flags is confirmed in the lab before any treatment decision.
         </p>
         <div className="grid grid-4" style={{ marginTop: 44 }}>
           {params.map((p) => (
@@ -134,12 +134,12 @@ type Device = {
 };
 
 const DEVICES: Device[] = [
-  { role: "Haematology analyser", maker: "Medonic", model: "M-Series M32 B", serial: "118008", img: "analyzer-hematology", key: true, note: "Reference haemoglobin and full blood count — the gold standard behind SamaClip's non-invasive Hb and anaemia screening." },
-  { role: "Biochemistry analyser (full auto)", maker: "Mindray", model: "BS-240 PRO", serial: "BC7-23001933", img: "analyzer-biochemistry", key: true, note: "Reference plasma glucose and biochemistry — the lab benchmark behind the diabetes-risk signal." },
+  { role: "Haematology analyser", maker: "Medonic", model: "M-Series M32 B", serial: "118008", img: "analyzer-hematology", key: true, note: "Reference haemoglobin and full blood count, the gold standard behind SamaClip's non-invasive Hb and anaemia screening." },
+  { role: "Biochemistry analyser (full auto)", maker: "Mindray", model: "BS-240 PRO", serial: "BC7-23001933", img: "analyzer-biochemistry", key: true, note: "Reference plasma glucose and biochemistry, the lab benchmark behind the diabetes-risk signal." },
   { role: "Chemiluminescence immunoassay", maker: "Mindray", model: "CL-900i", serial: "BBI-22002654", img: "analyzer-immunoassay", key: true, note: "Reference HbA1c and hormone/marker assays used to characterise the screened cohort." },
   { role: "Electrolyte analyser", maker: "HDC", model: "HDC-LYTE", serial: "HDCL-3798", img: "analyzer-compact", note: "Serum-electrolyte reference for cohort characterisation." },
   { role: "Semi-auto biochemistry", maker: "ElitechGroup", model: "Microlab 300", serial: "19-43642", img: "analyzer-compact", note: "Secondary biochemistry reference and cross-check." },
-  { role: "Nephelometry analyser", maker: "Agappe", model: "Mispa-i2", serial: "21211646169", img: "analyzer-compact", note: "Specific-protein / inflammatory-marker reference (e.g. CRP)." },
+  { role: "Nephelometry analyser", maker: "Agappe", model: "Mispa-i2", serial: "21211646169", img: "analyzer-compact", note: "Specific-protein and inflammatory-marker reference (e.g. CRP)." },
   { role: "Coagulation analyser", maker: "Tulip Diagnostics", model: "Hemostar XF 1.0", serial: "H1723S683", img: "analyzer-compact", note: "Haemostasis reference within the diagnostic panel." },
   { role: "ELISA microplate reader", maker: "Benesphera", model: "E-21", serial: "502403025", img: "plate-reader", note: "Immunoassay reads for confirmatory panels." },
   { role: "Refrigerated centrifuge", maker: "Remi", model: "NEYA-2", serial: "21NE-20845", img: "centrifuge", note: "Sample preparation behind every reference assay." },
@@ -153,7 +153,7 @@ function ReferenceInstruments() {
         <h2 style={{ maxWidth: 820 }}>The reference instruments we check against</h2>
         <p style={{ marginTop: 20, fontSize: 17, color: "var(--ink-500)", maxWidth: 720 }}>
           These are the real instruments in the NABL-accredited lab at Anubhav Life Care. SamaClip's
-          signals are compared against them — the haematology and biochemistry analysers are the direct
+          signals are compared against them. The haematology and biochemistry analysers are the direct
           gold standards behind the haemoglobin and diabetes-risk numbers above.
         </p>
 
@@ -161,16 +161,10 @@ function ReferenceInstruments() {
           {DEVICES.map((d) => (
             <article key={d.model} className="card device-card" style={{ padding: 0, overflow: "hidden", display: "flex", flexDirection: "column" }}>
               <div style={{ position: "relative", background: "linear-gradient(180deg, #F7FAF9 0%, #ECFDF5 100%)", borderBottom: "1px solid var(--ink-100)" }}>
-                {d.key && (
-                  <span className="kbd-pill" style={{ position: "absolute", top: 12, right: 12, fontSize: 10, padding: "4px 10px" }}>
-                    Direct gold standard
-                  </span>
-                )}
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={`/devices/${d.img}.svg`} alt={`${d.maker} ${d.model} — ${d.role}`} width={400} height={300} style={{ width: "100%", height: "auto", display: "block" }} />
+                <img src={`/devices/${d.img}.svg`} alt={`${d.maker} ${d.model}, ${d.role}`} width={400} height={300} style={{ width: "100%", height: "auto", display: "block" }} />
               </div>
               <div style={{ padding: 24, display: "flex", flexDirection: "column", gap: 8, flex: 1 }}>
-                <div className="mono" style={{ fontSize: 11, color: "var(--brand)", letterSpacing: "0.06em" }}>{d.role}</div>
                 <h3 style={{ fontSize: 19 }}>{d.maker} {d.model}</h3>
                 <p style={{ fontSize: 14, color: "var(--ink-500)", flex: 1 }}>{d.note}</p>
                 {d.serial && <div className="mono" style={{ fontSize: 11, color: "var(--ink-400)" }}>S/N {d.serial}</div>}
@@ -191,7 +185,7 @@ function ReferenceInstruments() {
 function HonestClaims() {
   const points = [
     ["Screening is not diagnosis.", "Every flag SamaClip raises is confirmed by a laboratory test or a clinician before any treatment decision."],
-    ["Accuracy figures are SamaClip's, from one study.", "The agreement numbers above belong to SamaClip and the n=175 validation cohort — nothing else."],
+    ["Accuracy figures are SamaClip's, from one study.", "The agreement numbers above belong to SamaClip and the n=175 validation cohort. Nothing else."],
     ["SamaBeat is follow-up only.", "The SamaBeat wristband supports monitoring after a confirmed flag. We make no diagnostic-accuracy claim for it."],
     ["TB is a referral signal.", "Where a tuberculosis pattern shows up, it routes a person to proper testing. It never stands in for a TB diagnosis."],
   ];
