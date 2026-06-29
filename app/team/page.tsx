@@ -77,6 +77,7 @@ const ADVISORS: Person[] = [
     name: "Dr. Indira Mukherjee, MD (Microbiology)",
     role: "Clinical advisor · Microbiology",
     cred: "Senior Resident, Barasat Govt Medical College & Hospital",
+    img: "/team/indira-mukherjee.jpg",
     body:
       "Based in North 24 Parganas, one of India's most populous districts (~10M). Direct exposure to high-volume TB workflow, AFB / GeneXpert routine, and pediatric and extra-pulmonary TB referrals from across the district.",
   },
