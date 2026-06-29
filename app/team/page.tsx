@@ -54,6 +54,7 @@ const ADVISORS: Person[] = [
     name: "Dr. Minghsun Liu, MD PhD",
     role: "Clinical advisor · Infectious disease",
     cred: "MIT · MD-PhD UCLA · ID fellowship, Stanford",
+    img: "/team/minghsun-liu.jpg",
     body:
       "Infectious-disease physician-scientist with an active LA practice. Internal Medicine residency at UW, UCLA postdoc, and co-discoverer of diversity-generating retroelements (Nature). Advises on host-pathogen biology and infectious-disease workflow.",
   },
