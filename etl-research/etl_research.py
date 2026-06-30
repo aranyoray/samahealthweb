@@ -110,6 +110,34 @@ def require_env(name: str) -> str:
     return v
 
 
+def _pick_mssql_driver() -> str:
+    """Pick the best installed SQL Server ODBC driver, or guide the user."""
+    override = os.getenv("MSSQL_DRIVER")
+    if override:
+        # Allow either raw "ODBC Driver 18 for SQL Server" or "{...}".
+        return override if override.startswith("{") else "{" + override + "}"
+
+    available = [d for d in pyodbc.drivers() if "SQL Server" in d]
+    preferred_order = [
+        "ODBC Driver 18 for SQL Server",
+        "ODBC Driver 17 for SQL Server",
+        "ODBC Driver 13 for SQL Server",
+        "SQL Server Native Client 11.0",
+        "SQL Server",
+    ]
+    for p in preferred_order:
+        if p in available:
+            return "{" + p + "}"
+
+    raise SystemExit(
+        "\nNo Microsoft SQL Server ODBC driver is installed.\n\n"
+        "Install ODBC Driver 18 for SQL Server, then re-run.\n"
+        "  Download: https://learn.microsoft.com/sql/connect/odbc/download-odbc-driver-for-sql-server\n"
+        "  Or:      winget install Microsoft.ODBCDriver.18.MSSQL\n\n"
+        f"pyodbc currently sees these drivers: {pyodbc.drivers()!r}\n"
+    )
+
+
 def mssql_connect() -> "pyodbc.Connection":
     if pyodbc is None:
         raise SystemExit("pyodbc not installed. Run: pip install -r requirements.txt")
@@ -120,14 +148,17 @@ def mssql_connect() -> "pyodbc.Connection":
     user = require_env("MSSQL_USER")
     pwd = require_env("MSSQL_PASSWORD")
 
-    driver = os.getenv("MSSQL_DRIVER", "{ODBC Driver 17 for SQL Server}")
+    driver = _pick_mssql_driver()
+    # Driver 18 defaults to Encrypt=yes and a strict cert check, which fails
+    # against an unmanaged self-signed cert on a clinic LAN. TrustServerCertificate=yes
+    # keeps the encrypted channel but skips the cert chain check.
     conn_str = (
         f"DRIVER={driver};"
         f"SERVER={host},{port};"
         f"DATABASE={db};"
         f"UID={user};PWD={pwd};"
         f"TrustServerCertificate=yes;"
-        f"Encrypt=no;"
+        f"Encrypt=yes;"
     )
     return pyodbc.connect(conn_str, autocommit=False)
 
