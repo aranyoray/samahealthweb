@@ -17,23 +17,15 @@ export function Footer() {
               <Mark />
               SamaHealth
             </div>
-            <p style={{ marginTop: 16, fontFamily: "var(--font-display)", fontSize: 20, fontStyle: "italic", lineHeight: 1.25, letterSpacing: "-0.02em", color: "#A7F3D0", maxWidth: 360 }}>
-              The smart clinic, built for Bharat.
-            </p>
-            <p style={{ marginTop: 14, color: "rgba(255,255,255,0.55)", fontSize: 14, maxWidth: 360 }}>
-              Painless, non-invasive screening for anaemia, heart and cardiometabolic risk — built around
+            <p style={{ marginTop: 18, color: "rgba(255,255,255,0.55)", fontSize: 14, maxWidth: 360 }}>
+              Painless, non-invasive screening for anaemia, heart and cardiometabolic risk, built around
               the NABL-accredited lab at Anubhav Life Care, Barasat, West Bengal.
             </p>
-            <div style={{ marginTop: 28, display: "flex", gap: 10, flexWrap: "wrap" }}>
-              <Pill>NABL-accredited lab</Pill>
-              <Pill>Barasat · West Bengal</Pill>
-              <Pill>Screening, not diagnosis</Pill>
-            </div>
           </div>
 
           <Col title="Platform" links={[
             { href: "/samaclip", label: "SamaClip" },
-            { href: "/#platform", label: "What we screen" },
+            { href: "/parakhTB", label: "ParakhTB · TB triage" },
             { href: "/#outcomes", label: "Hub-and-spoke" },
             { href: "/camps", label: "Field camps" },
           ]} />
@@ -45,6 +37,7 @@ export function Footer() {
             { href: "/blog", label: "Journal" },
           ]} />
           <Col title="Company" links={[
+            { href: "/team", label: "Team" },
             { href: "/#contact", label: "Contact" },
             { href: "mailto:hello@samahealth.in", label: "hello@samahealth.in" },
           ]} />
@@ -94,21 +87,3 @@ function Col({ title, links }: { title: string; links: { href: string; label: st
   );
 }
 
-function Pill({ children }: { children: React.ReactNode }) {
-  return (
-    <span
-      className="mono"
-      style={{
-        fontSize: 11,
-        padding: "5px 10px",
-        borderRadius: 999,
-        background: "rgba(255,255,255,0.05)",
-        border: "1px solid rgba(255,255,255,0.1)",
-        color: "rgba(255,255,255,0.7)",
-        letterSpacing: "0.04em",
-      }}
-    >
-      {children}
-    </span>
-  );
-}

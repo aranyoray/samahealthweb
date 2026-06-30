@@ -6,9 +6,9 @@ import data from "../events-data.json";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Blood donation camps — Anubhav CMC × SamaBeat",
+  title: "Blood donation camps. Anubhav CMC × SamaBeat",
   description:
-    "Anubhav Cardiometabolic Clinic at 30+ blood donation camps across North 24 Parganas — free fasting/random sugar, anemia, and body-composition screening on the SamaBeat 5-wavelength PPG + ECG + BIA clip. Donor camps across Ranaghat, Barasat, Barrackpore, Birati, Madhyamgram, Ashoknagar, Habra, Kalyani and more.",
+    "Anubhav Cardiometabolic Clinic at 30+ blood donation camps across North 24 Parganas. Free fasting/random sugar, anemia, and body-composition screening on the SamaBeat 5-wavelength PPG + ECG + BIA clip. Donor camps across Ranaghat, Barasat, Barrackpore, Birati, Madhyamgram, Ashoknagar, Habra, Kalyani and more.",
   keywords: [
     "blood donation camp North 24 Parganas",
     "Barasat blood donation",
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     "Ranaghat Barasat Barrackpore Birati Madhyamgram blood camp",
   ],
   openGraph: {
-    title: "30 blood donation camps — Anubhav CMC × SamaBeat",
+    title: "30 blood donation camps. Anubhav CMC × SamaBeat",
     description:
       "Anubhav Cardiometabolic Clinic ran free pre-donation screening (sugar, anemia, body composition) at 30 donor camps across North 24 Parganas. Field gallery of 209 frames.",
     url: "/camps",
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "30 blood donation camps — Anubhav CMC × SamaBeat",
+    title: "30 blood donation camps. Anubhav CMC × SamaBeat",
     description: "Field gallery from 30 donor camps across North 24 Parganas. Free cardiometabolic screening on SamaBeat clip.",
     images: ["/events/anubhav-cmc-001.jpg"],
   },
@@ -59,7 +59,7 @@ export default function CampsPage() {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "ImageGallery",
-    name: "Anubhav CMC blood donation camps — field gallery",
+    name: "Anubhav CMC blood donation camps. Field gallery",
     description:
       "Photo gallery from 30 blood donation camps across North 24 Parganas, with free cardiometabolic screening from the SamaBeat 5-wavelength PPG + ECG + BIA clip.",
     url: "https://samahealth.in/camps",
@@ -67,7 +67,7 @@ export default function CampsPage() {
     isPartOf: { "@type": "WebSite", name: "SamaHealth", url: "https://samahealth.in" },
     about: events.map((ev) => ({
       "@type": "Event",
-      name: `Blood donation camp — ${ev.location}`,
+      name: `Blood donation camp at ${ev.location}`,
       location: { "@type": "Place", name: ev.location, addressRegion: "West Bengal", addressCountry: "IN" },
       organizer: ev.independent
         ? { "@type": "Organization", name: "Anubhav Cardiometabolic Clinic" }
@@ -115,7 +115,7 @@ export default function CampsPage() {
               }}
             >
               Anubhav Cardiometabolic Clinic ran free pre-donation screening at
-              donor camps across North 24 Parganas — fasting / random sugar,
+              donor camps across North 24 Parganas: fasting / random sugar,
               hemoglobin & anemia, and full body composition (fat mass, muscle
               mass, hydration) from the{" "}
               <a
