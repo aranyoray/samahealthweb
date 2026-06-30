@@ -97,6 +97,49 @@ FILTER_STRATEGY_HINT = {
     "MANTOUX_DESC":            ("report_key", "MANTOUX_HEAD"),
     "MANTOUX_PAD":             ("report_key", "MANTOUX_HEAD"),
 
+    # Urinalysis (routine + microscopy)
+    "URINE_HEAD":              ("bill_key", None),
+    "URINE_DTLS":              ("bill_key", "URINE_HEAD"),
+    "URINE_DESC":              ("report_key", "URINE_HEAD"),
+    "URINE_PAD":               ("report_key", "URINE_HEAD"),
+    "URINALYSIS_HEAD":         ("bill_key", None),
+    "URINALYSIS_DTLS":         ("bill_key", "URINALYSIS_HEAD"),
+    "URINALYSIS_DESC":         ("report_key", "URINALYSIS_HEAD"),
+    "URINALYSIS_PAD":          ("report_key", "URINALYSIS_HEAD"),
+
+    # Body fluids — pleural, CSF, ascitic, synovial, etc.
+    "BODYFLUID_HEAD":          ("bill_key", None),
+    "BODYFLUID_DTLS":          ("bill_key", "BODYFLUID_HEAD"),
+    "BODYFLUID_DESC":          ("report_key", "BODYFLUID_HEAD"),
+    "BODYFLUID_PAD":           ("report_key", "BODYFLUID_HEAD"),
+    "FLUID_HEAD":              ("bill_key", None),
+    "FLUID_DTLS":              ("bill_key", "FLUID_HEAD"),
+    "FLUID_DESC":              ("report_key", "FLUID_HEAD"),
+    "FLUID_PAD":               ("report_key", "FLUID_HEAD"),
+
+    # Cytology (pleural-fluid cell count + lymph %, etc.)
+    "CYTOLOGY_HEAD":           ("bill_key", None),
+    "CYTOLOGY_DTLS":           ("report_key", "CYTOLOGY_HEAD"),
+    "CYTOLOGY_DESC":           ("report_key", "CYTOLOGY_HEAD"),
+    "CYTOLOGY_PAD":            ("report_key", "CYTOLOGY_HEAD"),
+
+    # Histopathology (granuloma / caseation reports)
+    "HISTOPATH_HEAD":           ("bill_key", None),
+    "HISTOPATH_DTLS":           ("report_key", "HISTOPATH_HEAD"),
+    "HISTOPATH_DESC":           ("report_key", "HISTOPATH_HEAD"),
+    "HISTOPATH_PAD":            ("report_key", "HISTOPATH_HEAD"),
+    "HISTOPATHOLOGY_HEAD":      ("bill_key", None),
+    "HISTOPATHOLOGY_DTLS":      ("report_key", "HISTOPATHOLOGY_HEAD"),
+    "HISTOPATHOLOGY_DESC":      ("report_key", "HISTOPATHOLOGY_HEAD"),
+    "HISTOPATHOLOGY_PAD":       ("report_key", "HISTOPATHOLOGY_HEAD"),
+
+    # Radiology free-text reports (chest X-ray narratives, USG, CT — if AKTIV stores them)
+    "RADIOLOGY_HEAD":           ("bill_key", None),
+    "RADIOLOGY_DTLS":           ("report_key", "RADIOLOGY_HEAD"),
+    "RADIOLOGY_DESC":           ("report_key", "RADIOLOGY_HEAD"),
+    "XRAY_HEAD":                ("bill_key", None),
+    "XRAY_DTLS":                ("report_key", "XRAY_HEAD"),
+
     # LIS (lab-instrument middleware)
     "AKTIV_LIS_INPUT":         ("test_key", None),
     "AKTIV_LIS_RESULT":        ("bill_number", None),
@@ -108,36 +151,42 @@ FILTERED_TABLES = list(FILTER_STRATEGY_HINT.keys())
 def resolve_strategy(table: str, actual_columns: set[str]) -> tuple[str, str | None]:
     """
     Pick the real filter strategy given the columns that actually exist.
-    Falls back gracefully when the hint was wrong (e.g. a *_DTLS we thought
-    had REPORT_KEY actually has BILL_KEY too).
 
-    Priority order at resolve-time:
-      1. Direct TEST_KEY column          → "test_key"
-      2. Direct BILL_KEY column          → "bill_key"
-      3. Direct BILL_NUMBER column       → "bill_number"
-      4. REPORT_KEY + sibling *_HEAD     → "report_key"
-      5. No usable filter                → "unsupported"
+    AKTIV's *_HEAD tables carry the authoritative BILL_KEY (the unit of
+    billing); *_DTLS / *_DESC / *_PAD rows belong to a HEAD row via
+    REPORT_KEY. Several non-HEAD tables also declare a BILL_KEY column,
+    but it's frequently NULL / unpopulated — joining on it returns zero
+    rows. So for non-HEAD tables we always prefer REPORT_KEY when a
+    head_table is known.
+
+    Resolution order:
+      1. test_key hint and TEST_KEY column present     → "test_key"
+      2. *_HEAD with BILL_KEY                          → "bill_key"
+      3. non-HEAD with REPORT_KEY and known head_table → "report_key"
+      4. any table with BILL_KEY                       → "bill_key"
+      5. BILL_NUMBER + bill_number hint                → "bill_number"
+      6. REPORT_KEY without head_table                 → "unsupported"
+      7. otherwise                                     → "unsupported"
     """
     hint = FILTER_STRATEGY_HINT.get(table, ("bill_key", None))
     hinted_strategy, head_table = hint
 
     cols = {c.upper() for c in actual_columns}
+    is_head = table.upper().endswith("_HEAD")
 
-    # BILL_TEST_DTLS and AKTIV_LIS_INPUT — must filter by TEST_KEY directly.
-    if hinted_strategy == "test_key":
-        if "TEST_KEY" in cols:
-            return ("test_key", None)
-
-    if "TEST_KEY" in cols and table == "BILL_TEST_DTLS":
+    if hinted_strategy == "test_key" and "TEST_KEY" in cols:
         return ("test_key", None)
+
+    if is_head and "BILL_KEY" in cols:
+        return ("bill_key", None)
+
+    if (not is_head) and "REPORT_KEY" in cols and head_table:
+        return ("report_key", head_table)
 
     if "BILL_KEY" in cols:
         return ("bill_key", None)
 
     if "BILL_NUMBER" in cols and hinted_strategy == "bill_number":
         return ("bill_number", None)
-
-    if "REPORT_KEY" in cols and head_table:
-        return ("report_key", head_table)
 
     return ("unsupported", None)
