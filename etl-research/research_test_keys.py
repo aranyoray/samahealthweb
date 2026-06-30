@@ -51,24 +51,25 @@ ALL_RESEARCH_TEST_KEYS = sorted(set(ANEMIA_TEST_KEYS + TB_TEST_KEYS + CARDIAC_TE
 # ---------------------------------------------------------------------------
 
 ANEMIA_NAME_PATTERNS = [
-    "%hemoglobin%",       "%haemoglobin%",
-    "% hb %", "hb ", "hb,", "hb-",                 # bare "Hb" in test names
+    "%hemoglobin%", "%haemoglobin%", "%haemogram%",
+    "% hb %", "%(hb)%", "%hb,%", "%hb-%", "%hb |%", "%, hb%",
     "%h.b.%",
     "%complete blood count%", "%C.B.C%", "%CBC%",
-    "%h.b.%",
     "%MCV%", "%MCH%", "%MCHC%", "%RDW%", "%PCV%",
     "%hematocrit%", "%haematocrit%",
     "%reticulocyte%",
-    "%peripheral smear%", "%PBF%", "%PBS%",
-    "%RBC%", "%red cell%",
-    "%iron%", "%serum iron%", "%fe%",              # broad; review --list-tests
+    "%peripheral smear%", "%peripheral blood smear%", "%PBF%",
+    "%(PBS)%",                                     # only the abbreviation in parens
+    "%RBC%", "%red cell%", "%RBC morphology%",
+    "%iron%", "%serum iron%",                      # %fe% removed — was matching FEMUR/FETAL/FECAL/FEVER/INFERTILITY/FERRON
     "%TIBC%", "%total iron binding%", "%transferrin%",
     "%ferritin%",
-    "%vitamin B12%", "%vit B12%", "%B 12%", "%cobalamin%",
+    "%vitamin B12%", "%vit B12%", "%B 12%", "%cobalamin%", "%holotranscobalamin%",
     "%folate%", "%folic acid%",
     "%g6pd%", "%glucose-6-phosphate%",             # haemolytic-anaemia workup
     "%electrophoresis%hb%", "%HPLC%hb%", "%hb electrophoresis%",
     "%sickling%", "%sickle%",
+    "%thalassemia%", "%thalassaemia%",
 ]
 
 TB_NAME_PATTERNS = [
@@ -86,18 +87,22 @@ TB_NAME_PATTERNS = [
 ]
 
 CARDIAC_NAME_PATTERNS = [
-    "%troponin%", "%Trop%T%", "%Trop%I%", "%hs-trop%", "%high sensitivity tropon%",
+    "%troponin%",
+    "%trop-t%", "%trop t%", "%tropt%",
+    "%trop-i%", "%trop i%", "%tropi%",
+    "%hs-trop%", "%hs trop%", "%high sensitivity tropon%", "%high sensitive%tropon%",
     "%CPK%", "%CK-MB%", "%CK MB%", "%creatine kinase%", "%creatine phospho%",
     "%LDH%", "%lactate dehydro%",
     "%HBDH%", "%hydroxybutyrate%",
-    "%BNP%", "%pro-BNP%", "%proBNP%", "%NT-proBNP%", "%nt probnp%",
+    "%BNP%", "%pro-BNP%", "%proBNP%", "%NT-proBNP%", "%nt probnp%", "%pro bnp%", "%pro bnp nt%",
     "%lipid%", "%cholesterol%", "%HDL%", "%LDL%", "%triglyceride%", "%VLDL%",
     "%HbA1c%", "%glycated h%", "%glyco h%", "%glycosylated h%",
     "%fasting blood sugar%", "%FBS%", "%PPBS%", "%random blood sugar%", "%RBS%",
-    "%OGTT%", "%glucose tolerance%",
+    "%OGTT%", "%glucose tolerance%", "%diabetic package%", "%FBS PPBS%",
     "%protein electrophoresis%", "%SPEP%", "%serum protein elec%",
     "%homocyst%",
     "%apolipo%", "%apo a%", "%apo b%",
+    "%cardiac enzyme%", "%cardiac marker%",
 ]
 
 
