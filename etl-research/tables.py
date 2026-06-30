@@ -151,36 +151,42 @@ FILTERED_TABLES = list(FILTER_STRATEGY_HINT.keys())
 def resolve_strategy(table: str, actual_columns: set[str]) -> tuple[str, str | None]:
     """
     Pick the real filter strategy given the columns that actually exist.
-    Falls back gracefully when the hint was wrong (e.g. a *_DTLS we thought
-    had REPORT_KEY actually has BILL_KEY too).
 
-    Priority order at resolve-time:
-      1. Direct TEST_KEY column          → "test_key"
-      2. Direct BILL_KEY column          → "bill_key"
-      3. Direct BILL_NUMBER column       → "bill_number"
-      4. REPORT_KEY + sibling *_HEAD     → "report_key"
-      5. No usable filter                → "unsupported"
+    AKTIV's *_HEAD tables carry the authoritative BILL_KEY (the unit of
+    billing); *_DTLS / *_DESC / *_PAD rows belong to a HEAD row via
+    REPORT_KEY. Several non-HEAD tables also declare a BILL_KEY column,
+    but it's frequently NULL / unpopulated — joining on it returns zero
+    rows. So for non-HEAD tables we always prefer REPORT_KEY when a
+    head_table is known.
+
+    Resolution order:
+      1. test_key hint and TEST_KEY column present     → "test_key"
+      2. *_HEAD with BILL_KEY                          → "bill_key"
+      3. non-HEAD with REPORT_KEY and known head_table → "report_key"
+      4. any table with BILL_KEY                       → "bill_key"
+      5. BILL_NUMBER + bill_number hint                → "bill_number"
+      6. REPORT_KEY without head_table                 → "unsupported"
+      7. otherwise                                     → "unsupported"
     """
     hint = FILTER_STRATEGY_HINT.get(table, ("bill_key", None))
     hinted_strategy, head_table = hint
 
     cols = {c.upper() for c in actual_columns}
+    is_head = table.upper().endswith("_HEAD")
 
-    # BILL_TEST_DTLS and AKTIV_LIS_INPUT — must filter by TEST_KEY directly.
-    if hinted_strategy == "test_key":
-        if "TEST_KEY" in cols:
-            return ("test_key", None)
-
-    if "TEST_KEY" in cols and table == "BILL_TEST_DTLS":
+    if hinted_strategy == "test_key" and "TEST_KEY" in cols:
         return ("test_key", None)
+
+    if is_head and "BILL_KEY" in cols:
+        return ("bill_key", None)
+
+    if (not is_head) and "REPORT_KEY" in cols and head_table:
+        return ("report_key", head_table)
 
     if "BILL_KEY" in cols:
         return ("bill_key", None)
 
     if "BILL_NUMBER" in cols and hinted_strategy == "bill_number":
         return ("bill_number", None)
-
-    if "REPORT_KEY" in cols and head_table:
-        return ("report_key", head_table)
 
     return ("unsupported", None)
