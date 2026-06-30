@@ -133,8 +133,17 @@ def discover_test_keys_by_name(cursor) -> dict:
         "cardiac": CARDIAC_NAME_PATTERNS,
     }
 
+    # AKTIV uses TESTNAME (no underscore) and a separate LABSLIPNAME.
+    # Match against both — sometimes the printable name (LABSLIPNAME) is
+    # different from the internal TESTNAME and only one contains the term
+    # we're after (e.g. "Hb" appears in LABSLIPNAME, "HAEMOGLOBIN" in TESTNAME).
     cursor.execute(
-        "SELECT TEST_KEY, TEST_NAME FROM MAST_TEST WHERE TEST_NAME IS NOT NULL"
+        """
+        SELECT  TEST_KEY,
+                COALESCE(TESTNAME, '') + ' | ' + COALESCE(LABSLIPNAME, '')
+        FROM    MAST_TEST
+        WHERE   TESTNAME IS NOT NULL OR LABSLIPNAME IS NOT NULL
+        """
     )
     all_tests = [(int(r[0]), str(r[1])) for r in cursor.fetchall()]
 
