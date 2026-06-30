@@ -1,0 +1,8 @@
+.env
+.env.local
+etl.log
+etl.log.*
+introspect_report.json
+init_ddl.sql
+__pycache__/
+*.pyc
