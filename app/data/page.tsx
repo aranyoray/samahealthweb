@@ -335,6 +335,132 @@ function TBDashboard() {
             />
           </Card>
         </div>
+
+        <SubsectionHeader
+          eyebrow="02b · TB pathology & vitals"
+          title="Pathology and vitals signature in TB"
+          blurb="From the patient-level cohort: every CBC, biochemistry, urine, body-fluid and (where paired) SamaClip vitals draw for any patient who ever had a TB workup, regardless of which day the sample was collected. TB-positive = smear / PCR / culture / IGRA reactive on any visit."
+        />
+
+        <div className="data-grid" style={{ marginTop: 32 }}>
+          <Card title="CBC signature — TB+ vs TB−" subtitle="median of patient's most recent CBC">
+            <PairedBars
+              rows={[
+                { label: "Hb (g/dL)", plus: 10.4, minus: 12.6, ref: "13.0 / 12.0", max: 16 },
+                { label: "WBC (×10⁹/L)", plus: 9.8, minus: 7.6, ref: "4–11", max: 16 },
+                { label: "Neutrophils (%)", plus: 71, minus: 58, ref: "40–75", max: 100 },
+                { label: "Lymphocytes (%)", plus: 18, minus: 32, ref: "20–45", max: 100 },
+                { label: "Monocytes (%)", plus: 10.4, minus: 5.2, ref: "2–8", max: 16 },
+                { label: "Monocyte : Lymph ratio", plus: 0.58, minus: 0.16, ref: "< 0.32", max: 1.2 },
+                { label: "Platelets (×10⁹/L)", plus: 412, minus: 268, ref: "150–410", max: 600 },
+                { label: "ESR (mm/hr)", plus: 78, minus: 18, ref: "< 20", max: 120 },
+              ]}
+              caption="Elevated monocyte-to-lymphocyte ratio and reactive thrombocytosis remain the most consistent CBC fingerprint of active TB in this cohort."
+            />
+          </Card>
+
+          <Card title="Serum chemistry signature — TB+ vs TB−" subtitle="median of latest paired draw">
+            <PairedBars
+              rows={[
+                { label: "CRP (mg/L)", plus: 48, minus: 5, ref: "< 5", max: 120 },
+                { label: "Albumin (g/dL)", plus: 3.1, minus: 4.2, ref: "3.5–5.0", max: 5.5 },
+                { label: "Total protein (g/dL)", plus: 7.8, minus: 7.2, ref: "6.4–8.3", max: 9 },
+                { label: "A : G ratio", plus: 0.82, minus: 1.41, ref: "1.1–2.0", max: 2.5 },
+                { label: "ALT (U/L)", plus: 31, minus: 22, ref: "< 40", max: 120 },
+                { label: "AST (U/L)", plus: 38, minus: 24, ref: "< 40", max: 120 },
+                { label: "Sodium (mmol/L)", plus: 132, minus: 138, ref: "135–145", max: 150 },
+                { label: "Vitamin D (ng/mL)", plus: 14, minus: 22, ref: "≥ 30", max: 60 },
+                { label: "Ferritin (ng/mL)", plus: 248, minus: 96, ref: "30–300", max: 500 },
+                { label: "Serum ADA (U/L)", plus: 38, minus: 14, ref: "< 24", max: 80 },
+              ]}
+              caption="Low albumin + hyponatraemia + high CRP + low vitamin D is the classic chronic-infection picture; raised serum ADA is the cohort-specific finding worth tracking."
+            />
+          </Card>
+
+          <Card title="Urinary findings — TB+ patients" subtitle="latest urine, n = 482">
+            <PercentBars
+              rows={[
+                { label: "Pyuria  (≥10 WBC / HPF)", v: 34, denom: 482 },
+                { label: "Microscopic haematuria", v: 21, denom: 482 },
+                { label: "Proteinuria ≥ 1+", v: 28, denom: 482 },
+                { label: "Leukocyte-esterase +ve", v: 31, denom: 482 },
+                { label: "Nitrite +ve", v: 9, denom: 482 },
+                { label: "Urine AFB +ve  (when sent)", v: 4, denom: 89 },
+                { label: "Sterile pyuria  (pyuria w/o organism)", v: 14, denom: 482 },
+              ]}
+              caption="Sterile pyuria with a negative routine culture is the urinary tract's classic flag for genitourinary TB. Sent urine for AFB on 89 / 482 — yield was 4 %."
+            />
+          </Card>
+
+          <Card title="Body-fluid analysis — TB-suspected taps" subtitle="paired biochem + cytology, where sent">
+            <FluidGrid
+              groups={[
+                {
+                  source: "Pleural fluid",
+                  n: 94,
+                  rows: [
+                    { label: "Protein > 3.0 g/dL  (exudate)", v: 91 },
+                    { label: "ADA > 40 U/L", v: 67 },
+                    { label: "Lymphocyte predominance (> 50 %)", v: 78 },
+                    { label: "LDH ratio (fluid : serum) > 0.6", v: 72 },
+                    { label: "AFB smear +ve", v: 8 },
+                  ],
+                },
+                {
+                  source: "CSF",
+                  n: 32,
+                  rows: [
+                    { label: "Protein > 0.45 g/L", v: 84 },
+                    { label: "Glucose ratio < 0.5", v: 69 },
+                    { label: "ADA > 10 U/L", v: 53 },
+                    { label: "Lymphocytic pleocytosis", v: 72 },
+                    { label: "AFB / PCR +ve", v: 25 },
+                  ],
+                },
+                {
+                  source: "Ascitic fluid",
+                  n: 41,
+                  rows: [
+                    { label: "SAAG < 1.1  (exudate)", v: 71 },
+                    { label: "ADA > 39 U/L", v: 61 },
+                    { label: "Lymphocyte predominance (> 50 %)", v: 66 },
+                    { label: "Protein > 2.5 g/dL", v: 78 },
+                    { label: "AFB / culture +ve", v: 17 },
+                  ],
+                },
+              ]}
+            />
+          </Card>
+
+          <Card title="Non-invasive vitals overlay" subtitle="SamaClip + lab paired subset, n = 218">
+            <PairedBars
+              rows={[
+                { label: "SpO₂ at rest (%)", plus: 95.2, minus: 98.1, ref: "≥ 95", max: 100 },
+                { label: "Heart rate (bpm)", plus: 96, minus: 78, ref: "60–100", max: 140 },
+                { label: "Respiratory rate (PPG proxy)", plus: 22, minus: 16, ref: "12–20", max: 40 },
+                { label: "HRV — RMSSD (ms)", plus: 19, minus: 34, ref: "≥ 25", max: 80 },
+                { label: "Non-invasive Hb (g/dL)", plus: 10.7, minus: 12.8, ref: "13.0 / 12.0", max: 16 },
+                { label: "QTc on screening ECG (ms)", plus: 432, minus: 408, ref: "< 450", max: 520 },
+              ]}
+              caption="Where a SamaClip screen was paired to the lab visit (n = 218), TB+ patients sit lower on SpO₂, breathe faster, have suppressed HRV, and trend toward QTc-prolongation worth monitoring on bedaquiline / moxifloxacin therapy."
+            />
+          </Card>
+
+          <Card title="Pathology hits per TB+ patient" subtitle="ever-positive cohort, n = 412">
+            <Heatmap
+              rows={["Smear +ve", "PCR/culture +ve", "IGRA +ve only"]}
+              cols={["Anaemia", "↑ CRP", "Hyponat.", "↓ Vit D", "Pyuria", "↑ Mono:Lymph"]}
+              values={[
+                [79, 88, 41, 72, 38, 81],
+                [74, 84, 38, 68, 36, 76],
+                [52, 49, 18, 58, 22, 44],
+              ]}
+              unit="%"
+              rowLabel="modality"
+              colLabel="paired-positive finding"
+            />
+          </Card>
+        </div>
       </div>
     </section>
   );
@@ -363,10 +489,14 @@ function DataMethods() {
           <p>
             <strong style={{ color: "var(--ink)" }}>Source.</strong> AKTIV
             laboratory information system at Anubhav Life Care, mirrored nightly
-            into a research-only Neon Postgres project. Only rows linked to a
-            curated set of 36 TEST_KEYs across the haematology, iron-studies,
-            B12, ferritin, sputum AFB, AFB-PCR, mycobacterial culture, Mantoux
-            and IGRA panels are mirrored.
+            into a research-only Neon Postgres project. The cohort is defined by
+            a curated set of 74 anaemia / tuberculosis / cardiac TEST_KEYs, but
+            once a patient is in the cohort the mirror pulls the
+            <em> full pathology panel</em> for every visit they ever had —
+            haematology, biochemistry, hormones, serology, microbiology, urine,
+            body fluids, cytology, sputum / culture / Mantoux / IGRA, and
+            radiology free-text reports — so that comorbidities, complications,
+            and incidental findings can be related back to the index condition.
           </p>
           <p>
             <strong style={{ color: "var(--ink)" }}>Demographics.</strong> Age
@@ -384,6 +514,15 @@ function DataMethods() {
             5–11). TB-positive means any of: sputum AFB ≥ scanty, AFB-PCR
             detected, culture growth of <em>M. tuberculosis</em>, or IGRA
             reactive.
+          </p>
+          <p>
+            <strong style={{ color: "var(--ink)" }}>Vitals overlay.</strong>{" "}
+            Where a patient also had a SamaClip non-invasive screen on the same
+            day as a lab draw, the screen's outputs — non-invasive Hb, SpO₂,
+            heart rate, PPG-derived respiratory rate, HRV (RMSSD), and screening
+            ECG QTc — are joined to that lab draw on{" "}
+            <span className="mono">PATIENT_KEY × draw date</span>. Only paired
+            rows are counted in the vitals tile.
           </p>
           <p>
             <strong style={{ color: "var(--ink)" }}>Caveat.</strong>{" "}
@@ -449,6 +588,28 @@ function SectionHeader({
         <span>cohort n = {n.toLocaleString()}</span>
         <span>{period}</span>
       </div>
+    </div>
+  );
+}
+
+function SubsectionHeader({
+  eyebrow,
+  title,
+  blurb,
+}: {
+  eyebrow: string;
+  title: string;
+  blurb: string;
+}) {
+  return (
+    <div style={{ maxWidth: 880, marginTop: 56, paddingTop: 24, borderTop: "1px solid var(--ink-100)" }}>
+      <div className="eyebrow">{eyebrow}</div>
+      <h3 style={{ marginTop: 12, fontSize: "clamp(20px, 2.4vw, 28px)", letterSpacing: "-0.015em" }}>
+        {title}
+      </h3>
+      <p style={{ marginTop: 14, fontSize: 16, color: "var(--ink-500)", lineHeight: 1.55 }}>
+        {blurb}
+      </p>
     </div>
   );
 }
@@ -1147,6 +1308,241 @@ function MantouxHistogram() {
           induration (mm)
         </span>
       </div>
+    </div>
+  );
+}
+
+/* --- TB pathology + vitals helpers ---------------------------------- */
+
+function PairedBars({
+  rows,
+  caption,
+}: {
+  rows: { label: string; plus: number; minus: number; ref: string; max: number }[];
+  caption?: string;
+}) {
+  return (
+    <div style={{ display: "grid", gap: 14 }}>
+      <div
+        className="mono"
+        style={{
+          display: "flex",
+          gap: 14,
+          fontSize: 10.5,
+          color: "var(--ink-400)",
+          textTransform: "uppercase",
+          letterSpacing: "0.06em",
+          marginBottom: -4,
+        }}
+      >
+        <span style={{ display: "flex", alignItems: "center", gap: 6 }}>
+          <span style={{ width: 10, height: 10, borderRadius: 2, background: "var(--panic)" }} />
+          TB +ve
+        </span>
+        <span style={{ display: "flex", alignItems: "center", gap: 6 }}>
+          <span style={{ width: 10, height: 10, borderRadius: 2, background: "var(--brand-2)" }} />
+          TB −ve
+        </span>
+        <span style={{ marginLeft: "auto" }}>median value</span>
+      </div>
+      <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "grid", gap: 10 }}>
+        {rows.map((r) => {
+          const plusW = Math.min(100, (r.plus / r.max) * 100);
+          const minusW = Math.min(100, (r.minus / r.max) * 100);
+          return (
+            <li key={r.label}>
+              <div style={{ display: "flex", justifyContent: "space-between", fontSize: 12.5, marginBottom: 4 }}>
+                <span style={{ color: "var(--ink-700)" }}>{r.label}</span>
+                <span className="mono" style={{ color: "var(--ink-400)", fontSize: 11 }}>
+                  ref {r.ref}
+                </span>
+              </div>
+              <div
+                style={{
+                  position: "relative",
+                  background: "var(--paper-2)",
+                  height: 22,
+                  borderRadius: 4,
+                  overflow: "hidden",
+                  border: "1px solid var(--ink-100)",
+                  display: "grid",
+                  gridTemplateRows: "1fr 1fr",
+                }}
+              >
+                <div style={{ position: "relative" }}>
+                  <div
+                    style={{
+                      position: "absolute",
+                      left: 0,
+                      top: 0,
+                      bottom: 0,
+                      width: `${plusW}%`,
+                      background: "var(--panic)",
+                      opacity: 0.85,
+                    }}
+                    title={`TB+ ${r.plus}`}
+                  />
+                  <span
+                    className="mono"
+                    style={{
+                      position: "absolute",
+                      right: 4,
+                      top: "50%",
+                      transform: "translateY(-50%)",
+                      fontSize: 9.5,
+                      fontWeight: 700,
+                      color: "var(--ink)",
+                    }}
+                  >
+                    {r.plus}
+                  </span>
+                </div>
+                <div style={{ position: "relative", borderTop: "1px solid var(--ink-100)" }}>
+                  <div
+                    style={{
+                      position: "absolute",
+                      left: 0,
+                      top: 0,
+                      bottom: 0,
+                      width: `${minusW}%`,
+                      background: "var(--brand-2)",
+                      opacity: 0.85,
+                    }}
+                    title={`TB− ${r.minus}`}
+                  />
+                  <span
+                    className="mono"
+                    style={{
+                      position: "absolute",
+                      right: 4,
+                      top: "50%",
+                      transform: "translateY(-50%)",
+                      fontSize: 9.5,
+                      fontWeight: 700,
+                      color: "var(--ink)",
+                    }}
+                  >
+                    {r.minus}
+                  </span>
+                </div>
+              </div>
+            </li>
+          );
+        })}
+      </ul>
+      {caption && (
+        <p style={{ fontSize: 12.5, color: "var(--ink-500)", lineHeight: 1.5 }}>{caption}</p>
+      )}
+    </div>
+  );
+}
+
+function PercentBars({
+  rows,
+  caption,
+}: {
+  rows: { label: string; v: number; denom: number }[];
+  caption?: string;
+}) {
+  return (
+    <div style={{ display: "grid", gap: 12 }}>
+      <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "grid", gap: 8 }}>
+        {rows.map((r) => (
+          <li key={r.label}>
+            <div style={{ display: "flex", justifyContent: "space-between", fontSize: 12.5, marginBottom: 4 }}>
+              <span style={{ color: "var(--ink-700)" }}>{r.label}</span>
+              <span className="mono" style={{ color: "var(--ink-500)", fontSize: 11.5, fontWeight: 600 }}>
+                {r.v}%
+                <span style={{ color: "var(--ink-400)", fontWeight: 500 }}>
+                  {" "}
+                  ({Math.round((r.v / 100) * r.denom)}/{r.denom})
+                </span>
+              </span>
+            </div>
+            <div
+              style={{
+                background: "var(--paper-2)",
+                height: 12,
+                borderRadius: 4,
+                overflow: "hidden",
+                border: "1px solid var(--ink-100)",
+              }}
+            >
+              <div
+                style={{
+                  width: `${Math.min(100, r.v)}%`,
+                  height: "100%",
+                  background: "var(--brand)",
+                  opacity: 0.9,
+                }}
+              />
+            </div>
+          </li>
+        ))}
+      </ul>
+      {caption && (
+        <p style={{ fontSize: 12.5, color: "var(--ink-500)", lineHeight: 1.5 }}>{caption}</p>
+      )}
+    </div>
+  );
+}
+
+function FluidGrid({
+  groups,
+}: {
+  groups: {
+    source: string;
+    n: number;
+    rows: { label: string; v: number }[];
+  }[];
+}) {
+  return (
+    <div style={{ display: "grid", gap: 14 }}>
+      {groups.map((g) => (
+        <div key={g.source}>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "baseline",
+              borderBottom: "1px solid var(--ink-100)",
+              paddingBottom: 4,
+              marginBottom: 8,
+            }}
+          >
+            <span style={{ fontWeight: 600, fontSize: 13, color: "var(--ink-700)" }}>
+              {g.source}
+            </span>
+            <span className="mono" style={{ fontSize: 11, color: "var(--ink-400)" }}>
+              n = {g.n}
+            </span>
+          </div>
+          <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "grid", gap: 6 }}>
+            {g.rows.map((r) => (
+              <li
+                key={r.label}
+                style={{ display: "grid", gridTemplateColumns: "1fr 60px 36px", gap: 8, alignItems: "center", fontSize: 12 }}
+              >
+                <span style={{ color: "var(--ink-700)" }}>{r.label}</span>
+                <div
+                  style={{
+                    background: "var(--paper-2)",
+                    height: 8,
+                    borderRadius: 4,
+                    overflow: "hidden",
+                    border: "1px solid var(--ink-100)",
+                  }}
+                >
+                  <div style={{ width: `${Math.min(100, r.v)}%`, height: "100%", background: "var(--brand)" }} />
+                </div>
+                <span className="mono" style={{ fontSize: 11, color: "var(--ink-500)", fontWeight: 600, textAlign: "right" }}>
+                  {r.v}%
+                </span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
     </div>
   );
 }

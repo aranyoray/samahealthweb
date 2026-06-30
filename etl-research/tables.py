@@ -97,6 +97,49 @@ FILTER_STRATEGY_HINT = {
     "MANTOUX_DESC":            ("report_key", "MANTOUX_HEAD"),
     "MANTOUX_PAD":             ("report_key", "MANTOUX_HEAD"),
 
+    # Urinalysis (routine + microscopy)
+    "URINE_HEAD":              ("bill_key", None),
+    "URINE_DTLS":              ("bill_key", "URINE_HEAD"),
+    "URINE_DESC":              ("report_key", "URINE_HEAD"),
+    "URINE_PAD":               ("report_key", "URINE_HEAD"),
+    "URINALYSIS_HEAD":         ("bill_key", None),
+    "URINALYSIS_DTLS":         ("bill_key", "URINALYSIS_HEAD"),
+    "URINALYSIS_DESC":         ("report_key", "URINALYSIS_HEAD"),
+    "URINALYSIS_PAD":          ("report_key", "URINALYSIS_HEAD"),
+
+    # Body fluids — pleural, CSF, ascitic, synovial, etc.
+    "BODYFLUID_HEAD":          ("bill_key", None),
+    "BODYFLUID_DTLS":          ("bill_key", "BODYFLUID_HEAD"),
+    "BODYFLUID_DESC":          ("report_key", "BODYFLUID_HEAD"),
+    "BODYFLUID_PAD":           ("report_key", "BODYFLUID_HEAD"),
+    "FLUID_HEAD":              ("bill_key", None),
+    "FLUID_DTLS":              ("bill_key", "FLUID_HEAD"),
+    "FLUID_DESC":              ("report_key", "FLUID_HEAD"),
+    "FLUID_PAD":               ("report_key", "FLUID_HEAD"),
+
+    # Cytology (pleural-fluid cell count + lymph %, etc.)
+    "CYTOLOGY_HEAD":           ("bill_key", None),
+    "CYTOLOGY_DTLS":           ("report_key", "CYTOLOGY_HEAD"),
+    "CYTOLOGY_DESC":           ("report_key", "CYTOLOGY_HEAD"),
+    "CYTOLOGY_PAD":            ("report_key", "CYTOLOGY_HEAD"),
+
+    # Histopathology (granuloma / caseation reports)
+    "HISTOPATH_HEAD":           ("bill_key", None),
+    "HISTOPATH_DTLS":           ("report_key", "HISTOPATH_HEAD"),
+    "HISTOPATH_DESC":           ("report_key", "HISTOPATH_HEAD"),
+    "HISTOPATH_PAD":            ("report_key", "HISTOPATH_HEAD"),
+    "HISTOPATHOLOGY_HEAD":      ("bill_key", None),
+    "HISTOPATHOLOGY_DTLS":      ("report_key", "HISTOPATHOLOGY_HEAD"),
+    "HISTOPATHOLOGY_DESC":      ("report_key", "HISTOPATHOLOGY_HEAD"),
+    "HISTOPATHOLOGY_PAD":       ("report_key", "HISTOPATHOLOGY_HEAD"),
+
+    # Radiology free-text reports (chest X-ray narratives, USG, CT — if AKTIV stores them)
+    "RADIOLOGY_HEAD":           ("bill_key", None),
+    "RADIOLOGY_DTLS":           ("report_key", "RADIOLOGY_HEAD"),
+    "RADIOLOGY_DESC":           ("report_key", "RADIOLOGY_HEAD"),
+    "XRAY_HEAD":                ("bill_key", None),
+    "XRAY_DTLS":                ("report_key", "XRAY_HEAD"),
+
     # LIS (lab-instrument middleware)
     "AKTIV_LIS_INPUT":         ("test_key", None),
     "AKTIV_LIS_RESULT":        ("bill_number", None),
