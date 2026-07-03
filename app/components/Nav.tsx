@@ -4,8 +4,8 @@ import Link from "next/link";
 
 const links = [
   { href: "/samaclip", label: "SamaClip" },
-  { href: "/#platform", label: "What we screen" },
-  { href: "/#outcomes", label: "How we reach" },
+  { href: "/#signal", label: "Autonomic vitals" },
+  { href: "/#triage", label: "Triage" },
   { href: "/camps", label: "Field camps" },
   { href: "/research", label: "Validation" },
   { href: "/data", label: "Lab data" },
