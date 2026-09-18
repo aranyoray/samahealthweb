@@ -32,7 +32,7 @@ export default function NotFound() {
               margin: 0,
             }}
           >
-            That page didn't make it to the clinic.
+            That page didn’t make it to the clinic.
           </h1>
           <p
             style={{
@@ -43,7 +43,7 @@ export default function NotFound() {
             }}
           >
             The link you followed may be old, mistyped, or pointing to something
-            we haven't published yet. Try one of these instead.
+            we haven’t published yet. Try one of these instead.
           </p>
           <div
             style={{

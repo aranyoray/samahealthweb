@@ -9,6 +9,29 @@ export const metadata: Metadata = {
   description:
     "How SamaClip's non-invasive screening was checked against the gold-standard reference instruments in the NABL-accredited lab at Anubhav Life Care, Barasat (n=175).",
   alternates: { canonical: "/research" },
+  openGraph: {
+    title: "Validation and the lab behind it. SamaHealth",
+    description:
+      "How SamaClip's non-invasive screening was checked against the gold-standard reference instruments in the NABL-accredited lab at Anubhav Life Care, Barasat (n=175).",
+    url: "/research",
+    siteName: "SamaHealth",
+    type: "website",
+    images: [
+      {
+        url: "/og-cover.jpg",
+        width: 1200,
+        height: 630,
+        alt: "The Anubhav Life Care team at the planning table before a community camp in North 24 Parganas",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Validation and the lab behind it. SamaHealth",
+    description:
+      "How SamaClip's non-invasive screening was checked against gold-standard reference instruments in an NABL-accredited lab (n=175).",
+    images: ["/og-cover.jpg"],
+  },
 };
 
 export default function ResearchPage() {
@@ -152,7 +175,7 @@ function ReferenceInstruments() {
       <div className="container">
         <h2 style={{ maxWidth: 820 }}>The reference instruments we check against</h2>
         <p style={{ marginTop: 20, fontSize: 17, color: "var(--ink-500)", maxWidth: 720 }}>
-          These are the real instruments in the NABL-accredited lab at Anubhav Life Care. SamaClip's
+          These are the real instruments in the NABL-accredited lab at Anubhav Life Care. SamaClip’s
           signals are compared against them. The haematology and biochemistry analysers are the direct
           gold standards behind the haemoglobin and diabetes-risk numbers above.
         </p>
@@ -175,7 +198,7 @@ function ReferenceInstruments() {
 
         <p style={{ marginTop: 28, fontSize: 13, color: "var(--ink-400)", fontStyle: "italic" }}>
           Instrument illustrations are representative; model numbers and serials are from the Anubhav Life
-          Care asset register. Photographs of the actual units can replace these at the same paths.
+          Care asset register.
         </p>
       </div>
     </section>
@@ -211,7 +234,7 @@ function HonestClaims() {
 
 function ResearchCTA() {
   return (
-    <section className="section" style={{ maxWidth: 880 }}>
+    <section className="section" style={{ maxWidth: 880, marginInline: "auto" }}>
       <div className="container" style={{ maxWidth: 760 }}>
         <h2>Work with us on the evidence</h2>
         <p style={{ marginTop: 18, fontSize: 18, color: "var(--ink-500)" }}>

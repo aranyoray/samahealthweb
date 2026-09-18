@@ -8,6 +8,29 @@ export const metadata: Metadata = {
   description:
     "Cross-sectional dashboards from the Anubhav Life Care research mirror — anaemia and tuberculosis cohorts, with patient demographics, severity distributions, and correlations against the rest of the panel.",
   alternates: { canonical: "/data" },
+  openGraph: {
+    title: "Lab data dashboards — anaemia & tuberculosis cohorts · SamaHealth",
+    description:
+      "Cross-sectional dashboards from the Anubhav Life Care research mirror — anaemia and tuberculosis cohorts, with patient demographics, severity distributions, and correlations against the rest of the panel.",
+    url: "/data",
+    siteName: "SamaHealth",
+    type: "website",
+    images: [
+      {
+        url: "/og-cover.jpg",
+        width: 1200,
+        height: 630,
+        alt: "The Anubhav Life Care team at the planning table before a community camp in North 24 Parganas",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Lab data dashboards — anaemia & tuberculosis cohorts · SamaHealth",
+    description:
+      "Cross-sectional anaemia and tuberculosis dashboards from the Anubhav Life Care research mirror.",
+    images: ["/og-cover.jpg"],
+  },
 };
 
 export default function DataPage() {
@@ -518,7 +541,7 @@ function DataMethods() {
           <p>
             <strong style={{ color: "var(--ink)" }}>Vitals overlay.</strong>{" "}
             Where a patient also had a SamaClip non-invasive screen on the same
-            day as a lab draw, the screen's outputs — non-invasive Hb, SpO₂,
+            day as a lab draw, the screen’s outputs — non-invasive Hb, SpO₂,
             heart rate, PPG-derived respiratory rate, HRV (RMSSD), and screening
             ECG QTc — are joined to that lab draw on{" "}
             <span className="mono">PATIENT_KEY × draw date</span>. Only paired
@@ -733,15 +756,15 @@ function Donut({
   const total = segments.reduce((s, x) => s + x.v, 0);
   const R = 56;
   const C = 2 * Math.PI * R;
-  let offset = 0;
   return (
     <div style={{ display: "grid", gridTemplateColumns: "auto 1fr", gap: 18, alignItems: "center" }}>
       <svg viewBox="0 0 140 140" width="140" height="140" role="img" aria-label="Donut chart">
         <circle cx="70" cy="70" r={R} fill="none" stroke="var(--ink-100)" strokeWidth="18" />
-        {segments.map((s) => {
+        {segments.map((s, si) => {
           const frac = s.v / total;
           const len = frac * C;
-          const el = (
+          const offset = segments.slice(0, si).reduce((acc, p) => acc + (p.v / total) * C, 0);
+          return (
             <circle
               key={s.label}
               cx="70"
@@ -755,8 +778,6 @@ function Donut({
               transform="rotate(-90 70 70)"
             />
           );
-          offset += len;
-          return el;
         })}
         <text x="70" y="68" textAnchor="middle" fontSize="22" fontWeight="600" fill="var(--ink)" fontFamily="var(--font-display)">
           {total.toLocaleString()}
@@ -816,7 +837,7 @@ function Heatmap({
   };
 
   return (
-    <div style={{ display: "grid", gap: 8 }}>
+    <div style={{ display: "grid", gap: 8, overflowX: "auto" }}>
       {colLabel && (
         <div
           className="mono"
@@ -828,8 +849,9 @@ function Heatmap({
       <div
         style={{
           display: "grid",
-          gridTemplateColumns: `72px repeat(${cols.length}, 1fr)`,
+          gridTemplateColumns: `72px repeat(${cols.length}, minmax(52px, 1fr))`,
           gap: 4,
+          minWidth: "min-content",
           alignItems: "center",
         }}
       >
@@ -1129,7 +1151,7 @@ function ScatterFrame({
       {y.ticks.map((t) => (
         <g key={`y${t}`}>
           <line x1={padL - 3} y1={yMap(t)} x2={padL} y2={yMap(t)} stroke="var(--ink-300)" />
-          <text x={padL - 6} y={yMap(t) + 3} fontSize="9" fill="var(--ink-400)" textAnchor="end" fontFamily="var(--font-mono)">
+          <text x={padL - 6} y={yMap(t) + 3} fontSize="12" fill="var(--ink-400)" textAnchor="end" fontFamily="var(--font-mono)">
             {t}
           </text>
         </g>
@@ -1138,7 +1160,7 @@ function ScatterFrame({
       {x.ticks.map((t) => (
         <g key={`x${t}`}>
           <line x1={xMap(t)} y1={padT + plotH} x2={xMap(t)} y2={padT + plotH + 3} stroke="var(--ink-300)" />
-          <text x={xMap(t)} y={padT + plotH + 13} fontSize="9" fill="var(--ink-400)" textAnchor="middle" fontFamily="var(--font-mono)">
+          <text x={xMap(t)} y={padT + plotH + 13} fontSize="12" fill="var(--ink-400)" textAnchor="middle" fontFamily="var(--font-mono)">
             {t}
           </text>
         </g>
@@ -1157,7 +1179,7 @@ function ScatterFrame({
         <circle key={i} cx={xMap(p.x)} cy={yMap(p.y)} r={1.6} fill={p.color} opacity={0.7} />
       ))}
       {/* labels */}
-      <text x={padL + plotW / 2} y={H - 4} fontSize="10" fill="var(--ink-500)" textAnchor="middle">
+      <text x={padL + plotW / 2} y={H - 4} fontSize="13" fill="var(--ink-500)" textAnchor="middle">
         {x.label}
       </text>
       <text

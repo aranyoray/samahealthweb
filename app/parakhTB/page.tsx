@@ -26,14 +26,14 @@ export const metadata: Metadata = {
     url: "/parakhTB",
     siteName: "SamaHealth",
     type: "website",
-    images: [{ url: "/events/anubhav-cmc-001.jpg", width: 1200, height: 630, alt: "SamaHealth community screening" }],
+    images: [{ url: "/og-cover.jpg", width: 1200, height: 630, alt: "The Anubhav Life Care team at the planning table before a community camp in North 24 Parganas" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "ParakhTB. One visit. One finger-clip. A TB triage call.",
     description:
       "A single-visit triage signal for tuberculosis: urine strip plus 60-second finger-clip read decide who needs a confirmatory TB test.",
-    images: ["/events/anubhav-cmc-001.jpg"],
+    images: ["/og-cover.jpg"],
   },
   alternates: { canonical: "/parakhTB" },
 };
@@ -89,7 +89,7 @@ function Hero() {
           >
             Triage TB in a single visit.
           </h1>
-          <p style={{ marginTop: 26, fontSize: 19, color: "rgba(255,255,255,0.8)", lineHeight: 1.6, maxWidth: 620 }}>
+          <p style={{ marginTop: 26, fontSize: 19, color: "rgba(255,255,255,0.92)", lineHeight: 1.6, maxWidth: 620 }}>
             ParakhTB pairs a urine strip with the SamaClip finger-clip reader to flag, in about a minute, who at a
             primary health centre should go on for a confirmatory TB test, with no needle, no microscope, and no second
             visit. It does not diagnose tuberculosis. It decides who needs Xpert.
@@ -100,7 +100,7 @@ function Hero() {
               See how it works
             </Link>
           </div>
-          <div style={{ marginTop: 30, display: "flex", alignItems: "center", gap: 10, color: "rgba(255,255,255,0.7)", fontSize: 13.5 }}>
+          <div style={{ marginTop: 30, display: "flex", alignItems: "center", gap: 10, color: "#fff", fontSize: 13.5 }}>
             <ShieldCheck />
             <span>Built on the SamaClip optical platform validated at the NABL-accredited centre in Barasat.</span>
           </div>
@@ -373,7 +373,7 @@ function WhereItFits() {
                 </div>
               ))}
             </div>
-            <p style={{ marginTop: 16, fontSize: 12, color: "rgba(255,255,255,0.5)", lineHeight: 1.5 }}>
+            <p style={{ marginTop: 16, fontSize: 12, color: "rgba(255,255,255,0.72)", lineHeight: 1.5 }}>
               A triage and referral signal, never a diagnosis.
             </p>
           </div>
