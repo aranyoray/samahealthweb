@@ -40,3 +40,13 @@ next-env.d.ts
 # gstack
 .gstack/qa-reports/
 .gstack/
+DerivedData/
+xcuserdata/
+*.xcuserstate
+.env.*
+__pycache__/
+*.pyc
+.venv/
+venv/
+.history/
+*.log
