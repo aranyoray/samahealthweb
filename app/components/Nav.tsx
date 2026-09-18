@@ -135,8 +135,19 @@ export function Nav({ variant = "light" }: { variant?: "light" | "dark" | "hero"
         </div>
       </div>
 
-      {open && (
-        <div id="mobile-nav" style={{ borderTop: `1px solid ${onDark ? "rgba(255,255,255,0.08)" : "var(--ink-100)"}`, background: onDark ? "rgba(7,9,14,0.96)" : "#fff" }}>
+      {/* Always mounted so the button's aria-controls target exists while
+          closed; capped and scrollable so seven links stay reachable in
+          landscape, where the fixed header would otherwise clip them. */}
+      <div
+        id="mobile-nav"
+        hidden={!open}
+        style={{
+          borderTop: `1px solid ${onDark ? "rgba(255,255,255,0.08)" : "var(--ink-100)"}`,
+          background: onDark ? "rgba(7,9,14,0.96)" : "#fff",
+          maxHeight: "calc(100dvh - 72px)",
+          overflowY: "auto",
+        }}
+      >
           <div className="container" style={{ display: "grid", gap: 0, padding: "8px 28px 20px" }}>
             {links.map((l) => (
               <Link
@@ -150,7 +161,6 @@ export function Nav({ variant = "light" }: { variant?: "light" | "dark" | "hero"
             ))}
           </div>
         </div>
-      )}
 
       <style>{`
         @media (min-width: 980px) {

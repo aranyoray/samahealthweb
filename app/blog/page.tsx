@@ -4,6 +4,7 @@ import { Nav } from "../components/Nav";
 import { Footer } from "../components/Footer";
 import { RevealOnScroll } from "../components/Reveal";
 import { getAllPostsMeta, formatDate } from "../lib/blog";
+import { jsonLdScript } from "../lib/jsonld";
 
 const SITE = "https://samahealth.in";
 
@@ -25,6 +26,22 @@ export const metadata: Metadata = {
       "Patient guides and field notes on anaemia, non-invasive screening and preventive care in West Bengal.",
     url: `${SITE}/blog`,
     type: "website",
+    siteName: "SamaHealth",
+    images: [
+      {
+        url: "/og-cover.jpg",
+        width: 1200,
+        height: 630,
+        alt: "The Anubhav Life Care team at the planning table before a community camp in North 24 Parganas",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "SamaHealth Blog. Preventive screening, anaemia and heart health",
+    description:
+      "Patient guides and field notes on anaemia, non-invasive screening and preventive care in West Bengal.",
+    images: ["/og-cover.jpg"],
   },
 };
 
@@ -58,7 +75,7 @@ export default function BlogIndex() {
 
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLdScript(jsonLd) }} />
       <Nav variant="light" />
       <main id="main">
         <header className="container" style={{ paddingTop: 128, paddingBottom: 8 }}>

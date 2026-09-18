@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { jsonLdScript } from "../../lib/jsonld";
 import { Nav } from "../../components/Nav";
 import { Footer } from "../../components/Footer";
 import { RevealOnScroll } from "../../components/Reveal";
@@ -25,7 +26,9 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   try {
     post = getPostBySlug(slug);
   } catch {
-    return {};
+    // Unknown slug: the component calls notFound() below, but metadata resolves
+    // first — without this the 404 would inherit the homepage title.
+    return { title: "Page not found. SamaHealth", robots: { index: false, follow: false } };
   }
   const url = `${SITE}/blog/${post.slug}`;
   return {
@@ -65,7 +68,7 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
 
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLdScript(jsonLd) }} />
       <Nav variant="light" />
       <main id="main">
         <article>
