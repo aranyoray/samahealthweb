@@ -48,6 +48,19 @@ const COLORS = {
   bands: ["var(--dx-b0)", "var(--dx-b1)", "var(--dx-b2)", "var(--dx-b3)"],
 };
 
+const bandColorFor = (v: number) =>
+  v < 5.7 ? "var(--dx-b0)" : v < 7 ? "var(--dx-in)" : v < 8 ? "var(--dx-b2)" : "var(--dx-b3)";
+
+const signed = (r: number) => (r > 0 ? "+" : "") + r.toFixed(2);
+
+/** Plain-language reading of a Spearman coefficient. */
+function corrPhrase(r: number, moreMeans: string): string {
+  const a = Math.abs(r);
+  const strength = a >= 0.4 ? "a clear" : a >= 0.2 ? "a moderate" : a >= 0.1 ? "a weak" : "no";
+  if (strength === "no") return `no consistent link with ${moreMeans}`;
+  return `${strength} link: more testing goes with ${moreMeans}`;
+}
+
 const LINK_LABEL: Record<string, string> = {
   phone: "Mobile + name",
   "phone-typo": "Mobile (one-digit typo) + name",
@@ -64,7 +77,7 @@ const PHONE_LABEL: Record<string, string> = {
 
 export default function DiabetesPage() {
   const d = getDashboard();
-  const { identity: id, hero, snapshot: s, longitudinal: L, worklist: w } = d;
+  const { identity: id, hero, snapshot: s, longitudinal: L, frequency: F, worklist: w } = d;
   const ours = id.scores[id.scores.length - 1];
 
   return (
@@ -353,7 +366,7 @@ export default function DiabetesPage() {
                   past their due date with no sugar test here.
                 </>
               }
-              meta={[`${n(hero.diabetes)} people with a diabetic-range result`, "36 months of bills"]}
+              meta={[`${n(hero.diabetes)} people with a diabetic-range result`, "3.5 years of bills"]}
             />
             <div className="dx-grid">
               <Card span={12} title="The follow-up cascade" subtitle={`people whose first diabetic-range result was at least 12 months ago, n = ${n(L.eligible)}; each step counts people who also passed every step above`}>
@@ -508,6 +521,99 @@ export default function DiabetesPage() {
           </div>
         </section>
 
+        {/* ---------------- 3b. Testing frequency ---------------- */}
+        <section className="section" style={{ paddingTop: 96, paddingBottom: 88 }}>
+          <div className="container">
+            <SectionHead
+              id="frequency"
+              title="How often people test, and whether it helps"
+              blurb={
+                <>
+                  The cohort you asked about: everyone with{" "}
+                  <strong>two or more sugar tests in the last {F.windowYears} years</strong>. Testing rate is
+                  tests per year since a person&apos;s first test in the window, so both testing less and dropping out
+                  pull it down. The question is whether people who test more often stay in care and do better, or whether
+                  frequency just tracks who was already engaged.
+                </>
+              }
+              meta={[
+                `${n(F.cohort)} people with 2+ tests`,
+                `${F.medianTests} tests each (median)`,
+                `${F.medianPerYear} tests / yr (median)`,
+              ]}
+            />
+
+            <div className="dx-hero-stats" style={{ marginTop: 32 }}>
+              <Stat value={n(F.cohort)} label="people with 2+ sugar tests in 3.5 years" />
+              <Stat value={`${F.twoPlusOfDiabetes}%`} label="of people with diabetes tested 2+ times" note={`${n(F.dm)} people`} />
+              <Stat value={signed(F.spearman.change)} label="testing rate vs HbA1c improvement (Spearman ρ)" note={`higher = frequent testers improve more · n = ${n(F.changeN)}`} />
+              <Stat value={signed(F.spearman.due)} label="testing rate vs days overdue (ρ)" note={`lower = frequent testers stay on time · n = ${n(F.dm)}`} />
+            </div>
+
+            <div className="dx-grid">
+              <Card title="Do frequent testers stay in care?" subtitle="% not yet lost to follow-up, by testing rate">
+                <HBars
+                  color={COLORS.in}
+                  rows={F.bins.map((b) => ({ label: b.label, value: b.inCarePct, note: `n = ${n(b.n)}` }))}
+                />
+                <Caption>
+                  Continuity climbs with testing rate, from {F.bins[0].inCarePct}% still in care in the least
+                  frequent group to {F.bins[F.bins.length - 1].inCarePct}% in the most frequent.
+                  Much of this is definitional, people who test often are by definition still testing, so read it
+                  alongside the retention curve rather than as a separate effect.
+                </Caption>
+              </Card>
+
+              <Card title="Control by testing frequency" subtitle="median latest HbA1c, people with diabetes">
+                <Columns
+                  unit=""
+                  height={150}
+                  bars={F.bins
+                    .filter((b) => b.medianA1c !== null)
+                    .map((b) => ({ label: b.label, value: b.medianA1c!, color: bandColorFor(b.medianA1c!) }))}
+                />
+                <Caption>
+                  {`Median HbA1c barely moves with testing rate, and the most frequent group is not the best controlled (at goal ${F.bins[0].atGoalPct}% in the least frequent group vs ${F.bins[F.bins.length - 1].atGoalPct}% in the most). Doctors repeat the test when sugar is high, so the sickest test most. The payoff is in the change over time and in staying in care, not in the level, see the improvement column below and the retention chart above.`}
+                </Caption>
+                <TableView
+                  head={["Testing rate", "People (DM)", "Median HbA1c", "% at goal", "Median change (pp)"]}
+                  rows={F.bins.map((b) => [
+                    b.label,
+                    b.dm,
+                    b.medianA1c ?? "–",
+                    `${b.atGoalPct}%`,
+                    b.medianChange === null ? "–" : b.medianChange > 0 ? `+${b.medianChange}` : `${b.medianChange}`,
+                  ])}
+                />
+              </Card>
+
+              <Card title="Full yearly work-up by testing frequency" subtitle="% of people with diabetes with 2+ HbA1c, eGFR and lipids in the last year">
+                <HBars
+                  color={COLORS.in}
+                  rows={F.bins.map((b) => ({ label: b.label, value: b.screenedPct, note: `of ${n(b.dm)}` }))}
+                />
+                <Caption>
+                  Frequent testers are far more likely to get the whole yearly panel, not just a repeat sugar. The
+                  kidney and lipid checks ride along with the habit of coming back.
+                </Caption>
+              </Card>
+
+              <Card title="What testing frequency tracks" subtitle="Spearman ρ, people with diabetes">
+                <div style={{ display: "grid", gap: 12 }}>
+                  <CorrRow r={F.spearman.hba1c} label="Latest HbA1c" reading={corrPhrase(F.spearman.hba1c, "lower HbA1c")} />
+                  <CorrRow r={F.spearman.change} label="HbA1c improvement" reading={corrPhrase(F.spearman.change, "a bigger drop in HbA1c")} />
+                  <CorrRow r={F.spearman.due} label="Days past due" reading={corrPhrase(F.spearman.due, "being less overdue")} />
+                </div>
+                <Caption>
+                  Association, not proof. Testing more does not by itself lower sugar; both are downstream of the same
+                  engagement, and a doctor orders repeat tests precisely when a patient is being actively managed. The
+                  useful read for the care team: the people testing under once a year are the ones to pull back in.
+                </Caption>
+              </Card>
+            </div>
+          </div>
+        </section>
+
         {/* ---------------- 4. Who gets lost ---------------- */}
         <section className="section" style={{ paddingTop: 96, paddingBottom: 88 }}>
           <div className="container">
@@ -645,6 +751,34 @@ export default function DiabetesPage() {
 
 /* ------------------------------------------------------------------ */
 
+function CorrRow({ r, label, reading }: { r: number; label: string; reading: string }) {
+  // Signed bar from a centre line: left for negative ρ, right for positive.
+  const w = Math.min(50, Math.abs(r) * 50);
+  return (
+    <div className="dx-corr">
+      <div className="dx-corr-head">
+        <span>{label}</span>
+        <span className="mono" style={{ fontWeight: 700 }}>
+          ρ {r > 0 ? "+" : ""}
+          {r.toFixed(2)}
+        </span>
+      </div>
+      <div className="dx-corr-track" aria-hidden>
+        <span className="dx-corr-mid" />
+        <span
+          className="dx-corr-fill"
+          style={{
+            left: r < 0 ? `${50 - w}%` : "50%",
+            width: `${w}%`,
+            background: r < 0 ? "var(--dx-in)" : "var(--dx-out)",
+          }}
+        />
+      </div>
+      <div className="dx-corr-reading">{reading}</div>
+    </div>
+  );
+}
+
 function Hero({ d }: { d: ReturnType<typeof getDashboard> }) {
   const h = d.hero;
   return (
@@ -657,7 +791,7 @@ function Hero({ d }: { d: ReturnType<typeof getDashboard> }) {
         person, followed across months.
       </p>
       <p className="mono" style={{ marginTop: 16, fontSize: 12.5, color: "var(--ink-400)", maxWidth: 780 }}>
-        Synthetic cohort shaped like the AKTIV research mirror · {n(h.cohort)} people · 36 months to {fmtDay(d.asOf)} · no
+        Synthetic cohort shaped like the AKTIV research mirror · {n(h.cohort)} people · 3.5 years to {fmtDay(d.asOf)} · no
         real patient data. The pipeline reads plain lab rows and runs unchanged on the live mirror.
       </p>
 
@@ -673,6 +807,7 @@ function Hero({ d }: { d: ReturnType<typeof getDashboard> }) {
           ["#linking", "Linking visits"],
           ["#snapshot", "Snapshot"],
           ["#over-time", "Over time"],
+          ["#frequency", "Frequency"],
           ["#who", "Who gets lost"],
           ["#call-list", "Call list"],
           ["#rules", "Rules"],
@@ -856,6 +991,13 @@ const STYLES = `
 .dx-family { list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; }
 .dx-family li { display: flex; justify-content: space-between; gap: 10px; padding: 10px 12px; border-radius: 10px; background: var(--paper-2); font-size: 14px; }
 .dx-family .mono { font-size: 12px; }
+
+.dx-corr { }
+.dx-corr-head { display: flex; justify-content: space-between; font-size: 13px; color: var(--ink-700); margin-bottom: 5px; }
+.dx-corr-track { position: relative; height: 12px; background: var(--ink-50); border-radius: 4px; }
+.dx-corr-mid { position: absolute; left: 50%; top: -2px; bottom: -2px; width: 1px; background: var(--ink-300); }
+.dx-corr-fill { position: absolute; top: 0; bottom: 0; border-radius: 3px; opacity: 0.9; }
+.dx-corr-reading { margin-top: 5px; font-size: 12px; color: var(--ink-500); }
 
 .dx-callout { margin-top: 24px; padding: 18px 20px; border-left: 3px solid var(--dx-out); background: #fff7f2; border-radius: 0 12px 12px 0; font-size: 15px; color: var(--ink-700); line-height: 1.55; max-width: 900px; }
 
