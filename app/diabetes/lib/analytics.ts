@@ -48,6 +48,42 @@ function median(xs: number[]): number {
 }
 
 const pct = (a: number, b: number) => (b ? Math.round((a / b) * 1000) / 10 : 0);
+const round1 = (x: number) => Math.round(x * 10) / 10;
+
+/** Spearman rank correlation. Robust to the skew in test counts and lab values. */
+function spearman(pairs: [number, number][]): number {
+  const n = pairs.length;
+  if (n < 3) return 0;
+  const ranks = (vals: number[]) => {
+    const order = vals.map((v, i) => [v, i] as [number, number]).sort((a, b) => a[0] - b[0]);
+    const r = new Array<number>(n);
+    let i = 0;
+    while (i < n) {
+      let j = i;
+      while (j + 1 < n && order[j + 1][0] === order[i][0]) j++;
+      const avg = (i + j) / 2 + 1; // average rank for ties, 1-based
+      for (let k = i; k <= j; k++) r[order[k][1]] = avg;
+      i = j + 1;
+    }
+    return r;
+  };
+  const rx = ranks(pairs.map((p) => p[0]));
+  const ry = ranks(pairs.map((p) => p[1]));
+  const mean = (a: number[]) => a.reduce((s, x) => s + x, 0) / a.length;
+  const mx = mean(rx);
+  const my = mean(ry);
+  let num = 0;
+  let dx = 0;
+  let dy = 0;
+  for (let i = 0; i < n; i++) {
+    const a = rx[i] - mx;
+    const b = ry[i] - my;
+    num += a * b;
+    dx += a * a;
+    dy += b * b;
+  }
+  return dx && dy ? Math.round((num / Math.sqrt(dx * dy)) * 100) / 100 : 0;
+}
 
 export type Evaluated = { t: Timeline; f: FollowUp };
 
@@ -410,6 +446,80 @@ export function analyse(timelines: Timeline[], asOf: number) {
     flow.push({ day, onTrack, overdue, lost });
   }
 
+  /* ---------- testing frequency vs continuity of care (last 3.5 years) ---------- */
+  // Cohort the user asked for: people with 2+ sugar tests in the window. Then
+  // relate how often they test to whether they stay in care and how their
+  // numbers move. Testing rate is tests per year since a person's first test
+  // in the window, so both intensity and dropping-off pull it down.
+  const WINDOW_YEARS = 3.5;
+  const winStart = asOf - Math.round(WINDOW_YEARS * 365);
+  type Freq = { e: Evaluated; g: Obs[]; perYear: number; dm: boolean };
+  const freqPeople: Freq[] = ev
+    .map((e) => {
+      const g = glyDays(e.t.obs).filter((o) => o.day >= winStart);
+      return { e, g, perYear: 0, dm: e.f.firstDiabeticDay !== null };
+    })
+    .filter((x) => x.g.length >= 2);
+  for (const x of freqPeople) x.perYear = x.g.length / Math.max(0.5, (asOf - x.g[0].day) / 365);
+
+  const freqBins = [
+    { label: "Under 1 / yr", lo: 0, hi: 1 },
+    { label: "1 to 2 / yr", lo: 1, hi: 2 },
+    { label: "2 to 3 / yr", lo: 2, hi: 3 },
+    { label: "3+ / yr", lo: 3, hi: Infinity },
+  ];
+  const binOf = (r: number) => freqBins.findIndex((b) => r >= b.lo && r < b.hi);
+  const a1cChange = (x: Freq) => {
+    const a = a1cs(x.e.t.obs);
+    return a.length >= 2 ? a[0].value - a[a.length - 1].value : null; // + = improved
+  };
+  const fullyScreened = (x: Freq) =>
+    x.e.t.obs.some((o) => o.test === "EGFR" && o.day > asOf - 365) &&
+    x.e.t.obs.some((o) => o.test === "LDL" && o.day > asOf - 365) &&
+    x.e.t.obs.filter((o) => o.test === "HBA1C" && o.day > asOf - 365).length >= 2;
+
+  const freqRows = freqBins.map((b, bi) => {
+    const grp = freqPeople.filter((x) => binOf(x.perYear) === bi);
+    const withState = grp.filter((x) => x.e.f.careState !== null);
+    const dmGrp = grp.filter((x) => x.dm);
+    const withA1c = dmGrp.filter((x) => x.e.f.lastA1c);
+    const changes = dmGrp.map(a1cChange).filter((v): v is number => v !== null);
+    return {
+      label: b.label,
+      n: grp.length,
+      inCarePct: pct(withState.filter((x) => x.e.f.careState !== "lost").length, withState.length),
+      medianA1c: withA1c.length >= 10 ? round1(median(withA1c.map((x) => x.e.f.lastA1c!.value))) : null,
+      atGoalPct: withA1c.length ? pct(withA1c.filter((x) => x.e.f.lastA1c!.value < A1C_GOAL).length, withA1c.length) : 0,
+      medianChange: changes.length >= 10 ? round1(median(changes)) : null,
+      screenedPct: dmGrp.length ? pct(dmGrp.filter(fullyScreened).length, dmGrp.length) : 0,
+      dm: dmGrp.length,
+      withA1c: withA1c.length,
+    };
+  });
+
+  const dmFreq = freqPeople.filter((x) => x.dm);
+  const dmFreqA1c = dmFreq.filter((x) => x.e.f.lastA1c);
+  const dmFreqChange = dmFreq.map((x) => ({ x, c: a1cChange(x) })).filter((o): o is { x: Freq; c: number } => o.c !== null);
+  const frequency = {
+    windowYears: WINDOW_YEARS,
+    cohort: freqPeople.length,
+    dm: dmFreq.length,
+    twoPlusOfDiabetes: pct(dmFreq.length, dm.length),
+    medianTests: median(freqPeople.map((x) => x.g.length)),
+    medianPerYear: round1(median(freqPeople.map((x) => x.perYear))),
+    bins: freqRows,
+    a1cN: dmFreqA1c.length,
+    changeN: dmFreqChange.length,
+    spearman: {
+      // more testing vs lower latest HbA1c (negative expected)
+      hba1c: spearman(dmFreqA1c.map((x) => [x.perYear, x.e.f.lastA1c!.value])),
+      // more testing vs bigger HbA1c improvement (positive expected)
+      change: spearman(dmFreqChange.map((o) => [o.x.perYear, o.c])),
+      // more testing vs less past due (negative expected)
+      due: spearman(dmFreq.filter((x) => x.e.f.daysPastDue !== null).map((x) => [x.perYear, x.e.f.daysPastDue!])),
+    },
+  };
+
   /* ---------- hero ---------- */
   const states = dm.map((e) => e.f.careState);
   const lostNow = states.filter((s) => s === "lost").length;
@@ -531,6 +641,7 @@ export function analyse(timelines: Timeline[], asOf: number) {
       lossSegments,
       flow,
     },
+    frequency,
     worklist: {
       rows,
       keepTotal: keep.length,

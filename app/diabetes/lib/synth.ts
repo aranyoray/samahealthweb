@@ -18,7 +18,7 @@ import { makeRng, dayOf, monthIndex, type Rng } from "./rng";
 import type { Bill, Channel, Result, Sex, TestCode } from "./types";
 
 export const AS_OF = dayOf("2026-09-23");
-export const WINDOW_START = dayOf("2023-10-01");
+export const WINDOW_START = dayOf("2023-03-23"); // 3.5 years before AS_OF
 
 const SEED = 20260923;
 const HOUSEHOLDS = 5200;
