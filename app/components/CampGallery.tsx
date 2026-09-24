@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useState, useMemo, useCallback, useRef } from "react";
+import Image from "next/image";
 
 type Img = {
   file: string;
@@ -28,6 +29,7 @@ export function CampGallery({ events, images }: { events: EventMeta[]; images: I
   const [lightbox, setLightbox] = useState<number | null>(null);
   const [expanded, setExpanded] = useState<Set<number>>(new Set());
   const closeBtnRef = useRef<HTMLButtonElement>(null);
+  const dialogRef = useRef<HTMLDivElement>(null);
   const openerRef = useRef<HTMLElement | null>(null);
 
   const toggleExpand = useCallback((eventId: number) => {
@@ -94,8 +96,17 @@ export function CampGallery({ events, images }: { events: EventMeta[]; images: I
       if (e.key === "ArrowLeft") prev();
       if (e.key === "ArrowRight") next();
       if (e.key === "Tab") {
+        // Cycle through the dialog's own controls instead of parking focus on
+        // Close — otherwise Previous and Next are unreachable by keyboard.
+        const controls = Array.from(
+          dialogRef.current?.querySelectorAll<HTMLButtonElement>("button") ?? []
+        );
+        if (!controls.length) return;
         e.preventDefault();
-        closeBtnRef.current?.focus();
+        const at = controls.indexOf(document.activeElement as HTMLButtonElement);
+        const step = e.shiftKey ? -1 : 1;
+        const to = at === -1 ? 0 : (at + step + controls.length) % controls.length;
+        controls[to]?.focus();
       }
     };
     window.addEventListener("keydown", onKey);
@@ -123,7 +134,7 @@ export function CampGallery({ events, images }: { events: EventMeta[]; images: I
           background: linear-gradient(90deg, #F8FAFC 0%, #EEF2F6 50%, #F8FAFC 100%);
           background-size: 200% 100%;
         }
-        .camp-img-wrap img {
+        .js-ready .camp-img-wrap img {
           opacity: 0;
           transition: opacity .35s ease;
         }
@@ -132,10 +143,10 @@ export function CampGallery({ events, images }: { events: EventMeta[]; images: I
           background: var(--ink-50);
         }
         .camp-img-wrap.doc.loaded { background: #F8FAFC; }
-        .camp-img-wrap.loaded img { opacity: 1; }
+        .js-ready .camp-img-wrap.loaded img { opacity: 1; }
         @media (prefers-reduced-motion: reduce) {
           .camp-img-wrap { animation: none; }
-          .camp-img-wrap img { transition: none; }
+          .js-ready .camp-img-wrap img { transition: none; }
         }
         @media (max-width: 640px) {
           .camp-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 10px !important; }
@@ -185,6 +196,7 @@ export function CampGallery({ events, images }: { events: EventMeta[]; images: I
             </FilterChip>
           </div>
           <select
+            aria-label="Filter camps by location"
             className="camp-filter-select"
             value={locationFilter}
             onChange={(e) => setLocationFilter(e.target.value)}
@@ -236,7 +248,7 @@ export function CampGallery({ events, images }: { events: EventMeta[]; images: I
                   CAMP {String(ev.id).padStart(2, "0")}
                 </span>
                 <h2 style={{ fontSize: 24, fontWeight: 600, letterSpacing: "-0.02em", fontFamily: "inherit" }}>
-                  📍 {ev.location}
+                  <span aria-hidden="true">📍</span> {ev.location}
                 </h2>
                 <span
                   style={{
@@ -279,8 +291,17 @@ export function CampGallery({ events, images }: { events: EventMeta[]; images: I
                         <button
                           key={img.file}
                           onClick={(e) => openLb(img.file, e.currentTarget)}
+                          className="camp-img-btn"
                           style={{
-                            all: "unset",
+                            // Explicit resets rather than `all: unset`, which is
+                            // an inline declaration and so outranks the global
+                            // :focus-visible outline in globals.css.
+                            margin: 0,
+                            padding: 0,
+                            font: "inherit",
+                            color: "inherit",
+                            textAlign: "left",
+                            appearance: "none",
                             cursor: "zoom-in",
                             display: "block",
                             borderRadius: 12,
@@ -334,16 +355,17 @@ export function CampGallery({ events, images }: { events: EventMeta[]; images: I
                                 {img.type === "news" ? "Press" : img.type === "poster" ? "Poster" : "Letter"}
                               </span>
                             )}
-                            <img
+                            <Image
                               src={`/events/${img.file}`}
                               alt={isDoc
                                 ? img.caption
                                 : `${img.caption} — ${img.location} blood donation camp`}
-                              loading={eager ? "eager" : "lazy"}
-                              fetchPriority={eager ? "high" : "auto"}
-                              decoding="async"
-                              width={isDoc ? 600 : 800}
-                              height={isDoc ? 800 : 600}
+                              fill
+                              // Tiles are 260px-min auto-fill cells, two-up
+                              // under 640px. Without this the browser would
+                              // fetch a full-width candidate for a thumbnail.
+                              sizes="(max-width: 640px) 50vw, 300px"
+                              priority={eager}
                               ref={(node) => {
                                 if (node?.complete && node.naturalHeight > 0) {
                                   node.parentElement?.classList.add("loaded");
@@ -368,6 +390,7 @@ export function CampGallery({ events, images }: { events: EventMeta[]; images: I
                       onClick={() => toggleExpand(ev.id)}
                       style={{
                         marginTop: 18,
+                        minHeight: 44,
                         padding: "10px 22px",
                         borderRadius: 999,
                         border: "1px solid var(--ink-200)",
@@ -400,6 +423,7 @@ export function CampGallery({ events, images }: { events: EventMeta[]; images: I
       {/* Lightbox */}
       {lightbox !== null && visibleImages[lightbox] && (
         <div
+          ref={dialogRef}
           onClick={closeLb}
           role="dialog"
           aria-modal="true"
@@ -444,6 +468,11 @@ export function CampGallery({ events, images }: { events: EventMeta[]; images: I
               cursor: "default",
             }}
           >
+            {/* Full-resolution on purpose: this only loads when the viewer
+                explicitly opens a photo, and the original is what they came to
+                see. Intrinsic sizes are not recorded per file, so next/image
+                would have to guess an aspect ratio here. */}
+            {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={`/events/${visibleImages[lightbox].file}`}
               alt={visibleImages[lightbox].caption}

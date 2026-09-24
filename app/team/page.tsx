@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { Nav } from "../components/Nav";
 import { Footer } from "../components/Footer";
 import { RevealOnScroll } from "../components/Reveal";
@@ -15,7 +16,14 @@ export const metadata: Metadata = {
     url: "/team",
     siteName: "SamaHealth",
     type: "website",
-    images: [{ url: "/events/anubhav-cmc-001.jpg", width: 1200, height: 630, alt: "SamaHealth" }],
+    images: [{ url: "/og-cover.jpg", width: 1200, height: 630, alt: "The Anubhav Life Care team at the planning table before a community camp in North 24 Parganas" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Team. SamaHealth",
+    description:
+      "Frugal, frontier engineering and clinical advisors across tertiary care, district public health, and US infectious-disease academic medicine.",
+    images: ["/og-cover.jpg"],
   },
   alternates: { canonical: "/team" },
 };
@@ -120,7 +128,7 @@ function Hero() {
         >
           Frugal, frontier engineering. Clinically grounded.
         </h1>
-        <p style={{ marginTop: 26, fontSize: 19, color: "rgba(255,255,255,0.8)", lineHeight: 1.6, maxWidth: 640 }}>
+        <p style={{ marginTop: 26, fontSize: 19, color: "rgba(255,255,255,0.92)", lineHeight: 1.6, maxWidth: 640 }}>
           A small technical team building non-invasive diagnostics, backed by clinical leadership across tertiary care,
           district public health, and US infectious-disease academic medicine.
         </p>
@@ -191,12 +199,12 @@ function Group({
 function Avatar({ name, img }: { name: string; img?: string }) {
   if (img) {
     return (
-      <img
+      <Image
         src={img}
-        alt={name}
+        alt=""
         width={52}
         height={52}
-        loading="lazy"
+        sizes="52px"
         style={{
           width: 52,
           height: 52,
