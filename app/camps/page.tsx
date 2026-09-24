@@ -3,12 +3,13 @@ import { Footer } from "../components/Footer";
 import { RevealOnScroll } from "../components/Reveal";
 import { CampGallery } from "../components/CampGallery";
 import data from "../events-data.json";
+import { jsonLdScript } from "../lib/jsonld";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Blood donation camps. Anubhav CMC × SamaBeat",
   description:
-    "Anubhav Cardiometabolic Clinic at 30+ blood donation camps across North 24 Parganas. Free fasting/random sugar, anemia, and body-composition screening on the SamaBeat 5-wavelength PPG + ECG + BIA clip. Donor camps across Ranaghat, Barasat, Barrackpore, Birati, Madhyamgram, Ashoknagar, Habra, Kalyani and more.",
+    "Anubhav Cardiometabolic Clinic at 30 blood donation camps across North 24 Parganas. Free fasting/random sugar, anemia, and body-composition screening on the SamaBeat 5-wavelength PPG + ECG + BIA clip. Donor camps across Ranaghat, Barasat, Barrackpore, Birati, Madhyamgram, Ashoknagar, Habra, Kalyani and more.",
   keywords: [
     "blood donation camp North 24 Parganas",
     "Barasat blood donation",
@@ -25,13 +26,13 @@ export const metadata: Metadata = {
     url: "/camps",
     siteName: "SamaHealth",
     type: "website",
-    images: [{ url: "/events/anubhav-cmc-001.jpg", width: 1200, height: 630, alt: "Anubhav CMC team at a blood donation camp" }],
+    images: [{ url: "/og-cover.jpg", width: 1200, height: 630, alt: "The Anubhav Life Care team at the planning table before a community camp in North 24 Parganas" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "30 blood donation camps. Anubhav CMC × SamaBeat",
     description: "Field gallery from 30 donor camps across North 24 Parganas. Free cardiometabolic screening on SamaBeat clip.",
-    images: ["/events/anubhav-cmc-001.jpg"],
+    images: ["/og-cover.jpg"],
   },
   alternates: { canonical: "/camps" },
 };
@@ -82,7 +83,7 @@ export default function CampsPage() {
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        dangerouslySetInnerHTML={{ __html: jsonLdScript(jsonLd) }}
       />
       <Nav variant="light" />
       <main id="main">
@@ -141,7 +142,7 @@ export default function CampsPage() {
             >
               <Stat label="Camps" value={String(events.length)} />
               <Stat label="Frames in this gallery" value={String(images.length)} />
-              <Stat label="Districts touched" value="22 localities" />
+              <Stat label="Localities" value="22" />
               <Stat label="Tech" value="SamaBeat clip" />
             </div>
           </div>

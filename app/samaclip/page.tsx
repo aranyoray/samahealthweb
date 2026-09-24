@@ -4,6 +4,8 @@ import { Nav } from "../components/Nav";
 import { Footer } from "../components/Footer";
 import { RevealOnScroll } from "../components/Reveal";
 import { SamaClipFaq } from "./SamaClipFaq";
+import { GROUPS } from "./faq-data";
+import { jsonLdScript } from "../lib/jsonld";
 
 export const metadata: Metadata = {
   title: "SamaClip. One finger. 120 seconds. A full health screen.",
@@ -26,14 +28,14 @@ export const metadata: Metadata = {
     url: "/samaclip",
     siteName: "SamaHealth",
     type: "website",
-    images: [{ url: "/events/anubhav-cmc-001.jpg", width: 1200, height: 630, alt: "SamaHealth community screening" }],
+    images: [{ url: "/og-cover.jpg", width: 1200, height: 630, alt: "The Anubhav Life Care team at the planning table before a community camp in North 24 Parganas" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "SamaClip. One finger. 120 seconds. A full health screen.",
     description:
       "Battery-free fingertip sensor: anaemia, oxygen, diabetes risk, heart rhythm and autonomic vitals in one 120-second test, under ₹125 a person.",
-    images: ["/events/anubhav-cmc-001.jpg"],
+    images: ["/og-cover.jpg"],
   },
   alternates: { canonical: "/samaclip" },
 };
@@ -42,8 +44,27 @@ const DEMO = "mailto:hello@samahealth.in?subject=SamaClip%20demo%20request";
 const PARTNER = "mailto:hello@samahealth.in?subject=Partner%20with%20SamaHealth";
 
 export default function SamaClipPage() {
+  // Built from the same GROUPS the accordion renders, so the markup always
+  // matches the Q&A actually visible on the page.
+  const faqJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "@id": "https://samahealth.in/samaclip#faq",
+    mainEntity: GROUPS.flatMap((g) =>
+      g.items.map((item) => ({
+        "@type": "Question",
+        name: item.q,
+        acceptedAnswer: { "@type": "Answer", text: item.a },
+      }))
+    ),
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: jsonLdScript(faqJsonLd) }}
+      />
       <Nav variant="hero" />
       <main id="main">
         <Hero />
@@ -90,7 +111,7 @@ function Hero() {
           >
             One finger. 120 seconds. A full health screen.
           </h1>
-          <p style={{ marginTop: 26, fontSize: 19, color: "rgba(255,255,255,0.8)", lineHeight: 1.6, maxWidth: 620 }}>
+          <p style={{ marginTop: 26, fontSize: 19, color: "rgba(255,255,255,0.92)", lineHeight: 1.6, maxWidth: 620 }}>
             SamaClip is a battery-free, smartphone-powered sensor that screens for anaemia, oxygen, diabetes risk,
             heart rhythm and autonomic vitals in a single painless test. It is built for women and families across West
             Bengal, where more than half the women we see are anaemic and most have never been screened for heart or
@@ -102,7 +123,7 @@ function Hero() {
               See how it works
             </Link>
           </div>
-          <div style={{ marginTop: 30, display: "flex", alignItems: "center", gap: 10, color: "rgba(255,255,255,0.7)", fontSize: 13.5 }}>
+          <div style={{ marginTop: 30, display: "flex", alignItems: "center", gap: 10, color: "#fff", fontSize: 13.5 }}>
             <ShieldCheck />
             <span>Validated at an NABL-accredited diagnostic centre in Barasat, North 24 Parganas.</span>
           </div>
@@ -245,7 +266,7 @@ function StatStrip() {
     { n: "< ₹125", l: "Full screening per person, the cost of a bus ride" },
     { n: "120 sec", l: "One painless finger-clip test, no needle" },
     { n: "No plug", l: "Runs off a phone. No batteries, no charging" },
-    { n: "175", l: "Adults screened in our validation study at the centre" },
+    { n: "175", l: "Adults who completed our validation study at the centre" },
   ];
   return (
     <section style={{ background: "var(--paper)", borderBottom: "1px solid var(--ink-100)" }}>
@@ -445,7 +466,7 @@ function TriageSignal() {
                 <div style={{ fontSize: 12.5, color: "rgba(255,255,255,0.85)" }}>sputum testing, chest imaging</div>
               </div>
             </div>
-            <p style={{ marginTop: 16, fontSize: 12, color: "rgba(255,255,255,0.5)", lineHeight: 1.5 }}>
+            <p style={{ marginTop: 16, fontSize: 12, color: "rgba(255,255,255,0.72)", lineHeight: 1.5 }}>
               A triage and referral signal, never a diagnosis.
             </p>
           </div>
