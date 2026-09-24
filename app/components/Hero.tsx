@@ -3,29 +3,91 @@ import Image from "next/image";
 
 export function Hero() {
   return (
-    <section style={{ paddingTop: 120, paddingBottom: 24, borderBottom: "1px solid var(--ink-100)" }}>
-      <div className="container" style={{ paddingTop: 56, paddingBottom: 56 }}>
-        <div className="hero-grid" style={{ display: "grid", gridTemplateColumns: "1.05fr 0.95fr", gap: 56, alignItems: "center" }}>
+    <section
+      style={{
+        paddingTop: 128,
+        paddingBottom: 32,
+        borderBottom: "1px solid var(--ink-100)",
+      }}
+    >
+      <div className="container" style={{ paddingTop: 64, paddingBottom: 64, maxWidth: 1160 }}>
+        <div
+          className="hero-grid"
+          style={{
+            display: "grid",
+            gridTemplateColumns: "1.15fr 0.85fr",
+            gap: 72,
+            alignItems: "start",
+          }}
+        >
           <div>
-            <h1 style={{ fontSize: "clamp(38px, 6vw, 76px)" }}>
-              Non-invasive screening that finds illness early.
+            <h1
+              style={{
+                fontFamily: "var(--font-display)",
+                fontSize: "clamp(36px, 5vw, 68px)",
+                letterSpacing: "-0.032em",
+                lineHeight: 1.03,
+                maxWidth: 700,
+                fontWeight: 500,
+              }}
+            >
+              A fingertip reads the autonomic state. A lab confirms it. A clinic follows through.
             </h1>
-            <p style={{ marginTop: 26, fontSize: 19, lineHeight: 1.6, color: "var(--ink-500)", maxWidth: 560 }}>
-              SamaHealth brings painless, low-cost screening for anaemia, blood oxygen, heart rhythm
-              and diabetes risk to clinics and community camps across Barasat and North&nbsp;24 Parganas.
-              It is built around <strong style={{ color: "var(--ink)" }}>Anubhav Life Care</strong>, an
-              NABL-accredited diagnostic lab, so a flag becomes a confirmed test, and care, before a crisis.
+            <p
+              style={{
+                marginTop: 32,
+                fontSize: 19.5,
+                lineHeight: 1.62,
+                color: "var(--ink-500)",
+                maxWidth: 620,
+              }}
+            >
+              SamaClip is the two-minute fingertip screen behind{" "}
+              <strong style={{ color: "var(--ink)" }}>Anubhav Life Care</strong>&rsquo;s
+              cardiometabolic clinic in Barasat. From a single reading it derives
+              heart-rate variability, respiratory drive, oxygen saturation,
+              non-invasive haemoglobin and a rhythm flag — then routes anything
+              abnormal into the NABL-accredited diagnostic lab that sits behind it.
             </p>
-            <div style={{ display: "flex", gap: 14, marginTop: 32, flexWrap: "wrap" }}>
-              <Link href="/research" className="btn btn-primary">See how it’s validated</Link>
-              <Link href="/blog" className="btn btn-ghost">Read the journal</Link>
-            </div>
+            <p
+              className="mono"
+              style={{
+                marginTop: 26,
+                fontSize: 12.5,
+                letterSpacing: "0.02em",
+                color: "var(--ink-400)",
+              }}
+            >
+              Validated on n = 175 paired screens · rolling cohort ≈ 3,200 patients ·
+              Barasat, North 24 Parganas
+            </p>
 
-            <dl className="hero-facts" style={{ display: "flex", gap: 36, marginTop: 44, flexWrap: "wrap", margin: "44px 0 0" }}>
-              <Fact n="175" l="paired screens validated" />
-              <Fact n="~2 min" l="per fingertip screen" />
-              <Fact n="≈ $1.50" l="per screen" />
-            </dl>
+            <div style={{ marginTop: 44, display: "flex", gap: 28, flexWrap: "wrap" }}>
+              <Link
+                href="#signal"
+                style={{
+                  fontSize: 15,
+                  fontWeight: 500,
+                  color: "var(--ink)",
+                  borderBottom: "1px solid var(--ink)",
+                  paddingBottom: 2,
+                }}
+              >
+                What the screen reads →
+              </Link>
+              <Link
+                href="#triage"
+                style={{
+                  fontSize: 15,
+                  fontWeight: 500,
+                  color: "var(--ink-500)",
+                  borderBottom: "1px solid var(--ink-200)",
+                  paddingBottom: 2,
+                }}
+              >
+                How it triages →
+              </Link>
+            </div>
           </div>
 
           <figure style={{ margin: 0 }}>
@@ -33,30 +95,30 @@ export function Hero() {
                 reserved box matches and nothing reflows once it decodes. */}
             <Image
               src="/events/anubhav-cmc-001.jpg"
-              alt="The Anubhav Life Care team at the planning table before a community camp in North 24 Parganas"
-              width={939}
-              height={1280}
-              priority
-              sizes="(max-width: 900px) 100vw, 45vw"
-              style={{ width: "100%", height: "auto", borderRadius: 18, border: "1px solid var(--ink-100)", display: "block" }}
+              alt="Anubhav Life Care team screening donors at a community camp in North 24 Parganas"
+              width={920}
+              height={690}
+              style={{
+                width: "100%",
+                height: "auto",
+                borderRadius: 14,
+                border: "1px solid var(--ink-100)",
+                display: "block",
+              }}
             />
+            <figcaption
+              style={{ marginTop: 12, fontSize: 12.5, color: "var(--ink-400)" }}
+            >
+              North 24 Parganas · community screening camp.
+            </figcaption>
           </figure>
         </div>
       </div>
       <style>{`
         @media (max-width: 900px) {
-          .hero-grid { grid-template-columns: 1fr !important; gap: 36px !important; }
+          .hero-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
         }
       `}</style>
     </section>
-  );
-}
-
-function Fact({ n, l }: { n: string; l: string }) {
-  return (
-    <div>
-      <dt style={{ fontFamily: "var(--font-display)", fontSize: 32, fontWeight: 600, color: "var(--ink)", letterSpacing: "-0.025em", lineHeight: 1 }}>{n}</dt>
-      <dd style={{ margin: 0, fontSize: 13, marginTop: 8, color: "var(--ink-400)", maxWidth: 130 }}>{l}</dd>
-    </div>
   );
 }
