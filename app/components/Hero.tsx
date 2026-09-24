@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 export function Hero() {
   return (
@@ -90,8 +91,9 @@ export function Hero() {
           </div>
 
           <figure style={{ margin: 0 }}>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
+            {/* LCP image: intrinsic size is the file's real 939x1280, so the
+                reserved box matches and nothing reflows once it decodes. */}
+            <Image
               src="/events/anubhav-cmc-001.jpg"
               alt="Anubhav Life Care team screening donors at a community camp in North 24 Parganas"
               width={920}

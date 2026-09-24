@@ -4,6 +4,24 @@ import matter from "gray-matter";
 import { marked } from "marked";
 
 const BLOG_DIR = path.join(process.cwd(), "content", "blog");
+const PUBLIC_DIR = path.join(process.cwd(), "public");
+
+// Social card used when a post's front-matter `image` has no file behind it.
+export const FALLBACK_IMAGE = "/og-cover.jpg";
+export const FALLBACK_IMAGE_ALT =
+  "The Anubhav Life Care team at the planning table before a community camp in North 24 Parganas";
+
+// Front matter names a hero image per post, but those files are not all in the
+// repo yet. Pointing og:image at a 404 is worse than falling back, so only keep
+// the declared path when the asset actually exists.
+function resolveImage(image: string): string {
+  if (!image.startsWith("/")) return "";
+  try {
+    return fs.existsSync(path.join(PUBLIC_DIR, image)) ? image : FALLBACK_IMAGE;
+  } catch {
+    return FALLBACK_IMAGE;
+  }
+}
 
 export type PostMeta = {
   title: string;
@@ -36,6 +54,11 @@ function readRaw(slug: string) {
 }
 
 function toMeta(slug: string, data: Record<string, unknown>): PostMeta {
+  const declared = String(data.image ?? "");
+  const image = resolveImage(declared);
+  // If the declared art is missing we show the shared card, so the declared
+  // alt no longer describes the image on screen — fall back to both together.
+  const usedFallback = image === FALLBACK_IMAGE && declared !== FALLBACK_IMAGE;
   return {
     title: String(data.title ?? slug),
     slug: String(data.slug ?? slug),
@@ -45,8 +68,10 @@ function toMeta(slug: string, data: Record<string, unknown>): PostMeta {
     tags: (data.tags as string[]) ?? [],
     author: String(data.author ?? "SamaHealth Team"),
     category: String(data.category ?? "Public Health"),
-    image: String(data.image ?? ""),
-    imageAlt: String(data.imageAlt ?? ""),
+    image,
+    imageAlt: usedFallback
+      ? FALLBACK_IMAGE_ALT
+      : String(data.imageAlt ?? "") || FALLBACK_IMAGE_ALT,
     sdg: (data.sdg as number[]) ?? [],
     related: (data.related as string[]) ?? [],
   };
@@ -65,8 +90,17 @@ export function getAllPostsMeta(): PostMeta[] {
     .sort((a, b) => (a.date < b.date ? 1 : a.date > b.date ? -1 : 0));
 }
 
+// Every post opens with an `# ` title that repeats the front-matter title. The
+// page already renders that title as the sole <h1>, so keeping the markdown one
+// would emit a second H1 and print the headline twice.
+function stripLeadingH1(md: string): string {
+  const lead = md.match(/^\s*#\s+.+?(?:\n|$)/);
+  return lead ? md.slice(lead[0].length).trimStart() : md;
+}
+
 export function getPostBySlug(slug: string): Post {
-  const { data, content } = matter(readRaw(slug));
+  const { data, content: raw } = matter(readRaw(slug));
+  const content = stripLeadingH1(raw);
   const meta = toMeta(slug, data);
   const html = marked.parse(content, { async: false }) as string;
   return {
@@ -174,7 +208,7 @@ export function postJsonLd(post: Post) {
         "@type": "Organization",
         name: "SamaHealth",
         url: SITE,
-        logo: { "@type": "ImageObject", url: `${SITE}/logo.png` },
+        logo: { "@type": "ImageObject", url: `${SITE}/logo.png`, width: 512, height: 512 },
       },
     },
   ];
