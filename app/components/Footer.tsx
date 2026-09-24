@@ -25,8 +25,8 @@ export function Footer() {
 
           <Col title="Platform" links={[
             { href: "/samaclip", label: "SamaClip" },
-            { href: "/parakhTB", label: "ParakhTB · TB triage" },
-            { href: "/#outcomes", label: "Hub-and-spoke" },
+            { href: "/#signal", label: "Autonomic vitals" },
+            { href: "/#triage", label: "Disease triage" },
             { href: "/camps", label: "Field camps" },
           ]} />
           <Col title="Science" links={[
