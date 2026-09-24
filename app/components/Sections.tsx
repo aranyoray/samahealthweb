@@ -5,12 +5,6 @@ import Link from "next/link";
 /* ------------------------------------------------------------------ */
 
 export function CredibilityStrip() {
-  const items = [
-    "Anubhav Life Care. NABL-accredited lab",
-    "Barasat · North 24 Parganas, West Bengal",
-    "Painless, non-invasive. No needle, no fasting",
-    "Screening, not diagnosis",
-  ];
   return (
     <section style={{ borderBottom: "1px solid var(--ink-100)" }}>
       <div
@@ -42,12 +36,6 @@ export function AutonomicSignals() {
     ["Pulse transit time", "ms — BP surrogate", "ECG → PPG delay", "Cuff sphygmomanometer"],
     ["Rhythm — AF flag", "positive / negative", "Rhythm classifier on ECG", "Clinician-confirmed 12-lead"],
     ["Diabetes risk — HbA1c proxy", "%", "Multi-modal composite", "Mindray CL-900i CLIA"],
-export function WhatWeScreen() {
-  const items = [
-    { title: "Anaemia", body: "A non-invasive haemoglobin estimate, the single most common and most overlooked condition among women here." },
-    { title: "Blood oxygen (SpO₂)", body: "Oxygen saturation, validated to read consistently across skin tone." },
-    { title: "Heart rate & rhythm", body: "Pulse and an atrial-fibrillation flag, a silent, stroke-causing rhythm people can’t feel." },
-    { title: "Diabetes risk", body: "An HbA1c-proxy signal that flags who should get a confirmatory blood test." },
   ];
   return (
     <section id="signal" style={{ padding: "112px 0" }}>
@@ -283,21 +271,6 @@ export function DiseaseTriage() {
               >
                 Field camps →
               </Link>
-export function HowItWorks() {
-  const steps = [
-    { n: "1", title: "Screen", body: "A health worker takes a painless fingertip reading at a camp, an antenatal visit, or the clinic. No needle, no fasting, results in minutes." },
-    { n: "2", title: "Confirm", body: "Anything flagged is confirmed against the gold-standard instruments in the NABL-accredited lab at Anubhav Life Care. A flag is never a diagnosis." },
-    { n: "3", title: "Follow up", body: "Confirmed patients start treatment and are tracked over time, with a re-screen schedule and the SamaBeat band, so the intervention is checked, not just prescribed." },
-  ];
-  return (
-    <section className="section reveal" style={{ background: "var(--paper-2)" }}>
-      <div className="container">
-        <h2 style={{ maxWidth: 760 }}>From a flag to confirmed care</h2>
-        <div className="grid grid-3" style={{ marginTop: 48 }}>
-          {steps.map((s) => (
-            <div key={s.n} className="card" style={{ padding: 32 }}>
-              <h3 style={{ fontSize: 24 }}>{s.title}</h3>
-              <p style={{ marginTop: 12, color: "var(--ink-500)", fontSize: 15 }}>{s.body}</p>
             </div>
           </div>
 
@@ -345,11 +318,6 @@ function TriageFlow() {
       note: "Closes the loop; picks up non-responders",
       dot: "var(--brand-deep)",
     },
-export function Reach() {
-  const items = [
-    { title: "A trusted hub", body: "An NABL-accredited diagnostic centre anchors the work, so every screening flag has a real lab behind it." },
-    { title: "Spokes that travel", body: "Community camps, antenatal visits, and school screening days run by locally trained operators. Care that goes to people instead of waiting for them." },
-    { title: "The last mile", body: "Free transport for pregnant and elderly patients closes the gap between a flag and the confirmatory test that follows it." },
   ];
   return (
     <div
@@ -472,8 +440,6 @@ export function Quote() {
           &ldquo;What the screen really changes is the front door. It brings people
           to confirmatory testing who would never have come on their own — and the
           haemoglobin estimates track our lab closely.&rdquo;
-          “What the screen really changes is the front door. It brings people to confirmatory testing
-          who would never have come on their own, and the haemoglobin estimates track our lab closely.”
         </blockquote>
         <div
           className="mono"
@@ -544,18 +510,6 @@ export function CTA() {
               hello@samahealth.in
             </a>
           </div>
-    <section id="contact" className="section reveal" style={{ background: "var(--ink)", color: "#fff" }}>
-      <div className="container" style={{ maxWidth: 760 }}>
-        <h2 style={{ color: "#fff" }}>Bring screening to your programme</h2>
-        <p style={{ marginTop: 20, color: "rgba(255,255,255,0.72)", fontSize: 18, maxWidth: 600 }}>
-          We work with clinicians, public-health programmes, and community organisations across
-          West Bengal. Send a note. We reply within two working days.
-        </p>
-        <div style={{ display: "flex", flexWrap: "wrap", gap: 14, marginTop: 32 }}>
-          <Link href="mailto:hello@samahealth.in" className="btn btn-light">hello@samahealth.in</Link>
-          <Link href="/research" className="btn" style={{ background: "transparent", color: "#fff", border: "1px solid rgba(255,255,255,0.45)" }}>
-            See the validation
-          </Link>
         </div>
       </div>
       <style>{`
