@@ -34,6 +34,7 @@ export function Footer() {
             { href: "/research#lab", label: "The lab & devices" },
             { href: "/data#anemia", label: "Anaemia dashboard" },
             { href: "/data#tb", label: "Tuberculosis dashboard" },
+            { href: "/diabetes", label: "Diabetes follow-up" },
             { href: "/blog", label: "Journal" },
           ]} />
           <Col title="Company" links={[
