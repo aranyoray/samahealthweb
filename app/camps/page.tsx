@@ -3,12 +3,13 @@ import { Footer } from "../components/Footer";
 import { RevealOnScroll } from "../components/Reveal";
 import { CampGallery } from "../components/CampGallery";
 import data from "../events-data.json";
+import { jsonLdScript } from "../lib/jsonld";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Blood donation camps — Anubhav CMC × SamaBeat",
+  title: "Blood donation camps. Anubhav CMC × SamaBeat",
   description:
-    "Anubhav Cardiometabolic Clinic at 30+ blood donation camps across North 24 Parganas — free fasting/random sugar, anemia, and body-composition screening on the SamaBeat 5-wavelength PPG + ECG + BIA clip. Donor camps across Ranaghat, Barasat, Barrackpore, Birati, Madhyamgram, Ashoknagar, Habra, Kalyani and more.",
+    "Anubhav Cardiometabolic Clinic at 30 blood donation camps across North 24 Parganas. Free fasting/random sugar, anemia, and body-composition screening on the SamaBeat 5-wavelength PPG + ECG + BIA clip. Donor camps across Ranaghat, Barasat, Barrackpore, Birati, Madhyamgram, Ashoknagar, Habra, Kalyani and more.",
   keywords: [
     "blood donation camp North 24 Parganas",
     "Barasat blood donation",
@@ -19,19 +20,19 @@ export const metadata: Metadata = {
     "Ranaghat Barasat Barrackpore Birati Madhyamgram blood camp",
   ],
   openGraph: {
-    title: "30 blood donation camps — Anubhav CMC × SamaBeat",
+    title: "30 blood donation camps. Anubhav CMC × SamaBeat",
     description:
       "Anubhav Cardiometabolic Clinic ran free pre-donation screening (sugar, anemia, body composition) at 30 donor camps across North 24 Parganas. Field gallery of 209 frames.",
     url: "/camps",
     siteName: "SamaHealth",
     type: "website",
-    images: [{ url: "/events/anubhav-cmc-001.jpg", width: 1200, height: 630, alt: "Anubhav CMC team at a blood donation camp" }],
+    images: [{ url: "/og-cover.jpg", width: 1200, height: 630, alt: "The Anubhav Life Care team at the planning table before a community camp in North 24 Parganas" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "30 blood donation camps — Anubhav CMC × SamaBeat",
+    title: "30 blood donation camps. Anubhav CMC × SamaBeat",
     description: "Field gallery from 30 donor camps across North 24 Parganas. Free cardiometabolic screening on SamaBeat clip.",
-    images: ["/events/anubhav-cmc-001.jpg"],
+    images: ["/og-cover.jpg"],
   },
   alternates: { canonical: "/camps" },
 };
@@ -59,7 +60,7 @@ export default function CampsPage() {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "ImageGallery",
-    name: "Anubhav CMC blood donation camps — field gallery",
+    name: "Anubhav CMC blood donation camps. Field gallery",
     description:
       "Photo gallery from 30 blood donation camps across North 24 Parganas, with free cardiometabolic screening from the SamaBeat 5-wavelength PPG + ECG + BIA clip.",
     url: "https://samahealth.in/camps",
@@ -67,7 +68,7 @@ export default function CampsPage() {
     isPartOf: { "@type": "WebSite", name: "SamaHealth", url: "https://samahealth.in" },
     about: events.map((ev) => ({
       "@type": "Event",
-      name: `Blood donation camp — ${ev.location}`,
+      name: `Blood donation camp at ${ev.location}`,
       location: { "@type": "Place", name: ev.location, addressRegion: "West Bengal", addressCountry: "IN" },
       organizer: ev.independent
         ? { "@type": "Organization", name: "Anubhav Cardiometabolic Clinic" }
@@ -82,7 +83,7 @@ export default function CampsPage() {
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        dangerouslySetInnerHTML={{ __html: jsonLdScript(jsonLd) }}
       />
       <Nav variant="light" />
       <main id="main">
@@ -115,7 +116,7 @@ export default function CampsPage() {
               }}
             >
               Anubhav Cardiometabolic Clinic ran free pre-donation screening at
-              donor camps across North 24 Parganas — fasting / random sugar,
+              donor camps across North 24 Parganas: fasting / random sugar,
               hemoglobin & anemia, and full body composition (fat mass, muscle
               mass, hydration) from the{" "}
               <a
@@ -141,7 +142,7 @@ export default function CampsPage() {
             >
               <Stat label="Camps" value={String(events.length)} />
               <Stat label="Frames in this gallery" value={String(images.length)} />
-              <Stat label="Districts touched" value="22 localities" />
+              <Stat label="Localities" value="22" />
               <Stat label="Tech" value="SamaBeat clip" />
             </div>
           </div>

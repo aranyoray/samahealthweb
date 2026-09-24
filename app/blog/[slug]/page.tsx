@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { jsonLdScript } from "../../lib/jsonld";
 import { Nav } from "../../components/Nav";
 import { Footer } from "../../components/Footer";
 import { RevealOnScroll } from "../../components/Reveal";
@@ -25,7 +26,9 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   try {
     post = getPostBySlug(slug);
   } catch {
-    return {};
+    // Unknown slug: the component calls notFound() below, but metadata resolves
+    // first — without this the 404 would inherit the homepage title.
+    return { title: "Page not found. SamaHealth", robots: { index: false, follow: false } };
   }
   const url = `${SITE}/blog/${post.slug}`;
   return {
@@ -65,7 +68,7 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
 
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLdScript(jsonLd) }} />
       <Nav variant="light" />
       <main id="main">
         <article>
@@ -79,7 +82,6 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
             </nav>
 
             <div style={{ display: "flex", gap: 12, alignItems: "center", flexWrap: "wrap", marginTop: 24 }}>
-              <span className="eyebrow">{post.category}</span>
               <span className="mono" style={{ fontSize: 12, color: "var(--ink-400)" }}>
                 {formatDate(post.date)} · {post.readingMinutes} min read
               </span>
@@ -104,13 +106,11 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
         {related.length > 0 && (
           <section className="section" style={{ paddingTop: 80 }}>
             <div className="container">
-              <div className="eyebrow" style={{ marginBottom: 8 }}>Related reading</div>
               <h2 style={{ fontSize: "clamp(26px, 3.4vw, 38px)", marginBottom: 32 }}>Keep going</h2>
               <div className="grid grid-3">
                 {related.map((p: PostMeta) => (
                   <Link key={p.slug} href={`/blog/${p.slug}`} className="card blog-card" style={{ display: "flex", flexDirection: "column", gap: 12, padding: 28 }}>
-                    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", gap: 10 }}>
-                      <span className="eyebrow" style={{ fontSize: 10 }}>{p.category}</span>
+                    <div style={{ display: "flex", justifyContent: "flex-end", alignItems: "baseline", gap: 10 }}>
                       <span className="mono" style={{ fontSize: 11, color: "var(--ink-400)", whiteSpace: "nowrap" }}>{formatDate(p.date)}</span>
                     </div>
                     <h3 style={{ fontSize: 20, lineHeight: 1.2 }}>{p.title}</h3>

@@ -3,7 +3,7 @@ import { Nav } from "./components/Nav";
 import { Footer } from "./components/Footer";
 
 export const metadata = {
-  title: "Page not found — SamaHealth",
+  title: "Page not found. SamaHealth",
 };
 
 export default function NotFound() {
@@ -22,18 +22,6 @@ export default function NotFound() {
         }}
       >
         <div style={{ maxWidth: 640, textAlign: "center" }}>
-          <div
-            className="mono"
-            style={{
-              fontSize: 12,
-              letterSpacing: "0.18em",
-              textTransform: "uppercase",
-              color: "var(--ink-400)",
-              marginBottom: 18,
-            }}
-          >
-            404
-          </div>
           <h1
             style={{
               fontFamily: "var(--font-display)",
@@ -44,7 +32,7 @@ export default function NotFound() {
               margin: 0,
             }}
           >
-            That page didn't make it to the clinic.
+            That page didn’t make it to the clinic.
           </h1>
           <p
             style={{
@@ -55,7 +43,7 @@ export default function NotFound() {
             }}
           >
             The link you followed may be old, mistyped, or pointing to something
-            we haven't published yet. Try one of these instead.
+            we haven’t published yet. Try one of these instead.
           </p>
           <div
             style={{
