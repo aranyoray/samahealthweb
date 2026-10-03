@@ -794,6 +794,10 @@ function Hero({ d }: { d: ReturnType<typeof getDashboard> }) {
         Synthetic cohort shaped like the AKTIV research mirror · {n(h.cohort)} people · 3.5 years to {fmtDay(d.asOf)} · no
         real patient data. The pipeline reads plain lab rows and runs unchanged on the live mirror.
       </p>
+      <p style={{ marginTop: 14, fontSize: 12, lineHeight: 1.5, color: "var(--ink-500)", maxWidth: 780 }}>
+        <strong>Demo data notice:</strong> All names, record IDs, dates, phone fragments and clinical values shown on this
+        page are fictional and made up for demonstration.
+      </p>
 
       <div className="dx-hero-stats">
         <Stat value={n(h.diabetes)} label="people with a diabetic-range result" />
