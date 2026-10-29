@@ -221,7 +221,8 @@ function blockKey(r: Rec): string {
   return r.name.given.slice(0, 3);
 }
 
-export function resolveIdentities(bills: Bill[]): Resolution {
+/** Reads only the registration fields, so any lab-row shape with these can be linked. */
+export function resolveIdentities(bills: Pick<Bill, "phone" | "name" | "sex" | "age" | "day">[]): Resolution {
   const cfg = IDENTITY_CONFIG;
   const recs: Rec[] = bills.map((b, idx) => {
     const np = normalizePhone(b.phone);

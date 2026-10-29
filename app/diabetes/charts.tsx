@@ -315,7 +315,9 @@ export function StackedColumns({
   height?: number;
 }) {
   const max = Math.max(...columns.map((c) => c.values.reduce((s, v) => s + v, 0)));
-  const nice = Math.ceil(max / 1000) * 1000;
+  // Round the axis up to a tidy step that suits the cohort size.
+  const stepSize = max >= 1000 ? 1000 : max >= 400 ? 200 : 50;
+  const nice = Math.max(stepSize, Math.ceil(max / stepSize) * stepSize);
   const ticks = [0, nice / 2, nice];
   return (
     <div className="dx-stack" role="img" aria-label="Monthly status of people with diabetes, stacked columns">

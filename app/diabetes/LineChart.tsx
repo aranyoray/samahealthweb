@@ -9,17 +9,19 @@ import { fmtDay } from "./lib/rng";
 
 // Formatters are named, not passed as functions, so server components can
 // render this chart (functions do not cross the server/client boundary).
-export type XKind = "month" | "quarter" | "day";
-export type YKind = "pct" | "a1c";
+export type XKind = "month" | "quarter" | "day" | "since";
+export type YKind = "pct" | "a1c" | "num";
 
 const X_FORMAT: Record<XKind, (x: number) => string> = {
   month: (x) => `${x} months after first diabetic result`,
   quarter: (q) => `Months ${q * 3} to ${q * 3 + 3} after first diabetic result`,
   day: (d) => fmtDay(d),
+  since: (x) => `${x} months after first abnormal result`,
 };
 const Y_FORMAT: Record<YKind, (y: number) => string> = {
   pct: (y) => `${Math.round(y)}%`,
   a1c: (y) => `${y.toFixed(1)}%`,
+  num: (y) => `${Math.round(y * 10) / 10}`,
 };
 
 export type Series = {

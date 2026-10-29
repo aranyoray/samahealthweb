@@ -27,44 +27,44 @@ const HOUSEHOLDS = 5200;
 /* Name pools (West Bengal, North 24 Parganas)                          */
 /* ------------------------------------------------------------------ */
 
-const HINDU_M = [
+export const HINDU_M = [
   "Anirban", "Subhajit", "Sanjay", "Tapas", "Biswajit", "Prosenjit", "Debasish", "Swapan",
   "Nirmal", "Gopal", "Asit", "Sukumar", "Rajib", "Sujit", "Amit", "Partha", "Samir", "Tarun",
   "Ashok", "Dilip", "Kartik", "Shyamal", "Uttam", "Pintu", "Kamal", "Pradip", "Manas", "Arup",
   "Goutam", "Bikash", "Nitai", "Haripada", "Sankar", "Ranjit", "Nemai", "Kalyan", "Sourav",
   "Arindam", "Indranil", "Tushar",
 ] as const;
-const HINDU_F = [
+export const HINDU_F = [
   "Rina", "Mousumi", "Shampa", "Swati", "Soma", "Anjali", "Rupa", "Mitali", "Mampi", "Tumpa",
   "Chhanda", "Kakali", "Sikha", "Laxmi", "Gita", "Anima", "Minati", "Jharna", "Putul",
   "Sharmistha", "Ruma", "Moumita", "Papiya", "Tanushree", "Arpita", "Sutapa", "Jayanti", "Bani",
   "Chaitali", "Madhumita", "Sumitra", "Aparna", "Dipali", "Kalpana", "Malati", "Pratima",
   "Sabita", "Namita", "Shefali", "Tapati",
 ] as const;
-const MUSLIM_M = [
+export const MUSLIM_M = [
   "Rafiqul", "Jahangir", "Abdul", "Habibur", "Mofizul", "Nazrul", "Sirajul", "Anwar", "Jamal",
   "Kamrul", "Mizanur", "Saidul", "Ashraf", "Motiur", "Rezaul", "Samsul", "Abul", "Hafizul",
   "Aminul", "Mustafa",
 ] as const;
-const MUSLIM_F = [
+export const MUSLIM_F = [
   "Sabina", "Rehana", "Nasrin", "Farida", "Salma", "Rokeya", "Jahanara", "Mumtaz", "Nurjahan",
   "Sahanara", "Rahima", "Hasina", "Ayesha", "Firoza", "Mariam", "Sultana", "Ruksana", "Tahmina",
   "Parveen", "Shahnaz",
 ] as const;
-const HINDU_SUR = [
+export const HINDU_SUR = [
   "Das", "Ghosh", "Mondal", "Sarkar", "Biswas", "Saha", "Dey", "Roy", "Mukherjee", "Banerjee",
   "Chatterjee", "Bose", "Halder", "Paul", "Sen", "Dutta", "Karmakar", "Naskar", "Majumder",
   "Chakraborty", "Bhattacharya", "Pramanik", "Adhikari", "Mitra", "Guha", "Kundu", "Barman",
   "Mistri", "Bag", "Sil",
 ] as const;
-const MUSLIM_SUR = [
+export const MUSLIM_SUR = [
   "Islam", "Molla", "Khan", "Ali", "Hossain", "Rahaman", "Gazi", "Mondal", "Sardar", "Mallick",
   "Uddin", "Laskar",
 ] as const;
-const MUSLIM_F_SUR = ["Bibi", "Khatun", "Begum"] as const;
+export const MUSLIM_F_SUR = ["Bibi", "Khatun", "Begum"] as const;
 
 /** Spellings the front desk actually produces for the same name. */
-const VARIANTS: Record<string, string[]> = {
+export const VARIANTS: Record<string, string[]> = {
   Rafiqul: ["Rafikul", "Rofiqul"],
   Mousumi: ["Moushumi", "Mausumi"],
   Shampa: ["Sampa", "Shompa"],
@@ -111,7 +111,7 @@ const VARIANTS: Record<string, string[]> = {
   Molla: ["Mollah"],
 };
 
-const REFERRERS = [
+export const REFERRERS = [
   "Dr. S. Ghosh (Medicine)",
   "Dr. R. Islam (Diabetology)",
   "Dr. P. Saha (Medicine)",
@@ -124,7 +124,7 @@ const REFERRERS = [
   "Dr. J. Das (Medicine)",
 ] as const;
 
-const JUNK_PHONES = [
+export const JUNK_PHONES = [
   "9999999999", "0000000000", "1234567890", "9876543210", "1111111111", "12345", "0", "NA",
   "N/A", "9000000000", "98", "8888888888", "-",
 ] as const;
@@ -158,14 +158,14 @@ type TruePerson = {
   hb0: number;
 };
 
-function mobile(rng: Rng): string {
+export function mobile(rng: Rng): string {
   const lead = rng.weighted([["9", 40], ["8", 25], ["7", 25], ["6", 10]] as const);
   let s = lead;
   for (let i = 0; i < 9; i++) s += String(rng.int(0, 9));
   return s;
 }
 
-function formatPhone(p: string, rng: Rng): string {
+export function formatPhone(p: string, rng: Rng): string {
   return rng.weighted([
     [p, 70],
     [`+91 ${p.slice(0, 5)} ${p.slice(5)}`, 10],
@@ -256,7 +256,7 @@ function newPerson(
   };
 }
 
-function typedName(p: TruePerson, rng: Rng): string {
+export function typedName(p: Pick<TruePerson, "sex" | "prefix" | "first" | "surname">, rng: Rng): string {
   const tokens: string[] = [];
   if (p.sex === "F") {
     const h = rng.weighted([["", 84], ["Smt", 11], ["Mrs", 5]] as const);
@@ -293,14 +293,14 @@ function typedName(p: TruePerson, rng: Rng): string {
   ] as const);
 }
 
-function typedAge(trueAge: number, rng: Rng): number {
+export function typedAge(trueAge: number, rng: Rng): number {
   const r = rng.next();
   if (r < 0.7) return trueAge;
   if (r < 0.9) return trueAge + (rng.chance(0.5) ? 1 : -1);
   return Math.round(trueAge / 5) * 5;
 }
 
-function typedSex(sex: "F" | "M", rng: Rng): Sex {
+export function typedSex(sex: "F" | "M", rng: Rng): Sex {
   const r = rng.next();
   if (r < 0.975) return sex;
   if (r < 0.995) return "";
