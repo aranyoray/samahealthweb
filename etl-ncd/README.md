@@ -87,11 +87,45 @@ Each row holds:
 
 The /ncd page's pipeline links visits into people and computes the follow-up figures. Running it on these CSVs on this PC gives totals and percentages only, with no names, phones or rows. Those are what get committed to replace the simulated cohort. This step is built once step 2 has produced real files, so it can be checked against them.
 
+## What the first run on the clinic PC taught us (2026-10-29)
+
+- `*_DTLS.PARAMETER` holds the **method line** ("METHOD : GOD-POD"), not the analyte name. The analyte is
+  `MAST_DESCRIPTION.DESCRIPTION` via `DESCRIPTION_KEY`; `ncd_mapping.json` now points there and the
+  export prefers the master name. Rows with `DESCRIPTION_KEY` NULL/−1 are layout rows (RESULT "." or blank).
+- The detail rows' own `BILL_KEY` column is **never filled**; every result table reaches the bill through
+  its `*_HEAD` on `REPORT_KEY`. The export now always joins the head.
+- `NORMALRANGE` is empty; ranges are `LOWER_RANGE`/`UPPER_RANGE`. Cancelled bills are `BILLCANCEL`.
+- Install-specific names: `PLASMA GLUCOSE (F)`, `PLATELETS COUNT` (unit **Lakh/cu.mm**, ×100 for the page's
+  10³/µL), `THYROXINE, FREE (FT4)`, `MICROALBUMIN / CREATININE RATIO` (ug/mg = mg/g).
+- `ncd_tests.py` also carries EXTENDED codes (PP/random glucose, total cholesterol, uric acid, urea, Hb, T3/T4,
+  ALP/GGT/bilirubin/albumin, CRP, vitamin D, B12, cardiac markers, PSA…). The page ignores codes it does not know.
+
+## Raw pull and the NCD burden analysis
+
+`ncd_pull_raw.py` pulls **every** structured result (same rails as the export) plus bills, ordered tests,
+imaging report headers and masters to `out/raw/` in about 40 seconds. `analysis/` then runs offline:
+
+```cmd
+python ncd_pull_raw.py                      :: after 20:00 IST, on the clinic PC
+python analysis\build_dataset.py            :: link bills into people; out\dataset\*.parquet
+python analysis\analyse.py                  :: conditions, prevalence, network, CKM, progression; out\results\
+python analysis\report_data.py              :: one JSON blob for the report
+python analysis\build_report.py             :: out\results\ncd_burden_report.html + analysis\results\RESULTS.md
+```
+
+`analysis/narrative/` holds the rule-based extractors that turn ultrasound and echo report text into flags
+(fatty-liver grade, renal parenchymal change, LVEF, LVH…). They read narrative tables, which this ETL's
+contract excludes, so they are separate scripts that run only on the clinic PC and emit flags, never text.
+`analysis/results/` is the only output that is committed: aggregates with no patient-level rows.
+
 ## Files
 
 | File | Purpose |
 | --- | --- |
 | `ncd_extract.py` | `--introspect` and `--export`. |
 | `ncd_tests.py` | Which tests and parameter names count, and how each maps to a code. Run `python ncd_tests.py` to self-check. |
+| `ncd_pull_raw.py` | Full structured pull for the analysis (bills, ordered tests, every analyte, report headers, masters). |
+| `ncd_introspect.json`, `ncd_mapping.json` | Introspect output and the reviewed, confirmed mapping for this install. |
+| `analysis/` | Person linking, condition definitions, prevalence / network / CKM / progression, report builder. |
 | `requirements.txt` | `pyodbc`, `python-dotenv`. |
 | `.env.example` | AKTIV connection names. |

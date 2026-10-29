@@ -236,7 +236,8 @@ def cmd_introspect(args) -> None:
     print(f"NCD tests matched in MAST_TEST: {len(tests)}  {by_cond}")
 
     # Result tables: *_HEAD / *_DTLS families plus anything that looks like a parameter master.
-    wanted = [t for t in tables if re.search(r"_(HEAD|DTLS)$", t, re.I) or re.search(r"PARAM|MAST_TEST", t, re.I)]
+    # AKTIV calls the analyte master MAST_DESCRIPTION (DESCRIPTION = analyte, PARAMETER = method line).
+    wanted = [t for t in tables if re.search(r"_(HEAD|DTLS)$", t, re.I) or re.search(r"PARAM|MAST_TEST|MAST_DESCRIPTION", t, re.I)]
     wanted += [t for t in ("BILL_HEAD", "BILL_TEST_DTLS", "MAST_PATIENT", "MAST_PATIENT_FAMILY_DTLS") if t in tables]
     wanted = sorted({t for t in wanted if not NARRATIVE_TABLE.search(t)})
 
@@ -253,9 +254,10 @@ def cmd_introspect(args) -> None:
         names = [c["name"] for c in info["columns"]]
         if not re.match(r"MAST_", t, re.I) or re.search(r"PATIENT", t, re.I):
             continue
-        name_col = first(names, r"PARAM.*NAME", r"^PARAMETER$", r"PARAM", r"ITEM.*NAME", r"TEST.*NAME")
-        key_col = first(names, r"PARAM.*KEY", r"ITEM.*KEY", r"_KEY$")
-        if not name_col or not key_col or not re.search(r"PARAM|ITEM", t + name_col, re.I):
+        # ^DESCRIPTION$ first: on AKTIV the PARAMETER column of the master is the method text.
+        name_col = first(names, r"^DESCRIPTION$", r"PARAM.*NAME", r"^PARAMETER$", r"PARAM", r"ITEM.*NAME", r"TEST.*NAME")
+        key_col = first(names, r"^DESCRIPTION_KEY$", r"PARAM.*KEY", r"ITEM.*KEY", r"_KEY$")
+        if not name_col or not key_col or not re.search(r"PARAM|ITEM|DESCRIPTION", t + name_col, re.I):
             continue
         cur.execute(f"SELECT TOP 3000 {q(key_col)}, {q(name_col)} FROM {q(t)}")
         rows = [(r[0], str(r[1] or "").strip()) for r in cur.fetchall()]
@@ -292,7 +294,7 @@ def propose_mapping(schema: dict, param_samples: dict) -> dict:
         "phone": first(bh, r"MOBILE", r"PHONE", r"CONTACT", exclude=r"DOCTOR|DR_|REF|AGENT"),
         "age": first(bh, r"^AGE$", r"AGE", exclude=r"PAGE|STAGE|PACKAGE|IMAGE"),
         "sex": first(bh, r"^SEX$", r"GENDER", r"SEX"),
-        "cancelled": first(bh, r"CANCEL", r"DELETE"),
+        "cancelled": first(bh, r"^BILLCANCEL$", r"CANCEL", r"DELETE", exclude=r"AMOUNT|REMARK|DATE"),
         "cancelled_when": None,
     }
 
@@ -318,12 +320,12 @@ def propose_mapping(schema: dict, param_samples: dict) -> dict:
             "report_date_in": "head" if first(hc, r"REPORT.*DATE", r"AUTH.*DATE", r"APPROV.*DATE", r"RESULT.*DATE", exclude=r"MODIF") else "dtls",
             "test_key": first(c, r"^TEST_KEY$") or first(hc, r"^TEST_KEY$"),
             "test_key_in": "dtls" if first(c, r"^TEST_KEY$") else "head",
-            "parameter_key": first(c, r"PARAM.*KEY", r"ITEM.*KEY", r"SUB.*TEST.*KEY"),
+            "parameter_key": first(c, r"^DESCRIPTION_KEY$", r"PARAM.*KEY", r"ITEM.*KEY", r"SUB.*TEST.*KEY"),
             "parameter_name": first(c, r"PARAM.*NAME", r"^PARAMETER$", r"ITEM.*NAME", r"SUB.*TEST.*NAME"),
             "value": value,
             "unit": first(c, r"UNIT"),
-            "ref_low": first(c, r"(NORMAL|REF|RANGE).*(LOW|MIN|FROM)", r"^(LOW|MIN)"),
-            "ref_high": first(c, r"(NORMAL|REF|RANGE).*(HIGH|MAX|TO)", r"^(HIGH|MAX)"),
+            "ref_low": first(c, r"(NORMAL|REF|RANGE).*(LOW|MIN|FROM)", r"^(LOW|MIN)", r"^LOWER"),
+            "ref_high": first(c, r"(NORMAL|REF|RANGE).*(HIGH|MAX|TO)", r"^(HIGH|MAX)", r"^UPPER"),
             "ref_text": first(c, r"NORMAL", r"REF.*RANGE", r"RANGE"),
             "flag": first(c, r"FLAG", r"ABNORMAL", r"^HL$", r"H_?L"),
         })
@@ -358,7 +360,8 @@ def load_mapping() -> dict:
         for k, col in r.items():
             if k in ("table", "head_table") or not col:
                 continue
-            if NARRATIVE_COL.search(col) and k != "ref_text":
+            # DESCRIPTION_KEY is a foreign key into the analyte master, not free text.
+            if NARRATIVE_COL.search(col) and k != "ref_text" and not col.upper().endswith("_KEY"):
                 raise SystemExit(f"{r['table']}.{col} looks like a free-text column; remove it from the mapping.")
     return m
 
@@ -467,7 +470,9 @@ def read_results(cur, spec: dict, bills: dict, params: dict, test_names: dict) -
     }
     sel = [f"d.{q(c)} AS {q(k)}" for k, c in pick.items() if c and k != "test_key"]
     in_head = lambda k: spec.get(k) and spec.get(f"{k}_in") == "head"  # noqa: E731
-    need_head = bool(head) and (not spec.get("bill_key") or in_head("test_key") or in_head("report_date"))
+    # Always go through the *_HEAD when there is one: on AKTIV the detail row's own
+    # BILL_KEY column exists but is never filled, so only the head knows the bill.
+    need_head = bool(head) and bool(spec.get("head_bill_key"))
     if not spec.get("bill_key") and not (head and spec.get("report_key")):
         print(f"  skip {t}: no way to reach BILL_KEY in the mapping")
         return []
@@ -479,7 +484,12 @@ def read_results(cur, spec: dict, bills: dict, params: dict, test_names: dict) -
         else:
             on = f"h.{q(spec['head_bill_key'])} = d.{q(spec['bill_key'])}"
         joins = f" JOIN {q(head)} h ON {on}"
-    bill_expr = f"d.{q(spec['bill_key'])}" if spec.get("bill_key") else f"h.{q(spec['head_bill_key'])}"
+    if need_head and spec.get("bill_key"):
+        bill_expr = f"COALESCE(NULLIF(d.{q(spec['bill_key'])}, 0), h.{q(spec['head_bill_key'])})"
+    elif need_head:
+        bill_expr = f"h.{q(spec['head_bill_key'])}"
+    else:
+        bill_expr = f"d.{q(spec['bill_key'])}"
     sel.append(f"{bill_expr} AS [bill_key]")
     if spec.get("test_key"):
         sel.append(f"{'h' if in_head('test_key') else 'd'}.{q(spec['test_key'])} AS [test_key]")
@@ -492,7 +502,9 @@ def read_results(cur, spec: dict, bills: dict, params: dict, test_names: dict) -
         names = [d[0] for d in cur.description]
         for r in cur.fetchall():
             x = dict(zip(names, r))
-            pname = x.get("parameter_name") or params.get(x.get("parameter_key")) or ""
+            # The master name is canonical. On AKTIV the row's own PARAMETER column
+            # holds the method line ("METHOD : GOD-POD"), so it is only a fallback.
+            pname = params.get(x.get("parameter_key")) or x.get("parameter_name") or ""
             code = code_for_parameter(pname)
             if not code:
                 continue

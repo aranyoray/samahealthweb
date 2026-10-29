@@ -5,3 +5,6 @@ out/
 *.csv
 __pycache__/
 *.log
+
+# Aggregate results are committed; they hold counts and percentages only
+!analysis/results/*.csv

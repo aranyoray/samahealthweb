@@ -1,0 +1,1689 @@
+{
+  "generated": "2026-10-29T21:14:02",
+  "population": {
+    "persons_total": 115829,
+    "adults": 102882,
+    "children_under18": 12947,
+    "bills": 174520,
+    "adult_female_pct": 63.844015474038216,
+    "adult_median_age": 40.0,
+    "adults_by_age_band": {
+      "18-29": 27283,
+      "30-44": 32402,
+      "45-59": 23179,
+      "60-74": 16223,
+      "75+": 3795
+    },
+    "adults_with_2plus_visits": 27448,
+    "adults_followed_1yr_plus": 9371,
+    "adults_tested": {
+      "Diabetes": 24915,
+      "Prediabetes": 24915,
+      "Dyslipidaemia": 8936,
+      "High TG": 8936,
+      "Low HDL": 8936,
+      "High LDL": 8936,
+      "Hyperuricaemia": 6213,
+      "Fatty liver": 29488,
+      "CKD (eGFR<60)": 15136,
+      "Albuminuria": 1180,
+      "Proteinuria (dipstick)": 6216,
+      "Transaminitis": 10412,
+      "FIB-4 indet/high": 3784,
+      "Hypothyroid": 14962,
+      "Anaemia": 21521,
+      "Raised CRP": 4078,
+      "LVH": 7984,
+      "Diastolic dysfn": 7984,
+      "Structural heart dis.": 7984,
+      "IHD (echo)": 7984,
+      "Renal USG changes": 56495,
+      "Vit D deficiency": 1835
+    },
+    "date_range": [
+      "2022-10-29",
+      "2026-10-29"
+    ],
+    "numeric_results": 435472,
+    "echo_reports": 8883,
+    "usg_reports": 81776
+  },
+  "cascade": {
+    "dm_n": 7843,
+    "dm_with_hba1c_pct": 36.605890603085555,
+    "dm_hba1c_control_dist_pct": {
+      "<7": 37.0254266805991,
+      "7-7.9": 26.053639846743295,
+      "8-8.9": 14.768373389063044,
+      "9-9.9": 8.11563915012191,
+      ">=10": 14.036920933472658
+    },
+    "dm_hba1c_ge8_pct": 13.515236516639039,
+    "dm_egfr_tested_pct": 47.838837179650646,
+    "dm_acr_tested_pct": 7.191125844702283,
+    "dm_lipid_tested_pct": 31.65880402907051,
+    "dm_usg_liver_pct": 18.997832462068086,
+    "dm_echo_pct": 9.231161545327044,
+    "dm_ckd_pct_among_egfr_tested": 17.217484008528785,
+    "dm_albuminuria_pct_among_acr_tested": 53.191489361702125,
+    "dm_fatty_pct_among_usg": 77.78523489932886,
+    "dm_ldl_above70_pct": 18.71732755323218,
+    "dm_ldl_above100_pct": 11.092694122147137,
+    "ckd_n": 1975,
+    "ckd_with_acr_pct": 13.518987341772151,
+    "ckd_g_stage_dist": {
+      "G3a": 860,
+      "G3b": 483,
+      "G4": 308,
+      "G5": 218,
+      "G2": 81,
+      "G1": 25
+    },
+    "ckd_anaemia_pct": 82.70308123249299,
+    "nonckd_anaemia_pct": 57.05002578648788,
+    "fatty_n": 15434,
+    "fatty_grade_dist": {
+      "1": 11978,
+      "2": 2422,
+      "3": 87
+    },
+    "fatty_with_lft_pct": 16.107295581184395,
+    "fatty_transaminitis_pct": 42.518101367658886,
+    "fatty_fib4_indet_plus_pct": 37.8727634194831,
+    "fatty_dm_pct_among_gly_tested": 34.81525983778913,
+    "nonfatty_dm_pct_among_gly_tested": 15.38104089219331,
+    "echo_n": 7984,
+    "lvef_dist_pct": {
+      "<40": 2.3891857906318767,
+      "40-49": 4.086765168186105,
+      "50-54": 2.8292989625903804,
+      ">=55": 90.69475007859164
+    }
+  },
+  "ckm": {
+    "n_evaluable": 52671,
+    "stage_counts": {
+      "0": 22776,
+      "1": 17192,
+      "2": 10803,
+      "3": 1515,
+      "4": 385
+    },
+    "stage_pct": {
+      "0": 43.242011733211825,
+      "1": 32.640352376070325,
+      "2": 20.510337757019993,
+      "3": 2.8763456171327677,
+      "4": 0.7309525165650927
+    },
+    "by_age_pct": {
+      "18-29": {
+        "0": 73.40289398562851,
+        "1": 21.823014076188603,
+        "2": 4.468943793680481,
+        "3": 0.23624372477606065,
+        "4": 0.06890441972635102
+      },
+      "30-44": {
+        "0": 46.01274492287535,
+        "1": 37.58561133940802,
+        "2": 15.478530164969328,
+        "3": 0.7563575725090823,
+        "4": 0.16675600023822285
+      },
+      "45-59": {
+        "0": 30.14854340928757,
+        "1": 37.10700894144794,
+        "2": 28.252091145082204,
+        "3": 3.6054225555235075,
+        "4": 0.8869339486587827
+      },
+      "60-74": {
+        "0": 28.167115902964962,
+        "1": 30.935102633215838,
+        "2": 32.61455525606469,
+        "3": 6.50010366991499,
+        "4": 1.783122537839519
+      },
+      "75+": {
+        "0": 31.490711372904396,
+        "1": 24.195740824648844,
+        "2": 31.0829179882193,
+        "3": 10.73855913004078,
+        "4": 2.492070684186679
+      }
+    },
+    "by_age_n": {
+      "18-29": 10159,
+      "30-44": 16791,
+      "45-59": 13868,
+      "60-74": 9646,
+      "75+": 2207
+    },
+    "by_sex_pct": {
+      "F": {
+        "0": 47.48028045574058,
+        "1": 33.19143608363591,
+        "2": 16.695880806310253,
+        "3": 2.222361337172906,
+        "4": 0.4100413171403531
+      },
+      "M": {
+        "0": 36.708005597645126,
+        "1": 31.79076388553781,
+        "2": 26.39096655889591,
+        "3": 3.884572697003329,
+        "4": 1.2256912609178208
+      }
+    },
+    "echo_cross": {
+      "echo_n": 4319,
+      "shd_pct_if_dm": 14.088397790055248,
+      "shd_pct_if_no_dm_tested": 8.019375672766415,
+      "shd_pct_if_ckd": 26.141078838174277,
+      "shd_pct_if_no_ckd_tested": 8.50356294536817,
+      "lvh_pct_if_ckd": 41.49377593360996,
+      "lvh_pct_if_no_ckd_tested": 19.619952494061756,
+      "ef_lt50_pct_if_dm_and_ckd": 8.235294117647058
+    }
+  },
+  "multimorbidity": {
+    "domains": [
+      "Diabetes",
+      "Dyslipidaemia",
+      "CKD/albuminuria",
+      "Fatty liver",
+      "Hypothyroid",
+      "Anaemia",
+      "Hyperuricaemia",
+      "Structural heart dis.",
+      "Transaminitis"
+    ],
+    "min_tested_1": {
+      "persons": 61474,
+      "counts": {
+        "0": 23480,
+        "1": 26609,
+        "2": 7234,
+        "3": 2921,
+        "4": 1230
+      },
+      "pct": {
+        "0": 38.195009272212644,
+        "1": 43.28496600188698,
+        "2": 11.767576536421902,
+        "3": 4.751602303412825,
+        "4": 2.0008458860656537
+      },
+      "mean_conditions_per_tested_domain": 0.42110109397133183,
+      "by_age": {
+        "18-29": {
+          "persons": 12574,
+          "two_plus_pct": 9.121997773182757
+        },
+        "30-44": {
+          "persons": 19345,
+          "two_plus_pct": 16.428017575600933
+        },
+        "45-59": {
+          "persons": 15775,
+          "two_plus_pct": 22.136291600633914
+        },
+        "60-74": {
+          "persons": 11162,
+          "two_plus_pct": 25.147822970793765
+        },
+        "75+": {
+          "persons": 2618,
+          "two_plus_pct": 29.067990832696715
+        }
+      }
+    },
+    "min_tested_3": {
+      "persons": 20609,
+      "counts": {
+        "0": 3087,
+        "1": 7511,
+        "2": 5860,
+        "3": 2921,
+        "4": 1230
+      },
+      "pct": {
+        "0": 14.978892716774224,
+        "1": 36.44524236983842,
+        "2": 28.434179242078702,
+        "3": 14.173419379882576,
+        "4": 5.968266291426076
+      },
+      "mean_conditions_per_tested_domain": 0.3705065093305668,
+      "by_age": {
+        "18-29": {
+          "persons": 3735,
+          "two_plus_pct": 26.07764390896921
+        },
+        "30-44": {
+          "persons": 6153,
+          "two_plus_pct": 46.026328620185275
+        },
+        "45-59": {
+          "persons": 5583,
+          "two_plus_pct": 55.75855274941788
+        },
+        "60-74": {
+          "persons": 4130,
+          "two_plus_pct": 58.98305084745763
+        },
+        "75+": {
+          "persons": 1008,
+          "two_plus_pct": 65.07936507936508
+        }
+      }
+    },
+    "min_tested_5": {
+      "persons": 8031,
+      "counts": {
+        "0": 639,
+        "1": 2037,
+        "2": 2417,
+        "3": 1845,
+        "4": 1093
+      },
+      "pct": {
+        "0": 7.956667911841614,
+        "1": 25.36421367202092,
+        "2": 30.095878470925165,
+        "3": 22.973477773627195,
+        "4": 13.609762171585107
+      },
+      "mean_conditions_per_tested_domain": 0.36246237298721423,
+      "by_age": {
+        "18-29": {
+          "persons": 1016,
+          "two_plus_pct": 42.618110236220474
+        },
+        "30-44": {
+          "persons": 2435,
+          "two_plus_pct": 66.03696098562628
+        },
+        "45-59": {
+          "persons": 2477,
+          "two_plus_pct": 70.93257973354865
+        },
+        "60-74": {
+          "persons": 1721,
+          "two_plus_pct": 73.56188262638001
+        },
+        "75+": {
+          "persons": 382,
+          "two_plus_pct": 76.17801047120419
+        }
+      }
+    },
+    "top_combinations": [
+      [
+        "Dyslipidaemia + Anaemia",
+        647
+      ],
+      [
+        "Hypothyroid + Anaemia",
+        563
+      ],
+      [
+        "Anaemia + Transaminitis",
+        558
+      ],
+      [
+        "Diabetes + Anaemia",
+        546
+      ],
+      [
+        "Fatty liver + Anaemia",
+        542
+      ],
+      [
+        "Diabetes + Dyslipidaemia",
+        483
+      ],
+      [
+        "CKD/albuminuria + Anaemia",
+        304
+      ],
+      [
+        "Dyslipidaemia + Transaminitis",
+        252
+      ],
+      [
+        "Dyslipidaemia + Fatty liver",
+        251
+      ],
+      [
+        "Fatty liver + Transaminitis",
+        243
+      ],
+      [
+        "Diabetes + Fatty liver",
+        230
+      ],
+      [
+        "Diabetes + Dyslipidaemia + Anaemia",
+        230
+      ],
+      [
+        "Dyslipidaemia + Hypothyroid",
+        189
+      ],
+      [
+        "Diabetes + CKD/albuminuria + Anaemia",
+        188
+      ],
+      [
+        "Dyslipidaemia + Fatty liver + Anaemia",
+        168
+      ],
+      [
+        "Diabetes + Fatty liver + Anaemia",
+        155
+      ],
+      [
+        "Dyslipidaemia + Fatty liver + Transaminitis",
+        140
+      ],
+      [
+        "Dyslipidaemia + Hypothyroid + Anaemia",
+        139
+      ],
+      [
+        "Anaemia + Hyperuricaemia",
+        120
+      ],
+      [
+        "Dyslipidaemia + Hyperuricaemia",
+        119
+      ],
+      [
+        "Fatty liver + Anaemia + Transaminitis",
+        118
+      ],
+      [
+        "Diabetes + CKD/albuminuria",
+        106
+      ],
+      [
+        "Fatty liver + Hypothyroid + Anaemia",
+        104
+      ],
+      [
+        "Diabetes + Hypothyroid",
+        104
+      ],
+      [
+        "Diabetes + Dyslipidaemia + Fatty liver",
+        102
+      ]
+    ],
+    "given_condition": {
+      "Diabetes": {
+        "n": 4468,
+        "mean_other_conditions": 1.549686660698299,
+        "two_plus_other_pct": 47.26947179946285
+      },
+      "Dyslipidaemia": {
+        "n": 5417,
+        "mean_other_conditions": 1.4592948126269152,
+        "two_plus_other_pct": 43.71423297027876
+      },
+      "CKD/albuminuria": {
+        "n": 1817,
+        "mean_other_conditions": 1.9444138690148596,
+        "two_plus_other_pct": 64.22674738580078
+      },
+      "Fatty liver": {
+        "n": 4004,
+        "mean_other_conditions": 1.5526973026973028,
+        "two_plus_other_pct": 47.4025974025974
+      },
+      "Hypothyroid": {
+        "n": 2682,
+        "mean_other_conditions": 1.5365398956002982,
+        "two_plus_other_pct": 44.81730052199851
+      },
+      "Anaemia": {
+        "n": 9901,
+        "mean_other_conditions": 1.0317139682860317,
+        "two_plus_other_pct": 28.704171295828708
+      },
+      "Hyperuricaemia": {
+        "n": 1439,
+        "mean_other_conditions": 1.7894371091035441,
+        "two_plus_other_pct": 56.91452397498262
+      },
+      "Structural heart dis.": {
+        "n": 297,
+        "mean_other_conditions": 1.8080808080808082,
+        "two_plus_other_pct": 57.91245791245792
+      },
+      "Transaminitis": {
+        "n": 3240,
+        "mean_other_conditions": 1.5194444444444444,
+        "two_plus_other_pct": 44.87654320987654
+      }
+    }
+  },
+  "progression": {
+    "hba1c": {
+      "persons_repeat": 610,
+      "median_gap_years": 1.0335386721423683,
+      "worsened_0.5_pct": 25.573770491803277,
+      "improved_0.5_pct": 29.836065573770494,
+      "mean_annual_change": -0.23697006613426333,
+      "uncontrolled_first_pct": 22.459016393442624,
+      "uncontrolled_last_pct": 17.704918032786885,
+      "still_uncontrolled_among_first_uncontrolled_pct": 49.63503649635037
+    },
+    "fbs": {
+      "persons_repeat": 3413,
+      "prediabetic_first_n": 1000,
+      "pre_to_diabetic_range_pct": 25.7,
+      "pre_to_diabetic_rate_per_100py": 18.97655758815669,
+      "pre_reverted_to_normal_pct": 24.0,
+      "normal_first_n": 1208,
+      "normal_to_diabetic_range_pct": 10.099337748344372,
+      "normal_to_prediabetic_pct": 25.496688741721858,
+      "normal_to_diabetic_rate_per_100py": 7.719686365274274
+    },
+    "egfr": {
+      "persons_slope": 1277,
+      "median_followup_years": 1.3169062286105406,
+      "mean_slope_ml_min_yr": -2.3935787722832322,
+      "median_slope": -2.295193399065249,
+      "rapid_decline_pct(<=-5/yr)": 35.630383711824585,
+      "new_ckd_pct(first>=60,last<60)": 6.342991386061081,
+      "ckd_persisted_pct(first<60,last<60)": 78.53881278538812
+    },
+    "egfr_incidence_by_group": {
+      "diabetes": {
+        "at_risk": 496,
+        "events": 47,
+        "person_years": 789.1991786447638,
+        "rate_per_100py": 5.955404069313629,
+        "mean_slope": -4.07798483948324
+      },
+      "no diabetes (tested)": {
+        "at_risk": 504,
+        "events": 26,
+        "person_years": 706.7186858316221,
+        "rate_per_100py": 3.678974466255245,
+        "mean_slope": -2.9450227420767847
+      },
+      "fatty liver": {
+        "at_risk": 267,
+        "events": 24,
+        "person_years": 422.5516769336071,
+        "rate_per_100py": 5.679778666165599,
+        "mean_slope": -4.046814679480553
+      },
+      "hyperuricaemia": {
+        "at_risk": 139,
+        "events": 14,
+        "person_years": 224.24640657084188,
+        "rate_per_100py": 6.243132371254854,
+        "mean_slope": -5.046239419649012
+      }
+    },
+    "ldl": {
+      "persons_repeat": 942,
+      "rose_30_pct": 8.81104033970276,
+      "fell_30_pct": 23.56687898089172,
+      "above130_first_pct": 20.169851380042463,
+      "still_above130_among_first_above_pct": 33.68421052631579
+    },
+    "tg": {
+      "persons_repeat": 961,
+      "rose_to_high_pct(first<150,last>=150)": 18.37121212121212,
+      "stayed_high_pct": 62.355658198614314
+    },
+    "tsh": {
+      "persons_repeat": 1795,
+      "subclinical_first_n": 570,
+      "sub_to_overt_pct(>10)": 3.1578947368421053,
+      "sub_normalised_pct": 55.96491228070175,
+      "sub_persisted_pct": 35.96491228070175
+    },
+    "hb": {
+      "persons_repeat": 2386,
+      "fell_1g_pct": 18.189438390611905,
+      "rose_1g_pct": 19.78206202849958
+    },
+    "alt": {
+      "persons_repeat": 786,
+      "normal_to_raised_pct(first<=40,last>40)": 15.587044534412955,
+      "raised_persisted_pct": 58.56164383561644
+    }
+  },
+  "fatty_liver_progression": {
+    "persons_repeat_usg": 1765,
+    "median_gap_years": 1.2895277207392197,
+    "progressed_pct": 17.223796033994336,
+    "regressed_pct": 15.864022662889518,
+    "new_fatty_liver_pct(first 0, last >=1)": 26.838709677419352,
+    "n_first_normal": 775
+  },
+  "network": {
+    "nodes": [
+      {
+        "node": "Diabetes",
+        "weighted_degree": 5.633716850860202,
+        "eigenvector_centrality": 0.15250457693083624,
+        "degree": 11
+      },
+      {
+        "node": "Dyslipidaemia",
+        "weighted_degree": 1.8512766815210324,
+        "eigenvector_centrality": 0.020762482772997196,
+        "degree": 4
+      },
+      {
+        "node": "High TG",
+        "weighted_degree": 4.967266219832667,
+        "eigenvector_centrality": 0.0964455360865297,
+        "degree": 8
+      },
+      {
+        "node": "Low HDL",
+        "weighted_degree": 2.645918385225613,
+        "eigenvector_centrality": 0.056410642594958205,
+        "degree": 5
+      },
+      {
+        "node": "Fatty liver",
+        "weighted_degree": 4.037070320176518,
+        "eigenvector_centrality": 0.04351781563555275,
+        "degree": 7
+      },
+      {
+        "node": "CKD (eGFR<60)",
+        "weighted_degree": 13.788691291219521,
+        "eigenvector_centrality": 0.4678087156972861,
+        "degree": 14
+      },
+      {
+        "node": "Albuminuria",
+        "weighted_degree": 8.437983359176146,
+        "eigenvector_centrality": 0.43045902483364423,
+        "degree": 6
+      },
+      {
+        "node": "Proteinuria (dipstick)",
+        "weighted_degree": 12.83094725048678,
+        "eigenvector_centrality": 0.4980129754892261,
+        "degree": 8
+      },
+      {
+        "node": "Transaminitis",
+        "weighted_degree": 4.501907328003061,
+        "eigenvector_centrality": 0.0760205925485754,
+        "degree": 7
+      },
+      {
+        "node": "Raised CRP",
+        "weighted_degree": 4.2895391787627775,
+        "eigenvector_centrality": 0.16298114433643732,
+        "degree": 6
+      },
+      {
+        "node": "LVH",
+        "weighted_degree": 1.6352813006687907,
+        "eigenvector_centrality": 0.021275518904829368,
+        "degree": 3
+      },
+      {
+        "node": "Diastolic dysfn",
+        "weighted_degree": 4.292438602878608,
+        "eigenvector_centrality": 0.10858927590559443,
+        "degree": 5
+      },
+      {
+        "node": "Hyperuricaemia",
+        "weighted_degree": 4.189877967883798,
+        "eigenvector_centrality": 0.12366690918721016,
+        "degree": 7
+      },
+      {
+        "node": "Prediabetes",
+        "weighted_degree": 0.3670231041829252,
+        "eigenvector_centrality": 0.005791649063406841,
+        "degree": 1
+      },
+      {
+        "node": "High LDL",
+        "weighted_degree": 1.2164982968128,
+        "eigenvector_centrality": 0.016703641283705453,
+        "degree": 2
+      },
+      {
+        "node": "Renal USG changes",
+        "weighted_degree": 9.259298514875251,
+        "eigenvector_centrality": 0.41191470139017455,
+        "degree": 7
+      },
+      {
+        "node": "FIB-4 indet/high",
+        "weighted_degree": 2.0867382995549235,
+        "eigenvector_centrality": 0.04622416338549311,
+        "degree": 3
+      },
+      {
+        "node": "Hypothyroid",
+        "weighted_degree": 0.3987961132417704,
+        "eigenvector_centrality": 0.023805147361072792,
+        "degree": 1
+      },
+      {
+        "node": "Anaemia",
+        "weighted_degree": 4.2328632547613845,
+        "eigenvector_centrality": 0.2085741557799986,
+        "degree": 6
+      },
+      {
+        "node": "Structural heart dis.",
+        "weighted_degree": 2.5403576411633755,
+        "eigenvector_centrality": 0.10524275008812838,
+        "degree": 3
+      },
+      {
+        "node": "IHD (echo)",
+        "weighted_degree": 2.5709341773135366,
+        "eigenvector_centrality": 0.10582646787975847,
+        "degree": 3
+      },
+      {
+        "node": "Vit D deficiency",
+        "weighted_degree": 1.682322440834334,
+        "eigenvector_centrality": 0.10690567459504612,
+        "degree": 1
+      }
+    ],
+    "edges": [
+      {
+        "a": "Diabetes",
+        "b": "Dyslipidaemia",
+        "adj_or": 1.3788692377838934,
+        "log_or": 0.3364474648008222
+      },
+      {
+        "a": "Diabetes",
+        "b": "High TG",
+        "adj_or": 1.7064522647601772,
+        "log_or": 0.546016180396823
+      },
+      {
+        "a": "Diabetes",
+        "b": "Low HDL",
+        "adj_or": 1.3333331312869972,
+        "log_or": 0.29380014295939805
+      },
+      {
+        "a": "Diabetes",
+        "b": "Fatty liver",
+        "adj_or": 2.286404591112744,
+        "log_or": 0.8458926769717406
+      },
+      {
+        "a": "Diabetes",
+        "b": "CKD (eGFR<60)",
+        "adj_or": 1.7931765030947968,
+        "log_or": 0.589043241055761
+      },
+      {
+        "a": "Diabetes",
+        "b": "Albuminuria",
+        "adj_or": 1.7115912534963642,
+        "log_or": 0.5399196683369719
+      },
+      {
+        "a": "Diabetes",
+        "b": "Proteinuria (dipstick)",
+        "adj_or": 2.338399354845987,
+        "log_or": 0.8494666589193715
+      },
+      {
+        "a": "Diabetes",
+        "b": "Transaminitis",
+        "adj_or": 1.343107250976479,
+        "log_or": 0.3301625856084466
+      },
+      {
+        "a": "Diabetes",
+        "b": "Raised CRP",
+        "adj_or": 1.4040706150457076,
+        "log_or": 0.34807943453792034
+      },
+      {
+        "a": "Diabetes",
+        "b": "LVH",
+        "adj_or": 1.4828586582530607,
+        "log_or": 0.3939717506252043
+      },
+      {
+        "a": "Diabetes",
+        "b": "Diastolic dysfn",
+        "adj_or": 1.7522786850043806,
+        "log_or": 0.5609170466477426
+      },
+      {
+        "a": "Dyslipidaemia",
+        "b": "Hyperuricaemia",
+        "adj_or": 1.4557346125890105,
+        "log_or": 0.3755106615875304
+      },
+      {
+        "a": "Dyslipidaemia",
+        "b": "Fatty liver",
+        "adj_or": 1.9465169858456892,
+        "log_or": 0.6660416143830805
+      },
+      {
+        "a": "Dyslipidaemia",
+        "b": "Transaminitis",
+        "adj_or": 1.5995881354104793,
+        "log_or": 0.4732769407495993
+      },
+      {
+        "a": "High TG",
+        "b": "Low HDL",
+        "adj_or": 2.6275282008928107,
+        "log_or": 0.9660435566867511
+      },
+      {
+        "a": "High TG",
+        "b": "High LDL",
+        "adj_or": 2.0497058897662055,
+        "log_or": 0.7176963144510115
+      },
+      {
+        "a": "High TG",
+        "b": "Hyperuricaemia",
+        "adj_or": 1.606972912025376,
+        "log_or": 0.4743522303752092
+      },
+      {
+        "a": "High TG",
+        "b": "Fatty liver",
+        "adj_or": 2.0002080999030776,
+        "log_or": 0.6932512250986633
+      },
+      {
+        "a": "High TG",
+        "b": "CKD (eGFR<60)",
+        "adj_or": 1.4727034756304596,
+        "log_or": 0.4270517874585393
+      },
+      {
+        "a": "High TG",
+        "b": "Albuminuria",
+        "adj_or": 1.916665870403108,
+        "log_or": 0.6505871506992065
+      },
+      {
+        "a": "High TG",
+        "b": "Transaminitis",
+        "adj_or": 1.621669216590629,
+        "log_or": 0.49226777466646354
+      },
+      {
+        "a": "Low HDL",
+        "b": "Fatty liver",
+        "adj_or": 1.4074298518457828,
+        "log_or": 0.34289613314066186
+      },
+      {
+        "a": "Low HDL",
+        "b": "CKD (eGFR<60)",
+        "adj_or": 1.4683558383538933,
+        "log_or": 0.39093600415358526
+      },
+      {
+        "a": "Low HDL",
+        "b": "Raised CRP",
+        "adj_or": 1.9198413420670688,
+        "log_or": 0.6522425482852167
+      },
+      {
+        "a": "Fatty liver",
+        "b": "Hyperuricaemia",
+        "adj_or": 1.5970377697743128,
+        "log_or": 0.4719821592217227
+      },
+      {
+        "a": "Fatty liver",
+        "b": "Transaminitis",
+        "adj_or": 1.7839295057862758,
+        "log_or": 0.5845387725704103
+      },
+      {
+        "a": "Fatty liver",
+        "b": "LVH",
+        "adj_or": 1.5410557581676603,
+        "log_or": 0.43246773879023875
+      },
+      {
+        "a": "CKD (eGFR<60)",
+        "b": "Hyperuricaemia",
+        "adj_or": 2.9197440006730653,
+        "log_or": 1.0714959414344885
+      },
+      {
+        "a": "CKD (eGFR<60)",
+        "b": "Albuminuria",
+        "adj_or": 4.442846112784134,
+        "log_or": 1.495550516482316
+      },
+      {
+        "a": "CKD (eGFR<60)",
+        "b": "Proteinuria (dipstick)",
+        "adj_or": 6.699825225505461,
+        "log_or": 1.9020814403112278
+      },
+      {
+        "a": "CKD (eGFR<60)",
+        "b": "Transaminitis",
+        "adj_or": 1.9129244844657805,
+        "log_or": 0.6486332147525519
+      },
+      {
+        "a": "CKD (eGFR<60)",
+        "b": "FIB-4 indet/high",
+        "adj_or": 1.533582681408596,
+        "log_or": 0.4293661382093784
+      },
+      {
+        "a": "CKD (eGFR<60)",
+        "b": "Hypothyroid",
+        "adj_or": 1.4900297902915618,
+        "log_or": 0.3987961132417704
+      },
+      {
+        "a": "CKD (eGFR<60)",
+        "b": "Anaemia",
+        "adj_or": 2.7886323164050144,
+        "log_or": 1.0255512664676463
+      },
+      {
+        "a": "CKD (eGFR<60)",
+        "b": "Raised CRP",
+        "adj_or": 2.314031182889373,
+        "log_or": 0.8389911044323614
+      },
+      {
+        "a": "CKD (eGFR<60)",
+        "b": "Structural heart dis.",
+        "adj_or": 2.337482696120507,
+        "log_or": 0.8699598420041122
+      },
+      {
+        "a": "CKD (eGFR<60)",
+        "b": "IHD (echo)",
+        "adj_or": 2.2672257032294945,
+        "log_or": 0.8358806031827416
+      },
+      {
+        "a": "CKD (eGFR<60)",
+        "b": "Renal USG changes",
+        "adj_or": 17.555268039030263,
+        "log_or": 2.8653540780330418
+      },
+      {
+        "a": "Albuminuria",
+        "b": "Proteinuria (dipstick)",
+        "adj_or": 35.117087379638626,
+        "log_or": 3.558687831946165
+      },
+      {
+        "a": "Albuminuria",
+        "b": "Anaemia",
+        "adj_or": 2.044006051849738,
+        "log_or": 0.7225295581917494
+      },
+      {
+        "a": "Albuminuria",
+        "b": "Renal USG changes",
+        "adj_or": 4.352318247136054,
+        "log_or": 1.4707086335197375
+      },
+      {
+        "a": "Proteinuria (dipstick)",
+        "b": "Anaemia",
+        "adj_or": 2.31503407012219,
+        "log_or": 0.8394244045453186
+      },
+      {
+        "a": "Proteinuria (dipstick)",
+        "b": "Raised CRP",
+        "adj_or": 3.4755719554266853,
+        "log_or": 1.2475848072039788
+      },
+      {
+        "a": "Proteinuria (dipstick)",
+        "b": "Renal USG changes",
+        "adj_or": 5.10786820836378,
+        "log_or": 1.630782136812339
+      },
+      {
+        "a": "Proteinuria (dipstick)",
+        "b": "Vit D deficiency",
+        "adj_or": 4.9954662156937895,
+        "log_or": 1.682322440834334
+      },
+      {
+        "a": "Proteinuria (dipstick)",
+        "b": "Diastolic dysfn",
+        "adj_or": 3.066686092611486,
+        "log_or": 1.1205975299140454
+      },
+      {
+        "a": "Transaminitis",
+        "b": "FIB-4 indet/high",
+        "adj_or": 4.004003892584538,
+        "log_or": 1.3903179659363896
+      },
+      {
+        "a": "Transaminitis",
+        "b": "Raised CRP",
+        "adj_or": 1.7908852912709097,
+        "log_or": 0.5827100737192001
+      },
+      {
+        "a": "Raised CRP",
+        "b": "Anaemia",
+        "adj_or": 1.8467069831075809,
+        "log_or": 0.6199312105841005
+      },
+      {
+        "a": "LVH",
+        "b": "Diastolic dysfn",
+        "adj_or": 2.2183038925131306,
+        "log_or": 0.8088418112533478
+      },
+      {
+        "a": "Diastolic dysfn",
+        "b": "Structural heart dis.",
+        "adj_or": 2.437469423334719,
+        "log_or": 0.8909603795382494
+      },
+      {
+        "a": "Diastolic dysfn",
+        "b": "IHD (echo)",
+        "adj_or": 2.4871110985221443,
+        "log_or": 0.9111218355252234
+      },
+      {
+        "a": "Hyperuricaemia",
+        "b": "Prediabetes",
+        "adj_or": 1.4434312680299832,
+        "log_or": 0.3670231041829252
+      },
+      {
+        "a": "Hyperuricaemia",
+        "b": "High LDL",
+        "adj_or": 1.636393778807658,
+        "log_or": 0.4988019823617886
+      },
+      {
+        "a": "Hyperuricaemia",
+        "b": "Renal USG changes",
+        "adj_or": 2.5363141084912137,
+        "log_or": 0.9307118887201333
+      },
+      {
+        "a": "Renal USG changes",
+        "b": "Anaemia",
+        "adj_or": 1.8837608362012486,
+        "log_or": 0.7583726195634144
+      },
+      {
+        "a": "Renal USG changes",
+        "b": "Structural heart dis.",
+        "adj_or": 2.162180083251464,
+        "log_or": 0.779437419621014
+      },
+      {
+        "a": "Renal USG changes",
+        "b": "IHD (echo)",
+        "adj_or": 2.2360242434331026,
+        "log_or": 0.8239317386055716
+      },
+      {
+        "a": "FIB-4 indet/high",
+        "b": "Anaemia",
+        "adj_or": 1.3061112296450648,
+        "log_or": 0.26705419540915537
+      }
+    ],
+    "communities": [
+      [
+        "Diabetes",
+        "Dyslipidaemia",
+        "FIB-4 indet/high",
+        "Fatty liver",
+        "High LDL",
+        "High TG",
+        "Hyperuricaemia",
+        "Low HDL",
+        "Prediabetes",
+        "Transaminitis"
+      ],
+      [
+        "Albuminuria",
+        "Anaemia",
+        "CKD (eGFR<60)",
+        "Hypothyroid",
+        "Proteinuria (dipstick)",
+        "Raised CRP",
+        "Renal USG changes",
+        "Vit D deficiency"
+      ],
+      [
+        "Diastolic dysfn",
+        "IHD (echo)",
+        "LVH",
+        "Structural heart dis."
+      ]
+    ]
+  },
+  "prevalence_top": [
+    {
+      "condition": "MASLD among fatty liver with a metabolic test",
+      "category": "Metabolic",
+      "tested": 3627,
+      "positive": 2648,
+      "prevalence_pct": 73.00799558864075,
+      "ci_low": 71.53948674078194,
+      "ci_high": 74.42781736854634,
+      "age_sex_standardised_pct": 67.8051542292376,
+      "tested_share_of_adults_pct": 3.5253980288097044
+    },
+    {
+      "condition": "Dyslipidaemia (any)",
+      "category": "Metabolic",
+      "tested": 8936,
+      "positive": 6138,
+      "prevalence_pct": 68.68845120859444,
+      "ci_low": 67.71902858944769,
+      "ci_high": 69.6418123453626,
+      "age_sex_standardised_pct": 70.55320925665735,
+      "tested_share_of_adults_pct": 8.685678738749246
+    },
+    {
+      "condition": "Anaemia (WHO)",
+      "category": "Haematologic",
+      "tested": 21521,
+      "positive": 13253,
+      "prevalence_pct": 61.581710887040565,
+      "ci_low": 60.92983868161854,
+      "ci_high": 62.22944905037573,
+      "age_sex_standardised_pct": 59.80061767619794,
+      "tested_share_of_adults_pct": 20.918139227464472
+    },
+    {
+      "condition": "Diastolic dysfunction (any grade)",
+      "category": "Cardiac",
+      "tested": 7984,
+      "positive": 4620,
+      "prevalence_pct": 57.86573146292585,
+      "ci_low": 56.77908823818992,
+      "ci_high": 58.94480894074262,
+      "age_sex_standardised_pct": 43.5279227677532,
+      "tested_share_of_adults_pct": 7.760346805077662
+    },
+    {
+      "condition": "Fatty liver on USG",
+      "category": "Metabolic",
+      "tested": 29488,
+      "positive": 15434,
+      "prevalence_pct": 52.33993488876831,
+      "ci_low": 51.76959827926792,
+      "ci_high": 52.90966189958778,
+      "age_sex_standardised_pct": 51.287428294665354,
+      "tested_share_of_adults_pct": 28.661962248012287
+    },
+    {
+      "condition": "Albuminuria (UACR >= 30)",
+      "category": "Renal",
+      "tested": 1180,
+      "positive": 587,
+      "prevalence_pct": 49.74576271186441,
+      "ci_low": 46.89836673931779,
+      "ci_high": 52.59480869901787,
+      "age_sex_standardised_pct": 46.65178339946727,
+      "tested_share_of_adults_pct": 1.1469450438366284
+    },
+    {
+      "condition": "Low HDL",
+      "category": "Metabolic",
+      "tested": 8936,
+      "positive": 4120,
+      "prevalence_pct": 46.10564010743062,
+      "ci_low": 45.073980300935204,
+      "ci_high": 47.14064685755942,
+      "age_sex_standardised_pct": 50.17967730418855,
+      "tested_share_of_adults_pct": 8.685678738749246
+    },
+    {
+      "condition": "FIB-4 indeterminate or high",
+      "category": "Hepatic",
+      "tested": 3784,
+      "positive": 1628,
+      "prevalence_pct": 43.02325581395349,
+      "ci_low": 41.45357376601213,
+      "ci_high": 44.607089383154396,
+      "age_sex_standardised_pct": 27.51834434529911,
+      "tested_share_of_adults_pct": 3.678000038879493
+    },
+    {
+      "condition": "Raised CRP (> 6 mg/L)",
+      "category": "Inflammatory",
+      "tested": 4078,
+      "positive": 1664,
+      "prevalence_pct": 40.80431584109858,
+      "ci_low": 39.305206806647156,
+      "ci_high": 42.32073379820141,
+      "age_sex_standardised_pct": 39.717235796616855,
+      "tested_share_of_adults_pct": 3.963764312513365
+    },
+    {
+      "condition": "Vitamin D deficiency (< 20)",
+      "category": "Metabolic",
+      "tested": 1835,
+      "positive": 692,
+      "prevalence_pct": 37.71117166212534,
+      "ci_low": 35.52143957444863,
+      "ci_high": 39.95224994834659,
+      "age_sex_standardised_pct": 39.75816591535116,
+      "tested_share_of_adults_pct": 1.7835967418984857
+    },
+    {
+      "condition": "Hepatomegaly on USG",
+      "category": "Hepatic",
+      "tested": 29488,
+      "positive": 10892,
+      "prevalence_pct": 36.93705914270212,
+      "ci_low": 36.38792072485536,
+      "ci_high": 37.48960071144586,
+      "age_sex_standardised_pct": 36.204818512706424,
+      "tested_share_of_adults_pct": 28.661962248012287
+    },
+    {
+      "condition": "Transaminitis (ALT > 40 or AST > 35)",
+      "category": "Hepatic",
+      "tested": 10412,
+      "positive": 3811,
+      "prevalence_pct": 36.601997694967345,
+      "ci_low": 35.6818038578465,
+      "ci_high": 37.53207450988906,
+      "age_sex_standardised_pct": 35.63975446411706,
+      "tested_share_of_adults_pct": 10.120332030870317
+    },
+    {
+      "condition": "Triglycerides >= 150",
+      "category": "Metabolic",
+      "tested": 8936,
+      "positive": 3268,
+      "prevalence_pct": 36.57117278424351,
+      "ci_low": 35.57852814466423,
+      "ci_high": 37.5753586087655,
+      "age_sex_standardised_pct": 34.61555437677829,
+      "tested_share_of_adults_pct": 8.685678738749246
+    },
+    {
+      "condition": "Diabetes incl. unconfirmed",
+      "category": "Metabolic",
+      "tested": 24915,
+      "positive": 7843,
+      "prevalence_pct": 31.479028697571742,
+      "ci_low": 30.905223893932675,
+      "ci_high": 32.05854405264795,
+      "age_sex_standardised_pct": 26.07603332444027,
+      "tested_share_of_adults_pct": 24.217064209482707
+    },
+    {
+      "condition": "Obstructive ventilatory defect (PFT)",
+      "category": "Respiratory",
+      "tested": 548,
+      "positive": 169,
+      "prevalence_pct": 30.83941605839416,
+      "ci_low": 27.117206899739905,
+      "ci_high": 34.828394881640826,
+      "age_sex_standardised_pct": 26.747002737882216,
+      "tested_share_of_adults_pct": 0.5326490542563325
+    },
+    {
+      "condition": "Moderate-severe anaemia (Hb < 11)",
+      "category": "Haematologic",
+      "tested": 21521,
+      "positive": 6591,
+      "prevalence_pct": 30.62590028344408,
+      "ci_low": 30.01356319067414,
+      "ci_high": 31.24515287811217,
+      "age_sex_standardised_pct": 29.21366607642946,
+      "tested_share_of_adults_pct": 20.918139227464472
+    },
+    {
+      "condition": "Hyperuricaemia",
+      "category": "Metabolic",
+      "tested": 6213,
+      "positive": 1745,
+      "prevalence_pct": 28.086270722678254,
+      "ci_low": 26.982547430370502,
+      "ci_high": 29.217076507289402,
+      "age_sex_standardised_pct": 25.633244074800015,
+      "tested_share_of_adults_pct": 6.038957251997434
+    },
+    {
+      "condition": "Thyroid dysfunction (any)",
+      "category": "Thyroid",
+      "tested": 14962,
+      "positive": 3976,
+      "prevalence_pct": 26.573987434834915,
+      "ci_low": 25.87225943408109,
+      "ci_high": 27.287741938644917,
+      "age_sex_standardised_pct": 26.25897287243888,
+      "tested_share_of_adults_pct": 14.542874360918333
+    },
+    {
+      "condition": "Prostatomegaly on USG (men 40+)",
+      "category": "Urological",
+      "tested": 9797,
+      "positive": 2600,
+      "prevalence_pct": 26.53873634786159,
+      "ci_low": 25.67371842226339,
+      "ci_high": 27.422146324698737,
+      "age_sex_standardised_pct": 18.958176469257616,
+      "tested_share_of_adults_pct": 9.52255982581987
+    },
+    {
+      "condition": "Subclinical remodelling (LVH / DD>=II / dilated LA)",
+      "category": "Cardiac",
+      "tested": 7984,
+      "positive": 2039,
+      "prevalence_pct": 25.538577154308616,
+      "ci_low": 24.593944373462325,
+      "ci_high": 26.5067384442841,
+      "age_sex_standardised_pct": 18.174916293878717,
+      "tested_share_of_adults_pct": 7.760346805077662
+    },
+    {
+      "condition": "Restrictive ventilatory defect (PFT)",
+      "category": "Respiratory",
+      "tested": 548,
+      "positive": 133,
+      "prevalence_pct": 24.27007299270073,
+      "ci_low": 20.86771436439998,
+      "ci_high": 28.030665170597015,
+      "age_sex_standardised_pct": 24.85412252972562,
+      "tested_share_of_adults_pct": 0.5326490542563325
+    },
+    {
+      "condition": "Prediabetes (latest)",
+      "category": "Metabolic",
+      "tested": 24915,
+      "positive": 5992,
+      "prevalence_pct": 24.04976921533213,
+      "ci_low": 23.52309987141241,
+      "ci_high": 24.5844397663852,
+      "age_sex_standardised_pct": 21.91609059607564,
+      "tested_share_of_adults_pct": 24.217064209482707
+    },
+    {
+      "condition": "Hypothyroidism (any)",
+      "category": "Thyroid",
+      "tested": 14962,
+      "positive": 3575,
+      "prevalence_pct": 23.893864456623447,
+      "ci_low": 23.21731601652411,
+      "ci_high": 24.583815327803364,
+      "age_sex_standardised_pct": 23.689410692120187,
+      "tested_share_of_adults_pct": 14.542874360918333
+    },
+    {
+      "condition": "Atherogenic dyslipidaemia (TG high + low HDL)",
+      "category": "Metabolic",
+      "tested": 8936,
+      "positive": 1989,
+      "prevalence_pct": 22.258281110116382,
+      "ci_low": 21.407808567768107,
+      "ci_high": 23.13259581702546,
+      "age_sex_standardised_pct": 21.796710053616998,
+      "tested_share_of_adults_pct": 8.685678738749246
+    },
+    {
+      "condition": "LV hypertrophy",
+      "category": "Cardiac",
+      "tested": 7984,
+      "positive": 1682,
+      "prevalence_pct": 21.067134268537075,
+      "ci_low": 20.186661764146827,
+      "ci_high": 21.97543619232743,
+      "age_sex_standardised_pct": 14.874412001023531,
+      "tested_share_of_adults_pct": 7.760346805077662
+    },
+    {
+      "condition": "Diabetes (confirmed)",
+      "category": "Metabolic",
+      "tested": 24915,
+      "positive": 4999,
+      "prevalence_pct": 20.064218342364036,
+      "ci_low": 19.57156300168787,
+      "ci_high": 20.566103750846885,
+      "age_sex_standardised_pct": 16.475319662933163,
+      "tested_share_of_adults_pct": 24.217064209482707
+    },
+    {
+      "condition": "Subclinical hypothyroidism (TSH 4.5-10)",
+      "category": "Thyroid",
+      "tested": 14962,
+      "positive": 2923,
+      "prevalence_pct": 19.53615826761128,
+      "ci_low": 18.908708035831605,
+      "ci_high": 20.17924810022693,
+      "age_sex_standardised_pct": 19.375958411847904,
+      "tested_share_of_adults_pct": 14.542874360918333
+    },
+    {
+      "condition": "PSA > 4 ng/mL (men)",
+      "category": "Urological",
+      "tested": 738,
+      "positive": 136,
+      "prevalence_pct": 18.428184281842817,
+      "ci_low": 15.796842719202525,
+      "ci_high": 21.386512865062368,
+      "age_sex_standardised_pct": 10.243127809136663,
+      "tested_share_of_adults_pct": 0.7173266460605354
+    },
+    {
+      "condition": "Severe albuminuria (UACR > 300)",
+      "category": "Renal",
+      "tested": 1180,
+      "positive": 208,
+      "prevalence_pct": 17.627118644067796,
+      "ci_low": 15.558967737418449,
+      "ci_high": 19.90537141065676,
+      "age_sex_standardised_pct": 16.864684260869815,
+      "tested_share_of_adults_pct": 1.1469450438366284
+    },
+    {
+      "condition": "LDL >= 130",
+      "category": "Metabolic",
+      "tested": 8936,
+      "positive": 1439,
+      "prevalence_pct": 16.103401969561325,
+      "ci_low": 15.355886274184618,
+      "ci_high": 16.880049539264245,
+      "age_sex_standardised_pct": 15.499144690390997,
+      "tested_share_of_adults_pct": 8.685678738749246
+    },
+    {
+      "condition": "PCOS morphology on USG (women 15-45)",
+      "category": "Reproductive-metabolic",
+      "tested": 32854,
+      "positive": 5091,
+      "prevalence_pct": 15.495830035916478,
+      "ci_low": 15.1085674685871,
+      "ci_high": 15.891160766757492,
+      "age_sex_standardised_pct": 10.25276803888031,
+      "tested_share_of_adults_pct": 31.933671584922532
+    },
+    {
+      "condition": "Any CKD marker (eGFR < 60 or UACR >= 30)",
+      "category": "Renal",
+      "tested": 15381,
+      "positive": 2352,
+      "prevalence_pct": 15.291593524478252,
+      "ci_low": 14.731473297277994,
+      "ci_high": 15.869047152669316,
+      "age_sex_standardised_pct": 10.588058380482853,
+      "tested_share_of_adults_pct": 14.950137050212865
+    },
+    {
+      "condition": "Dipstick proteinuria >= 1+ (any)",
+      "category": "Renal",
+      "tested": 6216,
+      "positive": 828,
+      "prevalence_pct": 13.32046332046332,
+      "ci_low": 12.498343839940418,
+      "ci_high": 14.187892028188449,
+      "age_sex_standardised_pct": 12.475541994394755,
+      "tested_share_of_adults_pct": 6.04187321397329
+    },
+    {
+      "condition": "CKD: eGFR < 60 (ever)",
+      "category": "Renal",
+      "tested": 15136,
+      "positive": 1975,
+      "prevalence_pct": 13.048361522198732,
+      "ci_low": 12.52110318238572,
+      "ci_high": 13.594372160500292,
+      "age_sex_standardised_pct": 8.843024043047963,
+      "tested_share_of_adults_pct": 14.712000155517972
+    },
+    {
+      "condition": "CKD: eGFR < 60 (latest)",
+      "category": "Renal",
+      "tested": 15136,
+      "positive": 1869,
+      "prevalence_pct": 12.348044397463003,
+      "ci_low": 11.83345805752383,
+      "ci_high": 12.881738434360205,
+      "age_sex_standardised_pct": 8.371208262396106,
+      "tested_share_of_adults_pct": 14.712000155517972
+    },
+    {
+      "condition": "FIB-4 >= 2.67 (advanced fibrosis likely)",
+      "category": "Hepatic",
+      "tested": 3784,
+      "positive": 464,
+      "prevalence_pct": 12.26215644820296,
+      "ci_low": 11.255160087683397,
+      "ci_high": 13.345699673717398,
+      "age_sex_standardised_pct": 7.537093095428909,
+      "tested_share_of_adults_pct": 3.678000038879493
+    },
+    {
+      "condition": "Structural heart disease (composite)",
+      "category": "Cardiac",
+      "tested": 7984,
+      "positive": 960,
+      "prevalence_pct": 12.024048096192384,
+      "ci_low": 11.328816765623182,
+      "ci_high": 12.75580704564518,
+      "age_sex_standardised_pct": 8.582339459331239,
+      "tested_share_of_adults_pct": 7.760346805077662
+    },
+    {
+      "condition": "ALT > 2x ULN",
+      "category": "Hepatic",
+      "tested": 10412,
+      "positive": 1071,
+      "prevalence_pct": 10.286208221283134,
+      "ci_low": 9.717272096986687,
+      "ci_high": 10.884439050387138,
+      "age_sex_standardised_pct": 10.417377559614398,
+      "tested_share_of_adults_pct": 10.120332030870317
+    },
+    {
+      "condition": "MASLD (fatty liver + cardiometabolic factor)",
+      "category": "Metabolic",
+      "tested": 29488,
+      "positive": 2648,
+      "prevalence_pct": 8.979924036896364,
+      "ci_low": 8.658928829954972,
+      "ci_high": 9.311605773757261,
+      "age_sex_standardised_pct": 8.852588116096975,
+      "tested_share_of_adults_pct": 28.661962248012287
+    },
+    {
+      "condition": "Ischaemic heart disease (RWMA / hypokinesia)",
+      "category": "Cardiac",
+      "tested": 7984,
+      "positive": 715,
+      "prevalence_pct": 8.955410821643287,
+      "ci_low": 8.34864210582134,
+      "ci_high": 9.60165876143672,
+      "age_sex_standardised_pct": 6.226145171512961,
+      "tested_share_of_adults_pct": 7.760346805077662
+    },
+    {
+      "condition": "Nephrolithiasis on USG",
+      "category": "Renal",
+      "tested": 56495,
+      "positive": 3331,
+      "prevalence_pct": 5.89609699973449,
+      "ci_low": 5.704839930049029,
+      "ci_high": 6.093351698715269,
+      "age_sex_standardised_pct": 6.690977397105462,
+      "tested_share_of_adults_pct": 54.9124239419918
+    },
+    {
+      "condition": "Reduced LVEF (< 50%)",
+      "category": "Cardiac",
+      "tested": 7984,
+      "positive": 412,
+      "prevalence_pct": 5.160320641282565,
+      "ci_low": 4.696257846758013,
+      "ci_high": 5.667513012193423,
+      "age_sex_standardised_pct": 3.605382520055356,
+      "tested_share_of_adults_pct": 7.760346805077662
+    },
+    {
+      "condition": "Chronic liver disease / cirrhosis on USG",
+      "category": "Hepatic",
+      "tested": 29488,
+      "positive": 1376,
+      "prevalence_pct": 4.666304937601736,
+      "ci_low": 4.431416166074643,
+      "ci_high": 4.913004020964474,
+      "age_sex_standardised_pct": 4.6153441995205835,
+      "tested_share_of_adults_pct": 28.661962248012287
+    },
+    {
+      "condition": "Hypothyroidism (overt, TSH > 10)",
+      "category": "Thyroid",
+      "tested": 14962,
+      "positive": 652,
+      "prevalence_pct": 4.357706189012164,
+      "ci_low": 4.042128278980655,
+      "ci_high": 4.696716050361973,
+      "age_sex_standardised_pct": 4.313452280272286,
+      "tested_share_of_adults_pct": 14.542874360918333
+    },
+    {
+      "condition": "Gallstones on USG",
+      "category": "Hepatic",
+      "tested": 56495,
+      "positive": 2392,
+      "prevalence_pct": 4.234003009115851,
+      "ci_low": 4.0710438355058844,
+      "ci_high": 4.403185837903917,
+      "age_sex_standardised_pct": 4.698732252386384,
+      "tested_share_of_adults_pct": 54.9124239419918
+    },
+    {
+      "condition": "Moderate-severe valve disease",
+      "category": "Cardiac",
+      "tested": 7984,
+      "positive": 251,
+      "prevalence_pct": 3.1437875751503004,
+      "ci_low": 2.782982848738024,
+      "ci_high": 3.549661504149495,
+      "age_sex_standardised_pct": 2.4065090477945783,
+      "tested_share_of_adults_pct": 7.760346805077662
+    },
+    {
+      "condition": "Diastolic dysfunction grade >= II",
+      "category": "Cardiac",
+      "tested": 7984,
+      "positive": 223,
+      "prevalence_pct": 2.7930861723446894,
+      "ci_low": 2.4537235765428966,
+      "ci_high": 3.1778552970291587,
+      "age_sex_standardised_pct": 2.023353239447792,
+      "tested_share_of_adults_pct": 7.760346805077662
+    },
+    {
+      "condition": "Hyperthyroidism (TSH < 0.45)",
+      "category": "Thyroid",
+      "tested": 14962,
+      "positive": 401,
+      "prevalence_pct": 2.680122978211469,
+      "ci_low": 2.4332326799316695,
+      "ci_high": 2.9513064695405533,
+      "age_sex_standardised_pct": 2.5695621803186945,
+      "tested_share_of_adults_pct": 14.542874360918333
+    },
+    {
+      "condition": "Pulmonary hypertension",
+      "category": "Cardiac",
+      "tested": 7984,
+      "positive": 213,
+      "prevalence_pct": 2.667835671342685,
+      "ci_low": 2.336480985088641,
+      "ci_high": 3.0447173601564623,
+      "age_sex_standardised_pct": 1.9696459144636405,
+      "tested_share_of_adults_pct": 7.760346805077662
+    },
+    {
+      "condition": "Renal parenchymal disease on USG",
+      "category": "Renal",
+      "tested": 56495,
+      "positive": 1210,
+      "prevalence_pct": 2.141782458624657,
+      "ci_low": 2.025614661353251,
+      "ci_high": 2.264458429278045,
+      "age_sex_standardised_pct": 3.1277234946159456,
+      "tested_share_of_adults_pct": 54.9124239419918
+    },
+    {
+      "condition": "HF with reduced EF (< 40%)",
+      "category": "Cardiac",
+      "tested": 7984,
+      "positive": 152,
+      "prevalence_pct": 1.9038076152304608,
+      "ci_low": 1.6263526183126369,
+      "ci_high": 2.227524504138065,
+      "age_sex_standardised_pct": 1.3544995307800047,
+      "tested_share_of_adults_pct": 7.760346805077662
+    },
+    {
+      "condition": "CKD: eGFR < 60 persistent >= 90 d",
+      "category": "Renal",
+      "tested": 15136,
+      "positive": 262,
+      "prevalence_pct": 1.7309725158562368,
+      "ci_low": 1.5351059120543158,
+      "ci_high": 1.9513347915260972,
+      "age_sex_standardised_pct": 1.1263288225138974,
+      "tested_share_of_adults_pct": 14.712000155517972
+    },
+    {
+      "condition": "LDL >= 190",
+      "category": "Metabolic",
+      "tested": 8936,
+      "positive": 91,
+      "prevalence_pct": 1.0183527305282005,
+      "ci_low": 0.8302175064079751,
+      "ci_high": 1.2485844267269472,
+      "age_sex_standardised_pct": 0.9300971130046549,
+      "tested_share_of_adults_pct": 8.685678738749246
+    },
+    {
+      "condition": "Atrial fibrillation / flutter",
+      "category": "Cardiac",
+      "tested": 7984,
+      "positive": 17,
+      "prevalence_pct": 0.2129258517034068,
+      "ci_low": 0.13298650074402432,
+      "ci_high": 0.34075348929283367,
+      "age_sex_standardised_pct": 0.145969385736218,
+      "tested_share_of_adults_pct": 7.760346805077662
+    }
+  ]
+}

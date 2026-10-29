@@ -1,0 +1,597 @@
+<title>Anubhav NCD Atlas</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+/* Layout: one reading column (max 1040px) of numbered evidence sections; charts sit on a slightly lifted chart surface
+   inside each section; a sticky section strip at the top. Charts use the validated data-viz palette (3 categorical
+   slots for the three condition communities and F/M; one blue ordinal ramp for staged quantities). */
+:root {
+  --page: #f9f9f7;          /* page plane */
+  --surface: #fcfcfb;       /* chart surface */
+  --ink: #0b0b0b;           /* primary ink */
+  --ink-2: #52514e;         /* secondary ink */
+  --muted: #898781;         /* axis / captions */
+  --grid: #e1e0d9;          /* hairline grid */
+  --axis: #c3c2b7;          /* baseline */
+  --ring: rgba(11,11,11,0.10);
+  --accent: #1c5cab;        /* eyebrows, links, the hero rule */
+  --s1: #2a78d6;            /* categorical slot 1: blue  (Female / metabolic-hepatic community) */
+  --s2: #eb6834;            /* slot 2: orange (Male / renal community) */
+  --s3: #1baf7a;            /* slot 3: aqua (cardiac community) */
+  --r1: #86b6ef; --r2: #5598e7; --r3: #2a78d6; --r4: #1c5cab; --r5: #0d366b;   /* ordinal ramp, light -> dark */
+  --on-ramp-dark: #ffffff;
+  --neg: #e34948;           /* diverging negative pole (palette red) */
+  --display: "Newsreader", "Iowan Old Style", Georgia, serif;
+  --sans: "IBM Plex Sans", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --page: #0d0d0d; --surface: #1a1a19; --ink: #f0efec; --ink-2: #c3c2b7; --muted: #898781; --grid: #2c2c2a; --axis: #383835;
+    --ring: rgba(255,255,255,0.10); --accent: #6da7ec; --s1: #3987e5; --s2: #d95926; --s3: #199e70;
+    --r1: #184f95; --r2: #256abf; --r3: #3987e5; --r4: #6da7ec; --r5: #9ec5f4; --on-ramp-dark: #ffffff; --neg: #e66767; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --page: #0d0d0d; --surface: #1a1a19; --ink: #f0efec; --ink-2: #c3c2b7; --muted: #898781; --grid: #2c2c2a; --axis: #383835;
+  --ring: rgba(255,255,255,0.10); --accent: #6da7ec; --s1: #3987e5; --s2: #d95926; --s3: #199e70;
+  --r1: #184f95; --r2: #256abf; --r3: #3987e5; --r4: #6da7ec; --r5: #9ec5f4; --on-ramp-dark: #ffffff; --neg: #e66767; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--page); color: var(--ink); font-family: var(--sans); font-size: 16px; line-height: 1.55;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 0 64px; }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--page); }
+a { color: var(--accent); }
+.wrap { max-width: 1040px; margin: 0 auto; }
+header.hero { padding-block: 40px 20px; border-bottom: 2px solid var(--ink); }
+.eyebrow { font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); font-weight: 600; }
+h1 { font-family: var(--display); font-weight: 500; font-size: clamp(34px, 5vw, 54px); line-height: 1.05; margin: 10px 0 14px; text-wrap: balance; letter-spacing: -0.01em; }
+.lede { font-size: 18px; color: var(--ink-2); max-width: 64ch; margin: 0; }
+.meta { display: flex; flex-wrap: wrap; gap: 8px 22px; margin-top: 18px; font-size: 13px; color: var(--muted); }
+nav.strip { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--page); border-bottom: 1px solid var(--grid);
+  display: flex; gap: 2px 18px; overflow-x: auto; padding-block: 10px; font-size: 13px; scrollbar-width: none; }
+nav.strip a { color: var(--ink-2); text-decoration: none; white-space: nowrap; }
+nav.strip a:hover, nav.strip a:focus-visible { color: var(--accent); }
+section.part { padding-block: 40px 8px; border-bottom: 1px solid var(--grid); }
+section.part > .eyebrow { margin-bottom: 4px; }
+h2 { font-family: var(--display); font-weight: 500; font-size: clamp(26px, 3.4vw, 36px); line-height: 1.12; margin: 0 0 8px; text-wrap: balance; }
+h3 { font-size: 17px; font-weight: 600; margin: 28px 0 6px; }
+p { max-width: 68ch; }
+p.sowhat { font-size: 17px; color: var(--ink-2); margin-top: 0; }
+.tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 12px; margin: 22px 0 8px; }
+.tile { background: var(--surface); border: 1px solid var(--ring); padding: 14px 16px 12px; min-width: 0; }
+.tile .label { font-size: 13px; color: var(--ink-2); }
+.tile .value { font-size: 34px; font-weight: 600; line-height: 1.1; margin-top: 4px; }
+.tile .sub { font-size: 12px; color: var(--muted); margin-top: 4px; }
+figure { margin: 18px 0 8px; background: var(--surface); border: 1px solid var(--ring); padding: 14px 14px 10px; min-width: 0; }
+figure .fig-head { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 16px; align-items: baseline; }
+figure .fig-title { font-weight: 600; font-size: 15px; }
+figure .fig-sub { font-size: 13px; color: var(--ink-2); }
+figcaption { font-size: 13px; color: var(--muted); margin-top: 8px; max-width: 80ch; }
+.legend { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13px; color: var(--ink-2); margin: 8px 0 2px; }
+.legend span { display: inline-flex; align-items: center; gap: 6px; }
+.sw { width: 12px; height: 12px; border-radius: 2px; display: inline-block; }
+.sw.line { height: 2px; width: 18px; border-radius: 1px; }
+.sw.dot { width: 10px; height: 10px; border-radius: 50%; background: var(--surface); border: 2px solid var(--ink-2); }
+svg { display: block; max-width: 100%; height: auto; font-family: var(--sans); }
+svg text { fill: var(--ink-2); font-size: 12px; }
+svg .ink { fill: var(--ink); }
+svg .muted { fill: var(--muted); }
+svg .grid { stroke: var(--grid); stroke-width: 1; }
+svg .axis { stroke: var(--axis); stroke-width: 1; }
+svg .hit { fill: transparent; cursor: default; }
+svg .mark:hover, svg .hit:hover + .mark { filter: brightness(1.12); }
+.chart { overflow-x: auto; }
+.chart > svg { max-width: none; }   /* wide charts scroll sideways inside their own box rather than shrinking */
+.btn { font: inherit; font-size: 12px; padding: 4px 10px; border: 1px solid var(--axis); background: var(--surface); color: var(--ink-2); border-radius: 3px; cursor: pointer; }
+.btn:hover, .btn:focus-visible { border-color: var(--accent); color: var(--accent); outline: none; }
+.btn[aria-pressed="true"] { background: var(--accent); color: #fff; border-color: var(--accent); }
+.tablewrap { overflow-x: auto; margin-top: 10px; }
+table { border-collapse: collapse; font-size: 13px; width: 100%; font-variant-numeric: tabular-nums; }
+th, td { text-align: left; padding: 6px 10px; border-bottom: 1px solid var(--grid); vertical-align: top; }
+th { color: var(--ink-2); font-weight: 600; }
+td.num, th.num { text-align: right; }
+.tooltip { position: fixed; pointer-events: none; z-index: 20; background: var(--ink); color: var(--page); padding: 6px 9px; font-size: 12px; line-height: 1.4; border-radius: 3px; max-width: 280px; display: none; }
+.tooltip b { font-size: 13px; }
+.grid2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; }
+.grid2 > * { min-width: 0; }
+.sm { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 10px 14px; }
+.sm > div { min-width: 0; }
+.sm .sm-title { font-size: 13px; font-weight: 600; color: var(--ink); margin: 6px 0 0; }
+.combos { columns: 2; column-gap: 28px; font-size: 14px; padding-left: 20px; margin: 8px 0; }
+.combos li { break-inside: avoid; margin-bottom: 4px; }
+.defs th { width: 26%; }
+.note { font-size: 14px; color: var(--ink-2); border-left: 3px solid var(--accent); padding: 4px 14px; margin: 16px 0; max-width: 76ch; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 10px 0; }
+.chip { font-size: 12px; padding: 3px 10px; border: 1px solid var(--axis); border-radius: 12px; color: var(--ink-2); }
+.chip b { color: var(--ink); }
+footer { font-size: 13px; color: var(--muted); padding-top: 24px; }
+@media (max-width: 560px) { .combos { columns: 1; } .tile .value { font-size: 28px; } }
+@media (prefers-reduced-motion: no-preference) { .btn { transition: color .15s, border-color .15s; } }
+</style>
+
+<div class="wrap">
+<header class="hero">
+  <div class="eyebrow">Sama Health · evidence base for the MIT Solve application</div>
+  <h1>Non-communicable disease burden across one diagnostic network in West Bengal</h1>
+  <p class="lede">Every structured laboratory result, ultrasound report and echocardiogram recorded by Anubhav Life Care over four years, linked into people and read against standard clinical definitions. Prevalence is reported among the people actually tested, with 95% confidence intervals and age-sex standardisation so that growth in patient volume does not masquerade as change in disease.</p>
+  <div class="meta" id="meta"></div>
+</header>
+
+<nav class="strip" aria-label="Sections">
+  <a href="#headline">Headline</a><a href="#categories">By category</a><a href="#age">Age & sex</a><a href="#network">Condition network</a><a href="#ckm">CKM stages</a><a href="#individual">Within a person</a><a href="#progression">Progression</a><a href="#gaps">Care gaps</a><a href="#methods">Methods</a>
+</nav>
+
+<section class="part" id="headline">
+  <div class="eyebrow">Headline</div>
+  <h2>Six in ten tested adults already carry at least one chronic condition</h2>
+  <p class="sowhat" id="headline-sowhat"></p>
+  <div class="tiles" id="tiles"></div>
+  <div class="chips" id="chips"></div>
+  <p class="note">All prevalences on this page are among <em>tested</em> adults (18+) at a diagnostic centre, not the general population. People are tested because a doctor suspected something, so these are upper bounds on community prevalence and good estimates of the burden a diagnostic network actually sees and can act on.</p>
+</section>
+
+<section class="part" id="categories">
+  <div class="eyebrow">Category-wise results</div>
+  <h2>Metabolic disease dominates; kidney, liver and heart disease ride on top of it</h2>
+  <p class="sowhat">Bars show crude prevalence among tested adults with 95% Wilson intervals; the hollow dot is the same measure directly standardised to the age-sex structure of all tested adults, so categories can be compared on an equal footing. Small denominators (urine ACR, PSA, spirometry) reflect selective ordering and should be read as the yield of targeted testing.</p>
+  <div class="legend"><span><i class="sw" style="background:var(--s1)"></i>Crude prevalence (bar, with 95% CI)</span><span><i class="sw dot"></i>Age-sex standardised</span><span>n = adults tested</span></div>
+  <div id="cat-charts"></div>
+</section>
+
+<section class="part" id="age">
+  <div class="eyebrow">Age and sex</div>
+  <h2>Every condition climbs steeply with age; anaemia and fatty liver start early</h2>
+  <p class="sowhat">Prevalence among tested adults by age band, women and men separately. Women are the majority of the tested population (64%), and anaemia in women of reproductive age is the single largest finding in the network.</p>
+  <div class="legend"><span><i class="sw line" style="background:var(--s1)"></i>Women</span><span><i class="sw line" style="background:var(--s2)"></i>Men</span></div>
+  <figure><div class="sm" id="small-multiples"></div><figcaption>Lines connect the five age bands (18–29, 30–44, 45–59, 60–74, 75+). Hover a point for the number tested. Bands with fewer than 30 tested people are omitted.</figcaption></figure>
+</section>
+
+<section class="part" id="network">
+  <div class="eyebrow">The overall network</div>
+  <h2>Conditions cluster into three communities, and chronic kidney disease is the hub that joins them</h2>
+  <p class="sowhat">Each pair of conditions was compared among adults tested for both, with odds ratios adjusted for age and sex (logistic regression). Edges are drawn where the adjusted odds ratio exceeds 1.3 at p &lt; 0.001; thicker edges are stronger associations. Community detection (greedy modularity) separates a metabolic-hepatic cluster, a renal-anaemia-inflammatory cluster and a cardiac cluster.</p>
+  <figure>
+    <div class="fig-head"><div class="fig-title">Age-sex adjusted association network of 22 conditions</div><div class="fig-sub" id="net-sub"></div></div>
+    <div class="legend" id="net-legend"></div>
+    <div class="chart" id="net-chart"></div>
+    <figcaption>Node size is weighted degree (sum of log odds ratios of its edges). Position is a force layout within communities; distance is only approximately meaningful. Hover a node for its connections.</figcaption>
+  </figure>
+  <figure>
+    <div class="fig-head"><div class="fig-title">Strongest links</div><div class="fig-sub">top adjusted odds ratios, one per pair</div></div>
+    <div class="tablewrap" id="top-links"></div>
+    <figcaption>P(B | A) is the share of people with A who also have B, among those tested for both. RR = relative risk; aOR = age-sex adjusted odds ratio with 95% CI.</figcaption>
+  </figure>
+  <figure>
+    <div class="fig-head"><div class="fig-title">Hubs</div><div class="fig-sub">centrality in the network</div></div>
+    <div class="tablewrap" id="hubs"></div>
+    <figcaption>Weighted degree sums the strength of a condition's edges; eigenvector centrality rewards being connected to other well-connected conditions.</figcaption>
+  </figure>
+  <figure>
+    <div class="fig-head"><div class="fig-title">Adjusted odds ratio of column condition given row condition</div><div class="fig-sub">darker = stronger association; blank = too few people tested for both or not significant</div></div>
+    <div class="chart" id="matrix"></div>
+    <figcaption>Read a row as "people with this condition have an aOR of … for the column condition". The matrix is not symmetric because each cell is computed among people tested for both and adjusted separately. Cells with p ≥ 0.001 are left blank.</figcaption>
+  </figure>
+  <figure>
+    <div class="fig-head"><div class="fig-title">How the measurements themselves move together</div><div class="fig-sub">partial Spearman correlation of latest values, adjusted for age and sex</div></div>
+    <div class="chart" id="corr"></div>
+    <figcaption>Only pairs measured in at least 300 of the same people are shown. Blue = positive, red = negative (diverging scale with a neutral midpoint).</figcaption>
+  </figure>
+</section>
+
+<section class="part" id="ckm">
+  <div class="eyebrow">Cardio-kidney-metabolic syndrome</div>
+  <h2>One in four tested adults is at CKM stage 2 or beyond</h2>
+  <p class="sowhat" id="ckm-sowhat"></p>
+  <figure>
+    <div class="fig-head"><div class="fig-title">CKM stage by age band</div><div class="fig-sub">share of adults with at least one metabolic or kidney test</div></div>
+    <div class="legend" id="ckm-legend"></div>
+    <div class="chart" id="ckm-chart"></div>
+    <figcaption>Stages follow the AHA 2023 CKM framework as far as laboratory and imaging data allow: stage 1 = prediabetes or hepatic steatosis (adiposity dysfunction proxy); stage 2 = diabetes, triglycerides ≥ 135 mg/dL, eGFR &lt; 60 or UACR ≥ 30; stage 3 = very-high-risk CKD (eGFR &lt; 30 or UACR &gt; 300) or subclinical heart disease on echo (LVH, diastolic dysfunction ≥ grade II, dilated LA, EF 40–49%); stage 4 = clinical cardiovascular disease (regional wall motion abnormality, EF &lt; 40%, atrial fibrillation, cardiomyopathy, ischaemia on ECG/TMT). Blood pressure and BMI are not recorded by the laboratory, so stages 1–2 are undercounted.</figcaption>
+  </figure>
+  <div id="ckm-cross"></div>
+</section>
+
+<section class="part" id="individual">
+  <div class="eyebrow">Within each individual</div>
+  <h2>Conditions arrive in company: multimorbidity is the norm after 45</h2>
+  <p class="sowhat" id="mm-sowhat"></p>
+  <figure>
+    <div class="fig-head"><div class="fig-title">Number of conditions per person, by age band</div><div class="fig-sub">adults tested in at least three of nine domains</div></div>
+    <div class="legend" id="mm-legend"></div>
+    <div class="chart" id="mm-chart"></div>
+    <figcaption>Domains: diabetes, dyslipidaemia, CKD or albuminuria, fatty liver, hypothyroidism, anaemia, hyperuricaemia, structural heart disease, transaminitis. A person counts as positive in a domain only if tested in it.</figcaption>
+  </figure>
+  <div class="grid2">
+    <figure>
+      <div class="fig-head"><div class="fig-title">Most common combinations</div><div class="fig-sub">people with two or more conditions</div></div>
+      <ol class="combos" id="combos"></ol>
+    </figure>
+    <figure>
+      <div class="fig-head"><div class="fig-title">Given one condition, how many others?</div><div class="fig-sub">mean number of additional conditions</div></div>
+      <div class="chart" id="given-chart"></div>
+      <figcaption>Among adults tested in at least three domains. People with CKD carry the most company; anaemia is often found alone, which is consistent with nutritional anaemia in younger women.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="part" id="progression">
+  <div class="eyebrow">Progression in the same people</div>
+  <h2>Where the same person was retested, deterioration is common and fast</h2>
+  <p class="sowhat" id="prog-sowhat"></p>
+  <figure>
+    <div class="fig-head"><div class="fig-title">What happened to people retested after an interval</div><div class="fig-sub">share of people whose status moved, first versus latest result</div></div>
+    <div class="chart" id="prog-chart"></div>
+    <figcaption>Each bar is one transition among people with at least two results ≥ 90 days apart (≥ 42 days for TSH, ≥ 180 days for repeat ultrasound). Hover for denominators.</figcaption>
+  </figure>
+  <div class="grid2">
+    <figure>
+      <div class="fig-head"><div class="fig-title">New kidney impairment (eGFR falling below 60)</div><div class="fig-sub">incidence per 100 person-years among people who started at ≥ 60 and were retested</div></div>
+      <div class="tablewrap" id="ckd-inc"></div>
+      <figcaption>Rate ratios are versus tested people without diabetes (Poisson, 95% CI). Mean slope is the average annual change in eGFR (mL/min/1.73 m²) across the follow-up.</figcaption>
+    </figure>
+    <figure>
+      <div class="fig-head"><div class="fig-title">New conditions acquired during follow-up</div><div class="fig-sub">people followed ≥ 1 year, negative in the first 180 days, tested again later</div></div>
+      <div class="tablewrap" id="accrual"></div>
+      <figcaption>A lower bound on incidence: it only counts people a doctor chose to retest.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="part" id="gaps">
+  <div class="eyebrow">Care gaps the data exposes</div>
+  <h2>Most people with diabetes never get the tests that find its complications</h2>
+  <p class="sowhat" id="gaps-sowhat"></p>
+  <div class="grid2">
+    <figure>
+      <div class="fig-head"><div class="fig-title">Among adults with diabetes: share ever tested for…</div></div>
+      <div class="chart" id="gaps-chart"></div>
+      <figcaption>Guidelines ask for HbA1c at least twice a year, and yearly eGFR, urine ACR and a lipid profile. Ultrasound and echo are not routine screening tests, so their low coverage is expected; the kidney and lipid gaps are not.</figcaption>
+    </figure>
+    <figure>
+      <div class="fig-head"><div class="fig-title">Glycaemic control where HbA1c exists</div><div class="fig-sub">latest HbA1c among adults with diabetes</div></div>
+      <div class="chart" id="control-chart"></div>
+      <figcaption id="control-cap"></figcaption>
+    </figure>
+  </div>
+  <figure>
+    <div class="fig-head"><div class="fig-title">Volume-adjusted stability</div><div class="fig-sub">prevalence per 1,000 tested adults, by calendar year</div></div>
+    <div class="tablewrap" id="yearly"></div>
+    <figcaption>Patient volume grew roughly fifteen-fold between the first and third year. Rates per 1,000 tested people barely move, which is why this report uses rates rather than counts throughout.</figcaption>
+  </figure>
+</section>
+
+<section class="part" id="methods">
+  <div class="eyebrow">Methods and caveats</div>
+  <h2>How the numbers were made</h2>
+  <h3>Data</h3>
+  <p>Source: the AKTIV laboratory information system of Anubhav Life Care (Kolkata region, West Bengal), read in full for bills dated 29 October 2022 to 29 October 2026. Structured analyte results came from the chemistry, haematology, hormone, urine, serology, immunology and mixed-report tables (authorised reports only). Hepatic steatosis, renal parenchymal change, calculi, prostate, ovarian and other findings were extracted by rule from the text of every abdominal and pelvic ultrasound report; LVEF, hypertrophy, diastolic grade, wall-motion, valve and pulmonary-pressure findings from every adult echocardiogram; ventilatory defects from spirometry. No narrative text leaves the clinic computer; only flags do.</p>
+  <h3>Linking visits into people</h3>
+  <p>The laboratory has no stable patient identifier (registrations are created per visit), so bills were linked by the same rules as the Sama follow-up pipeline: a valid 10-digit mobile number first; within a number, a fuzzy name match (Jaro-Winkler ≥ 0.88 or same first name) with agreeing sex and birth year (±3); numbers shared by more than 20 names (agents, camps) never link; without a usable number, name + sex + birth year attach to a unique phone-linked person or link among themselves. The result: <span id="link-stats"></span>.</p>
+  <h3>Definitions</h3>
+  <div class="tablewrap"><table class="defs">
+    <tr><th>Diabetes</th><td>HbA1c ≥ 6.5% ever, or glucose in the diabetic range (fasting ≥ 126, post-prandial ≥ 200, random ≥ 200 mg/dL) on two different days or two tests on one day (ADA). A single diabetic-range glucose is "unconfirmed" and is included in "incl. unconfirmed" only.</td></tr>
+    <tr><th>Prediabetes</th><td>Not diabetic and the latest test day shows HbA1c 5.7–6.4%, fasting 100–125 or post-prandial 140–199 mg/dL.</td></tr>
+    <tr><th>Dyslipidaemia</th><td>Latest profile: LDL ≥ 130, total cholesterol ≥ 200, triglycerides ≥ 150 mg/dL, or HDL &lt; 40 (men) / &lt; 50 (women) (NCEP ATP III). Atherogenic dyslipidaemia = high TG with low HDL.</td></tr>
+    <tr><th>Chronic kidney disease</th><td>eGFR by CKD-EPI 2021 (race-free) from serum creatinine, age at the visit and sex; "ever" = any value &lt; 60; "persistent" = two values &lt; 60 at least 90 days apart; G-stages per KDIGO. Albuminuria = urine albumin-creatinine ratio ≥ 30 mg/g.</td></tr>
+    <tr><th>Thyroid</th><td>Latest TSH: overt hypothyroidism &gt; 10 µIU/mL (or 4.5–10 with low free T4), subclinical 4.5–10, hyperthyroidism &lt; 0.45 (overt &lt; 0.1).</td></tr>
+    <tr><th>Liver</th><td>Transaminitis = latest ALT &gt; 40 or AST &gt; 35 U/L (laboratory upper limits). FIB-4 = age × AST / (platelets × √ALT) from same-day results, age ≥ 35; ≥ 2.67 high, ≥ 1.3 (≥ 2.0 at 65+) indeterminate. Fatty liver = steatosis reported on any abdominal ultrasound. MASLD = fatty liver plus diabetes/prediabetes, high TG or low HDL.</td></tr>
+    <tr><th>Anaemia</th><td>WHO: latest haemoglobin &lt; 13 g/dL (men) or &lt; 12 (women), age ≥ 15; moderate-severe &lt; 11. Pregnancy could not be excluded, which lowers the threshold for some women and inflates mild anaemia slightly.</td></tr>
+    <tr><th>Heart (echo)</th><td>Lowest LVEF quoted; LV hypertrophy; diastolic dysfunction grade; regional wall-motion abnormality or hypokinesia (ischaemic heart disease); moderate-severe valve disease; pulmonary hypertension (stated, or PASP ≥ 36 mmHg); atrial fibrillation. Structural heart disease = EF &lt; 50%, IHD, valve, PH, cardiomyopathy or AF.</td></tr>
+    <tr><th>Hyperuricaemia</th><td>Latest uric acid &gt; 7.0 mg/dL (men) / &gt; 6.0 (women).</td></tr>
+    <tr><th>Standardisation</th><td>Direct standardisation to the age (5 bands) × sex structure of all tested adults. Confidence intervals are Wilson. Associations: logistic regression of B on A with age, age² and sex, among adults tested for both.</td></tr>
+  </table></div>
+  <h3>What is not here</h3>
+  <p>Blood pressure, weight and BMI are not captured by the laboratory system, so hypertension and obesity, two of the largest NCDs, are invisible except through their consequences (LV hypertrophy, albuminuria, fatty liver). Cancer appears only as tumour-marker and histopathology orders and is not analysed. Echocardiography, urine ACR and spirometry are ordered selectively, so their prevalences describe a referred population. Results are per person using the latest value unless stated; "ever" measures can include transient (acute) abnormalities.</p>
+  <footer id="foot"></footer>
+</section>
+</div>
+<div class="tooltip" id="tip" role="status" aria-live="polite"></div>
+
+<script id="data" type="application/json">__DATA__</script>
+<script>
+(function () {
+  const D = JSON.parse(document.getElementById('data').textContent);
+  const $ = (s) => document.querySelector(s);
+  const fmtN = (n) => Math.round(n).toLocaleString('en-US');
+  const f1 = (x) => (x == null || isNaN(x)) ? '–' : (Math.round(x * 10) / 10).toFixed(1);
+  const f2 = (x) => (x == null || isNaN(x)) ? '–' : (Math.round(x * 100) / 100).toFixed(2);
+  const NS = 'http://www.w3.org/2000/svg';
+  const el = (tag, attrs, text) => { const e = document.createElementNS(NS, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); if (text != null) e.appendChild(document.createTextNode(text)); return e; };
+  const hel = (tag, cls, text) => { const e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; };
+  const tip = $('#tip');
+  function bindTip(node, lines) {
+    const show = (ev) => { tip.textContent = ''; lines.forEach((l, i) => { if (i === 0) { const b = document.createElement('b'); b.textContent = l; tip.appendChild(b); } else { tip.appendChild(document.createElement('br')); tip.appendChild(document.createTextNode(l)); } }); tip.style.display = 'block'; move(ev); };
+    const move = (ev) => { const x = (ev.clientX || 0) + 14, y = (ev.clientY || 0) + 14; const w = tip.offsetWidth, h = tip.offsetHeight; tip.style.left = Math.min(x, window.innerWidth - w - 8) + 'px'; tip.style.top = Math.min(y, window.innerHeight - h - 8) + 'px'; };
+    node.addEventListener('pointerenter', show); node.addEventListener('pointermove', move); node.addEventListener('pointerleave', () => tip.style.display = 'none');
+    node.addEventListener('focus', (ev) => { const r = node.getBoundingClientRect(); show({ clientX: r.left, clientY: r.bottom }); }); node.addEventListener('blur', () => tip.style.display = 'none');
+    node.setAttribute('tabindex', '0');
+  }
+  const barPath = (x0, x1, y, h) => { const r = Math.min(4, Math.max(0, x1 - x0)); return `M${x0},${y} H${x1 - r} Q${x1},${y} ${x1},${y + r} V${y + h - r} Q${x1},${y + h} ${x1 - r},${y + h} H${x0} Z`; };
+  const tableView = (fig, headers, rows) => {
+    const btn = hel('button', 'btn', 'Table view'); btn.setAttribute('aria-pressed', 'false');
+    const wrap = hel('div', 'tablewrap'); wrap.hidden = true;
+    const t = hel('table'); const tr = hel('tr'); headers.forEach((h, i) => { const th = hel('th', i ? 'num' : '', h); tr.appendChild(th); }); t.appendChild(tr);
+    rows.forEach(r => { const tr2 = hel('tr'); r.forEach((c, i) => tr2.appendChild(hel('td', i ? 'num' : '', c))); t.appendChild(tr2); });
+    wrap.appendChild(t);
+    btn.addEventListener('click', () => { const on = wrap.hidden; wrap.hidden = !on; btn.setAttribute('aria-pressed', String(on)); });
+    const head = fig.querySelector('.fig-head'); if (head) head.appendChild(btn); else fig.insertBefore(btn, fig.firstChild);
+    fig.appendChild(wrap);
+  };
+
+  /* ---------------- headline ---------------- */
+  const pop = D.population, H = D.headline, C = D.cascade;
+  $('#meta').innerHTML = '';
+  [`${pop.date_range[0]} to ${pop.date_range[1]}`, `${fmtN(pop.bills)} visits`, `${fmtN(pop.persons_total)} people linked`, `${fmtN(pop.numeric_results)} numeric results`, `${fmtN(pop.usg_reports)} ultrasound reports`, `${fmtN(pop.echo_reports)} echocardiograms`].forEach(t => $('#meta').appendChild(hel('span', '', t)));
+  const prevRow = (name) => { for (const c of D.prevalence) for (const r of c.rows) if (r.condition === name) return r; return null; };
+  const dm = prevRow('Diabetes (confirmed)'), dmAny = prevRow('Diabetes incl. unconfirmed'), pre = prevRow('Prediabetes (latest)'), fat = prevRow('Fatty liver on USG'), ckd = prevRow('CKD: eGFR < 60 (ever)'), hypo = prevRow('Hypothyroidism (any)'), an = prevRow('Anaemia (WHO)'), dys = prevRow('Dyslipidaemia (any)'), shd = prevRow('Structural heart disease (composite)');
+  $('#headline-sowhat').textContent = `${fmtN(H.adults_tested_any_domain)} adults were tested in at least one of seven domains (glycaemia, lipids, kidney, thyroid, haemoglobin, liver ultrasound, echo); ${fmtN(H.adults_with_any_condition)} of them (${f1(H.pct_any_condition_among_tested)}%) met the definition of at least one chronic condition.`;
+  const tiles = [
+    ['People in the network', fmtN(pop.persons_total), `${fmtN(pop.adults)} adults · ${fmtN(pop.children_under18)} children`],
+    ['Tested adults with ≥ 1 condition', f1(H.pct_any_condition_among_tested) + '%', `${fmtN(H.adults_with_any_condition)} of ${fmtN(H.adults_tested_any_domain)}`],
+    ['Confirmed diabetes', f1(dm.prevalence_pct) + '%', `of ${fmtN(dm.tested)} with a glucose or HbA1c test · ${f1(pre.prevalence_pct)}% prediabetes`],
+    ['Dyslipidaemia', f1(dys.prevalence_pct) + '%', `of ${fmtN(dys.tested)} with a lipid profile`],
+    ['Fatty liver', f1(fat.prevalence_pct) + '%', `of ${fmtN(fat.tested)} with a liver ultrasound`],
+    ['eGFR below 60', f1(ckd.prevalence_pct) + '%', `of ${fmtN(ckd.tested)} with a creatinine · ${f1(ckd.age_sex_standardised_pct)}% standardised`],
+    ['Hypothyroidism', f1(hypo.prevalence_pct) + '%', `of ${fmtN(hypo.tested)} with a TSH`],
+    ['Anaemia', f1(an.prevalence_pct) + '%', `of ${fmtN(an.tested)} with a haemoglobin (age 15+)`],
+    ['Structural heart disease', f1(shd.prevalence_pct) + '%', `of ${fmtN(shd.tested)} with an echocardiogram`],
+  ];
+  tiles.forEach(([l, v, s]) => { const t = hel('div', 'tile'); t.appendChild(hel('div', 'label', l)); t.appendChild(hel('div', 'value', v)); t.appendChild(hel('div', 'sub', s)); $('#tiles').appendChild(t); });
+  [`Median adult age <b>${pop.adult_median_age}</b>`, `Women <b>${f1(pop.adult_female_pct)}%</b> of adults`, `Adults seen more than once <b>${fmtN(pop.adults_with_2plus_visits)}</b>`, `Followed ≥ 1 year <b>${fmtN(pop.adults_followed_1yr_plus)}</b>`].forEach(h => { const c = hel('span', 'chip'); c.innerHTML = h; $('#chips').appendChild(c); });
+
+  /* ---------------- category charts ---------------- */
+  const fitWidth = (container, w, minW) => { const cw = container.getBoundingClientRect().width; return Math.max(minW, Math.min(w, cw ? cw - 2 : w)); };
+  const ticksFor = (max) => { const step = max <= 3 ? 0.5 : max <= 6 ? 1 : max <= 12 ? 2 : max <= 30 ? 5 : max <= 60 ? 10 : 25; const t = []; for (let v = 0; v <= max + 1e-9; v += step) t.push(Math.round(v * 100) / 100); return t; };
+  function hbars(container, rows, opts) {
+    const o = Object.assign({ w: 980, labelW: 330, max: 100, rowH: 26, barH: 14, nW: 90, unit: '%', minW: 640 }, opts || {});
+    o.w = fitWidth(container, o.w, o.minW);
+    o.labelW = Math.min(o.labelW, Math.round(o.w * 0.44));
+    const x0 = o.labelW, x1 = o.w - o.nW - 10, sx = (v) => x0 + (x1 - x0) * Math.min(v, o.max) / o.max;
+    const h = rows.length * o.rowH + 28;
+    const svg = el('svg', { viewBox: `0 0 ${o.w} ${h}`, width: o.w, height: h, role: 'img', 'aria-label': o.aria || 'bar chart' });
+    ticksFor(o.max).forEach(v => { svg.appendChild(el('line', { x1: sx(v), x2: sx(v), y1: 4, y2: h - 22, class: 'grid' })); svg.appendChild(el('text', { x: sx(v), y: h - 6, 'text-anchor': 'middle', class: 'muted' }, v + o.unit)); });
+    svg.appendChild(el('line', { x1: x0, x2: x0, y1: 4, y2: h - 22, class: 'axis' }));
+    rows.forEach((r, i) => {
+      const y = 6 + i * o.rowH, yc = y + o.rowH / 2;
+      const maxChars = Math.max(18, Math.floor(o.labelW / 7.2));
+      svg.appendChild(el('text', { x: x0 - 10, y: yc + 4, 'text-anchor': 'end', class: 'ink' }, r.label.length > maxChars ? r.label.slice(0, maxChars - 1) + '…' : r.label));
+      const g = el('g', { class: 'mark' });
+      g.appendChild(el('path', { d: barPath(x0 + 1, sx(r.value), yc - o.barH / 2, o.barH), fill: r.color || 'var(--s1)' }));
+      if (r.lo != null && r.hi != null) { g.appendChild(el('line', { x1: sx(r.lo), x2: sx(r.hi), y1: yc, y2: yc, stroke: 'var(--ink)', 'stroke-width': 1.5, 'stroke-opacity': 0.7 })); g.appendChild(el('line', { x1: sx(r.lo), x2: sx(r.lo), y1: yc - 4, y2: yc + 4, stroke: 'var(--ink)', 'stroke-opacity': 0.7 })); g.appendChild(el('line', { x1: sx(r.hi), x2: sx(r.hi), y1: yc - 4, y2: yc + 4, stroke: 'var(--ink)', 'stroke-opacity': 0.7 })); }
+      if (r.dot != null) g.appendChild(el('circle', { cx: sx(r.dot), cy: yc, r: 4.5, fill: 'var(--surface)', stroke: 'var(--ink)', 'stroke-width': 2 }));
+      if (r.inlabel) g.appendChild(el('text', { x: sx(r.value) + 6, y: yc + 4, class: 'ink', 'font-weight': 600 }, r.inlabel));
+      svg.appendChild(g);
+      if (r.n != null) svg.appendChild(el('text', { x: o.w - 4, y: yc + 4, 'text-anchor': 'end', class: 'muted', 'font-variant-numeric': 'tabular-nums' }, 'n ' + fmtN(r.n)));
+      const hit = el('rect', { x: 0, y: y, width: o.w, height: o.rowH, class: 'hit' }); svg.appendChild(hit);
+      bindTip(hit, r.tip || [r.label, `${f1(r.value)}${o.unit}`]);
+    });
+    container.appendChild(svg);
+    return svg;
+  }
+  const catBox = $('#cat-charts');
+  D.prevalence.forEach(cat => {
+    const fig = hel('figure'); const head = hel('div', 'fig-head'); head.appendChild(hel('div', 'fig-title', cat.category)); fig.appendChild(head);
+    const chart = hel('div', 'chart'); fig.appendChild(chart);
+    const rows = cat.rows.map(r => ({ label: r.condition, value: r.prevalence_pct, lo: r.ci_low, hi: r.ci_high, dot: r.age_sex_standardised_pct, n: r.tested,
+      tip: [r.condition, `${f1(r.prevalence_pct)}% (95% CI ${f1(r.ci_low)}–${f1(r.ci_high)})`, `age-sex standardised ${f1(r.age_sex_standardised_pct)}%`, `${fmtN(r.positive)} of ${fmtN(r.tested)} tested adults (${f1(r.tested_share_of_adults_pct)}% of all adults)`] }));
+    hbars(chart, rows, { aria: cat.category + ' prevalence' });
+    tableView(fig, ['Condition', 'Tested', 'Positive', 'Prevalence %', '95% CI', 'Standardised %'], cat.rows.map(r => [r.condition, fmtN(r.tested), fmtN(r.positive), f1(r.prevalence_pct), `${f1(r.ci_low)}–${f1(r.ci_high)}`, f1(r.age_sex_standardised_pct)]));
+    catBox.appendChild(fig);
+  });
+
+  /* ---------------- small multiples ---------------- */
+  const bands = ['18-29', '30-44', '45-59', '60-74', '75+'];
+  const smBox = $('#small-multiples');
+  const smOrder = ['Diabetes (confirmed)', 'Dyslipidaemia (any)', 'Fatty liver on USG', 'CKD: eGFR < 60 (ever)', 'Hypothyroidism (any)', 'Anaemia (WHO)', 'LV hypertrophy', 'Hyperuricaemia', 'Transaminitis (ALT > 40 or AST > 35)'];
+  smOrder.forEach(name => {
+    const s = D.strata[name]; if (!s) return;
+    const box = hel('div'); box.appendChild(hel('div', 'sm-title', name));
+    const w = 240, h = 150, pl = 34, pr = 34, pt = 10, pb = 24;
+    const svg = el('svg', { viewBox: `0 0 ${w} ${h}`, width: w, height: h, role: 'img', 'aria-label': name + ' by age and sex' });
+    const allv = [...s.F, ...s.M].filter(d => d.n >= 30).map(d => d.pct); const max = Math.max(10, Math.ceil(Math.max(...allv) / 10) * 10);
+    const sx = (i) => pl + (w - pl - pr) * i / (bands.length - 1), sy = (v) => pt + (h - pt - pb) * (1 - v / max);
+    [0, max / 2, max].forEach(v => { svg.appendChild(el('line', { x1: pl, x2: w - pr, y1: sy(v), y2: sy(v), class: 'grid' })); svg.appendChild(el('text', { x: pl - 5, y: sy(v) + 4, 'text-anchor': 'end', class: 'muted', 'font-size': 10 }, v + '%')); });
+    bands.forEach((b, i) => svg.appendChild(el('text', { x: sx(i), y: h - 8, 'text-anchor': 'middle', class: 'muted', 'font-size': 10 }, b)));
+    const ends = {};
+    [['F', 'var(--s1)', 'Women'], ['M', 'var(--s2)', 'Men']].forEach(([k, col, lab]) => {
+      const pts = s[k].map((d, i) => d.n >= 30 ? [sx(bands.indexOf(d.band)), sy(d.pct), d] : null).filter(Boolean);
+      if (pts.length > 1) svg.appendChild(el('path', { d: pts.map((p, i) => (i ? 'L' : 'M') + p[0] + ',' + p[1]).join(' '), fill: 'none', stroke: col, 'stroke-width': 2, 'stroke-linejoin': 'round', 'stroke-linecap': 'round' }));
+      pts.forEach(p => { svg.appendChild(el('circle', { cx: p[0], cy: p[1], r: 5, fill: 'var(--surface)' })); const c = el('circle', { cx: p[0], cy: p[1], r: 3.5, fill: col, class: 'mark' }); svg.appendChild(c); const hit = el('circle', { cx: p[0], cy: p[1], r: 12, class: 'hit' }); svg.appendChild(hit); bindTip(hit, [`${lab} ${p[2].band}`, `${f1(p[2].pct)}%`, `${fmtN(p[2].n)} tested`]); });
+      if (pts.length) ends[k] = pts[pts.length - 1];
+    });
+    // End labels only when the two lines separate at the right edge; otherwise the legend carries identity.
+    if (ends.F && ends.M && Math.abs(ends.F[1] - ends.M[1]) >= 12) { svg.appendChild(el('text', { x: ends.F[0] + 8, y: ends.F[1] + 4, 'font-size': 11, class: 'ink' }, 'W')); svg.appendChild(el('text', { x: ends.M[0] + 8, y: ends.M[1] + 4, 'font-size': 11, class: 'ink' }, 'M')); }
+    box.appendChild(svg); smBox.appendChild(box);
+  });
+
+  /* ---------------- network ---------------- */
+  const N = D.network; const commCol = ['var(--s1)', 'var(--s2)', 'var(--s3)'];
+  $('#net-sub').textContent = `${N.nodes.length} conditions · ${N.edges.length} significant links`;
+  N.community_names.forEach((nm, i) => { const sp = hel('span'); const sw = hel('i', 'sw'); sw.style.background = commCol[i]; sp.appendChild(sw); sp.appendChild(document.createTextNode(nm + ' (' + (N.communities[i] || []).length + ')')); $('#net-legend').appendChild(sp); });
+  (function () {
+    const w = 980, h = 640, pad = 80;
+    const svg = el('svg', { viewBox: `0 0 ${w} ${h}`, width: w, height: h, role: 'img', 'aria-label': 'condition association network' });
+    const pos = {}; N.nodes.forEach(n => pos[n.id] = [pad + n.x * (w - 2 * pad), pad + n.y * (h - 2 * pad)]);
+    const maxLog = Math.max(...N.edges.map(e => e.log_or));
+    N.edges.forEach(e => { const a = pos[e.a], b = pos[e.b]; svg.appendChild(el('line', { x1: a[0], y1: a[1], x2: b[0], y2: b[1], stroke: 'var(--axis)', 'stroke-width': (0.8 + 4 * e.log_or / maxLog).toFixed(1), 'stroke-opacity': 0.8 })); });
+    const maxDeg = Math.max(...N.nodes.map(n => n.weighted_degree));
+    N.nodes.forEach(n => {
+      const [x, y] = pos[n.id]; const r = 7 + 16 * Math.sqrt(n.weighted_degree / maxDeg);
+      svg.appendChild(el('circle', { cx: x, cy: y, r: r + 2, fill: 'var(--surface)' }));
+      const c = el('circle', { cx: x, cy: y, r: r, fill: commCol[n.community] || 'var(--s1)', class: 'mark' }); svg.appendChild(c);
+      const t = el('text', { x: x, y: y - r - 5, 'text-anchor': 'middle', class: 'ink', 'font-size': 12, 'font-weight': 600, 'paint-order': 'stroke', stroke: 'var(--surface)', 'stroke-width': 4, 'stroke-linejoin': 'round' }, n.id); svg.appendChild(t);
+      const links = N.edges.filter(e => e.a === n.id || e.b === n.id).map(e => ({ o: e.a === n.id ? e.b : e.a, or: e.adj_or })).sort((p, q) => q.or - p.or);
+      const hit = el('circle', { cx: x, cy: y, r: r + 6, class: 'hit' }); svg.appendChild(hit);
+      bindTip(hit, [n.id, `${N.community_names[n.community]} community · ${n.degree} links`, ...links.slice(0, 6).map(l => `${l.o}: aOR ${f1(l.or)}`)]);
+    });
+    $('#net-chart').appendChild(svg);
+  })();
+  (function () {
+    const t = hel('table'); const tr = hel('tr'); ['A', 'B', 'P(B | A)', 'P(B | not A)', 'RR', 'aOR (95% CI)', 'n'].forEach((h, i) => tr.appendChild(hel('th', i > 1 ? 'num' : '', h))); t.appendChild(tr);
+    D.top_links.slice(0, 14).forEach(l => { const r = hel('tr'); [l.a, l.b, f1(l.p_b_given_a) + '%', f1(l.p_b_given_not_a) + '%', f1(l.rr), `${f1(l.adj_or)} (${f1(l.lo)}–${f1(l.hi)})`, fmtN(l.n)].forEach((c, i) => r.appendChild(hel('td', i > 1 ? 'num' : '', c))); t.appendChild(r); });
+    $('#top-links').appendChild(t);
+    const t2 = hel('table'); const tr2 = hel('tr'); ['Condition', 'Links', 'Weighted degree', 'Eigenvector'].forEach((h, i) => tr2.appendChild(hel('th', i ? 'num' : '', h))); t2.appendChild(tr2);
+    N.centrality.forEach(n => { const r = hel('tr'); [n.node, String(n.degree), f1(n.weighted_degree), f2(n.eigenvector_centrality)].forEach((c, i) => r.appendChild(hel('td', i ? 'num' : '', c))); t2.appendChild(r); });
+    $('#hubs').appendChild(t2);
+  })();
+  (function () {
+    const M = D.matrix, nodes = M.nodes, n = nodes.length, cell = 34, left = 150, top = 120;
+    const w = left + n * cell + 8, h = top + n * cell + 8;
+    const svg = el('svg', { viewBox: `0 0 ${w} ${h}`, width: w, height: h, role: 'img', 'aria-label': 'adjusted odds ratio matrix' });
+    const ramp = ['var(--r1)', 'var(--r2)', 'var(--r3)', 'var(--r4)', 'var(--r5)'];
+    const step = (or) => or < 1.5 ? 0 : or < 2 ? 1 : or < 3 ? 2 : or < 5 ? 3 : 4;
+    nodes.forEach((nm, j) => { const t = el('text', { x: left + j * cell + cell / 2, y: top - 6, 'text-anchor': 'start', class: 'ink', 'font-size': 11, transform: `rotate(-55 ${left + j * cell + cell / 2} ${top - 6})` }, nm); svg.appendChild(t); });
+    nodes.forEach((a, i) => {
+      svg.appendChild(el('text', { x: left - 6, y: top + i * cell + cell / 2 + 4, 'text-anchor': 'end', class: 'ink', 'font-size': 11 }, a));
+      nodes.forEach((b, j) => {
+        const x = left + j * cell, y = top + i * cell;
+        if (i === j) { svg.appendChild(el('rect', { x: x + 1, y: y + 1, width: cell - 2, height: cell - 2, fill: 'var(--grid)' })); return; }
+        const c = M.cells[`${a}|${b}`];
+        if (!c || c.adj_or == null || c.p == null || c.p >= 0.001 || c.adj_or <= 1) { svg.appendChild(el('rect', { x: x + 1, y: y + 1, width: cell - 2, height: cell - 2, fill: 'none', stroke: 'var(--grid)' })); if (c && c.adj_or != null && c.p != null && c.p < 0.001 && c.adj_or < 1) svg.appendChild(el('text', { x: x + cell / 2, y: y + cell / 2 + 4, 'text-anchor': 'middle', class: 'muted', 'font-size': 10 }, f1(c.adj_or))); return; }
+        const s = step(c.adj_or);
+        const rect = el('rect', { x: x + 1, y: y + 1, width: cell - 2, height: cell - 2, fill: ramp[s], class: 'mark' }); svg.appendChild(rect);
+        svg.appendChild(el('text', { x: x + cell / 2, y: y + cell / 2 + 4, 'text-anchor': 'middle', 'font-size': 10, fill: s >= 2 ? 'var(--on-ramp-dark)' : 'var(--ink)', 'font-weight': s >= 3 ? 600 : 400 }, c.adj_or >= 10 ? Math.round(c.adj_or) : f1(c.adj_or)));
+        const hit = el('rect', { x: x, y: y, width: cell, height: cell, class: 'hit' }); svg.appendChild(hit);
+        bindTip(hit, [`${a} → ${b}`, `aOR ${f1(c.adj_or)} (${f1(c.lo)}–${f1(c.hi)})`, `P(${b} | ${a}) ${f1(c.p_b_given_a)}% vs ${f1(c.p_b_given_not_a)}% without`, `${fmtN(c.n)} tested for both`]);
+      });
+    });
+    $('#matrix').appendChild(svg);
+    const leg = hel('div', 'legend'); [['1.3–1.5', 0], ['1.5–2', 1], ['2–3', 2], ['3–5', 3], ['≥ 5', 4]].forEach(([l, s]) => { const sp = hel('span'); const sw = hel('i', 'sw'); sw.style.background = ramp[s]; sp.appendChild(sw); sp.appendChild(document.createTextNode('aOR ' + l)); leg.appendChild(sp); }); $('#matrix').parentNode.insertBefore(leg, $('#matrix'));
+  })();
+  (function () {
+    const R = D.correlations, labs = R.labels, n = labs.length, cell = 40, left = 120, top = 100;
+    const w = left + n * cell + 8, h = top + n * cell + 8;
+    const svg = el('svg', { viewBox: `0 0 ${w} ${h}`, width: w, height: h, role: 'img', 'aria-label': 'partial correlation matrix' });
+    const col = (r) => { const a = Math.min(1, Math.abs(r) / 0.6); return r >= 0 ? `color-mix(in oklab, var(--s1) ${Math.round(a * 100)}%, var(--grid))` : `color-mix(in oklab, var(--neg) ${Math.round(a * 100)}%, var(--grid))`; };
+    labs.forEach((nm, j) => svg.appendChild(el('text', { x: left + j * cell + cell / 2, y: top - 6, 'text-anchor': 'start', class: 'ink', 'font-size': 11, transform: `rotate(-55 ${left + j * cell + cell / 2} ${top - 6})` }, nm)));
+    labs.forEach((a, i) => {
+      svg.appendChild(el('text', { x: left - 6, y: top + i * cell + cell / 2 + 4, 'text-anchor': 'end', class: 'ink', 'font-size': 11 }, a));
+      labs.forEach((b, j) => {
+        const x = left + j * cell, y = top + i * cell, r = R.partial_rho[i][j];
+        if (i === j || r == null) { svg.appendChild(el('rect', { x: x + 1, y: y + 1, width: cell - 2, height: cell - 2, fill: i === j ? 'var(--grid)' : 'none', stroke: 'var(--grid)' })); return; }
+        svg.appendChild(el('rect', { x: x + 1, y: y + 1, width: cell - 2, height: cell - 2, fill: col(r), class: 'mark' }));
+        svg.appendChild(el('text', { x: x + cell / 2, y: y + cell / 2 + 4, 'text-anchor': 'middle', 'font-size': 10, fill: Math.abs(r) >= 0.3 ? '#ffffff' : 'var(--ink)' }, (r >= 0 ? '' : '−') + Math.abs(r).toFixed(2).replace(/^0/, '')));
+        const hit = el('rect', { x: x, y: y, width: cell, height: cell, class: 'hit' }); svg.appendChild(hit);
+        bindTip(hit, [`${a} × ${b}`, `partial ρ ${f2(r)}`, `${fmtN(R.n[i][j])} people with both`]);
+      });
+    });
+    $('#corr').appendChild(svg);
+  })();
+
+  /* ---------------- stacked ordinal bars (CKM, multimorbidity) ---------------- */
+  function stacked(container, rows, cats, labels, colors, opts) {
+    const o = Object.assign({ w: 940, labelW: 90, rowH: 34, barH: 22, nW: 80, minW: 560 }, opts || {});
+    o.w = fitWidth(container, o.w, o.minW);
+    const x0 = o.labelW, x1 = o.w - o.nW - 8, sx = (v) => x0 + (x1 - x0) * v / 100;
+    const h = rows.length * o.rowH + 26;
+    const svg = el('svg', { viewBox: `0 0 ${o.w} ${h}`, width: o.w, height: h, role: 'img', 'aria-label': o.aria || 'stacked bars' });
+    [0, 25, 50, 75, 100].forEach(v => { svg.appendChild(el('line', { x1: sx(v), x2: sx(v), y1: 4, y2: h - 20, class: 'grid' })); svg.appendChild(el('text', { x: sx(v), y: h - 4, 'text-anchor': 'middle', class: 'muted' }, v + '%')); });
+    rows.forEach((r, i) => {
+      const y = 4 + i * o.rowH + (o.rowH - o.barH) / 2;
+      svg.appendChild(el('text', { x: x0 - 8, y: y + o.barH / 2 + 4, 'text-anchor': 'end', class: 'ink' }, r.label));
+      let acc = 0;
+      cats.forEach((c, k) => {
+        const v = r.values[k] || 0; if (v <= 0) return;
+        const xa = sx(acc), xb = sx(acc + v); acc += v;
+        const rect = el('rect', { x: xa + 1, y: y, width: Math.max(0, xb - xa - 2), height: o.barH, fill: colors[k], class: 'mark' }); svg.appendChild(rect);
+        if (xb - xa > 40) svg.appendChild(el('text', { x: (xa + xb) / 2, y: y + o.barH / 2 + 4, 'text-anchor': 'middle', 'font-size': 11, fill: k >= 2 ? 'var(--on-ramp-dark)' : 'var(--ink)' }, Math.round(v) + '%'));
+        const hit = el('rect', { x: xa, y: y - 4, width: xb - xa, height: o.barH + 8, class: 'hit' }); svg.appendChild(hit);
+        bindTip(hit, [`${r.label} · ${labels[k]}`, `${f1(v)}%`, r.n != null ? `${fmtN(r.n)} people` : '']);
+      });
+      if (r.n != null) svg.appendChild(el('text', { x: o.w - 4, y: y + o.barH / 2 + 4, 'text-anchor': 'end', class: 'muted' }, 'n ' + fmtN(r.n)));
+    });
+    container.appendChild(svg);
+  }
+  const ramp5 = ['var(--r1)', 'var(--r2)', 'var(--r3)', 'var(--r4)', 'var(--r5)'];
+  const K = D.ckm;
+  $('#ckm-sowhat').textContent = `${fmtN(K.n_evaluable)} adults had at least one metabolic, kidney or liver-ultrasound result. ${f1(K.stage_pct['2'] + K.stage_pct['3'] + K.stage_pct['4'])}% are at stage 2 or beyond (stage 2 ${f1(K.stage_pct['2'])}%, stage 3 ${f1(K.stage_pct['3'])}%, stage 4 ${f1(K.stage_pct['4'])}%), and a further ${f1(K.stage_pct['1'])}% show early metabolic dysfunction (stage 1). Beyond 60, stage 2+ exceeds 40%.`;
+  const stLab = ['Stage 0 · no markers', 'Stage 1 · prediabetes / steatosis', 'Stage 2 · diabetes, high TG or CKD', 'Stage 3 · very-high-risk CKD or subclinical heart disease', 'Stage 4 · clinical cardiovascular disease'];
+  stLab.forEach((l, k) => { const sp = hel('span'); const sw = hel('i', 'sw'); sw.style.background = ramp5[k]; sp.appendChild(sw); sp.appendChild(document.createTextNode(l)); $('#ckm-legend').appendChild(sp); });
+  const ckmRows = bands.map(b => ({ label: b, values: [0, 1, 2, 3, 4].map(s => K.by_age_pct[b] ? (K.by_age_pct[b][String(s)] || 0) : 0), n: (K.by_age_n && K.by_age_n[b]) || null }));
+  ckmRows.push({ label: 'All adults', values: [0, 1, 2, 3, 4].map(s => K.stage_pct[String(s)] || 0), n: K.n_evaluable });
+  stacked($('#ckm-chart'), ckmRows, [0, 1, 2, 3, 4], stLab, ramp5, { aria: 'CKM stage by age' });
+  (function () {
+    const x = K.echo_cross; const box = hel('div', 'tiles');
+    [['Structural heart disease if diabetes', f1(x.shd_pct_if_dm) + '%', `vs ${f1(x.shd_pct_if_no_dm_tested)}% without diabetes (among those with an echo)`],
+     ['Structural heart disease if eGFR < 60', f1(x.shd_pct_if_ckd) + '%', `vs ${f1(x.shd_pct_if_no_ckd_tested)}% with preserved kidney function`],
+     ['LV hypertrophy if eGFR < 60', f1(x.lvh_pct_if_ckd) + '%', `vs ${f1(x.lvh_pct_if_no_ckd_tested)}% with preserved kidney function`],
+     ['Reduced EF if diabetes and CKD', f1(x.ef_lt50_pct_if_dm_and_ckd) + '%', `LVEF below 50% when both are present`]].forEach(([l, v, s]) => { const t = hel('div', 'tile'); t.appendChild(hel('div', 'label', l)); t.appendChild(hel('div', 'value', v)); t.appendChild(hel('div', 'sub', s)); box.appendChild(t); });
+    $('#ckm-cross').appendChild(box);
+  })();
+
+  const MM = D.multimorbidity, m3 = MM.min_tested_3;
+  $('#mm-sowhat').textContent = `Among ${fmtN(m3.persons)} adults tested in at least three domains, ${f1(m3.pct['0'])}% had no condition, ${f1(m3.pct['1'])}% had one and ${f1((m3.pct['2'] || 0) + (m3.pct['3'] || 0) + (m3.pct['4'] || 0))}% had two or more. The share with two or more rises from ${f1(m3.by_age['18-29'].two_plus_pct)}% at 18–29 to ${f1(m3.by_age['60-74'].two_plus_pct)}% at 60–74.`;
+  const mmLab = ['None', 'One', 'Two', 'Three', 'Four or more'];
+  mmLab.forEach((l, k) => { const sp = hel('span'); const sw = hel('i', 'sw'); sw.style.background = ramp5[k]; sp.appendChild(sw); sp.appendChild(document.createTextNode(l)); $('#mm-legend').appendChild(sp); });
+  (function () {
+    // by-age distribution is only summarised as 2+% in the data; show overall distribution plus 2+ by age as a second chart.
+    const rows = [{ label: 'All adults', values: [0, 1, 2, 3, 4].map(k => m3.pct[String(k)] || 0), n: m3.persons }];
+    stacked($('#mm-chart'), rows, [0, 1, 2, 3, 4], mmLab, ramp5, { aria: 'conditions per person', labelW: 100 });
+    const rows2 = bands.map(b => ({ label: b, value: m3.by_age[b].two_plus_pct, n: m3.by_age[b].persons, inlabel: f1(m3.by_age[b].two_plus_pct) + '%', tip: [`${b}: two or more conditions`, `${f1(m3.by_age[b].two_plus_pct)}%`, `${fmtN(m3.by_age[b].persons)} people tested in ≥ 3 domains`] }));
+    const sub = hel('div', 'fig-sub', 'Share with two or more conditions, by age band'); sub.style.marginTop = '10px'; $('#mm-chart').appendChild(sub);
+    hbars($('#mm-chart'), rows2, { labelW: 90, max: 100, rowH: 26, aria: 'two or more conditions by age' });
+  })();
+  MM.top_combinations.slice(0, 16).forEach(([combo, n]) => { const li = hel('li'); li.appendChild(document.createTextNode(combo + ' ')); const s = hel('span', '', fmtN(n)); s.style.color = 'var(--muted)'; li.appendChild(s); $('#combos').appendChild(li); });
+  (function () {
+    const g = MM.given_condition; const rows = Object.keys(g).sort((a, b) => g[b].mean_other_conditions - g[a].mean_other_conditions).map(k => ({ label: k, value: g[k].mean_other_conditions, n: g[k].n, inlabel: f2(g[k].mean_other_conditions), tip: [k, `${f2(g[k].mean_other_conditions)} other conditions on average`, `${f1(g[k].two_plus_other_pct)}% have two or more others`, `${fmtN(g[k].n)} people`] }));
+    hbars($('#given-chart'), rows, { w: 520, labelW: 170, max: 2.5, nW: 70, unit: '', rowH: 26, aria: 'mean other conditions' });
+  })();
+
+  /* ---------------- progression ---------------- */
+  const PR = D.progression, FP = D.fatty_liver_progression, CI = D.ckd_incidence;
+  $('#prog-sowhat').textContent = `${fmtN(pop.adults_with_2plus_visits)} adults came back at least once and ${fmtN(pop.adults_followed_1yr_plus)} were followed for a year or more. Where the same marker was repeated, one in four people with prediabetic fasting glucose crossed into the diabetic range (median ${f1(PR.hba1c.median_gap_years)} years between tests), one in four people with a normal liver scan had developed fatty liver by the next scan, and a third of people with repeat creatinine were losing kidney function faster than 5 mL/min per year.`;
+  (function () {
+    const rows = [
+      { label: 'Fasting glucose: prediabetic → diabetic range', value: PR.fbs.pre_to_diabetic_range_pct, n: PR.fbs.prediabetic_first_n, tip: ['Prediabetic fasting glucose at first test', `${f1(PR.fbs.pre_to_diabetic_range_pct)}% diabetic range at latest`, `${f1(PR.fbs.pre_to_diabetic_rate_per_100py)} per 100 person-years · ${f1(PR.fbs.pre_reverted_to_normal_pct)}% reverted to normal`, `${fmtN(PR.fbs.prediabetic_first_n)} people`] },
+      { label: 'Fasting glucose: normal → prediabetic range', value: PR.fbs.normal_to_prediabetic_pct, n: PR.fbs.normal_first_n, tip: ['Normal fasting glucose at first test', `${f1(PR.fbs.normal_to_prediabetic_pct)}% prediabetic at latest · ${f1(PR.fbs.normal_to_diabetic_range_pct)}% diabetic`, `${fmtN(PR.fbs.normal_first_n)} people`] },
+      { label: 'Fasting glucose: normal → diabetic range', value: PR.fbs.normal_to_diabetic_range_pct, n: PR.fbs.normal_first_n, tip: ['Normal fasting glucose at first test', `${f1(PR.fbs.normal_to_diabetic_range_pct)}% diabetic range at latest`, `${f1(PR.fbs.normal_to_diabetic_rate_per_100py)} per 100 person-years`] },
+      { label: 'HbA1c: rose by ≥ 0.5 points', value: PR.hba1c.worsened_0_5_pct != null ? PR.hba1c.worsened_0_5_pct : PR.hba1c['worsened_0.5_pct'], n: PR.hba1c.persons_repeat, tip: ['Repeat HbA1c', `${f1(PR.hba1c['worsened_0.5_pct'])}% rose ≥ 0.5 · ${f1(PR.hba1c['improved_0.5_pct'])}% fell ≥ 0.5`, `${f1(PR.hba1c.still_uncontrolled_among_first_uncontrolled_pct)}% of those ≥ 8% at first were still ≥ 8%`, `${fmtN(PR.hba1c.persons_repeat)} people`] },
+      { label: 'eGFR: rapid decline (≤ −5 mL/min per year)', value: PR.egfr['rapid_decline_pct(<=-5/yr)'], n: PR.egfr.persons_slope, tip: ['Repeat creatinine ≥ 6 months apart', `${f1(PR.egfr['rapid_decline_pct(<=-5/yr)'])}% declining ≥ 5 mL/min/yr`, `median slope ${f1(PR.egfr.median_slope)} mL/min/yr · median follow-up ${f1(PR.egfr.median_followup_years)} y`, `${fmtN(PR.egfr.persons_slope)} people`] },
+      { label: 'eGFR: crossed below 60', value: PR.egfr['new_ckd_pct(first>=60,last<60)'], n: PR.egfr.persons_slope, tip: ['Started at eGFR ≥ 60', `${f1(PR.egfr['new_ckd_pct(first>=60,last<60)'])}% below 60 at latest`, `${f1(PR.egfr['ckd_persisted_pct(first<60,last<60)'])}% of those starting < 60 stayed < 60`] },
+      { label: 'Liver ultrasound: normal → fatty liver', value: FP['new_fatty_liver_pct(first 0, last >=1)'], n: FP.n_first_normal, tip: ['Normal liver on first scan, rescanned ≥ 6 months later', `${f1(FP['new_fatty_liver_pct(first 0, last >=1)'])}% fatty at latest scan`, `${fmtN(FP.n_first_normal)} people · overall ${f1(FP.progressed_pct)}% progressed, ${f1(FP.regressed_pct)}% regressed (n ${fmtN(FP.persons_repeat_usg)})`] },
+      { label: 'Triglycerides: normal → ≥ 150', value: PR.tg['rose_to_high_pct(first<150,last>=150)'], n: PR.tg.persons_repeat, tip: ['Repeat lipid profile', `${f1(PR.tg['rose_to_high_pct(first<150,last>=150)'])}% rose to ≥ 150 · ${f1(PR.tg.stayed_high_pct)}% of high stayed high`, `${fmtN(PR.tg.persons_repeat)} people`] },
+      { label: 'LDL ≥ 130: still ≥ 130 at retest', value: PR.ldl.still_above130_among_first_above_pct, n: PR.ldl.persons_repeat, tip: ['LDL ≥ 130 at first test', `${f1(PR.ldl.still_above130_among_first_above_pct)}% still ≥ 130`, `${f1(PR.ldl.fell_30_pct)}% of all repeat LDLs fell ≥ 30 mg/dL`] },
+      { label: 'ALT: normal → raised', value: PR.alt['normal_to_raised_pct(first<=40,last>40)'], n: PR.alt.persons_repeat, tip: ['Repeat ALT', `${f1(PR.alt['normal_to_raised_pct(first<=40,last>40)'])}% rose above 40 U/L · ${f1(PR.alt.raised_persisted_pct)}% of raised stayed raised`, `${fmtN(PR.alt.persons_repeat)} people`] },
+      { label: 'Subclinical hypothyroidism: became overt (TSH > 10)', value: PR.tsh['sub_to_overt_pct(>10)'], n: PR.tsh.subclinical_first_n, tip: ['TSH 4.5–10 at first test', `${f1(PR.tsh['sub_to_overt_pct(>10)'])}% overt · ${f1(PR.tsh.sub_persisted_pct)}% persisted · ${f1(PR.tsh.sub_normalised_pct)}% normalised`, `${fmtN(PR.tsh.subclinical_first_n)} people`] },
+      { label: 'Haemoglobin: fell by ≥ 1 g/dL', value: PR.hb.fell_1g_pct, n: PR.hb.persons_repeat, tip: ['Repeat haemoglobin', `${f1(PR.hb.fell_1g_pct)}% fell ≥ 1 · ${f1(PR.hb.rose_1g_pct)}% rose ≥ 1`, `${fmtN(PR.hb.persons_repeat)} people`] },
+    ];
+    rows.forEach(r => r.inlabel = f1(r.value) + '%');
+    hbars($('#prog-chart'), rows, { labelW: 360, max: 100, aria: 'progression transitions' });
+  })();
+  (function () {
+    const t = hel('table'); const tr = hel('tr'); ['Group', 'At risk', 'Events', 'Person-years', 'Rate /100 py', 'Rate ratio (95% CI)', 'Mean eGFR slope'].forEach((h, i) => tr.appendChild(hel('th', i ? 'num' : '', h))); t.appendChild(tr);
+    const order = ['diabetes', 'no diabetes (tested)', 'fatty liver', 'hyperuricaemia'];
+    order.forEach(k => { const g = CI.groups[k]; if (!g) return; const ir = CI.irr[k]; const r = hel('tr'); [k, fmtN(g.at_risk), fmtN(g.events), fmtN(g.person_years), f1(g.rate_per_100py), ir ? `${f2(ir.irr_vs_no_diabetes)} (${f2(ir.lo)}–${f2(ir.hi)})` : '1 (reference)', f1(g.mean_slope)].forEach((c, i) => r.appendChild(hel('td', i ? 'num' : '', c))); t.appendChild(r); });
+    $('#ckd-inc').appendChild(t);
+    const t2 = hel('table'); const tr2 = hel('tr'); ['Condition', 'Negative early', 'New later', '%'].forEach((h, i) => tr2.appendChild(hel('th', i ? 'num' : '', h))); t2.appendChild(tr2);
+    D.accrual.sort((a, b) => b.new_positive_pct - a.new_positive_pct).forEach(a => { const r = hel('tr'); [a.condition, fmtN(a.negative_early), fmtN(a.new_positive_later), f1(a.new_positive_pct)].forEach((c, i) => r.appendChild(hel('td', i ? 'num' : '', c))); t2.appendChild(r); });
+    $('#accrual').appendChild(t2);
+  })();
+
+  /* ---------------- care gaps ---------------- */
+  $('#gaps-sowhat').textContent = `Of ${fmtN(C.dm_n)} adults with diabetes (including unconfirmed), only ${f1(C.dm_with_hba1c_pct)}% ever had an HbA1c, ${f1(C.dm_egfr_tested_pct)}% a creatinine and ${f1(C.dm_acr_tested_pct)}% a urine albumin-creatinine ratio. Where the kidney tests were done, ${f1(C.dm_ckd_pct_among_egfr_tested)}% had an eGFR below 60 and ${f1(C.dm_albuminuria_pct_among_acr_tested)}% had albuminuria. Only ${f1(C.ckd_with_acr_pct)}% of people with eGFR below 60 ever had an ACR, and ${f1(C.fatty_with_lft_pct)}% of people with fatty liver ever had a liver function test.`;
+  (function () {
+    const rows = [['HbA1c', C.dm_with_hba1c_pct], ['Creatinine (eGFR)', C.dm_egfr_tested_pct], ['Lipid profile', C.dm_lipid_tested_pct], ['Liver ultrasound', C.dm_usg_liver_pct], ['Echocardiogram', C.dm_echo_pct], ['Urine ACR', C.dm_acr_tested_pct]].map(([l, v]) => ({ label: l, value: v, inlabel: f1(v) + '%', tip: [l, `${f1(v)}% of ${fmtN(C.dm_n)} adults with diabetes`] }));
+    hbars($('#gaps-chart'), rows, { w: 520, labelW: 150, max: 100, nW: 10, aria: 'screening coverage in diabetes' });
+  })();
+  (function () {
+    const d = C.dm_hba1c_control_dist_pct; const keys = ['<7', '7-7.9', '8-8.9', '9-9.9', '>=10'];
+    const rows = keys.map(k => ({ label: 'HbA1c ' + k.replace('>=', '≥ ') + '%', value: d[k] || 0, inlabel: f1(d[k] || 0) + '%', tip: ['Latest HbA1c ' + k, `${f1(d[k] || 0)}% of adults with diabetes and an HbA1c`] }));
+    hbars($('#control-chart'), rows, { w: 520, labelW: 150, max: 100, nW: 10, aria: 'glycaemic control' });
+    const ge8 = (d['8-8.9'] || 0) + (d['9-9.9'] || 0) + (d['>=10'] || 0);
+    $('#control-cap').textContent = `${f1(ge8)}% of people with diabetes who have an HbA1c are at 8% or above; ${f1(d['>=10'] || 0)}% are at 10% or above. LDL above the 70 mg/dL target for diabetes: ${f1(C.dm_ldl_above70_pct)}% of those with a lipid profile.`;
+  })();
+  (function () {
+    const Y = D.rates_by_year; const t = hel('table'); const tr = hel('tr');
+    const cols = ['Diabetes', 'Dyslipidaemia', 'CKD (eGFR<60)', 'Fatty liver', 'Hypothyroid', 'Anaemia', 'Structural heart dis.'];
+    ['Year', 'Adults seen', ...cols].forEach((h, i) => tr.appendChild(hel('th', i ? 'num' : '', h))); t.appendChild(tr);
+    Y.forEach(y => { const r = hel('tr'); [String(y.year), fmtN(y.adults_seen), ...cols.map(c => `${Math.round(y[c + ' per 1000 tested'])} (n ${fmtN(y[c + ' tested'])})`)].forEach((c, i) => r.appendChild(hel('td', i ? 'num' : '', c))); t.appendChild(r); });
+    $('#yearly').appendChild(t);
+  })();
+
+  /* ---------------- methods ---------------- */
+  $('#link-stats').textContent = `${fmtN(pop.bills)} bills resolved to ${fmtN(pop.persons_total)} people, ${fmtN(pop.adults_with_2plus_visits)} adults with more than one visit; only 43 linked people have an implausible spread of recorded birth years.`;
+  $('#foot').textContent = `Generated ${D.generated.slice(0, 10)} from the AKTIV database of Anubhav Life Care by the samahealthweb etl-ncd pipeline (analysis/build_dataset.py, analyse.py, report_data.py). Aggregates only; no record on this page identifies a person.`;
+})();
+</script>

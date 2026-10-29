@@ -1,0 +1,624 @@
+condition,category,sex,age_band,tested,positive,prevalence_pct
+Diabetes (confirmed),Metabolic,F,18-29,2929,92,3.1410037555479686
+Diabetes (confirmed),Metabolic,F,30-44,4506,482,10.696848646249444
+Diabetes (confirmed),Metabolic,F,45-59,4117,1131,27.471459800825844
+Diabetes (confirmed),Metabolic,F,60-74,2658,753,28.329571106094807
+Diabetes (confirmed),Metabolic,F,75+,492,93,18.902439024390244
+Diabetes (confirmed),Metabolic,M,18-29,659,18,2.731411229135053
+Diabetes (confirmed),Metabolic,M,30-44,2355,412,17.494692144373673
+Diabetes (confirmed),Metabolic,M,45-59,3327,932,28.013225127742714
+Diabetes (confirmed),Metabolic,M,60-74,3077,899,29.21676958076048
+Diabetes (confirmed),Metabolic,M,75+,795,187,23.52201257861635
+Diabetes (confirmed),Metabolic,F,all,14702,2551,17.351380764521835
+Diabetes (confirmed),Metabolic,M,all,10213,2448,23.969450700088125
+Diabetes incl. unconfirmed,Metabolic,F,18-29,2929,144,4.916353704335951
+Diabetes incl. unconfirmed,Metabolic,F,30-44,4506,865,19.196626719928982
+Diabetes incl. unconfirmed,Metabolic,F,45-59,4117,1693,41.1221763419966
+Diabetes incl. unconfirmed,Metabolic,F,60-74,2658,1145,43.07750188111362
+Diabetes incl. unconfirmed,Metabolic,F,75+,492,164,33.33333333333333
+Diabetes incl. unconfirmed,Metabolic,M,18-29,659,29,4.400606980273141
+Diabetes incl. unconfirmed,Metabolic,M,30-44,2355,675,28.662420382165603
+Diabetes incl. unconfirmed,Metabolic,M,45-59,3327,1419,42.65103697024346
+Diabetes incl. unconfirmed,Metabolic,M,60-74,3077,1392,45.238869028274294
+Diabetes incl. unconfirmed,Metabolic,M,75+,795,317,39.87421383647799
+Diabetes incl. unconfirmed,Metabolic,F,all,14702,4011,27.28200244864644
+Diabetes incl. unconfirmed,Metabolic,M,all,10213,3832,37.52080681484383
+Prediabetes (latest),Metabolic,F,18-29,2929,339,11.573916012290884
+Prediabetes (latest),Metabolic,F,30-44,4506,1001,22.214824678206835
+Prediabetes (latest),Metabolic,F,45-59,4117,1084,26.329851833859607
+Prediabetes (latest),Metabolic,F,60-74,2658,760,28.592927012791574
+Prediabetes (latest),Metabolic,F,75+,492,152,30.89430894308943
+Prediabetes (latest),Metabolic,M,18-29,659,99,15.022761760242792
+Prediabetes (latest),Metabolic,M,30-44,2355,518,21.99575371549894
+Prediabetes (latest),Metabolic,M,45-59,3327,925,27.802825368199578
+Prediabetes (latest),Metabolic,M,60-74,3077,871,28.306792330191744
+Prediabetes (latest),Metabolic,M,75+,795,243,30.566037735849054
+Prediabetes (latest),Metabolic,F,all,14702,3336,22.690790368657325
+Prediabetes (latest),Metabolic,M,all,10213,2656,26.006070694213257
+Dyslipidaemia (any),Metabolic,F,18-29,344,255,74.12790697674419
+Dyslipidaemia (any),Metabolic,F,30-44,1302,992,76.19047619047619
+Dyslipidaemia (any),Metabolic,F,45-59,1644,1174,71.41119221411192
+Dyslipidaemia (any),Metabolic,F,60-74,975,654,67.07692307692308
+Dyslipidaemia (any),Metabolic,F,75+,154,87,56.493506493506494
+Dyslipidaemia (any),Metabolic,M,18-29,330,226,68.48484848484848
+Dyslipidaemia (any),Metabolic,M,30-44,1311,1035,78.94736842105263
+Dyslipidaemia (any),Metabolic,M,45-59,1493,974,65.23777628935031
+Dyslipidaemia (any),Metabolic,M,60-74,1126,624,55.41740674955595
+Dyslipidaemia (any),Metabolic,M,75+,257,117,45.525291828793776
+Dyslipidaemia (any),Metabolic,F,all,4419,3162,71.55465037338764
+Dyslipidaemia (any),Metabolic,M,all,4517,2976,65.88443657294664
+LDL >= 130,Metabolic,F,18-29,344,46,13.372093023255813
+LDL >= 130,Metabolic,F,30-44,1302,206,15.821812596006144
+LDL >= 130,Metabolic,F,45-59,1644,333,20.255474452554743
+LDL >= 130,Metabolic,F,60-74,975,178,18.25641025641026
+LDL >= 130,Metabolic,F,75+,154,15,9.740259740259742
+LDL >= 130,Metabolic,M,18-29,330,45,13.636363636363635
+LDL >= 130,Metabolic,M,30-44,1311,252,19.221967963386728
+LDL >= 130,Metabolic,M,45-59,1493,228,15.271265907568655
+LDL >= 130,Metabolic,M,60-74,1126,115,10.213143872113676
+LDL >= 130,Metabolic,M,75+,257,21,8.171206225680933
+LDL >= 130,Metabolic,F,all,4419,778,17.605793165874633
+LDL >= 130,Metabolic,M,all,4517,661,14.633606375913216
+LDL >= 190,Metabolic,F,18-29,344,2,0.5813953488372093
+LDL >= 190,Metabolic,F,30-44,1302,15,1.1520737327188941
+LDL >= 190,Metabolic,F,45-59,1644,23,1.3990267639902676
+LDL >= 190,Metabolic,F,60-74,975,19,1.948717948717949
+LDL >= 190,Metabolic,F,75+,154,0,0.0
+LDL >= 190,Metabolic,M,18-29,330,1,0.30303030303030304
+LDL >= 190,Metabolic,M,30-44,1311,14,1.0678871090770405
+LDL >= 190,Metabolic,M,45-59,1493,13,0.8707300736771602
+LDL >= 190,Metabolic,M,60-74,1126,3,0.2664298401420959
+LDL >= 190,Metabolic,M,75+,257,1,0.38910505836575876
+LDL >= 190,Metabolic,F,all,4419,59,1.335143697669156
+LDL >= 190,Metabolic,M,all,4517,32,0.7084348018596414
+Triglycerides >= 150,Metabolic,F,18-29,344,90,26.16279069767442
+Triglycerides >= 150,Metabolic,F,30-44,1302,443,34.024577572964674
+Triglycerides >= 150,Metabolic,F,45-59,1644,600,36.496350364963504
+Triglycerides >= 150,Metabolic,F,60-74,975,285,29.230769230769234
+Triglycerides >= 150,Metabolic,F,75+,154,37,24.025974025974026
+Triglycerides >= 150,Metabolic,M,18-29,330,154,46.666666666666664
+Triglycerides >= 150,Metabolic,M,30-44,1311,699,53.31807780320366
+Triglycerides >= 150,Metabolic,M,45-59,1493,579,38.78097789685198
+Triglycerides >= 150,Metabolic,M,60-74,1126,326,28.95204262877442
+Triglycerides >= 150,Metabolic,M,75+,257,55,21.40077821011673
+Triglycerides >= 150,Metabolic,F,all,4419,1455,32.92600135777325
+Triglycerides >= 150,Metabolic,M,all,4517,1813,40.13725924286031
+Low HDL,Metabolic,F,18-29,344,210,61.04651162790697
+Low HDL,Metabolic,F,30-44,1302,756,58.06451612903226
+Low HDL,Metabolic,F,45-59,1644,790,48.05352798053528
+Low HDL,Metabolic,F,60-74,975,445,45.64102564102564
+Low HDL,Metabolic,F,75+,154,62,40.25974025974026
+Low HDL,Metabolic,M,18-29,330,143,43.333333333333336
+Low HDL,Metabolic,M,30-44,1311,635,48.43630816170862
+Low HDL,Metabolic,M,45-59,1493,611,40.924313462826525
+Low HDL,Metabolic,M,60-74,1126,395,35.07992895204263
+Low HDL,Metabolic,M,75+,257,73,28.404669260700388
+Low HDL,Metabolic,F,all,4419,2263,51.21068114958135
+Low HDL,Metabolic,M,all,4517,1857,41.11135709541731
+Atherogenic dyslipidaemia (TG high + low HDL),Metabolic,F,18-29,344,63,18.313953488372093
+Atherogenic dyslipidaemia (TG high + low HDL),Metabolic,F,30-44,1302,308,23.655913978494624
+Atherogenic dyslipidaemia (TG high + low HDL),Metabolic,F,45-59,1644,395,24.02676399026764
+Atherogenic dyslipidaemia (TG high + low HDL),Metabolic,F,60-74,975,190,19.48717948717949
+Atherogenic dyslipidaemia (TG high + low HDL),Metabolic,F,75+,154,23,14.935064935064934
+Atherogenic dyslipidaemia (TG high + low HDL),Metabolic,M,18-29,330,86,26.060606060606062
+Atherogenic dyslipidaemia (TG high + low HDL),Metabolic,M,30-44,1311,401,30.587337909992375
+Atherogenic dyslipidaemia (TG high + low HDL),Metabolic,M,45-59,1493,325,21.768251841929
+Atherogenic dyslipidaemia (TG high + low HDL),Metabolic,M,60-74,1126,171,15.186500888099467
+Atherogenic dyslipidaemia (TG high + low HDL),Metabolic,M,75+,257,27,10.505836575875486
+Atherogenic dyslipidaemia (TG high + low HDL),Metabolic,F,all,4419,979,22.154333559628874
+Atherogenic dyslipidaemia (TG high + low HDL),Metabolic,M,all,4517,1010,22.35997343369493
+Hyperuricaemia,Metabolic,F,18-29,320,54,16.875
+Hyperuricaemia,Metabolic,F,30-44,1069,189,17.680074836295603
+Hyperuricaemia,Metabolic,F,45-59,1207,312,25.849212924606462
+Hyperuricaemia,Metabolic,F,60-74,699,236,33.76251788268956
+Hyperuricaemia,Metabolic,F,75+,103,35,33.980582524271846
+Hyperuricaemia,Metabolic,M,18-29,226,92,40.707964601769916
+Hyperuricaemia,Metabolic,M,30-44,853,334,39.155920281359904
+Hyperuricaemia,Metabolic,M,45-59,898,246,27.39420935412027
+Hyperuricaemia,Metabolic,M,60-74,647,188,29.057187017001546
+Hyperuricaemia,Metabolic,M,75+,191,59,30.89005235602094
+Hyperuricaemia,Metabolic,F,all,3398,826,24.308416715715126
+Hyperuricaemia,Metabolic,M,all,2815,919,32.646536412078156
+Fatty liver on USG,Metabolic,F,18-29,5119,1405,27.44676694666927
+Fatty liver on USG,Metabolic,F,30-44,7062,3714,52.591333899745116
+Fatty liver on USG,Metabolic,F,45-59,4220,2839,67.27488151658768
+Fatty liver on USG,Metabolic,F,60-74,1879,1255,66.79084619478446
+Fatty liver on USG,Metabolic,F,75+,300,145,48.333333333333336
+Fatty liver on USG,Metabolic,M,18-29,1707,558,32.68892794376098
+Fatty liver on USG,Metabolic,M,30-44,3690,2170,58.80758807588076
+Fatty liver on USG,Metabolic,M,45-59,2838,1843,64.94009866102888
+Fatty liver on USG,Metabolic,M,60-74,2178,1248,57.30027548209367
+Fatty liver on USG,Metabolic,M,75+,495,257,51.91919191919192
+Fatty liver on USG,Metabolic,F,all,18580,9358,50.36598493003229
+Fatty liver on USG,Metabolic,M,all,10908,6076,55.70223689035571
+MASLD (fatty liver + cardiometabolic factor),Metabolic,F,18-29,5119,91,1.7776909552647002
+MASLD (fatty liver + cardiometabolic factor),Metabolic,F,30-44,7062,477,6.75446049277825
+MASLD (fatty liver + cardiometabolic factor),Metabolic,F,45-59,4220,549,13.009478672985782
+MASLD (fatty liver + cardiometabolic factor),Metabolic,F,60-74,1879,283,15.061202767429481
+MASLD (fatty liver + cardiometabolic factor),Metabolic,F,75+,300,21,7.000000000000001
+MASLD (fatty liver + cardiometabolic factor),Metabolic,M,18-29,1707,64,3.7492677211482133
+MASLD (fatty liver + cardiometabolic factor),Metabolic,M,30-44,3690,362,9.81029810298103
+MASLD (fatty liver + cardiometabolic factor),Metabolic,M,45-59,2838,421,14.834390415785764
+MASLD (fatty liver + cardiometabolic factor),Metabolic,M,60-74,2178,309,14.18732782369146
+MASLD (fatty liver + cardiometabolic factor),Metabolic,M,75+,495,71,14.343434343434344
+MASLD (fatty liver + cardiometabolic factor),Metabolic,F,all,18580,1421,7.648008611410119
+MASLD (fatty liver + cardiometabolic factor),Metabolic,M,all,10908,1227,11.248624862486249
+MASLD among fatty liver with a metabolic test,Metabolic,F,18-29,198,91,45.95959595959596
+MASLD among fatty liver with a metabolic test,Metabolic,F,30-44,753,477,63.34661354581673
+MASLD among fatty liver with a metabolic test,Metabolic,F,45-59,700,549,78.42857142857143
+MASLD among fatty liver with a metabolic test,Metabolic,F,60-74,360,283,78.61111111111111
+MASLD among fatty liver with a metabolic test,Metabolic,F,75+,25,21,84.0
+MASLD among fatty liver with a metabolic test,Metabolic,M,18-29,90,64,71.11111111111111
+MASLD among fatty liver with a metabolic test,Metabolic,M,30-44,509,362,71.11984282907662
+MASLD among fatty liver with a metabolic test,Metabolic,M,45-59,527,421,79.88614800759012
+MASLD among fatty liver with a metabolic test,Metabolic,M,60-74,375,309,82.39999999999999
+MASLD among fatty liver with a metabolic test,Metabolic,M,75+,90,71,78.88888888888889
+MASLD among fatty liver with a metabolic test,Metabolic,F,all,2036,1421,69.79371316306484
+MASLD among fatty liver with a metabolic test,Metabolic,M,all,1591,1227,77.1213073538655
+Vitamin D deficiency (< 20),Metabolic,F,18-29,217,119,54.83870967741935
+Vitamin D deficiency (< 20),Metabolic,F,30-44,396,191,48.23232323232323
+Vitamin D deficiency (< 20),Metabolic,F,45-59,369,131,35.50135501355013
+Vitamin D deficiency (< 20),Metabolic,F,60-74,207,58,28.019323671497588
+Vitamin D deficiency (< 20),Metabolic,F,75+,46,13,28.26086956521739
+Vitamin D deficiency (< 20),Metabolic,M,18-29,83,41,49.39759036144578
+Vitamin D deficiency (< 20),Metabolic,M,30-44,166,56,33.734939759036145
+Vitamin D deficiency (< 20),Metabolic,M,45-59,167,48,28.74251497005988
+Vitamin D deficiency (< 20),Metabolic,M,60-74,139,26,18.705035971223023
+Vitamin D deficiency (< 20),Metabolic,M,75+,45,9,20.0
+Vitamin D deficiency (< 20),Metabolic,F,all,1235,512,41.45748987854251
+Vitamin D deficiency (< 20),Metabolic,M,all,600,180,30.0
+CKD: eGFR < 60 (ever),Renal,F,18-29,1344,19,1.4136904761904763
+CKD: eGFR < 60 (ever),Renal,F,30-44,2263,48,2.1210782147591694
+CKD: eGFR < 60 (ever),Renal,F,45-59,2374,233,9.814658803706825
+CKD: eGFR < 60 (ever),Renal,F,60-74,1707,413,24.194493263034563
+CKD: eGFR < 60 (ever),Renal,F,75+,406,193,47.53694581280788
+CKD: eGFR < 60 (ever),Renal,M,18-29,556,17,3.0575539568345325
+CKD: eGFR < 60 (ever),Renal,M,30-44,1550,50,3.225806451612903
+CKD: eGFR < 60 (ever),Renal,M,45-59,2060,202,9.805825242718447
+CKD: eGFR < 60 (ever),Renal,M,60-74,2195,531,24.19134396355353
+CKD: eGFR < 60 (ever),Renal,M,75+,681,269,39.500734214390604
+CKD: eGFR < 60 (ever),Renal,F,all,8094,906,11.193476649369902
+CKD: eGFR < 60 (ever),Renal,M,all,7042,1069,15.180346492473728
+CKD: eGFR < 60 persistent >= 90 d,Renal,F,18-29,1344,4,0.2976190476190476
+CKD: eGFR < 60 persistent >= 90 d,Renal,F,30-44,2263,1,0.04418912947414936
+CKD: eGFR < 60 persistent >= 90 d,Renal,F,45-59,2374,19,0.8003369839932603
+CKD: eGFR < 60 persistent >= 90 d,Renal,F,60-74,1707,60,3.5149384885764503
+CKD: eGFR < 60 persistent >= 90 d,Renal,F,75+,406,24,5.911330049261084
+CKD: eGFR < 60 persistent >= 90 d,Renal,M,18-29,556,1,0.1798561151079137
+CKD: eGFR < 60 persistent >= 90 d,Renal,M,30-44,1550,2,0.12903225806451613
+CKD: eGFR < 60 persistent >= 90 d,Renal,M,45-59,2060,32,1.5533980582524272
+CKD: eGFR < 60 persistent >= 90 d,Renal,M,60-74,2195,79,3.5990888382687927
+CKD: eGFR < 60 persistent >= 90 d,Renal,M,75+,681,40,5.873715124816446
+CKD: eGFR < 60 persistent >= 90 d,Renal,F,all,8094,108,1.3343217197924389
+CKD: eGFR < 60 persistent >= 90 d,Renal,M,all,7042,154,2.1868787276341948
+CKD: eGFR < 60 (latest),Renal,F,18-29,1344,19,1.4136904761904763
+CKD: eGFR < 60 (latest),Renal,F,30-44,2263,47,2.07688908528502
+CKD: eGFR < 60 (latest),Renal,F,45-59,2374,222,9.351305812973884
+CKD: eGFR < 60 (latest),Renal,F,60-74,1707,393,23.022847100175746
+CKD: eGFR < 60 (latest),Renal,F,75+,406,189,46.55172413793103
+CKD: eGFR < 60 (latest),Renal,M,18-29,556,16,2.877697841726619
+CKD: eGFR < 60 (latest),Renal,M,30-44,1550,42,2.7096774193548385
+CKD: eGFR < 60 (latest),Renal,M,45-59,2060,190,9.223300970873787
+CKD: eGFR < 60 (latest),Renal,M,60-74,2195,493,22.460136674259683
+CKD: eGFR < 60 (latest),Renal,M,75+,681,258,37.88546255506608
+CKD: eGFR < 60 (latest),Renal,F,all,8094,870,10.748702742772425
+CKD: eGFR < 60 (latest),Renal,M,all,7042,999,14.18631070718546
+Albuminuria (UACR >= 30),Renal,F,18-29,18,9,50.0
+Albuminuria (UACR >= 30),Renal,F,30-44,68,33,48.529411764705884
+Albuminuria (UACR >= 30),Renal,F,45-59,187,90,48.1283422459893
+Albuminuria (UACR >= 30),Renal,F,60-74,180,100,55.55555555555556
+Albuminuria (UACR >= 30),Renal,F,75+,31,19,61.29032258064516
+Albuminuria (UACR >= 30),Renal,M,18-29,25,8,32.0
+Albuminuria (UACR >= 30),Renal,M,30-44,121,25,20.66115702479339
+Albuminuria (UACR >= 30),Renal,M,45-59,204,89,43.627450980392155
+Albuminuria (UACR >= 30),Renal,M,60-74,272,160,58.82352941176471
+Albuminuria (UACR >= 30),Renal,M,75+,74,54,72.97297297297297
+Albuminuria (UACR >= 30),Renal,F,all,484,251,51.85950413223141
+Albuminuria (UACR >= 30),Renal,M,all,696,336,48.275862068965516
+Severe albuminuria (UACR > 300),Renal,F,18-29,18,3,16.666666666666664
+Severe albuminuria (UACR > 300),Renal,F,30-44,68,14,20.588235294117645
+Severe albuminuria (UACR > 300),Renal,F,45-59,187,36,19.25133689839572
+Severe albuminuria (UACR > 300),Renal,F,60-74,180,34,18.88888888888889
+Severe albuminuria (UACR > 300),Renal,F,75+,31,8,25.806451612903224
+Severe albuminuria (UACR > 300),Renal,M,18-29,25,2,8.0
+Severe albuminuria (UACR > 300),Renal,M,30-44,121,8,6.6115702479338845
+Severe albuminuria (UACR > 300),Renal,M,45-59,204,28,13.725490196078432
+Severe albuminuria (UACR > 300),Renal,M,60-74,272,56,20.588235294117645
+Severe albuminuria (UACR > 300),Renal,M,75+,74,19,25.675675675675674
+Severe albuminuria (UACR > 300),Renal,F,all,484,95,19.62809917355372
+Severe albuminuria (UACR > 300),Renal,M,all,696,113,16.23563218390805
+Dipstick proteinuria >= 1+ (any),Renal,F,18-29,1180,86,7.288135593220339
+Dipstick proteinuria >= 1+ (any),Renal,F,30-44,1268,84,6.624605678233439
+Dipstick proteinuria >= 1+ (any),Renal,F,45-59,755,112,14.834437086092716
+Dipstick proteinuria >= 1+ (any),Renal,F,60-74,508,106,20.866141732283463
+Dipstick proteinuria >= 1+ (any),Renal,F,75+,120,23,19.166666666666668
+Dipstick proteinuria >= 1+ (any),Renal,M,18-29,286,23,8.041958041958042
+Dipstick proteinuria >= 1+ (any),Renal,M,30-44,554,54,9.747292418772563
+Dipstick proteinuria >= 1+ (any),Renal,M,45-59,638,109,17.0846394984326
+Dipstick proteinuria >= 1+ (any),Renal,M,60-74,697,177,25.394548063127694
+Dipstick proteinuria >= 1+ (any),Renal,M,75+,210,54,25.71428571428571
+Dipstick proteinuria >= 1+ (any),Renal,F,all,3831,411,10.728269381362567
+Dipstick proteinuria >= 1+ (any),Renal,M,all,2385,417,17.48427672955975
+Any CKD marker (eGFR < 60 or UACR >= 30),Renal,F,18-29,1351,28,2.072538860103627
+Any CKD marker (eGFR < 60 or UACR >= 30),Renal,F,30-44,2275,71,3.120879120879121
+Any CKD marker (eGFR < 60 or UACR >= 30),Renal,F,45-59,2421,296,12.226352746798844
+Any CKD marker (eGFR < 60 or UACR >= 30),Renal,F,60-74,1751,476,27.184466019417474
+Any CKD marker (eGFR < 60 or UACR >= 30),Renal,F,75+,412,201,48.786407766990294
+Any CKD marker (eGFR < 60 or UACR >= 30),Renal,M,18-29,563,23,4.085257548845471
+Any CKD marker (eGFR < 60 or UACR >= 30),Renal,M,30-44,1570,73,4.64968152866242
+Any CKD marker (eGFR < 60 or UACR >= 30),Renal,M,45-59,2096,265,12.643129770992367
+Any CKD marker (eGFR < 60 or UACR >= 30),Renal,M,60-74,2247,626,27.859368046283933
+Any CKD marker (eGFR < 60 or UACR >= 30),Renal,M,75+,695,293,42.15827338129496
+Any CKD marker (eGFR < 60 or UACR >= 30),Renal,F,all,8210,1072,13.057247259439709
+Any CKD marker (eGFR < 60 or UACR >= 30),Renal,M,all,7171,1280,17.84967229117278
+Renal parenchymal disease on USG,Renal,F,18-29,17268,14,0.08107482047718323
+Renal parenchymal disease on USG,Renal,F,30-44,14734,46,0.3122030677344917
+Renal parenchymal disease on USG,Renal,F,45-59,5957,101,1.6954843041799565
+Renal parenchymal disease on USG,Renal,F,60-74,2416,173,7.160596026490067
+Renal parenchymal disease on USG,Renal,F,75+,369,55,14.905149051490515
+Renal parenchymal disease on USG,Renal,M,18-29,2485,12,0.482897384305835
+Renal parenchymal disease on USG,Renal,M,30-44,5041,46,0.9125173576671296
+Renal parenchymal disease on USG,Renal,M,45-59,4066,151,3.713723561239547
+Renal parenchymal disease on USG,Renal,M,60-74,3356,390,11.62097735399285
+Renal parenchymal disease on USG,Renal,M,75+,803,222,27.646326276463263
+Renal parenchymal disease on USG,Renal,F,all,40744,389,0.9547418024739839
+Renal parenchymal disease on USG,Renal,M,all,15751,821,5.212367468732144
+Nephrolithiasis on USG,Renal,F,18-29,17268,324,1.8763029881862403
+Nephrolithiasis on USG,Renal,F,30-44,14734,611,4.146871182299443
+Nephrolithiasis on USG,Renal,F,45-59,5957,346,5.808292764814504
+Nephrolithiasis on USG,Renal,F,60-74,2416,107,4.428807947019867
+Nephrolithiasis on USG,Renal,F,75+,369,9,2.4390243902439024
+Nephrolithiasis on USG,Renal,M,18-29,2485,394,15.85513078470825
+Nephrolithiasis on USG,Renal,M,30-44,5041,795,15.770680420551479
+Nephrolithiasis on USG,Renal,M,45-59,4066,462,11.362518445646828
+Nephrolithiasis on USG,Renal,M,60-74,3356,236,7.032181168057211
+Nephrolithiasis on USG,Renal,M,75+,803,47,5.85305105853051
+Nephrolithiasis on USG,Renal,F,all,40744,1397,3.4287257019438444
+Nephrolithiasis on USG,Renal,M,all,15751,1934,12.27858548663577
+Reduced LVEF (< 50%),Cardiac,F,18-29,748,1,0.1336898395721925
+Reduced LVEF (< 50%),Cardiac,F,30-44,1409,19,1.34847409510291
+Reduced LVEF (< 50%),Cardiac,F,45-59,1380,43,3.1159420289855073
+Reduced LVEF (< 50%),Cardiac,F,60-74,923,55,5.958829902491875
+Reduced LVEF (< 50%),Cardiac,F,75+,187,22,11.76470588235294
+Reduced LVEF (< 50%),Cardiac,M,18-29,161,0,0.0
+Reduced LVEF (< 50%),Cardiac,M,30-44,637,16,2.511773940345369
+Reduced LVEF (< 50%),Cardiac,M,45-59,1007,90,8.937437934458789
+Reduced LVEF (< 50%),Cardiac,M,60-74,1197,136,11.36173767752715
+Reduced LVEF (< 50%),Cardiac,M,75+,335,30,8.955223880597014
+Reduced LVEF (< 50%),Cardiac,F,all,4647,140,3.0126963632451043
+Reduced LVEF (< 50%),Cardiac,M,all,3337,272,8.151033862750975
+HF with reduced EF (< 40%),Cardiac,F,18-29,748,1,0.1336898395721925
+HF with reduced EF (< 40%),Cardiac,F,30-44,1409,9,0.63875088715401
+HF with reduced EF (< 40%),Cardiac,F,45-59,1380,19,1.3768115942028984
+HF with reduced EF (< 40%),Cardiac,F,60-74,923,24,2.600216684723727
+HF with reduced EF (< 40%),Cardiac,F,75+,187,10,5.347593582887701
+HF with reduced EF (< 40%),Cardiac,M,18-29,161,0,0.0
+HF with reduced EF (< 40%),Cardiac,M,30-44,637,4,0.6279434850863422
+HF with reduced EF (< 40%),Cardiac,M,45-59,1007,34,3.3763654419066533
+HF with reduced EF (< 40%),Cardiac,M,60-74,1197,42,3.508771929824561
+HF with reduced EF (< 40%),Cardiac,M,75+,335,9,2.6865671641791042
+HF with reduced EF (< 40%),Cardiac,F,all,4647,63,1.355713363460297
+HF with reduced EF (< 40%),Cardiac,M,all,3337,89,2.667066227150135
+LV hypertrophy,Cardiac,F,18-29,748,4,0.53475935828877
+LV hypertrophy,Cardiac,F,30-44,1409,70,4.9680624556423
+LV hypertrophy,Cardiac,F,45-59,1380,280,20.28985507246377
+LV hypertrophy,Cardiac,F,60-74,923,323,34.99458288190683
+LV hypertrophy,Cardiac,F,75+,187,83,44.38502673796791
+LV hypertrophy,Cardiac,M,18-29,161,3,1.8633540372670807
+LV hypertrophy,Cardiac,M,30-44,637,68,10.675039246467819
+LV hypertrophy,Cardiac,M,45-59,1007,293,29.096325719960277
+LV hypertrophy,Cardiac,M,60-74,1197,414,34.58646616541353
+LV hypertrophy,Cardiac,M,75+,335,144,42.98507462686567
+LV hypertrophy,Cardiac,F,all,4647,760,16.354637400473422
+LV hypertrophy,Cardiac,M,all,3337,922,27.629607431824994
+Diastolic dysfunction (any grade),Cardiac,F,18-29,748,51,6.8181818181818175
+Diastolic dysfunction (any grade),Cardiac,F,30-44,1409,361,25.621007806955287
+Diastolic dysfunction (any grade),Cardiac,F,45-59,1380,991,71.81159420289856
+Diastolic dysfunction (any grade),Cardiac,F,60-74,923,803,86.99891657638136
+Diastolic dysfunction (any grade),Cardiac,F,75+,187,164,87.70053475935828
+Diastolic dysfunction (any grade),Cardiac,M,18-29,161,11,6.832298136645963
+Diastolic dysfunction (any grade),Cardiac,M,30-44,637,210,32.967032967032964
+Diastolic dysfunction (any grade),Cardiac,M,45-59,1007,708,70.30784508440914
+Diastolic dysfunction (any grade),Cardiac,M,60-74,1197,1017,84.9624060150376
+Diastolic dysfunction (any grade),Cardiac,M,75+,335,304,90.74626865671642
+Diastolic dysfunction (any grade),Cardiac,F,all,4647,2370,51.00064557779213
+Diastolic dysfunction (any grade),Cardiac,M,all,3337,2250,67.42583158525622
+Diastolic dysfunction grade >= II,Cardiac,F,18-29,748,1,0.1336898395721925
+Diastolic dysfunction grade >= II,Cardiac,F,30-44,1409,10,0.7097232079488999
+Diastolic dysfunction grade >= II,Cardiac,F,45-59,1380,26,1.884057971014493
+Diastolic dysfunction grade >= II,Cardiac,F,60-74,923,30,3.2502708559046587
+Diastolic dysfunction grade >= II,Cardiac,F,75+,187,19,10.16042780748663
+Diastolic dysfunction grade >= II,Cardiac,M,18-29,161,2,1.2422360248447204
+Diastolic dysfunction grade >= II,Cardiac,M,30-44,637,12,1.8838304552590266
+Diastolic dysfunction grade >= II,Cardiac,M,45-59,1007,38,3.7735849056603774
+Diastolic dysfunction grade >= II,Cardiac,M,60-74,1197,61,5.096073517126149
+Diastolic dysfunction grade >= II,Cardiac,M,75+,335,24,7.164179104477612
+Diastolic dysfunction grade >= II,Cardiac,F,all,4647,86,1.8506563374219926
+Diastolic dysfunction grade >= II,Cardiac,M,all,3337,137,4.1054839676356005
+Ischaemic heart disease (RWMA / hypokinesia),Cardiac,F,18-29,748,3,0.4010695187165776
+Ischaemic heart disease (RWMA / hypokinesia),Cardiac,F,30-44,1409,30,2.1291696238466997
+Ischaemic heart disease (RWMA / hypokinesia),Cardiac,F,45-59,1380,82,5.942028985507246
+Ischaemic heart disease (RWMA / hypokinesia),Cardiac,F,60-74,923,92,9.967497291440953
+Ischaemic heart disease (RWMA / hypokinesia),Cardiac,F,75+,187,32,17.11229946524064
+Ischaemic heart disease (RWMA / hypokinesia),Cardiac,M,18-29,161,0,0.0
+Ischaemic heart disease (RWMA / hypokinesia),Cardiac,M,30-44,637,29,4.552590266875981
+Ischaemic heart disease (RWMA / hypokinesia),Cardiac,M,45-59,1007,135,13.406156901688181
+Ischaemic heart disease (RWMA / hypokinesia),Cardiac,M,60-74,1197,241,20.133667502088553
+Ischaemic heart disease (RWMA / hypokinesia),Cardiac,M,75+,335,71,21.19402985074627
+Ischaemic heart disease (RWMA / hypokinesia),Cardiac,F,all,4647,239,5.143103077254143
+Ischaemic heart disease (RWMA / hypokinesia),Cardiac,M,all,3337,476,14.264309259814203
+Moderate-severe valve disease,Cardiac,F,18-29,748,7,0.9358288770053476
+Moderate-severe valve disease,Cardiac,F,30-44,1409,23,1.6323633782824698
+Moderate-severe valve disease,Cardiac,F,45-59,1380,46,3.3333333333333335
+Moderate-severe valve disease,Cardiac,F,60-74,923,39,4.225352112676056
+Moderate-severe valve disease,Cardiac,F,75+,187,18,9.62566844919786
+Moderate-severe valve disease,Cardiac,M,18-29,161,0,0.0
+Moderate-severe valve disease,Cardiac,M,30-44,637,10,1.5698587127158554
+Moderate-severe valve disease,Cardiac,M,45-59,1007,27,2.6812313803376364
+Moderate-severe valve disease,Cardiac,M,60-74,1197,58,4.845446950710109
+Moderate-severe valve disease,Cardiac,M,75+,335,23,6.865671641791045
+Moderate-severe valve disease,Cardiac,F,all,4647,133,2.8620615450828493
+Moderate-severe valve disease,Cardiac,M,all,3337,118,3.536110278693437
+Pulmonary hypertension,Cardiac,F,18-29,748,3,0.4010695187165776
+Pulmonary hypertension,Cardiac,F,30-44,1409,16,1.1355571327182399
+Pulmonary hypertension,Cardiac,F,45-59,1380,40,2.898550724637681
+Pulmonary hypertension,Cardiac,F,60-74,923,33,3.5752979414951245
+Pulmonary hypertension,Cardiac,F,75+,187,20,10.695187165775401
+Pulmonary hypertension,Cardiac,M,18-29,161,1,0.6211180124223602
+Pulmonary hypertension,Cardiac,M,30-44,637,6,0.9419152276295133
+Pulmonary hypertension,Cardiac,M,45-59,1007,28,2.780536246276067
+Pulmonary hypertension,Cardiac,M,60-74,1197,41,3.4252297410192147
+Pulmonary hypertension,Cardiac,M,75+,335,25,7.462686567164178
+Pulmonary hypertension,Cardiac,F,all,4647,112,2.4101570905960834
+Pulmonary hypertension,Cardiac,M,all,3337,101,3.0266706622715014
+Atrial fibrillation / flutter,Cardiac,F,18-29,748,0,0.0
+Atrial fibrillation / flutter,Cardiac,F,30-44,1409,0,0.0
+Atrial fibrillation / flutter,Cardiac,F,45-59,1380,4,0.2898550724637681
+Atrial fibrillation / flutter,Cardiac,F,60-74,923,2,0.21668472372697722
+Atrial fibrillation / flutter,Cardiac,F,75+,187,2,1.06951871657754
+Atrial fibrillation / flutter,Cardiac,M,18-29,161,0,0.0
+Atrial fibrillation / flutter,Cardiac,M,30-44,637,1,0.15698587127158556
+Atrial fibrillation / flutter,Cardiac,M,45-59,1007,2,0.19860973187686196
+Atrial fibrillation / flutter,Cardiac,M,60-74,1197,4,0.3341687552213868
+Atrial fibrillation / flutter,Cardiac,M,75+,335,2,0.5970149253731344
+Atrial fibrillation / flutter,Cardiac,F,all,4647,8,0.17215407789972026
+Atrial fibrillation / flutter,Cardiac,M,all,3337,9,0.26970332634102484
+Structural heart disease (composite),Cardiac,F,18-29,748,8,1.06951871657754
+Structural heart disease (composite),Cardiac,F,30-44,1409,57,4.045422285308729
+Structural heart disease (composite),Cardiac,F,45-59,1380,128,9.27536231884058
+Structural heart disease (composite),Cardiac,F,60-74,923,128,13.867822318526542
+Structural heart disease (composite),Cardiac,F,75+,187,54,28.87700534759358
+Structural heart disease (composite),Cardiac,M,18-29,161,1,0.6211180124223602
+Structural heart disease (composite),Cardiac,M,30-44,637,38,5.965463108320251
+Structural heart disease (composite),Cardiac,M,45-59,1007,158,15.690168818272095
+Structural heart disease (composite),Cardiac,M,60-74,1197,285,23.809523809523807
+Structural heart disease (composite),Cardiac,M,75+,335,103,30.74626865671642
+Structural heart disease (composite),Cardiac,F,all,4647,375,8.069722401549386
+Structural heart disease (composite),Cardiac,M,all,3337,585,17.530716212166617
+Subclinical remodelling (LVH / DD>=II / dilated LA),Cardiac,F,18-29,748,7,0.9358288770053476
+Subclinical remodelling (LVH / DD>=II / dilated LA),Cardiac,F,30-44,1409,97,6.88431511710433
+Subclinical remodelling (LVH / DD>=II / dilated LA),Cardiac,F,45-59,1380,336,24.347826086956523
+Subclinical remodelling (LVH / DD>=II / dilated LA),Cardiac,F,60-74,923,375,40.62838569880823
+Subclinical remodelling (LVH / DD>=II / dilated LA),Cardiac,F,75+,187,108,57.75401069518716
+Subclinical remodelling (LVH / DD>=II / dilated LA),Cardiac,M,18-29,161,5,3.1055900621118013
+Subclinical remodelling (LVH / DD>=II / dilated LA),Cardiac,M,30-44,637,83,13.029827315541601
+Subclinical remodelling (LVH / DD>=II / dilated LA),Cardiac,M,45-59,1007,346,34.359483614697126
+Subclinical remodelling (LVH / DD>=II / dilated LA),Cardiac,M,60-74,1197,505,42.18880534670008
+Subclinical remodelling (LVH / DD>=II / dilated LA),Cardiac,M,75+,335,177,52.83582089552239
+Subclinical remodelling (LVH / DD>=II / dilated LA),Cardiac,F,all,4647,923,19.862276737680222
+Subclinical remodelling (LVH / DD>=II / dilated LA),Cardiac,M,all,3337,1116,33.443212466287086
+Transaminitis (ALT > 40 or AST > 35),Hepatic,F,18-29,1487,495,33.28850033624748
+Transaminitis (ALT > 40 or AST > 35),Hepatic,F,30-44,1900,562,29.578947368421055
+Transaminitis (ALT > 40 or AST > 35),Hepatic,F,45-59,1514,378,24.9669749009247
+Transaminitis (ALT > 40 or AST > 35),Hepatic,F,60-74,855,203,23.742690058479532
+Transaminitis (ALT > 40 or AST > 35),Hepatic,F,75+,187,55,29.411764705882355
+Transaminitis (ALT > 40 or AST > 35),Hepatic,M,18-29,675,375,55.55555555555556
+Transaminitis (ALT > 40 or AST > 35),Hepatic,M,30-44,1337,793,59.31189229618548
+Transaminitis (ALT > 40 or AST > 35),Hepatic,M,45-59,1208,527,43.62582781456953
+Transaminitis (ALT > 40 or AST > 35),Hepatic,M,60-74,1000,339,33.900000000000006
+Transaminitis (ALT > 40 or AST > 35),Hepatic,M,75+,249,84,33.734939759036145
+Transaminitis (ALT > 40 or AST > 35),Hepatic,F,all,5943,1693,28.487295978462058
+Transaminitis (ALT > 40 or AST > 35),Hepatic,M,all,4469,2118,47.39315283061087
+ALT > 2x ULN,Hepatic,F,18-29,1487,202,13.584398117014123
+ALT > 2x ULN,Hepatic,F,30-44,1900,177,9.31578947368421
+ALT > 2x ULN,Hepatic,F,45-59,1514,79,5.217965653896962
+ALT > 2x ULN,Hepatic,F,60-74,855,41,4.7953216374269
+ALT > 2x ULN,Hepatic,F,75+,187,7,3.7433155080213902
+ALT > 2x ULN,Hepatic,M,18-29,675,135,20.0
+ALT > 2x ULN,Hepatic,M,30-44,1337,251,18.773373223635005
+ALT > 2x ULN,Hepatic,M,45-59,1208,99,8.195364238410596
+ALT > 2x ULN,Hepatic,M,60-74,1000,66,6.6000000000000005
+ALT > 2x ULN,Hepatic,M,75+,249,14,5.622489959839357
+ALT > 2x ULN,Hepatic,F,all,5943,506,8.514218408211342
+ALT > 2x ULN,Hepatic,M,all,4469,565,12.642649362273438
+FIB-4 >= 2.67 (advanced fibrosis likely),Hepatic,F,30-44,598,15,2.508361204013378
+FIB-4 >= 2.67 (advanced fibrosis likely),Hepatic,F,45-59,849,43,5.064782096584216
+FIB-4 >= 2.67 (advanced fibrosis likely),Hepatic,F,60-74,489,88,17.995910020449898
+FIB-4 >= 2.67 (advanced fibrosis likely),Hepatic,F,75+,106,37,34.90566037735849
+FIB-4 >= 2.67 (advanced fibrosis likely),Hepatic,M,30-44,443,29,6.5462753950338595
+FIB-4 >= 2.67 (advanced fibrosis likely),Hepatic,M,45-59,574,64,11.149825783972126
+FIB-4 >= 2.67 (advanced fibrosis likely),Hepatic,M,60-74,574,124,21.602787456445995
+FIB-4 >= 2.67 (advanced fibrosis likely),Hepatic,M,75+,151,64,42.384105960264904
+FIB-4 >= 2.67 (advanced fibrosis likely),Hepatic,F,all,2042,183,8.961802154750245
+FIB-4 >= 2.67 (advanced fibrosis likely),Hepatic,M,all,1742,281,16.130884041331804
+FIB-4 indeterminate or high,Hepatic,F,30-44,598,85,14.214046822742473
+FIB-4 indeterminate or high,Hepatic,F,45-59,849,359,42.285041224970556
+FIB-4 indeterminate or high,Hepatic,F,60-74,489,255,52.14723926380368
+FIB-4 indeterminate or high,Hepatic,F,75+,106,65,61.32075471698113
+FIB-4 indeterminate or high,Hepatic,M,30-44,443,114,25.733634311512414
+FIB-4 indeterminate or high,Hepatic,M,45-59,574,304,52.961672473867594
+FIB-4 indeterminate or high,Hepatic,M,60-74,574,334,58.18815331010453
+FIB-4 indeterminate or high,Hepatic,M,75+,151,112,74.17218543046357
+FIB-4 indeterminate or high,Hepatic,F,all,2042,764,37.414299706170425
+FIB-4 indeterminate or high,Hepatic,M,all,1742,864,49.598163030998855
+Chronic liver disease / cirrhosis on USG,Hepatic,F,18-29,5119,54,1.0548935338933385
+Chronic liver disease / cirrhosis on USG,Hepatic,F,30-44,7062,173,2.4497309544038517
+Chronic liver disease / cirrhosis on USG,Hepatic,F,45-59,4220,249,5.900473933649289
+Chronic liver disease / cirrhosis on USG,Hepatic,F,60-74,1879,132,7.025013304949441
+Chronic liver disease / cirrhosis on USG,Hepatic,F,75+,300,20,6.666666666666667
+Chronic liver disease / cirrhosis on USG,Hepatic,M,18-29,1707,68,3.9835969537199762
+Chronic liver disease / cirrhosis on USG,Hepatic,M,30-44,3690,245,6.639566395663957
+Chronic liver disease / cirrhosis on USG,Hepatic,M,45-59,2838,224,7.892882311486963
+Chronic liver disease / cirrhosis on USG,Hepatic,M,60-74,2178,180,8.264462809917356
+Chronic liver disease / cirrhosis on USG,Hepatic,M,75+,495,31,6.262626262626263
+Chronic liver disease / cirrhosis on USG,Hepatic,F,all,18580,628,3.379978471474704
+Chronic liver disease / cirrhosis on USG,Hepatic,M,all,10908,748,6.857352401906858
+Hepatomegaly on USG,Hepatic,F,18-29,5119,1552,30.31842156671225
+Hepatomegaly on USG,Hepatic,F,30-44,7062,3155,44.675729255168505
+Hepatomegaly on USG,Hepatic,F,45-59,4220,2031,48.127962085308056
+Hepatomegaly on USG,Hepatic,F,60-74,1879,795,42.309739222990956
+Hepatomegaly on USG,Hepatic,F,75+,300,76,25.333333333333336
+Hepatomegaly on USG,Hepatic,M,18-29,1707,465,27.240773286467483
+Hepatomegaly on USG,Hepatic,M,30-44,3690,1209,32.764227642276424
+Hepatomegaly on USG,Hepatic,M,45-59,2838,940,33.12191684284708
+Hepatomegaly on USG,Hepatic,M,60-74,2178,587,26.95133149678604
+Hepatomegaly on USG,Hepatic,M,75+,495,82,16.565656565656568
+Hepatomegaly on USG,Hepatic,F,all,18580,7609,40.95263724434876
+Hepatomegaly on USG,Hepatic,M,all,10908,3283,30.097176384305097
+Gallstones on USG,Hepatic,F,18-29,17268,413,2.3917072040769054
+Gallstones on USG,Hepatic,F,30-44,14734,633,4.29618569295507
+Gallstones on USG,Hepatic,F,45-59,5957,405,6.798724190028538
+Gallstones on USG,Hepatic,F,60-74,2416,220,9.105960264900661
+Gallstones on USG,Hepatic,F,75+,369,39,10.569105691056912
+Gallstones on USG,Hepatic,M,18-29,2485,54,2.1730382293762576
+Gallstones on USG,Hepatic,M,30-44,5041,189,3.7492560999801623
+Gallstones on USG,Hepatic,M,45-59,4066,198,4.869650762420069
+Gallstones on USG,Hepatic,M,60-74,3356,200,5.959475566150179
+Gallstones on USG,Hepatic,M,75+,803,41,5.1058530510585305
+Gallstones on USG,Hepatic,F,all,40744,1710,4.196936972314942
+Gallstones on USG,Hepatic,M,all,15751,682,4.329883816900514
+"Hypothyroidism (overt, TSH > 10)",Thyroid,F,18-29,3286,102,3.10407790626902
+"Hypothyroidism (overt, TSH > 10)",Thyroid,F,30-44,4011,196,4.886561954624781
+"Hypothyroidism (overt, TSH > 10)",Thyroid,F,45-59,2400,114,4.75
+"Hypothyroidism (overt, TSH > 10)",Thyroid,F,60-74,1187,59,4.970513900589722
+"Hypothyroidism (overt, TSH > 10)",Thyroid,F,75+,190,8,4.2105263157894735
+"Hypothyroidism (overt, TSH > 10)",Thyroid,M,18-29,479,17,3.549060542797495
+"Hypothyroidism (overt, TSH > 10)",Thyroid,M,30-44,1100,44,4.0
+"Hypothyroidism (overt, TSH > 10)",Thyroid,M,45-59,1125,59,5.2444444444444445
+"Hypothyroidism (overt, TSH > 10)",Thyroid,M,60-74,919,41,4.461371055495103
+"Hypothyroidism (overt, TSH > 10)",Thyroid,M,75+,265,12,4.528301886792453
+"Hypothyroidism (overt, TSH > 10)",Thyroid,F,all,11074,479,4.325446992956475
+"Hypothyroidism (overt, TSH > 10)",Thyroid,M,all,3888,173,4.449588477366255
+Subclinical hypothyroidism (TSH 4.5-10),Thyroid,F,18-29,3286,538,16.372489348752282
+Subclinical hypothyroidism (TSH 4.5-10),Thyroid,F,30-44,4011,784,19.546247818499126
+Subclinical hypothyroidism (TSH 4.5-10),Thyroid,F,45-59,2400,535,22.291666666666668
+Subclinical hypothyroidism (TSH 4.5-10),Thyroid,F,60-74,1187,277,23.336141533277168
+Subclinical hypothyroidism (TSH 4.5-10),Thyroid,F,75+,190,44,23.157894736842106
+Subclinical hypothyroidism (TSH 4.5-10),Thyroid,M,18-29,479,78,16.2839248434238
+Subclinical hypothyroidism (TSH 4.5-10),Thyroid,M,30-44,1100,198,18.0
+Subclinical hypothyroidism (TSH 4.5-10),Thyroid,M,45-59,1125,220,19.555555555555557
+Subclinical hypothyroidism (TSH 4.5-10),Thyroid,M,60-74,919,187,20.348204570184983
+Subclinical hypothyroidism (TSH 4.5-10),Thyroid,M,75+,265,62,23.39622641509434
+Subclinical hypothyroidism (TSH 4.5-10),Thyroid,F,all,11074,2178,19.66769008488351
+Subclinical hypothyroidism (TSH 4.5-10),Thyroid,M,all,3888,745,19.161522633744855
+Hypothyroidism (any),Thyroid,F,18-29,3286,640,19.4765672550213
+Hypothyroidism (any),Thyroid,F,30-44,4011,980,24.43280977312391
+Hypothyroidism (any),Thyroid,F,45-59,2400,649,27.041666666666668
+Hypothyroidism (any),Thyroid,F,60-74,1187,336,28.30665543386689
+Hypothyroidism (any),Thyroid,F,75+,190,52,27.368421052631582
+Hypothyroidism (any),Thyroid,M,18-29,479,95,19.832985386221296
+Hypothyroidism (any),Thyroid,M,30-44,1100,242,22.0
+Hypothyroidism (any),Thyroid,M,45-59,1125,279,24.8
+Hypothyroidism (any),Thyroid,M,60-74,919,228,24.809575625680086
+Hypothyroidism (any),Thyroid,M,75+,265,74,27.92452830188679
+Hypothyroidism (any),Thyroid,F,all,11074,2657,23.993137077839986
+Hypothyroidism (any),Thyroid,M,all,3888,918,23.61111111111111
+Hyperthyroidism (TSH < 0.45),Thyroid,F,18-29,3286,85,2.586731588557517
+Hyperthyroidism (TSH < 0.45),Thyroid,F,30-44,4011,108,2.692595362752431
+Hyperthyroidism (TSH < 0.45),Thyroid,F,45-59,2400,73,3.041666666666667
+Hyperthyroidism (TSH < 0.45),Thyroid,F,60-74,1187,52,4.380791912384161
+Hyperthyroidism (TSH < 0.45),Thyroid,F,75+,190,5,2.631578947368421
+Hyperthyroidism (TSH < 0.45),Thyroid,M,18-29,479,5,1.0438413361169103
+Hyperthyroidism (TSH < 0.45),Thyroid,M,30-44,1100,15,1.3636363636363635
+Hyperthyroidism (TSH < 0.45),Thyroid,M,45-59,1125,25,2.2222222222222223
+Hyperthyroidism (TSH < 0.45),Thyroid,M,60-74,919,19,2.067464635473341
+Hyperthyroidism (TSH < 0.45),Thyroid,M,75+,265,14,5.283018867924529
+Hyperthyroidism (TSH < 0.45),Thyroid,F,all,11074,323,2.9167419180061405
+Hyperthyroidism (TSH < 0.45),Thyroid,M,all,3888,78,2.006172839506173
+Thyroid dysfunction (any),Thyroid,F,18-29,3286,725,22.063298843578817
+Thyroid dysfunction (any),Thyroid,F,30-44,4011,1088,27.125405135876342
+Thyroid dysfunction (any),Thyroid,F,45-59,2400,722,30.083333333333336
+Thyroid dysfunction (any),Thyroid,F,60-74,1187,388,32.687447346251055
+Thyroid dysfunction (any),Thyroid,F,75+,190,57,30.0
+Thyroid dysfunction (any),Thyroid,M,18-29,479,100,20.876826722338205
+Thyroid dysfunction (any),Thyroid,M,30-44,1100,257,23.363636363636363
+Thyroid dysfunction (any),Thyroid,M,45-59,1125,304,27.02222222222222
+Thyroid dysfunction (any),Thyroid,M,60-74,919,247,26.87704026115343
+Thyroid dysfunction (any),Thyroid,M,75+,265,88,33.20754716981132
+Thyroid dysfunction (any),Thyroid,F,all,11074,2980,26.909878995846125
+Thyroid dysfunction (any),Thyroid,M,all,3888,996,25.617283950617285
+Anaemia (WHO),Haematologic,F,18-29,4076,2656,65.16192345436703
+Anaemia (WHO),Haematologic,F,30-44,4658,3247,69.7080291970803
+Anaemia (WHO),Haematologic,F,45-59,3087,2192,71.00745059928734
+Anaemia (WHO),Haematologic,F,60-74,1924,1461,75.93555093555094
+Anaemia (WHO),Haematologic,F,75+,453,371,81.89845474613686
+Anaemia (WHO),Haematologic,M,18-29,999,201,20.12012012012012
+Anaemia (WHO),Haematologic,M,30-44,1778,494,27.78402699662542
+Anaemia (WHO),Haematologic,M,45-59,1915,845,44.12532637075718
+Anaemia (WHO),Haematologic,M,60-74,1984,1261,63.55846774193549
+Anaemia (WHO),Haematologic,M,75+,647,525,81.14374034003092
+Anaemia (WHO),Haematologic,F,all,14198,9927,69.91829835188055
+Anaemia (WHO),Haematologic,M,all,7323,3326,45.418544312440254
+Moderate-severe anaemia (Hb < 11),Haematologic,F,18-29,4076,1349,33.096172718351326
+Moderate-severe anaemia (Hb < 11),Haematologic,F,30-44,4658,1773,38.06354658651782
+Moderate-severe anaemia (Hb < 11),Haematologic,F,45-59,3087,1222,39.58535795270489
+Moderate-severe anaemia (Hb < 11),Haematologic,F,60-74,1924,912,47.4012474012474
+Moderate-severe anaemia (Hb < 11),Haematologic,F,75+,453,252,55.62913907284768
+Moderate-severe anaemia (Hb < 11),Haematologic,M,18-29,999,34,3.4034034034034035
+Moderate-severe anaemia (Hb < 11),Haematologic,M,30-44,1778,107,6.017997750281215
+Moderate-severe anaemia (Hb < 11),Haematologic,M,45-59,1915,251,13.107049608355092
+Moderate-severe anaemia (Hb < 11),Haematologic,M,60-74,1984,446,22.47983870967742
+Moderate-severe anaemia (Hb < 11),Haematologic,M,75+,647,245,37.86707882534776
+Moderate-severe anaemia (Hb < 11),Haematologic,F,all,14198,5508,38.79419636568531
+Moderate-severe anaemia (Hb < 11),Haematologic,M,all,7323,1083,14.789020893076607
+Raised CRP (> 6 mg/L),Inflammatory,F,18-29,432,157,36.342592592592595
+Raised CRP (> 6 mg/L),Inflammatory,F,30-44,643,234,36.39191290824261
+Raised CRP (> 6 mg/L),Inflammatory,F,45-59,683,259,37.920937042459734
+Raised CRP (> 6 mg/L),Inflammatory,F,60-74,417,172,41.247002398081534
+Raised CRP (> 6 mg/L),Inflammatory,F,75+,109,62,56.88073394495413
+Raised CRP (> 6 mg/L),Inflammatory,M,18-29,283,122,43.109540636042404
+Raised CRP (> 6 mg/L),Inflammatory,M,30-44,491,177,36.04887983706721
+Raised CRP (> 6 mg/L),Inflammatory,M,45-59,449,196,43.652561247216035
+Raised CRP (> 6 mg/L),Inflammatory,M,60-74,414,209,50.48309178743962
+Raised CRP (> 6 mg/L),Inflammatory,M,75+,157,76,48.40764331210191
+Raised CRP (> 6 mg/L),Inflammatory,F,all,2284,884,38.704028021015766
+Raised CRP (> 6 mg/L),Inflammatory,M,all,1794,780,43.47826086956522
+Prostatomegaly on USG (men 40+),Urological,M,30-44,1572,63,4.007633587786259
+Prostatomegaly on USG (men 40+),Urological,M,45-59,4066,705,17.338908017707823
+Prostatomegaly on USG (men 40+),Urological,M,60-74,3356,1435,42.75923718712753
+Prostatomegaly on USG (men 40+),Urological,M,75+,803,397,49.439601494396015
+Prostatomegaly on USG (men 40+),Urological,M,all,9797,2600,26.53873634786159
+PSA > 4 ng/mL (men),Urological,M,18-29,5,0,0.0
+PSA > 4 ng/mL (men),Urological,M,30-44,41,2,4.878048780487805
+PSA > 4 ng/mL (men),Urological,M,45-59,164,14,8.536585365853659
+PSA > 4 ng/mL (men),Urological,M,60-74,372,75,20.161290322580644
+PSA > 4 ng/mL (men),Urological,M,75+,156,45,28.846153846153843
+PSA > 4 ng/mL (men),Urological,M,all,738,136,18.428184281842817
+PCOS morphology on USG (women 15-45),Reproductive-metabolic,F,18-29,17268,3738,21.64697706740792
+PCOS morphology on USG (women 15-45),Reproductive-metabolic,F,30-44,14734,1351,9.169268358897789
+PCOS morphology on USG (women 15-45),Reproductive-metabolic,F,45-59,852,2,0.2347417840375587
+PCOS morphology on USG (women 15-45),Reproductive-metabolic,F,all,32854,5091,15.49583003591648
+Obstructive ventilatory defect (PFT),Respiratory,F,18-29,38,6,15.789473684210526
+Obstructive ventilatory defect (PFT),Respiratory,F,30-44,68,18,26.47058823529412
+Obstructive ventilatory defect (PFT),Respiratory,F,45-59,84,25,29.761904761904763
+Obstructive ventilatory defect (PFT),Respiratory,F,60-74,56,25,44.642857142857146
+Obstructive ventilatory defect (PFT),Respiratory,F,75+,5,2,40.0
+Obstructive ventilatory defect (PFT),Respiratory,M,18-29,35,2,5.714285714285714
+Obstructive ventilatory defect (PFT),Respiratory,M,30-44,73,15,20.54794520547945
+Obstructive ventilatory defect (PFT),Respiratory,M,45-59,69,18,26.08695652173913
+Obstructive ventilatory defect (PFT),Respiratory,M,60-74,98,47,47.95918367346938
+Obstructive ventilatory defect (PFT),Respiratory,M,75+,22,11,50.0
+Obstructive ventilatory defect (PFT),Respiratory,F,all,251,76,30.278884462151396
+Obstructive ventilatory defect (PFT),Respiratory,M,all,297,93,31.313131313131315
+Restrictive ventilatory defect (PFT),Respiratory,F,18-29,38,10,26.31578947368421
+Restrictive ventilatory defect (PFT),Respiratory,F,30-44,68,18,26.47058823529412
+Restrictive ventilatory defect (PFT),Respiratory,F,45-59,84,23,27.380952380952383
+Restrictive ventilatory defect (PFT),Respiratory,F,60-74,56,13,23.214285714285715
+Restrictive ventilatory defect (PFT),Respiratory,F,75+,5,3,60.0
+Restrictive ventilatory defect (PFT),Respiratory,M,18-29,35,4,11.428571428571429
+Restrictive ventilatory defect (PFT),Respiratory,M,30-44,73,13,17.80821917808219
+Restrictive ventilatory defect (PFT),Respiratory,M,45-59,69,15,21.73913043478261
+Restrictive ventilatory defect (PFT),Respiratory,M,60-74,98,27,27.55102040816326
+Restrictive ventilatory defect (PFT),Respiratory,M,75+,22,7,31.818181818181817
+Restrictive ventilatory defect (PFT),Respiratory,F,all,251,67,26.693227091633464
+Restrictive ventilatory defect (PFT),Respiratory,M,all,297,66,22.22222222222222
