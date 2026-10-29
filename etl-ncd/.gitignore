@@ -1,0 +1,7 @@
+# Credentials
+.env
+# Exports hold patient names and phone numbers: never commit them
+out/
+*.csv
+__pycache__/
+*.log
