@@ -64,7 +64,7 @@ function declinePerYear(obs: Obs[], asOf: number): number | null {
 export const kidney: DiseaseModule = {
   key: "kidney",
   name: "Chronic kidney disease",
-  route: "/kidney",
+  route: "/ncd#kidney",
   monitorTests: ["EGFR", "UACR"],
   headlineTest: "EGFR",
   detailTests: ["EGFR", "CREAT", "UACR", "HBA1C"],

@@ -37,7 +37,7 @@ const INTERVAL: Record<string, number> = { advanced: 180, indeterminate: 365, "n
 export const liver: DiseaseModule = {
   key: "liver",
   name: "Fatty liver and liver scarring",
-  route: "/liver",
+  route: "/ncd#liver",
   monitorTests: ["ALT"],
   headlineTest: "FIB4",
   detailTests: ["FIB4", "ALT", "AST", "PLT", "HBA1C"],

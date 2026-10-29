@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { Nav } from "../components/Nav";
 import { Footer } from "../components/Footer";
 import { RevealOnScroll } from "../components/Reveal";
@@ -24,7 +25,6 @@ import { getDashboard } from "./lib/pipeline";
 import { fmtDay, fmtMonth } from "./lib/rng";
 import { FOLLOW_UP, RULE_TABLE, SCORE_TABLE, TIER_MIN } from "./lib/rules";
 import { STYLES } from "./styles";
-import { NcdSet } from "../ncd/DiseaseDashboard";
 
 export const metadata: Metadata = {
   title: "Diabetes follow-up: who to call before they are lost · SamaHealth",
@@ -801,7 +801,13 @@ function Hero({ d }: { d: ReturnType<typeof getDashboard> }) {
         page are fictional and made up for demonstration.
       </p>
 
-      <NcdSet current="/diabetes" />
+      <p style={{ marginTop: 14, fontSize: 14, color: "var(--ink-500)", lineHeight: 1.6, maxWidth: 820 }}>
+        Kidney disease, cholesterol, thyroid and fatty liver run on the same engine, set against West Bengal and India, on{" "}
+        <Link href="/ncd" className="dx-a">
+          one page for all long-term conditions
+        </Link>
+        .
+      </p>
 
       <div className="dx-hero-stats">
         <Stat value={n(h.diabetes)} label="people with a diabetic-range result" />

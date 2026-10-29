@@ -36,7 +36,7 @@ function intervalFor(s: ReturnType<typeof state>): number {
 export const thyroid: DiseaseModule = {
   key: "thyroid",
   name: "Thyroid disorders",
-  route: "/thyroid",
+  route: "/ncd#thyroid",
   monitorTests: ["TSH"],
   headlineTest: "TSH",
   detailTests: ["TSH", "FT4"],

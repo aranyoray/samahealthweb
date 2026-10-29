@@ -1,29 +1,13 @@
-import type { Metadata } from "next";
-import { Caption, Card, HBars, Stat } from "../diabetes/charts";
-import { DiseaseDashboard, n } from "../ncd/DiseaseDashboard";
-import { heart } from "../ncd/lib/modules/heart";
-import { getDisease } from "../ncd/lib/pipeline";
+import { Caption, Card, HBars, Stat } from "../../diabetes/charts";
+import { ConditionPanel, n } from "../ConditionPanel";
+import { heart } from "../lib/modules/heart";
+import { getDisease } from "../lib/pipeline";
 
-export const metadata: Metadata = {
-  title: "Cholesterol follow-up: LDL to target, families tested · SamaHealth",
-  description:
-    "Lipid results linked per person, LDL targets from the Lipid Association of India, recall after statin changes, family testing for LDL 190+, and a ranked call list.",
-  alternates: { canonical: "/heart" },
-  openGraph: {
-    title: "Cholesterol follow-up: LDL to target, families tested",
-    description: "LDL targets by risk, recall after statin changes, and a call list for lapsed lipid checks.",
-    url: "/heart",
-    siteName: "SamaHealth",
-    type: "website",
-    images: [{ url: "/events/anubhav-cmc-001.jpg", width: 1200, height: 630, alt: "SamaHealth community screening" }],
-  },
-};
-
-export default function HeartPage() {
+export function HeartPanel() {
   const d = getDisease("heart");
   const x = d.extras;
   return (
-    <DiseaseDashboard
+    <ConditionPanel
       d={d}
       m={heart}
       copy={{
@@ -31,7 +15,7 @@ export default function HeartPage() {
         intro: (
           <>
             Heart attack and stroke are the largest cause of death in India, and LDL cholesterol is the risk factor a lab can
-            measure and a cheap tablet can move. This page links every lipid profile done at{" "}
+            measure and a cheap tablet can move. This tab links every lipid profile done at{" "}
             <strong style={{ color: "var(--ink)" }}>Anubhav Life Care, Barasat</strong> into one timeline per person, judges LDL
             against the target for that person&apos;s risk, and ranks who to call when the recheck after a statin change never
             happens.

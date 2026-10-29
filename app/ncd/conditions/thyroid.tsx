@@ -1,31 +1,15 @@
-import type { Metadata } from "next";
-import { Caption, Card, HBars, Stat } from "../diabetes/charts";
-import { DiseaseDashboard, n } from "../ncd/DiseaseDashboard";
-import { thyroid } from "../ncd/lib/modules/thyroid";
-import { getDisease } from "../ncd/lib/pipeline";
+import { Caption, Card, HBars, Stat } from "../../diabetes/charts";
+import { ConditionPanel, n } from "../ConditionPanel";
+import { thyroid } from "../lib/modules/thyroid";
+import { getDisease } from "../lib/pipeline";
 
-export const metadata: Metadata = {
-  title: "Thyroid follow-up: confirm before treating, recheck after every dose change · SamaHealth",
-  description:
-    "TSH results linked per person, single abnormal results confirmed before treatment, rechecks after dose changes, women of reproductive age prioritised, and a ranked call list.",
-  alternates: { canonical: "/thyroid" },
-  openGraph: {
-    title: "Thyroid follow-up: confirm before treating, recheck after every dose change",
-    description: "TSH timelines, confirm-before-treat, and a call list for lapsed thyroid checks.",
-    url: "/thyroid",
-    siteName: "SamaHealth",
-    type: "website",
-    images: [{ url: "/events/anubhav-cmc-001.jpg", width: 1200, height: 630, alt: "SamaHealth community screening" }],
-  },
-};
-
-export default function ThyroidPage() {
+export function ThyroidPanel() {
   const d = getDisease("thyroid");
   const x = d.extras;
   const f = x.bySex[0];
   const m = x.bySex[1];
   return (
-    <DiseaseDashboard
+    <ConditionPanel
       d={d}
       m={thyroid}
       copy={{
@@ -33,7 +17,7 @@ export default function ThyroidPage() {
         intro: (
           <>
             Hypothyroidism is common in India, mostly in women, and much of it goes undetected. Treatment is a daily tablet, but the
-            dose is only right if TSH is rechecked after every change. This page links every TSH done at{" "}
+            dose is only right if TSH is rechecked after every change. This tab links every TSH done at{" "}
             <strong style={{ color: "var(--ink)" }}>Anubhav Life Care, Barasat</strong> into one timeline per person, confirms a
             single abnormal result before it becomes a lifelong diagnosis, and ranks who to call when the recheck is missed.
           </>

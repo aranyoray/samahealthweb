@@ -1,33 +1,17 @@
-import type { Metadata } from "next";
-import { Caption, Card, HBars, Stat } from "../diabetes/charts";
-import { DiseaseDashboard, n } from "../ncd/DiseaseDashboard";
-import { A_LABELS, G_LABELS, KDIGO_FREQ, KDIGO_RISK, RISK_LABEL, kidney } from "../ncd/lib/modules/kidney";
-import { getDisease } from "../ncd/lib/pipeline";
-
-export const metadata: Metadata = {
-  title: "Kidney disease follow-up: catching CKD the lab already sees · SamaHealth",
-  description:
-    "Creatinine turned into eGFR, CKD confirmed on the KDIGO 3-month rule, recall frequency from the KDIGO heat map, and a ranked call list for people whose kidney checks have lapsed.",
-  alternates: { canonical: "/kidney" },
-  openGraph: {
-    title: "Kidney disease follow-up: catching CKD the lab already sees",
-    description: "eGFR from creatinine, KDIGO staging and recall, and a call list for lapsed kidney checks.",
-    url: "/kidney",
-    siteName: "SamaHealth",
-    type: "website",
-    images: [{ url: "/events/anubhav-cmc-001.jpg", width: 1200, height: 630, alt: "SamaHealth community screening" }],
-  },
-};
+import { Caption, Card, HBars, Stat } from "../../diabetes/charts";
+import { ConditionPanel, n } from "../ConditionPanel";
+import { A_LABELS, G_LABELS, KDIGO_FREQ, KDIGO_RISK, RISK_LABEL, kidney } from "../lib/modules/kidney";
+import { getDisease } from "../lib/pipeline";
 
 const RISK_BG = ["#d7efe9", "#fbefc4", "#fbd5bf", "#f3b4b4"];
 
-export default function KidneyPage() {
+export function KidneyPanel() {
   const d = getDisease("kidney");
   const x = d.extras;
   const gridTotal = x.grid.flat().reduce((a, b) => a + b, 0);
   const noAcr = x.grid.reduce((s, row) => s + row[3], 0);
   return (
-    <DiseaseDashboard
+    <ConditionPanel
       d={d}
       m={kidney}
       copy={{
@@ -35,7 +19,7 @@ export default function KidneyPage() {
         intro: (
           <>
             Creatinine is one of the most-ordered tests at <strong style={{ color: "var(--ink)" }}>Anubhav Life Care, Barasat</strong>,
-            but the report shows a number in mg/dL, not kidney function. This page turns every creatinine into an eGFR, confirms
+            but the report shows a number in mg/dL, not kidney function. This tab turns every creatinine into an eGFR, confirms
             chronic kidney disease the way KDIGO asks (a raised marker lasting more than three months), sets the recall interval
             from the KDIGO heat map, and ranks who to call when the next check is missed.
           </>

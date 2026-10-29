@@ -203,10 +203,10 @@ export type DiseaseDashboard = ReturnType<typeof getDisease>;
 
 export const CONDITIONS = [
   { key: "diabetes", label: "Diabetes", route: "/diabetes", tests: ["HbA1c", "fasting glucose"], tube: "blood" },
-  { key: "kidney", label: "Kidney disease", route: "/kidney", tests: ["creatinine", "urine ACR"], tube: "blood + urine" },
-  { key: "heart", label: "Cholesterol", route: "/heart", tests: ["lipid profile"], tube: "blood" },
-  { key: "thyroid", label: "Thyroid", route: "/thyroid", tests: ["TSH"], tube: "blood" },
-  { key: "liver", label: "Fatty liver", route: "/liver", tests: ["LFT", "CBC"], tube: "blood" },
+  { key: "kidney", label: "Kidney disease", route: "/ncd#kidney", tests: ["creatinine", "urine ACR"], tube: "blood + urine" },
+  { key: "heart", label: "Cholesterol", route: "/ncd#heart", tests: ["lipid profile"], tube: "blood" },
+  { key: "thyroid", label: "Thyroid", route: "/ncd#thyroid", tests: ["TSH"], tube: "blood" },
+  { key: "liver", label: "Fatty liver", route: "/ncd#liver", tests: ["LFT", "CBC"], tube: "blood" },
 ] as const;
 export type ConditionKey = (typeof CONDITIONS)[number]["key"];
 

@@ -30,7 +30,7 @@ function isAbnormalDay(obs: Obs[], day: number): boolean {
 export const heart: DiseaseModule = {
   key: "heart",
   name: "Cholesterol and heart risk",
-  route: "/heart",
+  route: "/ncd#heart",
   monitorTests: ["LDL"],
   headlineTest: "LDL",
   detailTests: ["LDL", "HDL", "TG", "HBA1C", "EGFR"],

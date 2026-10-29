@@ -1,29 +1,13 @@
-import type { Metadata } from "next";
-import { Caption, Card, Donut, Stat } from "../diabetes/charts";
-import { DiseaseDashboard, n } from "../ncd/DiseaseDashboard";
-import { liver } from "../ncd/lib/modules/liver";
-import { getDisease } from "../ncd/lib/pipeline";
+import { Caption, Card, Donut, Stat } from "../../diabetes/charts";
+import { ConditionPanel, n } from "../ConditionPanel";
+import { liver } from "../lib/modules/liver";
+import { getDisease } from "../lib/pipeline";
 
-export const metadata: Metadata = {
-  title: "Fatty liver follow-up: FIB-4 from tests already done · SamaHealth",
-  description:
-    "FIB-4 computed from AST, ALT and platelets already on the bill, AASLD 2023 cut-offs for elastography and referral, rescreening for people with diabetes, and a ranked call list.",
-  alternates: { canonical: "/liver" },
-  openGraph: {
-    title: "Fatty liver follow-up: FIB-4 from tests already done",
-    description: "Liver scarring risk scored from routine tests, and a call list for lapsed liver checks.",
-    url: "/liver",
-    siteName: "SamaHealth",
-    type: "website",
-    images: [{ url: "/events/anubhav-cmc-001.jpg", width: 1200, height: 630, alt: "SamaHealth community screening" }],
-  },
-};
-
-export default function LiverPage() {
+export function LiverPanel() {
   const d = getDisease("liver");
   const x = d.extras;
   return (
-    <DiseaseDashboard
+    <ConditionPanel
       d={d}
       m={liver}
       copy={{
@@ -32,8 +16,8 @@ export default function LiverPage() {
           <>
             Fatty liver is common in India and silent until scarring is advanced. The tests that flag who needs a closer look (AST,
             ALT and a platelet count) are among the most-ordered at{" "}
-            <strong style={{ color: "var(--ink)" }}>Anubhav Life Care, Barasat</strong>, yet the report never combines them. This
-            page computes FIB-4 on every bill where it can be computed, applies the AASLD 2023 cut-offs, and ranks who to call for
+            <strong style={{ color: "var(--ink)" }}>Anubhav Life Care, Barasat</strong>, yet the report never combines them. This tab
+            computes FIB-4 on every bill where it can be computed, applies the AASLD 2023 cut-offs, and ranks who to call for
             elastography, referral or a repeat test.
           </>
         ),

@@ -10,6 +10,11 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       { source: "/tb", destination: "/parakhTB", permanent: true },
+      // The condition pages now live as tabs on /ncd.
+      { source: "/kidney", destination: "/ncd#kidney", permanent: true },
+      { source: "/heart", destination: "/ncd#heart", permanent: true },
+      { source: "/thyroid", destination: "/ncd#thyroid", permanent: true },
+      { source: "/liver", destination: "/ncd#liver", permanent: true },
     ];
   },
   // Baseline hardening for a fully static, cookie-free marketing site. No CSP

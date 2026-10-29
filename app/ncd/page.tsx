@@ -3,16 +3,22 @@ import Link from "next/link";
 import { Nav } from "../components/Nav";
 import { Footer } from "../components/Footer";
 import { RevealOnScroll } from "../components/Reveal";
-import { Caption, Card, Heatmap, HBars, SectionHead, Stat } from "../diabetes/charts";
+import { Caption, Card, Heatmap, HBars, Legend, SectionHead, Stat } from "../diabetes/charts";
 import { fmtDay } from "../diabetes/lib/rng";
 import { STYLES } from "../diabetes/styles";
-import { NcdSet, n } from "./DiseaseDashboard";
+import { n } from "./ConditionPanel";
+import { ConditionTabs } from "./ConditionTabs";
+import { HeartPanel } from "./conditions/heart";
+import { KidneyPanel } from "./conditions/kidney";
+import { LiverPanel } from "./conditions/liver";
+import { ThyroidPanel } from "./conditions/thyroid";
+import { CONDITION_BENCH, NFHS6, SURVEY_ROWS, WHO_NCD } from "./lib/benchmarks";
 import { CONDITIONS, getHub } from "./lib/pipeline";
 
 export const metadata: Metadata = {
-  title: "Long-term conditions, one call per person · SamaHealth",
+  title: "Long-term conditions in West Bengal: one call per person · SamaHealth",
   description:
-    "Diabetes, kidney disease, cholesterol, thyroid and fatty liver follow-up from one lab's records: how the conditions overlap in the same people, and how one ranked call replaces several siloed ones.",
+    "Diabetes, kidney disease, cholesterol, thyroid and fatty liver follow-up from one lab's records, set against West Bengal and all-India survey figures: how the conditions overlap in the same people, and how one ranked call replaces several siloed ones.",
   alternates: { canonical: "/ncd" },
   openGraph: {
     title: "Long-term conditions, one call per person",
@@ -24,46 +30,6 @@ export const metadata: Metadata = {
   },
 };
 
-/** Published estimates. Not computed from this lab's data. */
-const BURDEN = [
-  {
-    value: "63%",
-    label: "of all deaths in India are from noncommunicable diseases",
-    source: "WHO, Noncommunicable Diseases Country Profiles 2018",
-    href: "https://www.who.int/publications/i/item/9789241514620",
-  },
-  {
-    value: "11.4%",
-    label: "of adults have diabetes, and another 15.3% have prediabetes",
-    source: "Anjana et al., ICMR-INDIAB-17, Lancet Diabetes & Endocrinology 2023 (n = 113,043)",
-    href: "https://doi.org/10.1016/S2213-8587(23)00119-5",
-  },
-  {
-    value: "35.5%",
-    label: "of adults have hypertension; 24.0% have high cholesterol",
-    source: "ICMR-INDIAB-17, same survey",
-    href: "https://doi.org/10.1016/S2213-8587(23)00119-5",
-  },
-  {
-    value: "10.95%",
-    label: "of adults have hypothyroidism (15.9% of women, 5.0% of men); about a third of cases were undetected",
-    source: "Unnikrishnan et al., Indian J Endocrinol Metab 2013, eight-city study",
-    href: "https://pmc.ncbi.nlm.nih.gov/articles/PMC3743364",
-  },
-  {
-    value: "38.6%",
-    label: "of adults have fatty liver disease (pooled estimate)",
-    source: "Shalimar et al., J Clin Exp Hepatol 2022, meta-analysis of 50 studies",
-    href: "https://pmc.ncbi.nlm.nih.gov/articles/PMC9168741",
-  },
-  {
-    value: "3.5–17.2%",
-    label: "of adults have chronic kidney disease, depending on method and setting",
-    source: "Pooled CKD-EPI estimate (Value in Health 2015) to SEEK-India (BMC Nephrology 2013)",
-    href: "https://bmcnephrol.biomedcentral.com/articles/10.1186/1471-2369-14-114",
-  },
-];
-
 export default function NcdHubPage() {
   const h = getHub();
   const labels = CONDITIONS.map((c) => c.label);
@@ -72,31 +38,30 @@ export default function NcdHubPage() {
       <Nav variant="light" />
       <main id="main" className="dx">
         <header className="container" style={{ paddingTop: 128, paddingBottom: 24 }}>
-          <h1 style={{ fontSize: "clamp(34px, 5.2vw, 58px)", maxWidth: 960 }}>Long-term conditions, followed as one person, not five lists</h1>
+          <h1 style={{ fontSize: "clamp(34px, 5.2vw, 58px)", maxWidth: 960 }}>Long-term conditions in West Bengal, followed as one person, not five lists</h1>
           <p style={{ marginTop: 22, fontSize: 19, lineHeight: 1.55, color: "var(--ink-500)", maxWidth: 820 }}>
-            A neighbourhood lab already holds the results that show who has diabetes, failing kidneys, high cholesterol, an
-            underactive thyroid or a scarring liver, and who has stopped coming back. Each condition page turns those results into
-            a follow-up list. This page puts the five together: the same people turn up on several lists, so one coordinator call
-            and one blood sample can cover every overdue check.
+            West Bengal now has more raised blood sugar and blood pressure than India as a whole, and the gap opened in the last
+            three years. A neighbourhood lab in Barasat already holds the results that show who has diabetes, failing kidneys, high
+            cholesterol, an underactive thyroid or a scarring liver, and who has stopped coming back. This page sets the state
+            against the country, then turns the lab&apos;s results into one follow-up call per person across all five conditions.
           </p>
           <p className="mono" style={{ marginTop: 16, fontSize: 12.5, color: "var(--ink-500)", maxWidth: 820 }}>
-            Synthetic cohort shaped like the AKTIV research mirror · {n(h.tested)} people · {n(h.identity.results)} results · 3.5
-            years to {fmtDay(h.asOf)} · no real patient data.
+            West Bengal and India figures: published surveys, cited · lab figures: synthetic cohort shaped like the AKTIV research
+            mirror, {n(h.tested)} people, {n(h.identity.results)} results, 3.5 years to {fmtDay(h.asOf)}, no real patient data.
           </p>
-          <NcdSet current="/ncd" />
           <div className="dx-hero-stats">
-            <Stat value={`${h.anyCondPct}%`} label="of people tested are on at least one follow-up pathway" note={`${n(h.anyCond)} of ${n(h.tested)}`} />
-            <Stat value={`${h.multiPctOfAny}%`} label="of them are on two or more" note={`${n(h.multi)} people`} />
+            <Stat value={`${h.anyCondPct}%`} label="of people tested are on at least one follow-up pathway" note={`${n(h.anyCond)} of ${n(h.tested)}, simulated`} />
+            <Stat value={`${h.multiPctOfAny}%`} label="of them are on two or more" note={`${n(h.multi)} people, simulated`} />
             <Stat value={n(h.calls.single)} label="calls this week, one per person" note={`instead of ${n(h.calls.silo)} across five lists`} />
             <Stat value={`${h.calls.savedPct}%`} label="fewer calls for the same checks" note={`${n(h.calls.saved)} calls saved`} />
           </div>
           <nav className="dx-toc" aria-label="On this page">
             {[
-              ["#burden", "Burden in India"],
+              ["#compare", "West Bengal and India"],
               ["#overlap", "Overlap"],
               ["#one-call", "One call"],
               ["#conditions", "Each condition"],
-              ["#real", "Which numbers are real"],
+              ["#method", "Method and real numbers"],
             ].map(([href, label]) => (
               <a key={href} href={href}>
                 {label}
@@ -105,35 +70,131 @@ export default function NcdHubPage() {
           </nav>
         </header>
 
-        {/* ---------------- Burden (published) ---------------- */}
+        {/* ---------------- West Bengal against India (published) ---------------- */}
         <section className="section dx-band" style={{ paddingTop: 88, paddingBottom: 88 }}>
           <div className="container">
             <SectionHead
-              id="burden"
-              title="How big the problem is in India"
-              blurb="Published national estimates, cited to their source. These are the only figures on this page that describe real people; everything below them is computed on a simulated cohort."
-            />
-            <div className="ncd-burden">
-              {BURDEN.map((b) => (
-                <article key={b.value} className="card ncd-burden-card">
-                  <div className="dx-stat-value">{b.value}</div>
-                  <p className="ncd-burden-label">{b.label}</p>
-                  <a href={b.href} className="dx-a ncd-burden-src" target="_blank" rel="noreferrer">
-                    {b.source}
+              id="compare"
+              title="West Bengal against India"
+              blurb={
+                <>
+                  Noncommunicable diseases cause 63% of deaths in India (
+                  <a href={WHO_NCD.href} className="dx-a" target="_blank" rel="noreferrer">
+                    WHO
                   </a>
-                </article>
-              ))}
+                  ). Every figure in this section is published and linked to its source; none is computed from the lab.
+                </>
+              }
+              meta={["NFHS-6 2023-24 vs NFHS-5 2019-21", "adults 15+ unless stated"]}
+            />
+            <div className="dx-grid">
+              <Card span={12} title="Same survey, same method: West Bengal and India" subtitle="% of adults, NFHS-6 2023-24; the dark tick marks NFHS-5 2019-21">
+                <div className="ncd-pairs" role="table" aria-label="West Bengal versus India, NFHS-6">
+                  {SURVEY_ROWS.map((r) => (
+                    <div key={r.label} className="ncd-pair" role="row">
+                      <div className="ncd-pair-label" role="rowheader">
+                        {r.label}
+                      </div>
+                      <div className="ncd-pair-bars" role="cell">
+                        <PairBar who="West Bengal" v={r.wb} was={r.wb5} max={50} color="var(--brand)" />
+                        <PairBar who="India" v={r.india} was={r.india5} max={50} color="var(--ink-300)" />
+                      </div>
+                    </div>
+                  ))}
+                </div>
+                <Legend
+                  items={[
+                    { label: "West Bengal", color: "var(--brand)" },
+                    { label: "India", color: "var(--ink-300)" },
+                  ]}
+                />
+                <Caption>
+                  West Bengal is above India on every blood sugar and blood pressure measure, for women and for men. Raised blood
+                  pressure rose in West Bengal (women {SURVEY_ROWS[4].wb5}% to {SURVEY_ROWS[4].wb}%, men {SURVEY_ROWS[5].wb5}% to{" "}
+                  {SURVEY_ROWS[5].wb}%) while it fell nationally. Blood sugar over 160 mg/dL, the level that usually means untreated or
+                  uncontrolled diabetes, rose by about half in five years. Source:{" "}
+                  <a href={NFHS6.href} className="dx-a" target="_blank" rel="noreferrer">
+                    {NFHS6.label}
+                  </a>
+                  .
+                </Caption>
+              </Card>
+
+              <Card span={12} title="Condition by condition" subtitle="best published estimate for each; studies differ in method, age and year, so read across a row with care">
+                <div style={{ overflowX: "auto" }}>
+                  <table className="dx-table" style={{ minWidth: 820 }}>
+                    <thead>
+                      <tr>
+                        <th>Condition</th>
+                        <th>West Bengal</th>
+                        <th>India</th>
+                        <th>This lab, simulated</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {CONDITION_BENCH.map((c) => {
+                        const lab = h.perCondition.find((p) => p.key === c.key);
+                        return (
+                          <tr key={c.key}>
+                            <td>
+                              <strong>{c.label}</strong>
+                            </td>
+                            <td>
+                              <span className="ncd-big">{c.wb}</span>
+                              <span className="ncd-note">
+                                {c.wbNote}
+                                {c.wbSrc && (
+                                  <>
+                                    {" · "}
+                                    <a href={c.wbSrc.href} className="dx-a" target="_blank" rel="noreferrer">
+                                      {c.wbSrc.label}
+                                    </a>
+                                  </>
+                                )}
+                              </span>
+                            </td>
+                            <td>
+                              <span className="ncd-big">{c.india}</span>
+                              <span className="ncd-note">
+                                {c.indiaNote} ·{" "}
+                                <a href={c.indiaSrc.href} className="dx-a" target="_blank" rel="noreferrer">
+                                  {c.indiaSrc.label}
+                                </a>
+                              </span>
+                            </td>
+                            <td>
+                              {lab ? (
+                                <>
+                                  <span className="ncd-big ncd-sim">{lab.pctOfTested}%</span>
+                                  <span className="ncd-note">of people tested at the lab</span>
+                                </>
+                              ) : (
+                                <span className="ncd-note">not a lab test</span>
+                              )}
+                            </td>
+                          </tr>
+                        );
+                      })}
+                    </tbody>
+                  </table>
+                </div>
+                <Caption>
+                  The lab column is simulated until result values are synced, and even then it is not a prevalence: people come to a
+                  lab because a doctor suspected something, so the share on a pathway will run above the survey figure. What the lab
+                  adds is the part surveys cannot see: whether the same person came back. Kolkata has twice the eight-city rate of
+                  hypothyroidism, which is why thyroid sits beside the metabolic conditions here.
+                </Caption>
+              </Card>
             </div>
           </div>
         </section>
-
         {/* ---------------- Overlap ---------------- */}
         <section className="section" style={{ paddingTop: 96, paddingBottom: 88 }}>
           <div className="container">
             <SectionHead
               id="overlap"
               title="The same people, on several lists"
-              blurb="A person is on a condition's pathway once a result puts them there (definitions on each condition page). Counts come from one linked timeline per person, so a person is counted once however many visits and PATIENT_KEYs they have."
+              blurb="A person is on a condition's pathway once a result puts them there (definitions in each condition's tab below). Counts come from one linked timeline per person, so a person is counted once however many visits and PATIENT_KEYs they have."
               meta={[`${n(h.tested)} people`, `${n(h.anyCond)} on a pathway`, `as of ${fmtDay(h.asOf)}`]}
             />
             <div className="dx-grid">
@@ -227,7 +288,11 @@ export default function NcdHubPage() {
         {/* ---------------- Each condition ---------------- */}
         <section className="section" style={{ paddingTop: 96, paddingBottom: 88 }}>
           <div className="container">
-            <SectionHead id="conditions" title="Each condition at a glance" blurb="Open a condition for its rules, its cohort, who gets lost and its own call list." />
+            <SectionHead
+              id="conditions"
+              title="Each condition"
+              blurb="The summary row for every condition, then one tab per condition with its cohort, who gets lost, its own call list and the guideline rules behind it."
+            />
             <div style={{ overflowX: "auto", marginTop: 28 }}>
               <table className="dx-table dx-table-num" style={{ minWidth: 760, background: "#fff", borderRadius: 12 }}>
                 <thead>
@@ -246,16 +311,22 @@ export default function NcdHubPage() {
                   {h.perCondition.map((c) => (
                     <tr key={c.key}>
                       <td>
-                        <Link href={c.route} className="dx-a">
-                          {c.label}
-                        </Link>
+                        {c.key === "diabetes" ? (
+                          <Link href={c.route} className="dx-a">
+                            {c.label}
+                          </Link>
+                        ) : (
+                          <a href={`#${c.key}`} className="dx-a">
+                            {c.label}
+                          </a>
+                        )}
                       </td>
                       <td className="mono">{n(c.inPathway)}</td>
                       <td className="mono">{c.pctOfTested}%</td>
                       <td className="mono">{c.alsoOther}%</td>
                       <td className="mono">{n(c.dueNow)}</td>
                       <td className="mono">{c.lostPct}%</td>
-                      <td className="mono">{c.loss12 === null ? "see page" : `${c.loss12}%`}</td>
+                      <td className="mono">{c.loss12 === null ? "on /diabetes" : `${c.loss12}%`}</td>
                       <td className="dx-dim">{c.tests.join(", ")}</td>
                     </tr>
                   ))}
@@ -263,33 +334,65 @@ export default function NcdHubPage() {
               </table>
             </div>
             <Caption>
-              Diabetes rules here are the ones on the diabetes page, run on this all-tests cohort, so its counts differ from that
-              page&apos;s sugar-test-only cohort. Hypertension, the commonest NCD, is missing because blood pressure is not a lab
-              result; it needs a reading at the camp or the collection visit.
+              Diabetes rules are the ones on the{" "}
+              <Link href="/diabetes" className="dx-a">
+                diabetes page
+              </Link>
+              , run on this all-tests cohort, so its counts differ from that page&apos;s sugar-test-only cohort. Hypertension, the
+              commonest NCD in West Bengal, is missing because blood pressure is not a lab result; it needs a reading at the camp or
+              the collection visit.
             </Caption>
+
+            <div style={{ marginTop: 48 }}>
+              <ConditionTabs
+                tabs={[
+                  { key: "kidney", label: "Kidney disease", panel: <KidneyPanel /> },
+                  { key: "heart", label: "Cholesterol", panel: <HeartPanel /> },
+                  { key: "thyroid", label: "Thyroid", panel: <ThyroidPanel /> },
+                  { key: "liver", label: "Fatty liver", panel: <LiverPanel /> },
+                ]}
+              />
+            </div>
           </div>
         </section>
 
-        {/* ---------------- Which numbers are real ---------------- */}
+        {/* ---------------- Method and which numbers are real ---------------- */}
         <section className="section dx-band" style={{ paddingTop: 96, paddingBottom: 120 }}>
           <div className="container" style={{ maxWidth: 880 }}>
-            <h2 id="real">Which numbers are real</h2>
+            <h2 id="method">How the numbers were made, and which are real</h2>
             <div className="dx-prose">
               <p>
-                <strong>Real:</strong> the national burden figures at the top of this page, each linked to its source; the
-                clinical rules (KDIGO, ADA, Lipid Association of India, ATA / ETA, AASLD), which are applied exactly as written in
-                each condition&apos;s rule table; and the code, which reads one row per reported lab parameter, the shape of the
-                planned AKTIV to Neon <span className="mono">lab_results</span> view.
+                <strong>Real:</strong> every West Bengal and India figure, each linked to its source; the clinical rules (KDIGO,
+                ADA, Lipid Association of India, ATA / ETA, AASLD), applied exactly as written in each condition&apos;s rule table;
+                and the code, which reads one row per reported lab parameter, the shape of the planned AKTIV to Neon{" "}
+                <span className="mono">lab_results</span> view.
               </p>
               <p>
-                <strong>Simulated:</strong> every count, percentage and name below the burden section. The cohort is generated so the
-                pipeline can be built and checked before real result values are synced. Its prevalences are set to look like a
-                referral lab, not measured, so none of them should be quoted as findings from Anubhav Life Care.
+                <strong>Simulated:</strong> every lab count, percentage and name. The cohort is generated to look like the AKTIV
+                mirror once result values are synced: bills with a monthly PATIENT_KEY, names and phone numbers as a busy front desk
+                types them, and hidden states for diabetes, kidney disease, cholesterol, thyroid and fatty liver that improve while
+                people keep coming and slip while they are away. Its prevalences are set to look like a referral lab, not measured,
+                so none of them should be quoted as findings from Anubhav Life Care.
               </p>
               <p>
-                <strong>When the mirror carries results,</strong> the same build produces each of these figures from real data:
-                people on each pathway, loss to follow-up at 12 months, how many calls merging saves, and the checks nobody
-                ordered. Those are the numbers to report.
+                <strong>Linking.</strong> The same resolver as the{" "}
+                <Link href="/diabetes#linking" className="dx-a">
+                  diabetes page
+                </Link>
+                : mobile number first, then a Bengali-aware fuzzy name match with sex and birth year. On this all-tests cohort it
+                keeps {(h.identity.precision * 100).toFixed(1)}% of joins correct and recovers {(h.identity.recall * 100).toFixed(1)}%
+                of true repeat visits, scored against the generator&apos;s hidden person id.
+              </p>
+              <p>
+                <strong>What a lab cannot see.</strong> Only tests done at the lab. Someone &ldquo;lost&rdquo; here may be testing
+                elsewhere, have moved or have died, which is why the re-engagement queue asks first where they test now.
+                Prescriptions, symptoms and clinic visits are not in the mirror. Scoring weights are a starting point for the clinical
+                team, not a validated model.
+              </p>
+              <p>
+                <strong>When the mirror carries results,</strong> the same build produces each lab figure from real data: people on
+                each pathway, loss to follow-up at 12 months, how many calls merging saves, and the checks nobody ordered. Those,
+                set against the West Bengal column above, are the numbers to report.
               </p>
             </div>
           </div>
@@ -302,12 +405,54 @@ export default function NcdHubPage() {
   );
 }
 
+/** One survey bar with its NFHS-5 value marked as a tick, so the change is visible. */
+function PairBar({ who, v, was, max, color }: { who: string; v: number; was: number; max: number; color: string }) {
+  const up = v - was;
+  return (
+    <div className="ncd-bar" aria-label={`${who} ${v}%, was ${was}% in NFHS-5`}>
+      <span className="ncd-bar-who">{who}</span>
+      <span className="ncd-bar-track">
+        <span className="ncd-bar-fill" style={{ width: `${(v / max) * 100}%`, background: color }} />
+        <span className="ncd-bar-was" style={{ left: `${(was / max) * 100}%` }} title={`NFHS-5: ${was}%`} />
+      </span>
+      <span className="ncd-bar-v mono">
+        {v}%{" "}
+        <span className="ncd-bar-d">
+          {up >= 0 ? "+" : "−"}
+          {Math.abs(up).toFixed(1)} since NFHS-5
+        </span>
+      </span>
+    </div>
+  );
+}
+
 const HUB_STYLES = `
-.ncd-burden { margin-top: 32px; display: grid; gap: 16px; grid-template-columns: repeat(3, minmax(0, 1fr)); }
-.ncd-burden-card { padding: 22px; display: flex; flex-direction: column; gap: 10px; }
-.ncd-burden-card:hover { transform: none; }
-.ncd-burden-label { font-size: 14.5px; color: var(--ink-700); line-height: 1.5; flex: 1; }
-.ncd-burden-src { font-size: 12.5px; line-height: 1.45; }
-@media (max-width: 980px) { .ncd-burden { grid-template-columns: 1fr 1fr; } }
-@media (max-width: 640px) { .ncd-burden { grid-template-columns: 1fr; } }
+.ncd-pairs { display: grid; gap: 18px; margin-top: 6px; }
+.ncd-pair { display: grid; grid-template-columns: minmax(0, 300px) minmax(0, 1fr); gap: 18px; align-items: center; }
+.ncd-pair-label { font-size: 14.5px; color: var(--ink-700); line-height: 1.4; }
+.ncd-pair-bars { display: grid; gap: 6px; }
+.ncd-bar { display: grid; grid-template-columns: 92px minmax(0, 1fr) 190px; gap: 10px; align-items: center; font-size: 13px; }
+.ncd-bar-who { color: var(--ink-500); }
+.ncd-bar-track { position: relative; height: 14px; background: var(--ink-50); border-radius: 4px; }
+.ncd-bar-fill { position: absolute; inset: 0 auto 0 0; border-radius: 4px; }
+.ncd-bar-was { position: absolute; top: -3px; bottom: -3px; width: 2px; background: var(--ink); opacity: .55; }
+.ncd-bar-v { color: var(--ink); font-size: 13px; }
+.ncd-bar-d { color: var(--ink-500); font-size: 12px; }
+.ncd-big { display: block; font-size: 20px; font-weight: 600; color: var(--ink); }
+.ncd-sim { color: var(--ink-500); }
+.ncd-note { display: block; margin-top: 4px; font-size: 13px; color: var(--ink-500); line-height: 1.45; }
+.ncd-tablist { display: flex; flex-wrap: wrap; gap: 8px; border-bottom: 1px solid var(--ink-100); padding-bottom: 14px; }
+.ncd-tab { font: inherit; font-size: 15px; padding: 10px 18px; border-radius: 999px; border: 1px solid var(--ink-100); background: #fff; color: var(--ink-700); cursor: pointer; }
+.ncd-tab:hover { border-color: var(--brand-2); color: var(--brand); }
+.ncd-tab[aria-selected="true"] { background: var(--brand); border-color: var(--brand); color: #fff; }
+.ncd-panel { padding-top: 32px; }
+.ncd-panel-title { font-size: clamp(24px, 3vw, 34px); line-height: 1.2; }
+.ncd-panel-intro { margin-top: 14px; font-size: 17px; line-height: 1.6; color: var(--ink-500); }
+.ncd-sub { margin-top: 64px; font-size: 22px; }
+.ncd-sub-blurb { margin-top: 10px; margin-bottom: 4px; font-size: 16px; line-height: 1.6; color: var(--ink-500); max-width: 880px; }
+@media (max-width: 860px) {
+  .ncd-pair { grid-template-columns: 1fr; gap: 8px; }
+  .ncd-bar { grid-template-columns: 78px minmax(0, 1fr); }
+  .ncd-bar-v { grid-column: 2; }
+}
 `;
