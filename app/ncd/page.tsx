@@ -27,6 +27,14 @@ const LAB_FOR_BENCH: Record<string, { condition: string; note: string; sex?: Par
   anaemia: { condition: "Anaemia (WHO)", note: "WHO haemoglobin cut-offs, all adults", sex: "Anaemia (WHO)" },
 };
 
+/** Anubhav's own figure on a survey row's West Bengal bar, where the lab measures something comparable. */
+function labMark(rowIndex: number): { v: number; label: string } | null {
+  const dm = sexSplit("Diabetes (confirmed)");
+  if (rowIndex === 0) return { v: dm.F.pct, label: "women tested at Anubhav with diabetes (HbA1c 6.5%+ or two diabetic-range sugars)" };
+  if (rowIndex === 1) return { v: dm.M.pct, label: "men tested at Anubhav with diabetes (HbA1c 6.5%+ or two diabetic-range sugars)" };
+  return null;
+}
+
 export const metadata: Metadata = {
   title: "Long-term conditions in West Bengal: one call per person · SamaHealth",
   description:
@@ -112,29 +120,39 @@ export default function NcdHubPage() {
             <div className="dx-grid">
               <Card span={12} title="Same survey, same method: West Bengal and India" subtitle="% of adults, NFHS-6 2023-24; the dark tick marks NFHS-5 2019-21">
                 <div className="ncd-pairs" role="table" aria-label="West Bengal versus India, NFHS-6">
-                  {SURVEY_ROWS.map((r) => (
+                  {SURVEY_ROWS.map((r, i) => (
                     <div key={r.label} className="ncd-pair" role="row">
                       <div className="ncd-pair-label" role="rowheader">
                         {r.label}
                       </div>
                       <div className="ncd-pair-bars" role="cell">
-                        <PairBar who="West Bengal" v={r.wb} was={r.wb5} max={50} color="var(--brand)" />
+                        <PairBar who="West Bengal" v={r.wb} was={r.wb5} max={50} color="var(--brand)" lab={labMark(i)} />
                         <PairBar who="India" v={r.india} was={r.india5} max={50} color="var(--ink-300)" />
                       </div>
                     </div>
                   ))}
                 </div>
-                <Legend
-                  items={[
-                    { label: "West Bengal", color: "var(--brand)" },
-                    { label: "India", color: "var(--ink-300)" },
-                  ]}
-                />
+                <div className="ncd-legend-row">
+                  <Legend
+                    items={[
+                      { label: "West Bengal", color: "var(--brand)" },
+                      { label: "India", color: "var(--ink-300)" },
+                    ]}
+                  />
+                  <span className="ncd-legend-sun">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src="/ncd/anubhav-sun.png" alt="" width={16} height={16} />
+                    Anubhav Life Care, adults tested
+                  </span>
+                </div>
                 <Caption>
                   West Bengal is above India on every blood sugar and blood pressure measure, for women and for men. Raised blood
                   pressure rose in West Bengal (women {SURVEY_ROWS[4].wb5}% to {SURVEY_ROWS[4].wb}%, men {SURVEY_ROWS[5].wb5}% to{" "}
                   {SURVEY_ROWS[5].wb}%) while it fell nationally. Blood sugar over 160 mg/dL, the level that usually means untreated or
-                  uncontrolled diabetes, rose by about half in five years. Source:{" "}
+                  uncontrolled diabetes, rose by about half in five years. The sun marks Anubhav&apos;s adults with confirmed diabetes:
+                  women {labMark(0)?.v.toFixed(1)}%, men {labMark(1)?.v.toFixed(1)}%, a little under the state&apos;s survey figure,
+                  which also counts any single random reading over 140. The lab has no blood pressure, weight or tobacco data, so those
+                  rows have no mark. Source:{" "}
                   <a href={NFHS6.href} className="dx-a" target="_blank" rel="noreferrer">
                     {NFHS6.label}
                   </a>
@@ -646,14 +664,40 @@ export default function NcdHubPage() {
 }
 
 /** One survey bar with its NFHS-5 value marked as a tick, so the change is visible. */
-function PairBar({ who, v, was, max, color }: { who: string; v: number; was: number; max: number; color: string }) {
+function PairBar({
+  who,
+  v,
+  was,
+  max,
+  color,
+  lab,
+}: {
+  who: string;
+  v: number;
+  was: number;
+  max: number;
+  color: string;
+  lab?: { v: number; label: string } | null;
+}) {
   const up = v - was;
   return (
-    <div className="ncd-bar" aria-label={`${who} ${v}%, was ${was}% in NFHS-5`}>
+    <div className="ncd-bar" aria-label={`${who} ${v}%, was ${was}% in NFHS-5${lab ? `; Anubhav ${lab.v.toFixed(1)}%` : ""}`}>
       <span className="ncd-bar-who">{who}</span>
       <span className="ncd-bar-track">
         <span className="ncd-bar-fill" style={{ width: `${(v / max) * 100}%`, background: color }} />
         <span className="ncd-bar-was" style={{ left: `${(was / max) * 100}%` }} title={`NFHS-5: ${was}%`} />
+        {lab && (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
+            className="ncd-bar-sun"
+            src="/ncd/anubhav-sun.png"
+            alt={`Anubhav ${lab.v.toFixed(1)}%`}
+            title={`Anubhav: ${lab.v.toFixed(1)}% of ${lab.label}`}
+            width={20}
+            height={20}
+            style={{ left: `${(lab.v / max) * 100}%` }}
+          />
+        )}
       </span>
       <span className="ncd-bar-v mono">
         {v}%{" "}
@@ -661,6 +705,7 @@ function PairBar({ who, v, was, max, color }: { who: string; v: number; was: num
           {up >= 0 ? "+" : "−"}
           {Math.abs(up).toFixed(1)} since NFHS-5
         </span>
+        {lab && <span className="ncd-bar-lab">Anubhav {lab.v.toFixed(1)}%</span>}
       </span>
     </div>
   );
@@ -677,6 +722,11 @@ const HUB_STYLES = `
 .ncd-bar-fill { position: absolute; inset: 0 auto 0 0; border-radius: 4px; }
 .ncd-bar-was { position: absolute; top: -3px; bottom: -3px; width: 2px; background: var(--ink); opacity: .55; }
 .ncd-bar-v { color: var(--ink); font-size: 13px; }
+.ncd-bar-sun { position: absolute; top: 50%; width: 20px; height: 20px; transform: translate(-50%, -50%); border-radius: 50%; box-shadow: 0 0 0 2px #fff; z-index: 1; }
+.ncd-bar-lab { display: block; margin-top: 2px; font-size: 12px; color: #b07d00; }
+.ncd-legend-row { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 20px; }
+.ncd-legend-sun { display: inline-flex; align-items: center; gap: 6px; font-size: 12.5px; color: var(--ink-500); }
+.ncd-legend-sun img { border-radius: 50%; }
 .ncd-bar-d { color: var(--ink-500); font-size: 12px; }
 .ncd-big { display: block; font-size: 20px; font-weight: 600; color: var(--ink); }
 .ncd-cat td { padding-top: 18px; font-weight: 600; color: var(--ink); font-size: 13px; }
