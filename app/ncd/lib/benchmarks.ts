@@ -38,7 +38,7 @@ export const SURVEY_ROWS: SurveyRow[] = [
 /** Condition-level estimates. Studies differ in method, age and year, so a
  *  West Bengal figure and an India figure in one row are not like for like. */
 export type ConditionBench = {
-  key: "diabetes" | "kidney" | "heart" | "thyroid" | "liver" | "bp";
+  key: "diabetes" | "kidney" | "heart" | "thyroid" | "liver" | "bp" | "anaemia";
   label: string;
   wb: string;
   wbNote: string;
@@ -110,6 +110,16 @@ export const CONDITION_BENCH: ConditionBench[] = [
     india: "38.6%",
     indiaNote: "pooled across 50 studies, mostly urban and later",
     indiaSrc: { label: "Shalimar et al., J Clin Exp Hepatol 2022", href: "https://pmc.ncbi.nlm.nih.gov/articles/PMC9168741" },
+  },
+  {
+    key: "anaemia",
+    label: "Anaemia",
+    wb: "71.4%",
+    wbNote: "women 15-49, NFHS-5 2019-21; the highest of any state",
+    wbSrc: { label: "NFHS-5 fact sheets, IIPS 2021", href: "https://rchiips.org/nfhs/factsheet_NFHS-5.shtml" },
+    india: "57.0%",
+    indiaNote: "women 15-49, NFHS-5 2019-21",
+    indiaSrc: { label: "NFHS-5 fact sheets, IIPS 2021", href: "https://rchiips.org/nfhs/factsheet_NFHS-5.shtml" },
   },
 ];
 

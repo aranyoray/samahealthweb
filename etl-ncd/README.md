@@ -111,6 +111,7 @@ python analysis\build_dataset.py            :: link bills into people; out\datas
 python analysis\analyse.py                  :: conditions, prevalence, network, CKM, progression; out\results\
 python analysis\report_data.py              :: one JSON blob for the report
 python analysis\build_report.py             :: out\results\ncd_burden_report.html + analysis\results\RESULTS.md
+python analysis\web_export.py               :: app\ncd\data\aktiv.json, the aggregates the /ncd page reads
 ```
 
 `analysis/narrative/` holds the rule-based extractors that turn ultrasound and echo report text into flags
@@ -126,6 +127,7 @@ contract excludes, so they are separate scripts that run only on the clinic PC a
 | `ncd_tests.py` | Which tests and parameter names count, and how each maps to a code. Run `python ncd_tests.py` to self-check. |
 | `ncd_pull_raw.py` | Full structured pull for the analysis (bills, ordered tests, every analyte, report headers, masters). |
 | `ncd_introspect.json`, `ncd_mapping.json` | Introspect output and the reviewed, confirmed mapping for this install. |
+| `analysis/web_export.py` | Trims `analysis/results` into `app/ncd/data/aktiv.json` for the `/ncd` page. Runs anywhere. |
 | `analysis/` | Person linking, condition definitions, prevalence / network / CKM / progression, report builder. |
 | `requirements.txt` | `pyodbc`, `python-dotenv`. |
 | `.env.example` | AKTIV connection names. |
