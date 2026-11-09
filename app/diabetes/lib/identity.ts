@@ -12,7 +12,7 @@
 //      if exactly one name/sex/age match exists, else link name-only.
 //
 // Pure functions over plain rows, so the same code can run on the Neon
-// mirror export as well as on the synthetic cohort.
+// mirror export as well as on the demo cohort.
 
 import { yearOf } from "./rng";
 import type { Bill, Sex } from "./types";
@@ -386,7 +386,7 @@ export function resolveIdentities(bills: Pick<Bill, "phone" | "name" | "sex" | "
 }
 
 /* ------------------------------------------------------------------ */
-/* Scoring against ground truth (synthetic cohort only)                 */
+/* Scoring against ground truth (demo cohort only)                 */
 /* ------------------------------------------------------------------ */
 
 export type LinkageScore = {

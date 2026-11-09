@@ -35,7 +35,7 @@ export type Bill = {
   channel: Channel;
   referrer: string;
   results: { test: RawTest; value: number }[];
-  /** Ground-truth person id; synthetic only, never read by the pipeline. */
+  /** Ground-truth person id; generated data only, never read by the pipeline. */
   truth: number;
 };
 
@@ -88,7 +88,7 @@ export function ckdEpi2021(creat: number, age: number, sex: "F" | "M" | ""): num
   return 142 * Math.min(r, 1) ** a * Math.max(r, 1) ** -1.2 * 0.9938 ** age * (female ? 1.012 : 1);
 }
 
-/** Creatinine that gives this eGFR. Used only by the synthetic generator. */
+/** Creatinine that gives this eGFR. Used only by the cohort generator. */
 export function creatForEgfr(egfr: number, age: number, sex: "F" | "M"): number {
   let lo = 0.2;
   let hi = 20;

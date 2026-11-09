@@ -1,4 +1,4 @@
-// Synthetic stand-in for the AKTIV → Neon mirror once result values are
+// Generated stand-in for the AKTIV → Neon mirror once result values are
 // synced: everyone tested at the lab, not just people with a sugar test.
 // Same front-desk mess as the /diabetes generator (monthly PATIENT_KEY,
 // spelling drift, household and agent phone numbers) and the same clock.

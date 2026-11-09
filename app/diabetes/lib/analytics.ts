@@ -1,5 +1,5 @@
 // Aggregates for the /diabetes page. Everything here reads resolved
-// timelines, never the synthetic ground truth, so the same code can run on
+// timelines, never the generated ground truth, so the same code can run on
 // the live mirror. (Only the linkage scorecard looks at ground truth.)
 
 import {

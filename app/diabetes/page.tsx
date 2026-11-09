@@ -793,7 +793,7 @@ function Hero({ d }: { d: ReturnType<typeof getDashboard> }) {
         person, followed across months.
       </p>
       <p className="mono" style={{ marginTop: 16, fontSize: 12.5, color: "var(--ink-400)", maxWidth: 780 }}>
-        Synthetic cohort shaped like the AKTIV research mirror · {n(h.cohort)} people · 3.5 years to {fmtDay(d.asOf)} · no
+        Demo cohort shaped like the AKTIV research mirror · {n(h.cohort)} people · 3.5 years to {fmtDay(d.asOf)} · no
         real patient data. The pipeline reads plain lab rows and runs unchanged on the live mirror.
       </p>
       <p style={{ marginTop: 14, fontSize: 12, lineHeight: 1.5, color: "var(--ink-500)", maxWidth: 780 }}>
@@ -843,7 +843,7 @@ function Methods() {
         <h2 id="method">How the numbers were made</h2>
         <div className="dx-prose">
           <p>
-            <strong>Data.</strong> Everything on this page is computed at build time from a synthetic cohort generated
+            <strong>Data.</strong> Everything on this page is computed at build time from a demo cohort generated
             to look like the AKTIV to Neon research mirror: bills with a monthly PATIENT_KEY, names and phone numbers as
             a busy front desk types them, households sharing a mobile, and collection agents, camp desks and partner
             centres typing their own number. HbA1c drifts toward a treatment target while people keep coming and upward

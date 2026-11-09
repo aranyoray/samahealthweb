@@ -1,4 +1,4 @@
-// Synthetic stand-in for the AKTIV → Neon research mirror, restricted to
+// Generated stand-in for the AKTIV → Neon research mirror, restricted to
 // patients with at least one glycaemic test. It reproduces the mess the
 // real front desk produces, because that mess is what the identity
 // resolver has to survive:

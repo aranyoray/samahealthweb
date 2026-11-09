@@ -1,4 +1,4 @@
-// Seeded PRNG so the synthetic cohort is identical on every build and on
+// Seeded PRNG so the demo cohort is identical on every build and on
 // server + client. mulberry32: tiny, fast, good enough for simulation.
 
 export type Rng = {

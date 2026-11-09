@@ -1,4 +1,4 @@
-// Shapes shared by the synthetic generator, the identity resolver, the
+// Shapes shared by the cohort generator, the identity resolver, the
 // follow-up rules and the analytics. A "Bill" is one AKTIV registration
 // (BILL_HEAD row) with the results hanging off it, flattened.
 
@@ -33,7 +33,7 @@ export type Bill = {
   referrer: string;
   results: Result[];
   /**
-   * Ground-truth person id. Exists only because the cohort is synthetic;
+   * Ground-truth person id. Exists only because the cohort is generated;
    * the resolver never reads it. Used to score linkage accuracy.
    */
   truth: number;
