@@ -124,6 +124,9 @@ export function Worklist({
   useEffect(() => {
     try {
       const raw = window.localStorage.getItem(STORE_KEY);
+      // Saved statuses can only be read after mount: reading them during
+      // render would not match the prerendered HTML.
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       if (raw) setStatus(JSON.parse(raw));
     } catch {
       /* private mode or blocked storage: statuses just won't persist */

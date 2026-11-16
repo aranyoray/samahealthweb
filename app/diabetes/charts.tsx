@@ -163,13 +163,14 @@ export function Donut({ segments, centre }: { segments: { label: string; v: numb
   const R = 56;
   const C = 2 * Math.PI * R;
   const GAP = 2;
-  let offset = 0;
   return (
     <div className="dx-donut">
       <svg viewBox="0 0 140 140" width="140" height="140" role="img" aria-label={`Donut chart, ${centre}`}>
-        {segments.map((s) => {
+        {segments.map((s, i) => {
           const len = (s.v / total) * C;
-          const el = (
+          // Start of this arc: the summed length of the segments before it.
+          const offset = segments.slice(0, i).reduce((sum, x) => sum + (x.v / total) * C, 0);
+          return (
             <circle
               key={s.label}
               cx="70"
@@ -185,8 +186,6 @@ export function Donut({ segments, centre }: { segments: { label: string; v: numb
               <title>{`${s.label}: ${s.v.toLocaleString("en-IN")} (${((s.v / total) * 100).toFixed(1)}%)`}</title>
             </circle>
           );
-          offset += len;
-          return el;
         })}
         <text x="70" y="68" textAnchor="middle" fontSize="21" fontWeight="600" fill="var(--ink)">
           {total.toLocaleString("en-IN")}
