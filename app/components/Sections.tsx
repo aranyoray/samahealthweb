@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 /* ------------------------------------------------------------------ */
 /* Credibility strip — a single quiet line, no bullets or pills.       */
@@ -415,6 +416,97 @@ function TriageFlow() {
         })}
       </ol>
     </div>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+/* Home care — one paragraph, one link, the dock render.               */
+/* ------------------------------------------------------------------ */
+
+export function HomeCare() {
+  return (
+    <section id="homecare" style={{ padding: "112px 0", borderBottom: "1px solid var(--ink-100)" }}>
+      <div className="container" style={{ maxWidth: 1160 }}>
+        <div
+          className="homecare-grid"
+          style={{
+            display: "grid",
+            gridTemplateColumns: "1.1fr 0.9fr",
+            gap: 80,
+            alignItems: "center",
+          }}
+        >
+          <div style={{ maxWidth: 540 }}>
+            <p
+              style={{
+                fontFamily: "var(--font-display)",
+                fontSize: "clamp(24px, 2.6vw, 32px)",
+                lineHeight: 1.22,
+                letterSpacing: "-0.02em",
+                color: "var(--ink)",
+                fontWeight: 500,
+              }}
+            >
+              After the clinic, care carries on at home.
+            </p>
+            <p
+              style={{
+                marginTop: 26,
+                fontSize: 16.5,
+                lineHeight: 1.65,
+                color: "var(--ink-500)",
+              }}
+            >
+              SamaBeat is our monitoring system for people who are cared for at
+              home, starting with people on home oxygen or CPAP. The band is worn
+              on the wrist by day. At night it sits on the Home Dock, which charges
+              it and senses breathing and movement in the room, with no camera and
+              no microphone.
+            </p>
+            <p
+              style={{
+                marginTop: 20,
+                fontSize: 16.5,
+                lineHeight: 1.65,
+                color: "var(--ink-500)",
+              }}
+            >
+              The system is in clinical validation. It is not cleared or approved
+              by any regulator yet.
+            </p>
+
+            <div style={{ marginTop: 36 }}>
+              <Link
+                href="/homecare"
+                style={{
+                  fontSize: 15,
+                  fontWeight: 500,
+                  color: "var(--ink)",
+                  borderBottom: "1px solid var(--ink)",
+                  paddingBottom: 2,
+                }}
+              >
+                Home care: the band and the Home Dock →
+              </Link>
+            </div>
+          </div>
+
+          <Image
+            src="/homecare/dock.webp"
+            alt="The SamaBeat Home Dock with the band laid in its cradle"
+            width={1600}
+            height={1200}
+            sizes="(max-width: 900px) 100vw, 460px"
+            style={{ width: "100%", maxWidth: 460, height: "auto", margin: "0 auto" }}
+          />
+        </div>
+      </div>
+      <style>{`
+        @media (max-width: 900px) {
+          .homecare-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
+        }
+      `}</style>
+    </section>
   );
 }
 

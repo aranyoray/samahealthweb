@@ -4,6 +4,7 @@ import Link from "next/link";
 
 const links = [
   { href: "/samaclip", label: "SamaClip" },
+  { href: "/homecare", label: "Home care" },
   { href: "/#signal", label: "Autonomic vitals" },
   { href: "/#triage", label: "Triage" },
   { href: "/camps", label: "Field camps" },
@@ -137,7 +138,7 @@ export function Nav({ variant = "light" }: { variant?: "light" | "dark" | "hero"
       </div>
 
       {/* Always mounted so the button's aria-controls target exists while
-          closed; capped and scrollable so seven links stay reachable in
+          closed; capped and scrollable so every link stays reachable in
           landscape, where the fixed header would otherwise clip them. */}
       <div
         id="mobile-nav"
@@ -164,7 +165,8 @@ export function Nav({ variant = "light" }: { variant?: "light" | "dark" | "hero"
         </div>
 
       <style>{`
-        @media (min-width: 980px) {
+        .nav-links a { white-space: nowrap; }
+        @media (min-width: 1200px) {
           .nav-links { display: flex !important; }
           .menu-btn { display: none !important; }
         }

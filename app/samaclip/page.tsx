@@ -603,7 +603,8 @@ function Model() {
           <p style={{ fontSize: 14.5, color: "var(--ink-500)", lineHeight: 1.6 }}>
             <strong style={{ color: "var(--ink-700)" }}>SamaBand</strong> is the wrist-worn companion for continuous,
             at-home monitoring of patients already flagged by SamaClip. It keeps an eye on people over time. It is not
-            a diagnostic screening device, and the accuracy figures above belong to SamaClip alone.
+            a diagnostic screening device, and the accuracy figures above belong to SamaClip alone.{" "}
+            <Link href="/homecare" style={{ color: "var(--brand)", fontWeight: 600 }}>See home care →</Link>
           </p>
         </div>
       </div>

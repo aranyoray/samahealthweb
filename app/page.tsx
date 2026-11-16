@@ -5,6 +5,7 @@ import {
   CredibilityStrip,
   AutonomicSignals,
   DiseaseTriage,
+  HomeCare,
   Quote,
   CTA,
 } from "./components/Sections";
@@ -19,6 +20,7 @@ export default function HomePage() {
         <CredibilityStrip />
         <AutonomicSignals />
         <DiseaseTriage />
+        <HomeCare />
         <Quote />
         <CTA />
       </main>
