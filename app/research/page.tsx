@@ -43,6 +43,7 @@ export default function ResearchPage() {
         <WhatItScreens />
         <Validation />
         <ReferenceInstruments />
+        <ImagingChannel />
         <HonestClaims />
         <ResearchCTA />
       </main>
@@ -205,12 +206,92 @@ function ReferenceInstruments() {
   );
 }
 
+function ImagingChannel() {
+  const steps = [
+    {
+      k: "Film one minute of capillaries",
+      v: "A camera in the same fingertip unit watches the nail fold under short green and violet flashes at 60 or more frames a second. Nailfold capillaries sit 50 to 100 µm below thin skin, and red cells pass through them in single file, so each one reads as a dark shadow.",
+    },
+    {
+      k: "Measure each cell, not the crowd",
+      v: "Summing the darkness of a single cell over its area gives the haemoglobin inside it. Its outline gives length, and the spread of lengths across thousands of cells stands in for red cell distribution width.",
+    },
+    {
+      k: "Divide, instead of estimating volume",
+      v: "Needle-free haemoglobin divided by haemoglobin per cell gives red cell count. That removes the step where earlier capillary-video work loses accuracy, which is estimating vessel volume or flow speed to count against.",
+    },
+    {
+      k: "Run it all on the unit",
+      v: "Quality gate, capillary segmentation, cell tracking, per-cell measurement and aggregation run on the device or its field tablet with no network, as 8-bit integer networks under the LiteRT runtime, inside a one-minute processing budget.",
+    },
+  ];
+  return (
+    <section id="imaging" className="section" style={{ background: "var(--paper-2)", paddingTop: 96, paddingBottom: 96 }}>
+      <div className="container">
+        <h2 style={{ maxWidth: 820 }}>What we are building next: reading single red cells</h2>
+        <p style={{ marginTop: 20, fontSize: 17, color: "var(--ink-500)", maxWidth: 720 }}>
+          Haemoglobin on its own cannot tell β-thalassaemia trait apart from iron deficiency anaemia. What
+          separates them is the red cell indices, the size of each cell and the haemoglobin inside it, and
+          today those need a needle and a haematology analyser. In a country where carrier screening mostly
+          does not happen outside pregnancy, that is the gap worth closing.
+        </p>
+        <p style={{ marginTop: 18, fontSize: 17, color: "var(--ink-500)", maxWidth: 720 }}>
+          Bulk light cannot resolve cell size. So the study device stops trying, and looks at the cells
+          themselves.
+        </p>
+
+        <div className="grid grid-2" style={{ marginTop: 44 }}>
+          {steps.map((s, i) => (
+            <div key={s.k} className="card" style={{ padding: 26 }}>
+              <div className="mono" style={{ fontSize: 11, color: "var(--ink-400)", letterSpacing: "0.12em" }}>
+                STEP {i + 1}
+              </div>
+              <h3 style={{ fontSize: 18, marginTop: 10 }}>{s.k}</h3>
+              <p style={{ marginTop: 10, fontSize: 14.5, color: "var(--ink-500)" }}>{s.v}</p>
+            </div>
+          ))}
+        </div>
+
+        <div className="card" style={{ marginTop: 32, padding: 28, maxWidth: 820 }}>
+          <h3 style={{ fontSize: 19 }}>Skin tone is an endpoint here, not a footnote</h3>
+          <p style={{ marginTop: 12, fontSize: 15, color: "var(--ink-500)" }}>
+            Capillaries get harder to see as skin pigmentation rises. In 118 healthy Indian adults imaged at
+            800x, visible capillaries per millimetre fell from 8.1 at Fitzpatrick type III to 4.5 at type VI,
+            and 11 fingers across five type VI participants showed no capillary at all. The published
+            neutropenia imager this work builds on simply excluded skin above type IV. We cannot do that and
+            still call it screening for India, so usable-cell yield by skin tone is a measured endpoint, and
+            the inner lip, which carries no melanin layer, is imaged alongside the nail fold in the first 300
+            participants. A stage gate at month 12 decides which site goes into the locked validation, or
+            whether neither resolves single cells and the device falls back to haemoglobin and triage alone.
+          </p>
+        </div>
+
+        <div
+          className="card"
+          style={{ marginTop: 20, padding: 28, maxWidth: 820, borderLeft: "3px solid var(--ink-300)" }}
+        >
+          <h3 style={{ fontSize: 19 }}>Where this actually stands</h3>
+          <p style={{ marginTop: 12, fontSize: 15, color: "var(--ink-500)" }}>
+            This channel is a protocol, not a product. It is the study device in a grant-stage research
+            proposal written in November 2026, it has not been checked against an analyser in a clinical
+            population, and none of the agreement figures earlier on this page include it. SamaClip as sold
+            and run in camps today is the fingertip screen described above. When the imaging channel has
+            numbers, they will appear in the same table as everything else, next to the instrument they were
+            measured against.
+          </p>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function HonestClaims() {
   const points = [
     ["Screening is not diagnosis.", "Every flag SamaClip raises is confirmed by a laboratory test or a clinician before any treatment decision."],
     ["Accuracy figures are SamaClip's, from one study.", "The agreement numbers above belong to SamaClip and the n=175 validation cohort. Nothing else."],
     ["SamaBeat is follow-up only.", "The SamaBeat wristband supports monitoring after a confirmed flag. We make no diagnostic-accuracy claim for it."],
     ["TB is a referral signal.", "Where a tuberculosis pattern shows up, it routes a person to proper testing. It never stands in for a TB diagnosis."],
+    ["Research is labelled as research.", "The single-cell imaging channel is a grant-stage protocol with no clinical validation yet. We describe it because it is what we are building, not because it is something you can buy."],
   ];
   return (
     <section className="section" style={{ background: "var(--ink)", color: "#fff", paddingTop: 96, paddingBottom: 96 }}>
