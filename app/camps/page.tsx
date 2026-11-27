@@ -42,8 +42,9 @@ type Img = {
   event: number;
   location: string;
   independent: boolean;
-  caption: string;
   partnerTag: string;
+  w: number;
+  h: number;
 };
 
 type EventMeta = {
