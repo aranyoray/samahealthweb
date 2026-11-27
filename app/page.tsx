@@ -1,17 +1,7 @@
 import { Nav } from "./components/Nav";
 import { Footer } from "./components/Footer";
 import { Hero } from "./components/Hero";
-import {
-  Partners,
-  Proof,
-  Statement,
-  AutonomicSignals,
-  DiseaseTriage,
-  HomeCare,
-  Quote,
-  FieldPhotos,
-  CTA,
-} from "./components/Sections";
+import { Partners, System, Evidence, Helps, FieldPhotos, CTA } from "./components/Sections";
 import { RevealOnScroll } from "./components/Reveal";
 
 export default function HomePage() {
@@ -21,12 +11,9 @@ export default function HomePage() {
       <main id="main">
         <Hero />
         <Partners />
-        <Proof />
-        <Statement />
-        <AutonomicSignals />
-        <DiseaseTriage />
-        <HomeCare />
-        <Quote />
+        <System />
+        <Evidence />
+        <Helps />
         <FieldPhotos />
         <CTA />
       </main>

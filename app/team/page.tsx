@@ -45,7 +45,7 @@ const FOUNDERS: Person[] = [
     cred: "Yale '24 · CS + Psychology",
     img: "/team/aranyo.jpg",
     body:
-      "Leads AI/ML architecture, clinical study design, and regulatory strategy (CDSCO, FDA). Built SamaClip's optical stack and led the n=175 validation study at Anubhav Life Care for non-invasive, skin-tone-agnostic haemoglobin tracking.",
+      "Leads AI/ML architecture, clinical study design, and regulatory strategy (CDSCO, FDA). Built the optical stack and led the n=175 validation study at Anubhav Life Care for non-invasive, skin-tone-agnostic haemoglobin tracking.",
   },
   {
     name: "Pushti Desai, MEng",

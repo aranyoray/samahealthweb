@@ -358,7 +358,7 @@ function TBDashboard() {
 
         <SubsectionHeader
           title="Pathology and vitals signature in TB"
-          blurb="From the patient-level cohort: every CBC, biochemistry, urine, body-fluid and (where paired) SamaClip vitals draw for any patient who ever had a TB workup, regardless of which day the sample was collected. TB-positive = smear / PCR / culture / IGRA reactive on any visit."
+          blurb="From the patient-level cohort: every CBC, biochemistry, urine, body-fluid and (where paired) non-invasive vitals draw for any patient who ever had a TB workup, regardless of which day the sample was collected. TB-positive = smear / PCR / culture / IGRA reactive on any visit."
         />
 
         <div className="data-grid" style={{ marginTop: 32 }}>
@@ -451,7 +451,7 @@ function TBDashboard() {
             />
           </Card>
 
-          <Card title="Non-invasive vitals overlay" subtitle="SamaClip + lab paired subset, n = 218">
+          <Card title="Non-invasive vitals overlay" subtitle="Non-invasive screen + lab paired subset, n = 218">
             <PairedBars
               rows={[
                 { label: "SpO₂ at rest (%)", plus: 95.2, minus: 98.1, ref: "≥ 95", max: 100 },
@@ -461,7 +461,7 @@ function TBDashboard() {
                 { label: "Non-invasive Hb (g/dL)", plus: 10.7, minus: 12.8, ref: "13.0 / 12.0", max: 16 },
                 { label: "QTc on screening ECG (ms)", plus: 432, minus: 408, ref: "< 450", max: 520 },
               ]}
-              caption="Where a SamaClip screen was paired to the lab visit (n = 218), TB+ patients sit lower on SpO₂, breathe faster, have suppressed HRV, and trend toward QTc-prolongation worth monitoring on bedaquiline / moxifloxacin therapy."
+              caption="Where a non-invasive screen was paired to the lab visit (n = 218), TB+ patients sit lower on SpO₂, breathe faster, have suppressed HRV, and trend toward QTc-prolongation worth monitoring on bedaquiline / moxifloxacin therapy."
             />
           </Card>
 
@@ -535,7 +535,7 @@ function DataMethods() {
           </p>
           <p>
             <strong style={{ color: "var(--ink)" }}>Vitals overlay.</strong>{" "}
-            Where a patient also had a SamaClip non-invasive screen on the same
+            Where a patient also had a non-invasive screen on the same
             day as a lab draw, the screen’s outputs — non-invasive Hb, SpO₂,
             heart rate, PPG-derived respiratory rate, HRV (RMSSD), and screening
             ECG QTc — are joined to that lab draw on{" "}

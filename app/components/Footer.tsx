@@ -5,10 +5,9 @@ const COLUMNS: { title: string; links: { href: string; label: string }[] }[] = [
   {
     title: "Platform",
     links: [
-      { href: "/samaclip", label: "SamaClip" },
-      { href: "/homecare", label: "Home care" },
-      { href: "/#signal", label: "Autonomic vitals" },
-      { href: "/#triage", label: "Disease triage" },
+      { href: "/homecare", label: "SamaBeat band and SamaDock" },
+      { href: "/homecare#senses", label: "What the dock senses" },
+      { href: "/#evidence", label: "Where the evidence stands" },
       { href: "/camps", label: "Field camps" },
     ],
   },
@@ -45,8 +44,8 @@ export function Footer() {
               SamaHealth
             </Link>
             <p style={{ marginTop: 16, fontSize: 15, lineHeight: 1.6, maxWidth: "34ch" }}>
-              Painless, non-invasive screening for anaemia, heart and cardiometabolic risk, built around the
-              NABL-accredited lab at Anubhav Life Care, Barasat, West Bengal.
+              SamaBeat is a continuous care monitoring system in clinical validation. It is not cleared or
+              approved by any regulator.
             </p>
           </div>
 

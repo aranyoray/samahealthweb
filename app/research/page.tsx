@@ -7,12 +7,12 @@ import { RevealOnScroll } from "../components/Reveal";
 export const metadata: Metadata = {
   title: "Validation and the lab behind it. SamaHealth",
   description:
-    "How SamaClip's non-invasive screening was checked against the gold-standard reference instruments in the NABL-accredited lab at Anubhav Life Care, Barasat (n=175).",
+    "How the precursor band's non-invasive screening was checked against the gold-standard reference instruments in the NABL-accredited lab at Anubhav Life Care, Barasat (n=175).",
   alternates: { canonical: "/research" },
   openGraph: {
     title: "Validation and the lab behind it. SamaHealth",
     description:
-      "How SamaClip's non-invasive screening was checked against the gold-standard reference instruments in the NABL-accredited lab at Anubhav Life Care, Barasat (n=175).",
+      "How the precursor band's non-invasive screening was checked against the gold-standard reference instruments in the NABL-accredited lab at Anubhav Life Care, Barasat (n=175).",
     url: "/research",
     siteName: "SamaHealth",
     type: "website",
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Validation and the lab behind it. SamaHealth",
     description:
-      "How SamaClip's non-invasive screening was checked against gold-standard reference instruments in an NABL-accredited lab (n=175).",
+      "How the precursor band's non-invasive screening was checked against gold-standard reference instruments in an NABL-accredited lab (n=175).",
     images: ["/og-cover.jpg"],
   },
 };
@@ -58,7 +58,7 @@ function ResearchHero() {
     <header className="container" style={{ paddingTop: 128, paddingBottom: 8, maxWidth: 900 }}>
       <h1 style={{ fontSize: "clamp(36px, 5.4vw, 64px)" }}>Checked against a working NABL lab.</h1>
       <p style={{ marginTop: 24, fontSize: 20, lineHeight: 1.55, color: "var(--ink-500)", maxWidth: 720 }}>
-        SamaClip is a painless, non-invasive fingertip screen. It is developed alongside{" "}
+        The precursor band is a painless, non-invasive fingertip screen. It is developed alongside{" "}
         <strong style={{ color: "var(--ink)" }}>Anubhav Life Care</strong>, an NABL-accredited diagnostic
         centre in Barasat, North&nbsp;24 Parganas. Every signal it produces is benchmarked against the
         gold-standard instruments that same lab uses for routine diagnostics. A screen is only as honest as
@@ -81,7 +81,7 @@ function WhatItScreens() {
   return (
     <section className="section" style={{ paddingTop: 72 }}>
       <div className="container">
-        <h2 style={{ maxWidth: 760 }}>What one SamaClip screen reads</h2>
+        <h2 style={{ maxWidth: 760 }}>What one screen reads</h2>
         <p style={{ marginTop: 20, fontSize: 17, color: "var(--ink-500)", maxWidth: 680 }}>
           A single ~2-minute fingertip reading. Each output is a <strong style={{ color: "var(--ink)" }}>screening
           signal, not a diagnosis</strong>. Anything it flags is confirmed in the lab before any treatment decision.
@@ -113,7 +113,7 @@ function Validation() {
         <h2 style={{ maxWidth: 760 }}>What the validation showed</h2>
         <p style={{ marginTop: 20, fontSize: 17, color: "var(--ink-500)", maxWidth: 680 }}>
           From the cohort of 175 paired screens run at Anubhav Life Care between October and December 2025,
-          with results published in January 2026. All figures below belong to SamaClip and to this study.
+          with results published in January 2026. All figures below belong to the precursor band and to this study.
         </p>
 
         <div className="card" style={{ marginTop: 40, padding: 0, overflow: "hidden" }}>
@@ -158,7 +158,7 @@ type Device = {
 };
 
 const DEVICES: Device[] = [
-  { role: "Haematology analyser", maker: "Medonic", model: "M-Series M32 B", serial: "118008", img: "analyzer-hematology", key: true, note: "Reference haemoglobin and full blood count, the gold standard behind SamaClip's non-invasive Hb and anaemia screening." },
+  { role: "Haematology analyser", maker: "Medonic", model: "M-Series M32 B", serial: "118008", img: "analyzer-hematology", key: true, note: "Reference haemoglobin and full blood count, the gold standard behind the non-invasive Hb and anaemia screening." },
   { role: "Biochemistry analyser (full auto)", maker: "Mindray", model: "BS-240 PRO", serial: "BC7-23001933", img: "analyzer-biochemistry", key: true, note: "Reference plasma glucose and biochemistry, the lab benchmark behind the diabetes-risk signal." },
   { role: "Chemiluminescence immunoassay", maker: "Mindray", model: "CL-900i", serial: "BBI-22002654", img: "analyzer-immunoassay", key: true, note: "Reference HbA1c and hormone/marker assays used to characterise the screened cohort." },
   { role: "Electrolyte analyser", maker: "HDC", model: "HDC-LYTE", serial: "HDCL-3798", img: "analyzer-compact", note: "Serum-electrolyte reference for cohort characterisation." },
@@ -176,8 +176,8 @@ function ReferenceInstruments() {
       <div className="container">
         <h2 style={{ maxWidth: 820 }}>The reference instruments we check against</h2>
         <p style={{ marginTop: 20, fontSize: 17, color: "var(--ink-500)", maxWidth: 720 }}>
-          These are the real instruments in the NABL-accredited lab at Anubhav Life Care. SamaClip’s
-          signals are compared against them. The haematology and biochemistry analysers are the direct
+          These are the real instruments in the NABL-accredited lab at Anubhav Life Care. The precursor
+          band’s signals are compared against them. The haematology and biochemistry analysers are the direct
           gold standards behind the haemoglobin and diabetes-risk numbers above.
         </p>
 
@@ -271,8 +271,8 @@ function ImagingChannel() {
           <p style={{ marginTop: 12, fontSize: 15, color: "var(--ink-500)" }}>
             This channel is a protocol, not a product. It is the study device in a grant-stage research
             proposal written in November 2026, it has not been checked against an analyser in a clinical
-            population, and none of the agreement figures earlier on this page include it. SamaClip as sold
-            and run in camps today is the fingertip screen described above. When the imaging channel has
+            population, and none of the agreement figures earlier on this page include it. The precursor band
+            run in camps today is the fingertip screen described above. When the imaging channel has
             numbers, they will appear in the same table as everything else, next to the instrument they were
             measured against.
           </p>
@@ -284,8 +284,8 @@ function ImagingChannel() {
 
 function HonestClaims() {
   const points = [
-    ["Screening is not diagnosis.", "Every flag SamaClip raises is confirmed by a laboratory test or a clinician before any treatment decision."],
-    ["Accuracy figures are SamaClip's, from one study.", "The agreement numbers above belong to SamaClip and the n=175 validation cohort. Nothing else."],
+    ["Screening is not diagnosis.", "Every flag the screen raises is confirmed by a laboratory test or a clinician before any treatment decision."],
+    ["Accuracy figures are the precursor band's, from one study.", "The agreement numbers above belong to the precursor band and the n=175 validation cohort. Nothing else."],
     ["SamaBeat is follow-up only.", "The SamaBeat wristband supports monitoring after a confirmed flag. We make no diagnostic-accuracy claim for it."],
     ["TB is a referral signal.", "Where a tuberculosis pattern shows up, it routes a person to proper testing. It never stands in for a TB diagnosis."],
     ["Research is labelled as research.", "The single-cell imaging channel is a grant-stage protocol with no clinical validation yet. We describe it because it is what we are building, not because it is something you can buy."],

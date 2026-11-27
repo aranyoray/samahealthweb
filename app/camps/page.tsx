@@ -9,7 +9,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Blood donation camps. Anubhav CMC × SamaBeat",
   description:
-    "Anubhav Cardiometabolic Clinic at 30 blood donation camps across North 24 Parganas. Free fasting/random sugar, anemia, and body-composition screening on the SamaBeat 5-wavelength PPG + ECG + BIA clip. Donor camps across Ranaghat, Barasat, Barrackpore, Birati, Madhyamgram, Ashoknagar, Habra, Kalyani and more.",
+    "Anubhav Cardiometabolic Clinic at 30 blood donation camps across North 24 Parganas. Free fasting/random sugar, anemia, and body-composition screening on the SamaBeat 5-wavelength PPG + ECG + BIA sensor. Donor camps across Ranaghat, Barasat, Barrackpore, Birati, Madhyamgram, Ashoknagar, Habra, Kalyani and more.",
   keywords: [
     "blood donation camp North 24 Parganas",
     "Barasat blood donation",
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "30 blood donation camps. Anubhav CMC × SamaBeat",
-    description: "Field gallery from 30 donor camps across North 24 Parganas. Free cardiometabolic screening on SamaBeat clip.",
+    description: "Field gallery from 30 donor camps across North 24 Parganas. Free cardiometabolic screening on SamaBeat.",
     images: ["/og-cover.jpg"],
   },
   alternates: { canonical: "/camps" },
@@ -63,7 +63,7 @@ export default function CampsPage() {
     "@type": "ImageGallery",
     name: "Anubhav CMC blood donation camps. Field gallery",
     description:
-      "Photo gallery from 30 blood donation camps across North 24 Parganas, with free cardiometabolic screening from the SamaBeat 5-wavelength PPG + ECG + BIA clip.",
+      "Photo gallery from 30 blood donation camps across North 24 Parganas, with free cardiometabolic screening from the SamaBeat 5-wavelength PPG + ECG + BIA sensor.",
     url: "https://samahealth.in/camps",
     numberOfItems: images.length,
     isPartOf: { "@type": "WebSite", name: "SamaHealth", url: "https://samahealth.in" },
@@ -125,7 +125,7 @@ export default function CampsPage() {
               >
                 SamaBeat
               </a>{" "}
-              5-wavelength PPG + ECG + BIA fingertip clip. Every donor walked out
+              5-wavelength PPG + ECG + BIA sensor. Every donor walked out
               with their own cardiometabolic snapshot.
             </p>
 
@@ -141,7 +141,7 @@ export default function CampsPage() {
               <Stat label="Camps" value={String(events.length)} />
               <Stat label="Frames in this gallery" value={String(images.length)} />
               <Stat label="Localities" value="22" />
-              <Stat label="Tech" value="SamaBeat clip" />
+              <Stat label="Tech" value="SamaBeat" />
             </div>
           </div>
         </header>

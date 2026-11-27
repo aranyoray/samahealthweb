@@ -14,25 +14,25 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://samahealth.in"),
-  title: "SamaHealth. Non-invasive screening for anaemia, heart and cardiometabolic risk",
+  title: "SamaHealth. SamaBeat, a continuous care monitoring system in clinical validation",
   description:
-    "SamaHealth brings painless, low-cost, non-invasive screening for anaemia, blood oxygen, heart rhythm and diabetes risk to clinics and camps across Barasat and North 24 Parganas, validated against the NABL-accredited lab at Anubhav Life Care.",
+    "SamaBeat is a medical device system in clinical validation for people cared for at home: a wrist band with 6 LEDs, ECG and bioimpedance, and the SamaDock, which senses the room at night with no camera and no microphone. Not cleared or approved by any regulator.",
   keywords: [
-    "anaemia screening West Bengal",
-    "non-invasive haemoglobin testing",
-    "cardiometabolic screening India",
-    "preventive health Barasat",
-    "North 24 Parganas health",
-    "Anubhav Life Care",
+    "continuous care monitoring",
+    "home care monitoring India",
+    "home oxygen monitoring",
+    "CPAP follow-up at home",
+    "medical device in clinical validation",
+    "SamaBeat band",
+    "SamaDock",
     "SamaHealth",
-    "SamaClip",
   ],
   authors: [{ name: "SamaHealth" }],
   alternates: { canonical: "/" },
   openGraph: {
-    title: "SamaHealth. Non-invasive screening that finds illness early",
+    title: "SamaHealth. Continuous care monitoring, on the wrist and in the room",
     description:
-      "Painless, low-cost screening for anaemia, blood oxygen, heart rhythm and diabetes risk across Barasat and North 24 Parganas, validated against an NABL-accredited lab.",
+      "SamaBeat is a medical device system in clinical validation: a wrist band and a bedside dock for people cared for at home. Not cleared or approved by any regulator.",
     url: "https://samahealth.in",
     siteName: "SamaHealth",
     type: "website",
@@ -47,9 +47,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "SamaHealth. Non-invasive screening that finds illness early",
+    title: "SamaHealth. Continuous care monitoring, on the wrist and in the room",
     description:
-      "Painless, low-cost screening for anaemia, heart and cardiometabolic risk across Barasat and North 24 Parganas, checked against an NABL-accredited lab.",
+      "SamaBeat is a medical device system in clinical validation: a wrist band and a bedside dock for people cared for at home. Not cleared or approved.",
     images: ["/og-cover.jpg"],
   },
 };
@@ -71,7 +71,7 @@ const siteJsonLd = {
       url: SITE,
       email: "hello@samahealth.in",
       description:
-        "Painless, non-invasive screening for anaemia, heart and cardiometabolic risk, built around the NABL-accredited lab at Anubhav Life Care, Barasat, West Bengal.",
+        "Medical device company. SamaBeat, its continuous care monitoring system for people cared for at home, is in clinical validation and is not cleared or approved by any regulator.",
       logo: { "@type": "ImageObject", url: `${SITE}/logo.png`, width: 512, height: 512 },
       areaServed: {
         "@type": "AdministrativeArea",

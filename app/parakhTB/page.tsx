@@ -6,24 +6,24 @@ import { RevealOnScroll } from "../components/Reveal";
 import { ClosingCta } from "../components/ClosingCta";
 
 export const metadata: Metadata = {
-  title: "ParakhTB. One visit. One finger-clip. A TB triage call.",
+  title: "ParakhTB. One visit. One finger band. A TB triage call.",
   description:
-    "ParakhTB pairs a urine strip with the SamaClip finger-clip reader to flag, in about a minute, who at a primary health centre should go on for confirmatory TB testing. A triage-and-referral signal for high-burden, under-screened communities, never a diagnosis.",
+    "ParakhTB pairs a urine strip with the finger band reader to flag, in about a minute, who at a primary health centre should go on for confirmatory TB testing. A triage-and-referral signal for high-burden, under-screened communities, never a diagnosis.",
   keywords: [
     "TB triage India",
     "tuberculosis screening primary health centre",
     "urinary TB markers",
     "non-invasive TB triage",
     "ParakhTB",
-    "SamaClip",
+    "SamaBeat",
     "pediatric TB triage",
     "TB treatment monitoring",
     "SamaHealth",
   ],
   openGraph: {
-    title: "ParakhTB. One visit. One finger-clip. A TB triage call.",
+    title: "ParakhTB. One visit. One finger band. A TB triage call.",
     description:
-      "A single-visit triage signal for tuberculosis: a urine strip plus a 60-second finger-clip read decide who needs a confirmatory TB test. Built for primary health centres in high-burden communities.",
+      "A single-visit triage signal for tuberculosis: a urine strip plus a 60-second finger-band read decide who needs a confirmatory TB test. Built for primary health centres in high-burden communities.",
     url: "/parakhTB",
     siteName: "SamaHealth",
     type: "website",
@@ -31,9 +31,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "ParakhTB. One visit. One finger-clip. A TB triage call.",
+    title: "ParakhTB. One visit. One finger band. A TB triage call.",
     description:
-      "A single-visit triage signal for tuberculosis: urine strip plus 60-second finger-clip read decide who needs a confirmatory TB test.",
+      "A single-visit triage signal for tuberculosis: urine strip plus 60-second finger-band read decide who needs a confirmatory TB test.",
     images: ["/og-cover.jpg"],
   },
   alternates: { canonical: "/parakhTB" },
@@ -91,7 +91,7 @@ function Hero() {
             Triage TB in a single visit.
           </h1>
           <p style={{ marginTop: 24, fontSize: 18, color: "#CFCFCF", lineHeight: 1.55, maxWidth: 600 }}>
-            ParakhTB pairs a urine strip with the SamaClip finger-clip reader to flag, in about a minute, who at a
+            ParakhTB pairs a urine strip with the finger band reader to flag, in about a minute, who at a
             primary health centre should go on for a confirmatory TB test, with no needle, no microscope, and no second
             visit. It does not diagnose tuberculosis. It decides who needs Xpert.
           </p>
@@ -103,7 +103,7 @@ function Hero() {
           </div>
           <div style={{ marginTop: 30, display: "flex", alignItems: "center", gap: 10, color: "#fff", fontSize: 13.5 }}>
             <ShieldCheck />
-            <span>Built on the SamaClip optical platform validated at the NABL-accredited centre in Barasat.</span>
+            <span>Built on the precursor band&rsquo;s optical platform, validated at the NABL-accredited centre in Barasat.</span>
           </div>
         </div>
 
@@ -140,7 +140,7 @@ function TriageReadout() {
     >
       <div>
         <div style={{ fontFamily: "var(--font-display)", fontSize: 22, letterSpacing: "-0.02em" }}>
-          Urine strip and finger-clip
+          Urine strip and finger band
         </div>
       </div>
 
@@ -200,7 +200,7 @@ function TriageReadout() {
 function StatStrip() {
   const stats = [
     { n: "~1 in 4", l: "of the world's TB is in India, more than any other country" },
-    { n: "~60 sec", l: "One finger-clip read, taken alongside the urine strip" },
+    { n: "~60 sec", l: "One finger-band read, taken alongside the urine strip" },
     { n: "1 visit", l: "Urine and vitals together. No needle, no second trip" },
     { n: "Triage", l: "Decides who needs a confirmatory test, never a diagnosis" },
   ];
@@ -244,12 +244,12 @@ function HowItWorks() {
     {
       n: "01",
       title: "Sample and read, in one sitting.",
-      body: "A patient who is symptom-screen positive or contact-traced gives a urine sample and a 60-second finger-clip reading at the same visit. Nothing is sent away. Nothing waits for a second appointment.",
+      body: "A patient who is symptom-screen positive or contact-traced gives a urine sample and a 60-second finger-band reading at the same visit. Nothing is sent away. Nothing waits for a second appointment.",
     },
     {
       n: "02",
-      title: "What the strip sees, and what the clip sees.",
-      body: "The strip reads urinary markers of TB. The same finger-clip reads the vital-sign pattern TB disturbs: breathing rate, heart rate, temperature and haemoglobin. Two independent windows on the same patient.",
+      title: "What the strip sees, and what the band sees.",
+      body: "The strip reads urinary markers of TB. The same finger-band reads the vital-sign pattern TB disturbs: breathing rate, heart rate, temperature and haemoglobin. Two independent windows on the same patient.",
     },
     {
       n: "03",
@@ -265,7 +265,7 @@ function HowItWorks() {
             A urine strip and a fingertip, working together.
           </h2>
           <p style={{ marginTop: 20, fontSize: 18, color: "var(--ink-500)", maxWidth: 680 }}>
-            ParakhTB runs on the same SamaClip optical reader already used for community screening. No extra lab, no
+            ParakhTB runs on the same finger band reader already used for community screening. No extra lab, no
             extra machine. One device, one visit, one decision.
           </p>
         </div>
@@ -364,7 +364,7 @@ function UseCases() {
     {
       icon: <IconChild />,
       title: "The children who can't be tested the usual way.",
-      body: "Young children rarely produce the sputum that standard TB testing relies on, so they slip through. A non-invasive urine sample plus a finger-clip read is child-friendly and repeatable, used alongside symptom screening to decide which children move on to confirmatory testing.",
+      body: "Young children rarely produce the sputum that standard TB testing relies on, so they slip through. A non-invasive urine sample plus a finger-band read is child-friendly and repeatable, used alongside symptom screening to decide which children move on to confirmatory testing.",
     },
     {
       icon: <IconTrend />,
@@ -445,7 +445,7 @@ function NotesSources() {
     },
     {
       k: "Platform and validation",
-      v: "ParakhTB runs on the SamaClip optical reader validated in an adult cohort (n=175) at the NABL-accredited centre in Barasat, North 24 Parganas. TB-specific performance of the combined urine-and-vitals triage is under validation with our clinical partners and is not yet a published accuracy claim.",
+      v: "ParakhTB runs on the finger band reader validated in an adult cohort (n=175) at the NABL-accredited centre in Barasat, North 24 Parganas. TB-specific performance of the combined urine-and-vitals triage is under validation with our clinical partners and is not yet a published accuracy claim.",
     },
   ];
   return (

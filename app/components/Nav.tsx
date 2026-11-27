@@ -6,7 +6,6 @@ import { Mark } from "./Mark";
 
 /** The home link is the wordmark, so the bar lists the other pages. */
 const links = [
-  { href: "/samaclip", label: "SamaClip" },
   { href: "/homecare", label: "Home care" },
   { href: "/camps", label: "Field camps" },
   { href: "/research", label: "Validation" },

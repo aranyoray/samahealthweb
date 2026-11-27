@@ -10,6 +10,9 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       { source: "/tb", destination: "/parakhTB", permanent: true },
+      // The site is about the SamaBeat band now. The older fingertip product page is kept in
+      // app/samaclip but not served; delete this line to bring it back.
+      { source: "/samaclip", destination: "/homecare", permanent: false },
       // The condition pages now live as tabs on /ncd.
       { source: "/kidney", destination: "/ncd#kidney", permanent: true },
       { source: "/heart", destination: "/ncd#heart", permanent: true },

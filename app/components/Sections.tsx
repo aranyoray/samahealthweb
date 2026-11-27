@@ -49,122 +49,83 @@ export function Partners() {
 }
 
 /* ------------------------------------------------------------------ */
-/* Proof — four figures in a row under the first screen.               */
+/* The system — the band, the dock, and the one timeline they feed.    */
 /* ------------------------------------------------------------------ */
 
-export function Proof() {
-  const figures = [
-    { value: "175", label: "paired screens in the validation study" },
-    { value: "≈ 3,200", label: "patients in the rolling cohort" },
-    { value: String(data.events.length), label: "donor camps across North 24 Parganas" },
-    { value: "NABL", label: "accredited lab confirms every flag" },
-  ];
+export function System() {
   return (
-    <section aria-label="SamaHealth in figures" style={{ padding: "56px 0 12px" }}>
+    <section aria-labelledby="system-title" className="section" style={{ paddingTop: 80 }}>
       <div className="container">
-        <ul className="proof-row">
-          {figures.map((figure) => (
-            <li key={figure.label}>
-              <span className="stat">{figure.value}</span>
-              <span className="proof-label">{figure.label}</span>
-            </li>
-          ))}
-        </ul>
-      </div>
-      <style>{`
-        .proof-row { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); }
-        .proof-row li { padding: 4px 24px; border-left: 1px solid var(--hairline); display: grid; gap: 10px; align-content: start; }
-        .proof-row li:first-child { border-left: 0; padding-left: 0; }
-        .proof-label { font-size: 15px; line-height: 1.45; color: var(--dim); max-width: 22ch; }
-        @media (max-width: 820px) {
-          .proof-row { grid-template-columns: 1fr 1fr; gap: 28px 0; }
-          .proof-row li:nth-child(odd) { border-left: 0; padding-left: 0; }
-        }
-      `}</style>
-    </section>
-  );
-}
-
-/* ------------------------------------------------------------------ */
-/* Statement — the one sentence the page makes.                        */
-/* ------------------------------------------------------------------ */
-
-export function Statement() {
-  return (
-    <section style={{ padding: "72px 0 32px" }}>
-      <div className="container">
-        <p className="statement reveal" style={{ maxWidth: "58rem", margin: "0 auto", textAlign: "center" }}>
-          A single fingertip reading resolves the autonomic state and, through it, a working slice of the
-          cardiometabolic panel.{" "}
-          <span className="text-dim">
-            Every derived signal is checked against a gold-standard instrument in the lab behind the
-            screening station.
-          </span>
-        </p>
-      </div>
-    </section>
-  );
-}
-
-/* ------------------------------------------------------------------ */
-/* Autonomic vital signs — one tile per derived signal.                */
-/* ------------------------------------------------------------------ */
-
-const SIGNALS: { name: string; unit: string; sensor: string; reference: string }[] = [
-  { name: "Heart-rate variability", unit: "RMSSD · SDNN · LF/HF", sensor: "PPG at 5 wavelengths", reference: "Clinical ECG on the same clip" },
-  { name: "Non-invasive haemoglobin", unit: "g/dL", sensor: "Multi-wavelength absorbance", reference: "Medonic M-32 B haematology analyser" },
-  { name: "Oxygen saturation (SpO₂)", unit: "%", sensor: "Red / IR PPG ratio", reference: "Benchtop pulse oximeter" },
-  { name: "Respiratory rate", unit: "breaths / min", sensor: "PPG amplitude modulation", reference: "Manual counting, resting" },
-  { name: "Pulse transit time", unit: "ms, a BP surrogate", sensor: "ECG to PPG delay", reference: "Cuff sphygmomanometer" },
-  { name: "Rhythm, AF flag", unit: "positive / negative", sensor: "Rhythm classifier on ECG", reference: "Clinician-confirmed 12-lead" },
-  { name: "Diabetes risk, HbA1c proxy", unit: "%", sensor: "Multi-modal composite", reference: "Mindray CL-900i CLIA" },
-];
-
-export function AutonomicSignals() {
-  return (
-    <section id="signal" aria-labelledby="signal-title" className="section" style={{ paddingTop: 72 }}>
-      <div className="container">
-        <div className="reveal" style={{ maxWidth: 720, margin: "0 auto", textAlign: "center" }}>
-          <h2 id="signal-title" className="headline">Seven signals from one reading.</h2>
+        <div className="reveal" style={{ maxWidth: 760, margin: "0 auto", textAlign: "center" }}>
+          <h2 id="system-title" className="headline">Two parts, one patient timeline.</h2>
           <p className="lede" style={{ maxWidth: 600, margin: "16px auto 0" }}>
-            Chronic disease leaves its signature across these channels before it writes itself into a
-            blood test.
+            SamaBeat is a continuous care monitoring system in clinical validation.
           </p>
         </div>
 
-        <ul className="signal-grid">
-          {SIGNALS.map((signal) => (
-            <li key={signal.name} className="tile reveal">
-              <h3 className="title">{signal.name}</h3>
-              <p className="mono" style={{ marginTop: 6, fontSize: 13 }}>{signal.unit}</p>
-              <dl>
-                <div>
-                  <dt>Read from</dt>
-                  <dd>{signal.sensor}</dd>
-                </div>
-                <div>
-                  <dt>Checked against</dt>
-                  <dd>{signal.reference}</dd>
-                </div>
-              </dl>
-            </li>
-          ))}
-        </ul>
+        <div className="system-grid">
+          <article data-tone="dark" className="tile-dark system-tile reveal">
+            <div className="system-picture">
+              <Image
+                src="/band/optical.webp"
+                alt="The back of the SamaBeat band: six LEDs and the photodiodes behind the sensor window, between the wrist electrodes"
+                width={1200}
+                height={786}
+                sizes="(max-width: 900px) 100vw, 640px"
+              />
+            </div>
+            <div className="system-copy">
+              <h3 className="title">The SamaBeat band</h3>
+              <p style={{ marginTop: 10 }}>
+                A wrist sensor with 6 LEDs and co-located ECG and bioimpedance. It carries a clip-on E Ink
+                medical ID that anyone can read without a phone in an emergency.
+              </p>
+            </div>
+          </article>
+
+          <article data-tone="dark" className="tile-dark system-tile reveal">
+            <div className="system-picture">
+              <Image
+                src="/band/dock.webp"
+                alt="The SamaDock, a low rounded base with a flat window on its room-facing side, with the band resting in its cradle"
+                width={1200}
+                height={520}
+                sizes="(max-width: 900px) 100vw, 520px"
+              />
+            </div>
+            <div className="system-copy">
+              <h3 className="title">The SamaDock</h3>
+              <p style={{ marginTop: 10 }}>
+                Charges the band at night and senses the room remotely, with proprietary Wi-Fi and radar
+                sensing. It has no camera and no microphone.
+              </p>
+            </div>
+          </article>
+
+          <article className="tile system-wide reveal">
+            <h3 className="title">One patient timeline</h3>
+            <p style={{ fontSize: 17, lineHeight: 1.55 }}>
+              Wrist readings from the day and room readings from the night go to one timeline for the
+              clinician, and each value carries a confidence flag.
+            </p>
+            <Link href="/homecare" className="text-link">
+              How the day works
+            </Link>
+          </article>
+        </div>
       </div>
       <style>{`
-        .signal-grid { list-style: none; margin: 48px 0 0; padding: 0; display: grid; grid-template-columns: repeat(12, 1fr); gap: 16px; }
-        .signal-grid li { grid-column: span 3; padding: 28px; display: flex; flex-direction: column; }
-        .signal-grid li:nth-child(-n + 3) { grid-column: span 4; }
-        .signal-grid dl { margin: auto 0 0; padding-top: 28px; display: grid; gap: 12px; }
-        .signal-grid dl > div { border-top: 1px solid #DCDCDC; padding-top: 12px; }
-        .signal-grid dt { font-size: 13px; color: var(--dim); }
-        .signal-grid dd { margin: 2px 0 0; font-size: 15px; line-height: 1.4; color: var(--ink); }
-        @media (max-width: 1000px) {
-          .signal-grid li, .signal-grid li:nth-child(-n + 3) { grid-column: span 6; }
-          .signal-grid li:last-child { grid-column: span 12; }
-        }
-        @media (max-width: 620px) {
-          .signal-grid li, .signal-grid li:nth-child(-n + 3), .signal-grid li:last-child { grid-column: span 12; padding: 24px; }
+        .system-grid { margin-top: 48px; display: grid; grid-template-columns: 7fr 5fr; gap: 16px; }
+        .system-tile { display: flex; flex-direction: column; overflow: hidden; }
+        .system-picture { flex: 1; min-height: 280px; display: grid; place-items: center; overflow: hidden; }
+        .system-picture img { width: 100%; height: 100%; object-fit: cover; }
+        .system-tile:nth-child(2) .system-picture img { object-fit: contain; transform: scale(2); }
+        .system-copy { padding: 8px 40px 40px; }
+        .system-wide { grid-column: 1 / -1; display: grid; grid-template-columns: 1fr 1.5fr auto; gap: 16px 40px; align-items: center; padding: 36px 40px; }
+        @media (max-width: 900px) {
+          .system-grid { grid-template-columns: 1fr; }
+          .system-copy { padding: 4px 24px 28px; }
+          .system-wide { grid-template-columns: 1fr; padding: 28px 24px; }
         }
       `}</style>
     </section>
@@ -172,58 +133,72 @@ export function AutonomicSignals() {
 }
 
 /* ------------------------------------------------------------------ */
-/* Disease triage — a black card with the five stages in a row.        */
+/* Evidence — where each study stands, on one black card.              */
 /* ------------------------------------------------------------------ */
 
-const STAGES: { title: string; detail: string; note: string }[] = [
-  { title: "Screen", detail: "About two minutes of fingertip PPG and ECG", note: "Community camp, antenatal visit, clinic front desk" },
-  { title: "Flag", detail: "Threshold on the derived autonomic signals", note: "Hb, SpO₂, RR, HRV, AF rhythm, HbA1c proxy" },
-  { title: "Confirm", detail: "Gold-standard instrument in the same lab", note: "Haematology, biochemistry, CLIA, 12-lead ECG; sputum AFB, CBNAAT and IGRA for TB" },
-  { title: "Treat", detail: "Same-day clinical decision by a physician", note: "Iron or B12, diabetes enrolment, anticoagulation referral, anti-tubercular therapy" },
-  { title: "Re-screen", detail: "Scheduled follow-up on the same clip", note: "Closes the loop and picks up non-responders" },
+const EVIDENCE: { value: string; title: string; detail: string }[] = [
+  {
+    value: "182",
+    title: "adults, study complete",
+    detail: "A precursor band was tested for SpO₂ and haemoglobin across Monk Skin Tone categories 4 to 10, against a NABL-accredited lab.",
+  },
+  {
+    value: "1,200+",
+    title: "people in the palm study",
+    detail: "Enrolled at Medical College Kolkata. The trial is ongoing.",
+  },
+  {
+    value: "180+",
+    title: "people in the band study",
+    detail: "Enrolled at Medical College Kolkata. The trial is ongoing.",
+  },
+  {
+    value: "IEC",
+    title: "review under way",
+    detail: "NRS Medical College is under ethics committee (IEC) review.",
+  },
+  {
+    value: "Pilot",
+    title: "in preparation for the dock",
+    detail: "The dock is a prototype. Its pilot will run against a chest ECG strap and a finger oximeter.",
+  },
 ];
 
-export function DiseaseTriage() {
+export function Evidence() {
   return (
-    <section id="triage" aria-labelledby="triage-title" style={{ padding: "0 10px" }}>
-      <div data-tone="dark" className="tile-dark triage-card">
+    <section id="evidence" aria-labelledby="evidence-title" style={{ padding: "0 10px" }}>
+      <div data-tone="dark" className="tile-dark evidence-card">
         <div className="reveal" style={{ maxWidth: 760 }}>
-          <h2 id="triage-title" className="headline">
-            A screen alone is a rumour. The value is in what happens next.
-          </h2>
+          <h2 id="evidence-title" className="headline">A medical device under testing.</h2>
           <p className="lede" style={{ marginTop: 16, maxWidth: 620 }}>
-            Every reading falls into a triage that goes through the lab. Nobody is told a number. They are
-            told whether they need a real test, and where to get it.
+            Where each study stands today. The system holds no clearance or approval in any country.
           </p>
         </div>
 
-        <ol className="triage-row">
-          {STAGES.map((stage) => (
-            <li key={stage.title} className="reveal">
-              <span aria-hidden className="triage-dot" />
-              <h3 className="title">{stage.title}</h3>
-              <p style={{ marginTop: 8, fontSize: 15, lineHeight: 1.45, color: "var(--ink)" }}>{stage.detail}</p>
-              <p style={{ marginTop: 8, fontSize: 14, lineHeight: 1.5 }}>{stage.note}</p>
+        <ul className="evidence-row">
+          {EVIDENCE.map((item) => (
+            <li key={item.title} className="reveal">
+              <span className="stat">{item.value}</span>
+              <h3 style={{ marginTop: 10, fontSize: 16, fontWeight: 500, letterSpacing: "-0.015em", lineHeight: 1.3 }}>{item.title}</h3>
+              <p style={{ marginTop: 8, fontSize: 14.5, lineHeight: 1.5 }}>{item.detail}</p>
             </li>
           ))}
-        </ol>
+        </ul>
 
         <div style={{ marginTop: 44, display: "flex", flexWrap: "wrap", gap: 12 }}>
-          <Link href="/data" className="btn btn-light">Cohort dashboards</Link>
-          <Link href="/research" className="btn btn-ghost">Validation study</Link>
+          <Link href="/homecare#evidence" className="btn btn-light">The evidence in full</Link>
           <Link href="/camps" className="btn btn-ghost">Field camps</Link>
         </div>
       </div>
       <style>{`
-        .triage-card { padding: clamp(40px, 6vw, 80px) clamp(24px, 5vw, 72px); }
-        .triage-row { list-style: none; margin: 56px 0 0; padding: 0; display: grid; grid-template-columns: repeat(5, 1fr); gap: 28px; }
-        .triage-row li { position: relative; border-top: 1px solid var(--hairline); padding-top: 24px; }
-        .triage-dot { position: absolute; top: -5px; left: 0; width: 9px; height: 9px; border-radius: 999px; background: #2DD4BF; }
+        .evidence-card { padding: clamp(40px, 6vw, 80px) clamp(24px, 5vw, 72px); }
+        .evidence-row { list-style: none; margin: 56px 0 0; padding: 0; display: grid; grid-template-columns: repeat(5, 1fr); gap: 28px; }
+        .evidence-row li { border-top: 1px solid var(--hairline); padding-top: 24px; }
         @media (max-width: 1000px) {
-          .triage-row { grid-template-columns: 1fr 1fr; gap: 32px 28px; }
+          .evidence-row { grid-template-columns: 1fr 1fr; gap: 32px 28px; }
         }
         @media (max-width: 560px) {
-          .triage-row { grid-template-columns: 1fr; }
+          .evidence-row { grid-template-columns: 1fr; }
         }
       `}</style>
     </section>
@@ -231,69 +206,22 @@ export function DiseaseTriage() {
 }
 
 /* ------------------------------------------------------------------ */
-/* Home care — one tile: the paragraph and the dock render.            */
+/* Who it helps — one statement and the way to the full page.          */
 /* ------------------------------------------------------------------ */
 
-export function HomeCare() {
+export function Helps() {
   return (
-    <section id="homecare" aria-labelledby="homecare-title" className="section">
+    <section aria-labelledby="helps-title" style={{ padding: "104px 0" }}>
       <div className="container">
-        <div className="tile homecare-tile reveal">
-          <div>
-            <h2 id="homecare-title" className="headline">After the clinic, care carries on at home.</h2>
-            <p className="lede" style={{ marginTop: 20, maxWidth: 520 }}>
-              SamaBeat is our monitoring system for people cared for at home, starting with people on home
-              oxygen or CPAP. The band is worn on the wrist by day. At night it sits on the Home Dock, which
-              charges it and senses breathing and movement in the room, with no camera and no microphone.
-            </p>
-            <p style={{ marginTop: 16, fontSize: 15, lineHeight: 1.55, maxWidth: 520 }}>
-              The system is in clinical validation. It is not cleared or approved by any regulator yet.
-            </p>
-            <Link href="/homecare" className="text-link" style={{ marginTop: 28 }}>
-              The band and the Home Dock
-            </Link>
-          </div>
-          <div className="tile-white homecare-picture">
-            <Image
-              src="/homecare/dock.webp"
-              alt="The SamaBeat Home Dock with the band laid in its cradle"
-              width={1600}
-              height={1200}
-              sizes="(max-width: 900px) 100vw, 520px"
-              style={{ width: "100%", height: "auto" }}
-            />
-          </div>
+        <div className="reveal" style={{ maxWidth: "58rem", margin: "0 auto", textAlign: "center" }}>
+          <h2 id="helps-title" className="statement">
+            For people on home oxygen or CPAP,{" "}
+            <span className="text-dim">and for chronic and palliative care at home.</span>
+          </h2>
+          <Link href="/homecare" className="btn btn-solid" style={{ marginTop: 32 }}>
+            More on home care
+          </Link>
         </div>
-      </div>
-      <style>{`
-        .homecare-tile { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; padding: clamp(24px, 4.5vw, 56px); }
-        .homecare-picture { padding: 24px; }
-        @media (max-width: 900px) {
-          .homecare-tile { grid-template-columns: 1fr; gap: 32px; }
-        }
-      `}</style>
-    </section>
-  );
-}
-
-/* ------------------------------------------------------------------ */
-/* Quote.                                                              */
-/* ------------------------------------------------------------------ */
-
-export function Quote() {
-  return (
-    <section style={{ padding: "8px 0 112px" }}>
-      <div className="container">
-        <figure className="reveal" style={{ margin: "0 auto", maxWidth: "58rem", textAlign: "center" }}>
-          <blockquote className="statement" style={{ margin: 0 }}>
-            &ldquo;What the screen really changes is the front door. It brings people to confirmatory
-            testing who would never have come on their own, and the haemoglobin estimates track our lab
-            closely.&rdquo;
-          </blockquote>
-          <figcaption style={{ marginTop: 24, fontSize: 15, color: "var(--dim)" }}>
-            Pathology lead, Anubhav Life Care, Barasat
-          </figcaption>
-        </figure>
       </div>
     </section>
   );
@@ -328,7 +256,7 @@ export function FieldPhotos() {
         header={
           <>
             <h2 id="field-title" className="headline">
-              {data.events.length} camps, one clip on every table.
+              {data.events.length} screening camps in the field.
             </h2>
             <p className="lede" style={{ marginTop: 14, maxWidth: 560 }}>
               Free sugar, anaemia and body-composition screening beside every blood donation across North
@@ -366,8 +294,8 @@ export function FieldPhotos() {
 export function CTA() {
   return (
     <ClosingCta
-      title="Bring screening to your clinic or programme."
-      lede="We work with clinicians and public-health programmes across West Bengal. Write to us for methods, data access or a conversation."
+      title="Clinicians and partners"
+      lede="If you run a home-care, respiratory or sleep service and want to see the protocol, or to take part in the pilot, write to us."
     />
   );
 }
