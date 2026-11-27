@@ -4,6 +4,7 @@ import Image from "next/image";
 import { Nav } from "../components/Nav";
 import { Footer } from "../components/Footer";
 import { RevealOnScroll } from "../components/Reveal";
+import { ClosingCta } from "../components/ClosingCta";
 
 export const metadata: Metadata = {
   title: "Team. SamaHealth",
@@ -94,7 +95,7 @@ const ADVISORS: Person[] = [
 export default function TeamPage() {
   return (
     <>
-      <Nav variant="hero" />
+      <Nav />
       <main id="main">
         <Hero />
         <Group title="The people building it." people={FOUNDERS} cols={2} />
@@ -104,7 +105,6 @@ export default function TeamPage() {
           cols={2}
           alt
         />
-        <Closing />
         <CTA />
       </main>
       <Footer />
@@ -115,43 +115,18 @@ export default function TeamPage() {
 
 function Hero() {
   return (
-    <section className="hero-clinical" style={{ paddingTop: 120 }}>
-      <div className="container" style={{ position: "relative", zIndex: 2, paddingTop: 72, paddingBottom: 100, maxWidth: 900 }}>
-        <h1
-          style={{
-            color: "#fff",
-            fontSize: "clamp(40px, 5.2vw, 70px)",
-            lineHeight: 1.0,
-            letterSpacing: "-0.04em",
-            textWrap: "balance" as never,
-          }}
-        >
-          Frugal, frontier engineering. Clinically grounded.
+    <section className="hero-clinical" data-tone="dark">
+      <div className="container" style={{ paddingTop: "clamp(72px, 9vw, 120px)", paddingBottom: "clamp(72px, 9vw, 120px)", maxWidth: 960, textAlign: "center" }}>
+        <h1 className="display">
+          <span style={{ display: "block" }}>Frugal, frontier engineering.</span>
+          <span style={{ display: "block", color: "var(--dim)" }}>Clinically grounded.</span>
         </h1>
-        <p style={{ marginTop: 26, fontSize: 19, color: "rgba(255,255,255,0.92)", lineHeight: 1.6, maxWidth: 640 }}>
-          A small technical team building non-invasive diagnostics, backed by clinical leadership across tertiary care,
-          district public health, and US infectious-disease academic medicine.
+        <p className="lede" style={{ margin: "20px auto 0", maxWidth: 640 }}>
+          A small technical team building non-invasive diagnostics, backed by clinical leadership across tertiary
+          care (IPGMER / SSKM), district public health (Barasat GMCH) and US infectious-disease academic medicine.
         </p>
       </div>
-      <BottomFade />
     </section>
-  );
-}
-
-function BottomFade() {
-  return (
-    <div
-      aria-hidden
-      style={{
-        position: "absolute",
-        bottom: -1,
-        left: 0,
-        right: 0,
-        height: 110,
-        background: "linear-gradient(to bottom, transparent, var(--paper) 92%)",
-        zIndex: 1,
-      }}
-    />
   );
 }
 
@@ -166,26 +141,26 @@ function Group({
   alt?: boolean;
 }) {
   return (
-    <section className="section reveal" style={alt ? { background: "var(--paper-2)" } : undefined}>
+    <section className={`section reveal${alt ? " on-soft" : ""}`} style={alt ? { background: "var(--paper-2)" } : undefined}>
       <div className="container">
         <div style={{ maxWidth: 820, margin: "0 auto 48px", textAlign: "center", display: "grid", placeItems: "center" }}>
           <h2>{title}</h2>
         </div>
-        <div className="grid grid-2" style={{ maxWidth: 980, marginInline: "auto" }}>
+        <div className="grid grid-2" style={{ maxWidth: 1040, marginInline: "auto" }}>
           {people.map((p) => (
-            <article key={p.name} className="card" style={{ padding: 32, display: "grid", gap: 12 }}>
+            <article key={p.name} className="card" style={{ padding: 32, display: "grid", gap: 14, alignContent: "start" }}>
               <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
                 <Avatar name={p.name} img={p.img} />
                 <div>
-                  <h3 style={{ fontSize: 20, fontFamily: "var(--font-display)", fontWeight: 500, letterSpacing: "-0.02em" }}>{p.name}</h3>
-                  <div style={{ fontSize: 13.5, color: "var(--brand)", fontWeight: 600, marginTop: 2 }}>{p.role}</div>
+                  <h3 className="title">{p.name}</h3>
+                  <div style={{ fontSize: 14.5, color: "var(--brand)", fontWeight: 500, marginTop: 3 }}>{p.role}</div>
                 </div>
               </div>
-              <div className="mono" style={{ fontSize: 12, color: "var(--ink-400)", letterSpacing: "0.02em" }}>{p.cred}</div>
-              <p style={{ color: "var(--ink-500)", fontSize: 15, lineHeight: 1.6 }}>{p.body}</p>
+              <div style={{ fontSize: 14, color: "var(--ink)", lineHeight: 1.45 }}>{p.cred}</div>
+              <p style={{ fontSize: 15, lineHeight: 1.6 }}>{p.body}</p>
               {p.link && (
-                <Link href={p.link.href} className="mono" style={{ fontSize: 13, color: "var(--brand)" }} target="_blank" rel="noopener noreferrer">
-                  {p.link.label} →
+                <Link href={p.link.href} className="text-link" target="_blank" rel="noopener noreferrer">
+                  {p.link.label}
                 </Link>
               )}
             </article>
@@ -202,14 +177,14 @@ function Avatar({ name, img }: { name: string; img?: string }) {
       <Image
         src={img}
         alt=""
-        width={52}
-        height={52}
-        sizes="52px"
+        width={64}
+        height={64}
+        sizes="64px"
         style={{
-          width: 52,
-          height: 52,
+          width: 64,
+          height: 64,
           flexShrink: 0,
-          borderRadius: 14,
+          borderRadius: 999,
           objectFit: "cover",
           objectPosition: "center top",
           background: "var(--paper-3)",
@@ -229,18 +204,17 @@ function Avatar({ name, img }: { name: string; img?: string }) {
     <div
       aria-hidden
       style={{
-        width: 52,
-        height: 52,
+        width: 64,
+        height: 64,
         flexShrink: 0,
-        borderRadius: 14,
-        background: "linear-gradient(135deg, #14B8A6, #0F766E)",
+        borderRadius: 999,
+        background: "#0F766E",
         display: "grid",
         placeItems: "center",
         color: "#fff",
         fontFamily: "var(--font-display)",
-        fontSize: 18,
-        fontWeight: 600,
-        letterSpacing: "0.02em",
+        fontSize: 20,
+        fontWeight: 500,
       }}
     >
       {initials}
@@ -248,33 +222,11 @@ function Avatar({ name, img }: { name: string; img?: string }) {
   );
 }
 
-function Closing() {
-  return (
-    <section className="section-sm reveal">
-      <div className="container" style={{ maxWidth: 820, textAlign: "center" }}>
-        <p style={{ fontSize: 17, color: "var(--ink-500)", lineHeight: 1.7 }}>
-          Frugal, frontier engineering, paired with clinical leadership anchored in tertiary care (IPGMER / SSKM),
-          district public health (Barasat GMCH), and US infectious-disease academic medicine.
-        </p>
-      </div>
-    </section>
-  );
-}
-
 function CTA() {
   return (
-    <section id="contact" className="section reveal" style={{ background: "linear-gradient(135deg, #052E2A 0%, #0F766E 100%)", color: "#fff", position: "relative", overflow: "hidden" }}>
-      <div className="container" style={{ position: "relative", maxWidth: 940, textAlign: "center" }}>
-        <h2 style={{ color: "#fff" }}>
-          Want to build this with us?
-        </h2>
-        <p style={{ marginTop: 22, color: "rgba(255,255,255,0.82)", fontSize: 18, maxWidth: 640, margin: "22px auto 0", lineHeight: 1.6 }}>
-          We work with health systems, funders, researchers and community partners across India.
-        </p>
-        <div style={{ display: "flex", flexWrap: "wrap", gap: 14, marginTop: 36, justifyContent: "center" }}>
-          <Link href="mailto:hello@samahealth.in" className="btn btn-light">hello@samahealth.in →</Link>
-        </div>
-      </div>
-    </section>
+    <ClosingCta
+      title="Want to build this with us?"
+      lede="We work with health systems, funders, researchers and community partners across India."
+    />
   );
 }

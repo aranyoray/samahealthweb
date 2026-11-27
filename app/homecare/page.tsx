@@ -79,7 +79,7 @@ export default function HomeCarePage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: jsonLdScript(pageJsonLd) }}
       />
-      <Nav variant="light" />
+      <Nav />
       <main id="main" className="hc">
         <Hero />
         <Day />

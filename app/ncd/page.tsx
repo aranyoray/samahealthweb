@@ -60,7 +60,7 @@ export default function NcdHubPage() {
   const C = AKTIV.cascade;
   return (
     <>
-      <Nav variant="light" />
+      <Nav />
       <main id="main" className="dx">
         <header className="container" style={{ paddingTop: 128, paddingBottom: 24 }}>
           <h1 style={{ fontSize: "clamp(34px, 5.2vw, 58px)", maxWidth: 960 }}>Long-term conditions in West Bengal, followed as one person, not five lists</h1>

@@ -12,24 +12,21 @@ export function SamaClipFaq() {
   return (
     <div style={{ display: "grid", gap: 40 }}>
       {GROUPS.map((group, gi) => {
-        const base = GROUPS.slice(0, gi).reduce((n, g) => n + g.items.length, 0);
         return (
         <div key={group.tag}>
           <h3
             style={{
-              fontSize: 13,
-              fontWeight: 600,
-              letterSpacing: "0.14em",
-              textTransform: "uppercase",
-              color: "var(--ink-400)",
-              marginBottom: 14,
+              fontSize: 20,
+              fontWeight: 500,
+              letterSpacing: "-0.02em",
+              color: "var(--ink)",
+              marginBottom: 16,
             }}
           >
             {group.tag}
           </h3>
           <div style={{ display: "grid", gap: 10 }}>
             {group.items.map((item, ii) => {
-              const num = String(base + ii + 1).padStart(2, "0");
               const key = `${gi}-${ii}`;
               const isOpen = open === key;
               const panelId = `${baseId}-panel-${key}`;
@@ -38,12 +35,9 @@ export function SamaClipFaq() {
                 <div
                   key={item.q}
                   style={{
-                    background: "#fff",
-                    border: `1px solid ${isOpen ? "var(--brand-2)" : "var(--ink-100)"}`,
+                    background: "var(--tile)",
                     borderRadius: 16,
                     overflow: "hidden",
-                    transition: "border-color .15s ease, box-shadow .25s ease",
-                    boxShadow: isOpen ? "0 18px 40px -28px rgba(15,118,110,0.35)" : "none",
                   }}
                 >
                   <button
@@ -54,7 +48,7 @@ export function SamaClipFaq() {
                     style={{
                       width: "100%",
                       display: "grid",
-                      gridTemplateColumns: "auto 1fr auto",
+                      gridTemplateColumns: "1fr auto",
                       gap: 18,
                       alignItems: "center",
                       textAlign: "left",
@@ -64,21 +58,11 @@ export function SamaClipFaq() {
                     }}
                   >
                     <span
-                      className="mono"
-                      style={{
-                        fontSize: 12,
-                        letterSpacing: "0.14em",
-                        color: isOpen ? "var(--brand)" : "var(--ink-400)",
-                      }}
-                    >
-                      {num}
-                    </span>
-                    <span
                       style={{
                         fontSize: 17,
-                        fontWeight: 600,
+                        fontWeight: 500,
                         color: "var(--ink)",
-                        letterSpacing: "-0.01em",
+                        letterSpacing: "-0.015em",
                       }}
                     >
                       {item.q}
@@ -91,8 +75,8 @@ export function SamaClipFaq() {
                         borderRadius: "50%",
                         display: "grid",
                         placeItems: "center",
-                        background: isOpen ? "var(--brand)" : "var(--paper-3)",
-                        color: isOpen ? "#fff" : "var(--brand)",
+                        background: isOpen ? "var(--ink)" : "#fff",
+                        color: isOpen ? "#fff" : "var(--ink)",
                         transition: "background .15s ease, transform .2s ease",
                         transform: isOpen ? "rotate(45deg)" : "none",
                         flexShrink: 0,
@@ -109,7 +93,7 @@ export function SamaClipFaq() {
                     aria-labelledby={btnId}
                     hidden={!isOpen}
                     style={{
-                      padding: "0 24px 24px 60px",
+                      padding: "0 24px 24px",
                     }}
                   >
                     <p style={{ fontSize: 15.5, lineHeight: 1.65, color: "var(--ink-500)", maxWidth: 760 }}>

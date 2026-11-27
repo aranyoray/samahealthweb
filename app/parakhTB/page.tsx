@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Nav } from "../components/Nav";
 import { Footer } from "../components/Footer";
 import { RevealOnScroll } from "../components/Reveal";
+import { ClosingCta } from "../components/ClosingCta";
 
 export const metadata: Metadata = {
   title: "ParakhTB. One visit. One finger-clip. A TB triage call.",
@@ -44,7 +45,7 @@ const PARTNER = "mailto:hello@samahealth.in?subject=Partner%20with%20SamaHealth%
 export default function TBPage() {
   return (
     <>
-      <Nav variant="hero" />
+      <Nav />
       <main id="main">
         <Hero />
         <StatStrip />
@@ -63,14 +64,14 @@ export default function TBPage() {
 
 function Hero() {
   return (
-    <section className="hero-clinical" style={{ paddingTop: 120 }}>
+    <section className="hero-clinical" data-tone="dark">
       <div
         className="tb-hero-grid container"
         style={{
           position: "relative",
           zIndex: 2,
-          paddingTop: 72,
-          paddingBottom: 110,
+          paddingTop: 88,
+          paddingBottom: 88,
           display: "grid",
           gridTemplateColumns: "1.05fr 0.95fr",
           gap: 56,
@@ -81,22 +82,22 @@ function Hero() {
           <h1
             style={{
               color: "#fff",
-              fontSize: "clamp(40px, 5.4vw, 76px)",
-              lineHeight: 0.98,
+              fontSize: "clamp(40px, 4.8vw, 66px)",
+              lineHeight: 1.02,
               letterSpacing: "-0.04em",
               textWrap: "balance" as never,
             }}
           >
             Triage TB in a single visit.
           </h1>
-          <p style={{ marginTop: 26, fontSize: 19, color: "rgba(255,255,255,0.92)", lineHeight: 1.6, maxWidth: 620 }}>
+          <p style={{ marginTop: 24, fontSize: 18, color: "#CFCFCF", lineHeight: 1.55, maxWidth: 600 }}>
             ParakhTB pairs a urine strip with the SamaClip finger-clip reader to flag, in about a minute, who at a
             primary health centre should go on for a confirmatory TB test, with no needle, no microscope, and no second
             visit. It does not diagnose tuberculosis. It decides who needs Xpert.
           </p>
           <div style={{ display: "flex", gap: 14, marginTop: 36, flexWrap: "wrap" }}>
-            <Link href={DEMO} className="btn btn-light">Request a demo →</Link>
-            <Link href="#how" className="btn" style={{ background: "transparent", color: "#fff", border: "1px solid rgba(255,255,255,0.45)" }}>
+            <Link href={DEMO} className="btn btn-light">Request a demo</Link>
+            <Link href="#how" className="btn btn-ghost">
               See how it works
             </Link>
           </div>
@@ -109,10 +110,9 @@ function Hero() {
         <TriageReadout />
       </div>
 
-      <BottomFade />
       <style>{`
         @media (max-width: 940px) {
-          .tb-hero-grid { grid-template-columns: 1fr !important; gap: 40px !important; padding-bottom: 90px !important; }
+          .tb-hero-grid { grid-template-columns: 1fr !important; gap: 40px !important; padding-top: 56px !important; padding-bottom: 56px !important; }
         }
       `}</style>
     </section>
@@ -123,16 +123,15 @@ function TriageReadout() {
   const vitals = [
     { k: "Breathing rate", v: "26", u: "/min", chip: "High", tone: "warn" as const },
     { k: "Heart rate", v: "104", u: "bpm", chip: "Raised", tone: "warn" as const },
-    { k: "Hb / Anaemia", v: "10.4", u: "g/dL", chip: "Low", tone: "warn" as const },
-    { k: "SpO₂ / Oxygen", v: "96", u: "%", chip: "Watch", tone: "warn" as const },
+    { k: "Haemoglobin", v: "10.4", u: "g/dL", chip: "Low", tone: "warn" as const },
+    { k: "Oxygen (SpO₂)", v: "96", u: "%", chip: "Watch", tone: "warn" as const },
   ];
   return (
     <div
+      data-tone="light"
       style={{
         background: "#fff",
-        borderRadius: 24,
-        boxShadow: "0 50px 100px -40px rgba(0,0,0,0.45), 0 16px 40px -16px rgba(15,118,110,0.35)",
-        border: "1px solid rgba(255,255,255,0.5)",
+        borderRadius: 20,
         padding: 24,
         color: "var(--ink)",
         display: "grid",
@@ -145,7 +144,7 @@ function TriageReadout() {
         </div>
       </div>
 
-      <div style={{ background: "var(--paper-2)", borderRadius: 16, padding: "14px 16px", border: "1px solid var(--ink-100)" }}>
+      <div style={{ background: "#F4F4F4", borderRadius: 16, padding: "14px 16px" }}>
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
           <span style={{ fontSize: 13, color: "var(--ink-500)" }}>Urinary TB markers</span>
           <span style={{ fontSize: 11, fontWeight: 600, padding: "3px 9px", borderRadius: 999, color: "var(--warn)", background: "rgba(217,119,6,0.1)" }}>
@@ -162,8 +161,8 @@ function TriageReadout() {
 
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10 }}>
         {vitals.map((t) => (
-          <div key={t.k} style={{ background: "#fff", border: "1px solid var(--ink-100)", borderRadius: 14, padding: "12px 14px" }}>
-            <div style={{ fontSize: 10.5, letterSpacing: "0.06em", color: "var(--ink-400)", textTransform: "uppercase", fontWeight: 600 }}>{t.k}</div>
+          <div key={t.k} style={{ background: "#F4F4F4", borderRadius: 14, padding: "12px 14px" }}>
+            <div style={{ fontSize: 13, color: "#4A4A4A" }}>{t.k}</div>
             <div style={{ marginTop: 6, display: "flex", alignItems: "baseline", gap: 5 }}>
               <span style={{ fontSize: 24, fontWeight: 600, fontFamily: "var(--font-display)", letterSpacing: "-0.02em", lineHeight: 1 }}>{t.v}</span>
               <span style={{ fontSize: 12, color: "var(--ink-400)" }}>{t.u}</span>
@@ -197,22 +196,6 @@ function TriageReadout() {
   );
 }
 
-function BottomFade() {
-  return (
-    <div
-      aria-hidden
-      style={{
-        position: "absolute",
-        bottom: -1,
-        left: 0,
-        right: 0,
-        height: 110,
-        background: "linear-gradient(to bottom, transparent, var(--paper) 92%)",
-        zIndex: 1,
-      }}
-    />
-  );
-}
 
 function StatStrip() {
   const stats = [
@@ -222,8 +205,8 @@ function StatStrip() {
     { n: "Triage", l: "Decides who needs a confirmatory test, never a diagnosis" },
   ];
   return (
-    <section style={{ background: "var(--paper)", borderBottom: "1px solid var(--ink-100)" }}>
-      <div className="container" style={{ padding: "8px 28px 56px" }}>
+    <section>
+      <div className="container" style={{ paddingTop: 44, paddingBottom: 12 }}>
         <div className="tb-stat-grid" style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 0 }}>
           {stats.map((s, i) => (
             <div
@@ -290,7 +273,6 @@ function HowItWorks() {
         <div className="grid grid-3">
           {steps.map((s) => (
             <div key={s.n} className="card" style={{ padding: 32, display: "grid", gap: 14 }}>
-              <span className="mono" style={{ fontSize: 12, color: "var(--brand)", letterSpacing: "0.16em" }}>{s.n}</span>
               <h3 style={{ fontSize: 22, fontFamily: "var(--font-display)", fontWeight: 500, letterSpacing: "-0.02em" }}>{s.title}</h3>
               <p style={{ color: "var(--ink-500)", fontSize: 15 }}>{s.body}</p>
             </div>
@@ -308,16 +290,7 @@ function WhereItFits() {
     { label: "Xpert MTB/RIF · chest imaging", sub: "confirmatory diagnosis" },
   ];
   return (
-    <section id="cascade" className="reveal" style={{ background: "var(--ink)", color: "#fff", padding: "120px 0", position: "relative", overflow: "hidden" }}>
-      <div
-        aria-hidden
-        style={{
-          position: "absolute",
-          inset: 0,
-          background:
-            "radial-gradient(50% 50% at 15% 30%, rgba(20,184,166,0.16) 0%, transparent 60%), radial-gradient(45% 45% at 90% 80%, rgba(14,165,233,0.12) 0%, transparent 60%)",
-        }}
-      />
+    <section id="cascade" data-tone="dark" className="reveal" style={{ background: "#000", color: "#fff", padding: "clamp(64px, 8vw, 104px) 0", margin: "0 10px", borderRadius: 20, position: "relative", overflow: "hidden" }}>
       <div className="container" style={{ position: "relative" }}>
         <div style={{ maxWidth: 820, marginBottom: 48 }}>
           <h2 style={{ color: "#fff" }}>
@@ -341,8 +314,7 @@ function WhereItFits() {
 
           <div
             style={{
-              background: "rgba(255,255,255,0.04)",
-              border: "1px solid rgba(255,255,255,0.1)",
+              background: "#1C1C1C",
               borderRadius: 20,
               padding: 28,
             }}
@@ -356,14 +328,13 @@ function WhereItFits() {
                       alignItems: "center",
                       justifyContent: "space-between",
                       gap: 12,
-                      background: s.highlight ? "var(--brand)" : "rgba(20,184,166,0.08)",
-                      border: s.highlight ? "1px solid var(--brand)" : "1px solid rgba(20,184,166,0.22)",
+                      background: s.highlight ? "var(--brand)" : "rgba(255,255,255,0.07)",
                       borderRadius: 12,
                       padding: "14px 16px",
                     }}
                   >
                     <span style={{ fontSize: 15, fontWeight: s.highlight ? 700 : 600, color: "#fff" }}>{s.label}</span>
-                    <span style={{ fontSize: 12.5, color: s.highlight ? "rgba(255,255,255,0.85)" : "rgba(255,255,255,0.55)" }}>{s.sub}</span>
+                    <span style={{ fontSize: 12.5, color: s.highlight ? "#fff" : "#B4B4B4" }}>{s.sub}</span>
                   </div>
                   {i < cascade.length - 1 && (
                     <div style={{ display: "grid", placeItems: "center", padding: "8px 0" }}>
@@ -373,7 +344,7 @@ function WhereItFits() {
                 </div>
               ))}
             </div>
-            <p style={{ marginTop: 16, fontSize: 12, color: "rgba(255,255,255,0.72)", lineHeight: 1.5 }}>
+            <p style={{ marginTop: 16, fontSize: 13, color: "#B4B4B4", lineHeight: 1.5 }}>
               A triage and referral signal, never a diagnosis.
             </p>
           </div>
@@ -402,7 +373,7 @@ function UseCases() {
     },
   ];
   return (
-    <section id="usecases" className="section reveal" style={{ background: "var(--paper-2)" }}>
+    <section id="usecases" className="section reveal on-soft" style={{ background: "var(--paper-2)" }}>
       <div className="container">
         <div style={{ maxWidth: 820, margin: "0 auto 48px", textAlign: "center", display: "grid", placeItems: "center" }}>
           <h2>
@@ -413,7 +384,7 @@ function UseCases() {
         <div className="grid grid-2" style={{ maxWidth: 980, marginInline: "auto" }}>
           {cases.map((c) => (
             <div key={c.title} className="card" style={{ padding: 34, display: "grid", gap: 16 }}>
-              <div style={{ width: 52, height: 52, borderRadius: 14, background: "var(--paper-3)", display: "grid", placeItems: "center", color: "var(--brand)" }}>
+              <div style={{ width: 48, height: 48, borderRadius: 14, background: "var(--tile)", display: "grid", placeItems: "center", color: "var(--brand)" }}>
                 {c.icon}
               </div>
               <h3 style={{ fontSize: 23, fontFamily: "var(--font-display)", fontWeight: 500, letterSpacing: "-0.02em" }}>{c.title}</h3>
@@ -433,9 +404,8 @@ function NeverDiagnosis() {
         <div
           style={{
             padding: "28px 32px",
-            borderRadius: 18,
-            border: "1px dashed var(--ink-200)",
-            background: "#fff",
+            borderRadius: 20,
+            background: "var(--tile)",
           }}
           className="tb-disclaim"
         >
@@ -453,23 +423,13 @@ function NeverDiagnosis() {
 
 function CTA() {
   return (
-    <section id="contact" className="section reveal" style={{ background: "linear-gradient(135deg, #052E2A 0%, #0F766E 100%)", color: "#fff", position: "relative", overflow: "hidden" }}>
-      <div className="container" style={{ position: "relative", maxWidth: 940, textAlign: "center" }}>
-        <h2 style={{ color: "#fff" }}>
-          Bring single-visit TB triage to your district.
-        </h2>
-        <p style={{ marginTop: 22, color: "rgba(255,255,255,0.82)", fontSize: 18, maxWidth: 660, margin: "22px auto 0", lineHeight: 1.6 }}>
-          Whether you run a TB program, fund one, or study one, let&apos;s talk about putting a fast, non-invasive
-          triage step in front of scarce confirmatory testing.
-        </p>
-        <div style={{ display: "flex", flexWrap: "wrap", gap: 14, marginTop: 36, justifyContent: "center" }}>
-          <Link href={DEMO} className="btn btn-light">Request a demo →</Link>
-          <Link href={PARTNER} className="btn" style={{ background: "transparent", color: "#fff", border: "1px solid rgba(255,255,255,0.45)" }}>
-            Partner with us
-          </Link>
-        </div>
-      </div>
-    </section>
+    <ClosingCta
+      title="Bring single-visit TB triage to your district."
+      lede="Whether you run a TB program, fund one, or study one, let's talk about putting a fast, non-invasive triage step in front of scarce confirmatory testing."
+    >
+      <Link href={DEMO} className="btn btn-light">Request a demo</Link>
+      <Link href={PARTNER} className="btn btn-ghost">Partner with us</Link>
+    </ClosingCta>
   );
 }
 
@@ -489,7 +449,7 @@ function NotesSources() {
     },
   ];
   return (
-    <section className="section-sm" style={{ background: "var(--paper)", borderTop: "1px solid var(--ink-100)" }}>
+    <section className="section-sm">
       <div className="container" style={{ maxWidth: 980 }}>
         <div style={{ display: "grid", gap: 14 }}>
           {notes.map((n) => (

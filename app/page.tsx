@@ -2,11 +2,14 @@ import { Nav } from "./components/Nav";
 import { Footer } from "./components/Footer";
 import { Hero } from "./components/Hero";
 import {
-  CredibilityStrip,
+  Partners,
+  Proof,
+  Statement,
   AutonomicSignals,
   DiseaseTriage,
   HomeCare,
   Quote,
+  FieldPhotos,
   CTA,
 } from "./components/Sections";
 import { RevealOnScroll } from "./components/Reveal";
@@ -14,14 +17,17 @@ import { RevealOnScroll } from "./components/Reveal";
 export default function HomePage() {
   return (
     <>
-      <Nav variant="light" />
+      <Nav />
       <main id="main">
         <Hero />
-        <CredibilityStrip />
+        <Partners />
+        <Proof />
+        <Statement />
         <AutonomicSignals />
         <DiseaseTriage />
         <HomeCare />
         <Quote />
+        <FieldPhotos />
         <CTA />
       </main>
       <Footer />

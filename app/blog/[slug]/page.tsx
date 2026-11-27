@@ -69,7 +69,7 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLdScript(jsonLd) }} />
-      <Nav variant="light" />
+      <Nav />
       <main id="main">
         <article>
           <header className="container" style={{ paddingTop: 120, paddingBottom: 8, maxWidth: 820 }}>

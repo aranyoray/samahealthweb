@@ -36,7 +36,7 @@ export const metadata: Metadata = {
 export default function DataPage() {
   return (
     <>
-      <Nav variant="light" />
+      <Nav />
       <main id="main">
         <DataHero />
         <AnemiaDashboard />
@@ -59,8 +59,7 @@ function DataHero() {
       className="container"
       style={{ paddingTop: 128, paddingBottom: 8, maxWidth: 980 }}
     >
-      <div className="eyebrow">/data · research mirror</div>
-      <h1 style={{ marginTop: 18, fontSize: "clamp(36px, 5.4vw, 60px)" }}>
+      <h1 style={{ fontSize: "clamp(36px, 5.4vw, 60px)" }}>
         Lab dashboards. Anaemia. Tuberculosis.
       </h1>
       <p
@@ -100,7 +99,6 @@ function AnemiaDashboard() {
     >
       <div className="container">
         <SectionHeader
-          eyebrow="01 · anaemia"
           title="Anaemia × the rest of the panel"
           blurb="Cohort: patients with at least one haematology or iron-studies result in the curated anaemia TEST_KEY list. Severity follows WHO Hb cutoffs adjusted for sex."
           n={9842}
@@ -237,7 +235,6 @@ function TBDashboard() {
     >
       <div className="container">
         <SectionHeader
-          eyebrow="02 · tuberculosis"
           title="Tuberculosis screening results"
           blurb="Cohort: patients with at least one sputum AFB, AFB-PCR, mycobacterial culture, Mantoux, or IGRA result in the curated TB TEST_KEY list. Active vs latent is not always separable — both views are kept here."
           n={3186}
@@ -360,7 +357,6 @@ function TBDashboard() {
         </div>
 
         <SubsectionHeader
-          eyebrow="02b · TB pathology & vitals"
           title="Pathology and vitals signature in TB"
           blurb="From the patient-level cohort: every CBC, biochemistry, urine, body-fluid and (where paired) SamaClip vitals draw for any patient who ever had a TB workup, regardless of which day the sample was collected. TB-positive = smear / PCR / culture / IGRA reactive on any visit."
         />
@@ -497,8 +493,7 @@ function DataMethods() {
   return (
     <section className="section" style={{ paddingTop: 96, paddingBottom: 120 }}>
       <div className="container" style={{ maxWidth: 880 }}>
-        <div className="eyebrow">methods</div>
-        <h2 style={{ marginTop: 14, maxWidth: 720 }}>How the numbers were assembled</h2>
+        <h2 style={{ maxWidth: 720 }}>How the numbers were assembled</h2>
         <div
           style={{
             marginTop: 28,
@@ -580,13 +575,11 @@ function DataMethods() {
 /* ------------------------------------------------------------------ */
 
 function SectionHeader({
-  eyebrow,
   title,
   blurb,
   n,
   period,
 }: {
-  eyebrow: string;
   title: string;
   blurb: string;
   n: number;
@@ -594,8 +587,7 @@ function SectionHeader({
 }) {
   return (
     <div style={{ maxWidth: 880 }}>
-      <div className="eyebrow">{eyebrow}</div>
-      <h2 style={{ marginTop: 14 }}>{title}</h2>
+      <h2>{title}</h2>
       <p style={{ marginTop: 18, fontSize: 17, color: "var(--ink-500)" }}>{blurb}</p>
       <div
         className="mono"
@@ -616,18 +608,15 @@ function SectionHeader({
 }
 
 function SubsectionHeader({
-  eyebrow,
   title,
   blurb,
 }: {
-  eyebrow: string;
   title: string;
   blurb: string;
 }) {
   return (
     <div style={{ maxWidth: 880, marginTop: 56, paddingTop: 24, borderTop: "1px solid var(--ink-100)" }}>
-      <div className="eyebrow">{eyebrow}</div>
-      <h3 style={{ marginTop: 12, fontSize: "clamp(20px, 2.4vw, 28px)", letterSpacing: "-0.015em" }}>
+      <h3 style={{ fontSize: "clamp(20px, 2.4vw, 28px)", letterSpacing: "-0.015em" }}>
         {title}
       </h3>
       <p style={{ marginTop: 14, fontSize: 16, color: "var(--ink-500)", lineHeight: 1.55 }}>
@@ -740,7 +729,7 @@ function Stat({ value, label }: { value: string; label: string }) {
       </div>
       <div
         className="mono"
-        style={{ marginTop: 6, fontSize: 10.5, letterSpacing: "0.06em", color: "var(--ink-400)", textTransform: "uppercase" }}
+        style={{ marginTop: 6, fontSize: 12.5, color: "var(--ink-500)" }}
       >
         {label}
       </div>
@@ -1350,10 +1339,8 @@ function PairedBars({
         style={{
           display: "flex",
           gap: 14,
-          fontSize: 10.5,
-          color: "var(--ink-400)",
-          textTransform: "uppercase",
-          letterSpacing: "0.06em",
+          fontSize: 12,
+          color: "var(--ink-500)",
           marginBottom: -4,
         }}
       >

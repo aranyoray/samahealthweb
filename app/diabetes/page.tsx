@@ -84,7 +84,7 @@ export default function DiabetesPage() {
 
   return (
     <>
-      <Nav variant="light" />
+      <Nav />
       <main id="main" className="dx">
         <Hero d={d} />
 

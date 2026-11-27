@@ -159,14 +159,13 @@ export function CampGallery({ events, images }: { events: EventMeta[]; images: I
           .camp-filter-select { font-size: 12px !important; padding: 11px 12px !important; min-height: 44px; flex-shrink: 0; max-width: 130px; }
           .camp-filter-bar { padding: 8px 10px !important; }
           .camp-event-head h2 { font-size: 18px !important; }
-          .camp-event-head .mono { font-size: 9px !important; }
           .camp-event-head span[style*="brand"], .camp-event-head span[style*="rgba(220"] { font-size: 10px !important; padding: 3px 7px !important; }
         }
       `}</style>
       <div className="container">
         {/* Filter bar */}
         <div
-          className="camp-filter-bar"
+          className="camp-filter-bar glass"
           style={{
             display: "flex",
             flexWrap: "wrap",
@@ -174,14 +173,13 @@ export function CampGallery({ events, images }: { events: EventMeta[]; images: I
             alignItems: "center",
             justifyContent: "space-between",
             marginBottom: 36,
-            padding: "16px 20px",
-            background: "var(--paper-2)",
-            border: "1px solid var(--ink-100)",
-            borderRadius: 14,
+            padding: "12px 14px",
+            border: "1px solid rgba(10,10,10,0.09)",
+            borderRadius: 16,
+            boxShadow: "inset 0 1px 0 rgba(255,255,255,0.7), 0 16px 36px -22px rgba(0,0,0,0.25)",
             position: "sticky",
-            top: 80,
+            top: 84,
             zIndex: 10,
-            backdropFilter: "blur(8px)",
           }}
         >
           <div className="camp-filter-chips" style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
@@ -202,12 +200,12 @@ export function CampGallery({ events, images }: { events: EventMeta[]; images: I
             onChange={(e) => setLocationFilter(e.target.value)}
             style={{
               padding: "8px 14px",
-              border: "1px solid var(--ink-200)",
+              border: "1px solid rgba(10,10,10,0.2)",
               borderRadius: 999,
-              background: "#fff",
+              background: "transparent",
               fontSize: 13,
               fontWeight: 500,
-              color: "var(--ink-700)",
+              color: "var(--ink)",
               cursor: "pointer",
             }}
           >
@@ -241,25 +239,14 @@ export function CampGallery({ events, images }: { events: EventMeta[]; images: I
               }}
             >
               <div style={{ display: "flex", alignItems: "baseline", gap: 14, flexWrap: "wrap" }}>
-                <span
-                  className="mono"
-                  style={{ fontSize: 11, color: "var(--ink-400)", letterSpacing: "0.12em" }}
-                >
-                  CAMP {String(ev.id).padStart(2, "0")}
-                </span>
-                <h2 style={{ fontSize: 24, fontWeight: 600, letterSpacing: "-0.02em", fontFamily: "inherit" }}>
-                  <span aria-hidden="true">📍</span> {ev.location}
-                </h2>
+                <h2 className="title">{ev.location}</h2>
                 <span
                   style={{
-                    fontSize: 12,
-                    fontWeight: 600,
+                    fontSize: 13,
                     padding: "4px 10px",
                     borderRadius: 999,
-                    background: ev.independent
-                      ? "rgba(15,118,110,0.10)"
-                      : "rgba(220,38,38,0.10)",
-                    color: ev.independent ? "var(--brand)" : "#B91C1C",
+                    background: "var(--tile)",
+                    color: "var(--ink)",
                   }}
                 >
                   {ev.independent ? "Anubhav CMC camp" : "With Barasat Blood Bank"}
@@ -304,22 +291,10 @@ export function CampGallery({ events, images }: { events: EventMeta[]; images: I
                             appearance: "none",
                             cursor: "zoom-in",
                             display: "block",
-                            borderRadius: 12,
+                            borderRadius: 16,
                             overflow: "hidden",
-                            border: "1px solid var(--ink-100)",
-                            background: "#fff",
-                            transition: "transform .2s ease, box-shadow .2s ease, border-color .2s ease",
-                          }}
-                          onMouseEnter={(e) => {
-                            (e.currentTarget as HTMLElement).style.transform = "translateY(-3px)";
-                            (e.currentTarget as HTMLElement).style.boxShadow =
-                              "0 14px 32px -18px rgba(15,118,110,0.35)";
-                            (e.currentTarget as HTMLElement).style.borderColor = "var(--brand-2)";
-                          }}
-                          onMouseLeave={(e) => {
-                            (e.currentTarget as HTMLElement).style.transform = "";
-                            (e.currentTarget as HTMLElement).style.boxShadow = "";
-                            (e.currentTarget as HTMLElement).style.borderColor = "var(--ink-100)";
+                            border: 0,
+                            background: "var(--tile)",
                           }}
                         >
                           <div
@@ -340,17 +315,14 @@ export function CampGallery({ events, images }: { events: EventMeta[]; images: I
                                   position: "absolute",
                                   top: 8,
                                   left: 8,
-                                  fontSize: 10,
-                                  fontWeight: 600,
-                                  letterSpacing: "0.08em",
-                                  textTransform: "uppercase",
-                                  padding: "3px 7px",
-                                  borderRadius: 4,
-                                  background: "rgba(15,118,110,0.92)",
+                                  fontSize: 12.5,
+                                  fontWeight: 500,
+                                  padding: "3px 9px",
+                                  borderRadius: 999,
+                                  background: "rgba(10,10,10,0.82)",
                                   color: "#fff",
                                   zIndex: 1,
                                 }}
-                                className="mono"
                               >
                                 {img.type === "news" ? "Press" : img.type === "poster" ? "Poster" : "Letter"}
                               </span>
@@ -388,29 +360,10 @@ export function CampGallery({ events, images }: { events: EventMeta[]; images: I
                   {hidden > 0 && (
                     <button
                       onClick={() => toggleExpand(ev.id)}
-                      style={{
-                        marginTop: 18,
-                        minHeight: 44,
-                        padding: "10px 22px",
-                        borderRadius: 999,
-                        border: "1px solid var(--ink-200)",
-                        background: "#fff",
-                        color: "var(--ink-700)",
-                        fontSize: 13,
-                        fontWeight: 600,
-                        cursor: "pointer",
-                        transition: "all .15s ease",
-                      }}
-                      onMouseEnter={(e) => {
-                        (e.currentTarget as HTMLElement).style.borderColor = "var(--brand)";
-                        (e.currentTarget as HTMLElement).style.color = "var(--brand)";
-                      }}
-                      onMouseLeave={(e) => {
-                        (e.currentTarget as HTMLElement).style.borderColor = "var(--ink-200)";
-                        (e.currentTarget as HTMLElement).style.color = "var(--ink-700)";
-                      }}
+                      className="btn btn-ghost"
+                      style={{ marginTop: 18 }}
                     >
-                      {isExpanded ? `Show fewer` : `View all ${imgs.length} frames →`}
+                      {isExpanded ? `Show fewer` : `View all ${imgs.length} frames`}
                     </button>
                   )}
                 </>
@@ -505,11 +458,11 @@ function FilterChip({
       style={{
         padding: "8px 16px",
         borderRadius: 999,
-        border: `1px solid ${active ? "var(--brand)" : "var(--ink-200)"}`,
-        background: active ? "var(--brand)" : "#fff",
-        color: active ? "#fff" : "var(--ink-700)",
+        border: `1px solid ${active ? "var(--ink)" : "rgba(10,10,10,0.2)"}`,
+        background: active ? "var(--ink)" : "transparent",
+        color: active ? "#fff" : "var(--ink)",
         fontSize: 13,
-        fontWeight: 600,
+        fontWeight: 500,
         cursor: "pointer",
         transition: "all .15s ease",
       }}

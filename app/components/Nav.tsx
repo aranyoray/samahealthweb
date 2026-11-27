@@ -1,198 +1,177 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { Mark } from "./Mark";
 
+/** The home link is the wordmark, so the bar lists the other pages. */
 const links = [
   { href: "/samaclip", label: "SamaClip" },
   { href: "/homecare", label: "Home care" },
-  { href: "/#signal", label: "Autonomic vitals" },
-  { href: "/#triage", label: "Triage" },
   { href: "/camps", label: "Field camps" },
   { href: "/research", label: "Validation" },
   { href: "/team", label: "Team" },
   { href: "/blog", label: "Journal" },
-  { href: "/#contact", label: "Contact" },
 ];
 
-export function Nav({ variant = "light" }: { variant?: "light" | "dark" | "hero" }) {
-  const [scrolled, setScrolled] = useState(false);
-  const [open, setOpen] = useState(false);
+/** How far the page moves before the bar draws in to a floating capsule. */
+const FLOAT_AFTER = 24;
+
+/** What the floating bar is passing over: all light, all black card, or some of each. */
+type Ground = "light" | "dark" | "mixed";
+
+/** Where across the bar's width the ground is read. */
+const GROUND_SAMPLES = [0.12, 0.5, 0.88];
+
+/** Reads the tone of the page behind the bar at a few points along it, from where the toned blocks are drawn. */
+function groundUnder(header: HTMLElement, bar: HTMLElement): Ground {
+  const box = bar.getBoundingClientRect();
+  const y = box.top + box.height / 2;
+  const toned = [...document.querySelectorAll<HTMLElement>("[data-tone]")]
+    .filter((element) => !header.contains(element))
+    .map((element) => ({ tone: element.dataset.tone, at: element.getBoundingClientRect() }))
+    .filter(({ at }) => at.top <= y && at.bottom >= y);
+  let dark = 0;
+  for (const share of GROUND_SAMPLES) {
+    const x = box.left + box.width * share;
+    // A block inside another comes later in the page, so the last one that covers the point is the nearest.
+    const nearest = toned.filter(({ at }) => at.left <= x && at.right >= x).pop();
+    if (nearest?.tone === "dark") dark += 1;
+  }
+  if (dark === GROUND_SAMPLES.length) return "dark";
+  return dark > 0 ? "mixed" : "light";
+}
+
+/**
+ * The top bar on every page: pages on the left, the wordmark in the middle, the contact button on the
+ * right. Below 1200px the pages collapse into a frosted menu. The bar reads the page behind it, so no
+ * page has to say whether it starts on a black card.
+ */
+export function Nav() {
+  const pathname = usePathname();
+  // The menu belongs to the address it was opened on, so any navigation closes it.
+  const [openedAt, setOpenedAt] = useState<string | null>(null);
+  const open = openedAt === pathname;
+  const [floating, setFloating] = useState(false);
+  const [ground, setGround] = useState<Ground>("light");
+  const header = useRef<HTMLElement>(null);
+  const bar = useRef<HTMLDivElement>(null);
+  const toggle = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 6);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+    let frame = 0;
+    const read = () => {
+      frame = 0;
+      setFloating(window.scrollY > FLOAT_AFTER);
+      if (header.current && bar.current) setGround(groundUnder(header.current, bar.current));
+    };
+    // One reading a frame is enough, however fast the scroll events come.
+    const onMove = () => {
+      if (!frame) frame = requestAnimationFrame(read);
+    };
+    read();
+    const settled = window.setTimeout(read, 300);
+    window.addEventListener("scroll", onMove, { passive: true });
+    window.addEventListener("resize", onMove);
+    return () => {
+      cancelAnimationFrame(frame);
+      window.clearTimeout(settled);
+      window.removeEventListener("scroll", onMove);
+      window.removeEventListener("resize", onMove);
+    };
+  }, [pathname]);
 
-  const onDark = variant === "dark" || (variant === "hero" && !scrolled);
-  const bg = scrolled
-    ? variant === "dark" ? "rgba(7,9,14,0.85)" : "rgba(255,255,255,0.9)"
-    : variant === "dark" ? "rgba(7,9,14,0.0)" : variant === "hero" ? "rgba(255,255,255,0.0)" : "rgba(255,255,255,0.5)";
-  const border = scrolled
-    ? variant === "dark" ? "1px solid rgba(255,255,255,0.08)" : "1px solid var(--ink-100)"
-    : "1px solid transparent";
-  const textColor = onDark ? "rgba(255,255,255,0.92)" : "var(--ink-700)";
-  const logoText = onDark ? "#fff" : "var(--ink)";
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key !== "Escape") return;
+      setOpenedAt(null);
+      toggle.current?.focus();
+    };
+    const wide = window.matchMedia("(min-width: 1200px)");
+    const onWide = () => {
+      if (wide.matches) setOpenedAt(null);
+    };
+    document.addEventListener("keydown", onKey);
+    wide.addEventListener("change", onWide);
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      wide.removeEventListener("change", onWide);
+    };
+  }, [open]);
+
+  const glass = floating || open;
+  const dark = glass && !open && ground === "dark";
 
   return (
-    <header
-      style={{
-        position: "fixed",
-        top: 0,
-        left: 0,
-        right: 0,
-        zIndex: 100,
-        backdropFilter: "saturate(180%) blur(14px)",
-        background: bg,
-        borderBottom: border,
-        transition: "all .25s ease",
-        color: textColor,
-      }}
-    >
+    <header ref={header} className="nav-shell">
       <a
         href="#main"
-        style={{
-          position: "absolute",
-          left: 8,
-          top: 8,
-          padding: "10px 16px",
-          background: "var(--ink)",
-          color: "#fff",
-          borderRadius: 8,
-          fontWeight: 600,
-          fontSize: 14,
-          transform: "translateY(-200%)",
-          transition: "transform .15s ease",
-          zIndex: 101,
-        }}
-        onFocus={(e) => { (e.currentTarget as HTMLElement).style.transform = "translateY(0)"; }}
-        onBlur={(e) => { (e.currentTarget as HTMLElement).style.transform = "translateY(-200%)"; }}
+        className="btn btn-solid btn-sm"
+        style={{ position: "absolute", left: 16, top: 16, zIndex: 2, pointerEvents: "auto", transform: "translateY(-300%)" }}
+        onFocus={(event) => { event.currentTarget.style.transform = "translateY(0)"; }}
+        onBlur={(event) => { event.currentTarget.style.transform = "translateY(-300%)"; }}
       >
         Skip to content
       </a>
       <div
-        className="container"
-        style={{ display: "flex", alignItems: "center", justifyContent: "space-between", height: 72 }}
+        ref={bar}
+        data-tone={dark ? "dark" : undefined}
+        className={[
+          "nav-capsule",
+          glass ? "is-floating" : "",
+          glass && ground === "mixed" ? "is-dense" : "",
+          open ? "is-open" : "",
+        ].join(" ")}
       >
-        <Link href="/" style={{ display: "flex", alignItems: "center", gap: 12, fontWeight: 600, letterSpacing: "-0.015em", color: logoText, fontSize: 18 }}>
-          <Logo dark={onDark} />
-          <span>SamaHealth</span>
-        </Link>
+        <div className="nav-row">
+          <nav aria-label="Primary" className="nav-primary">
+            <ul className="nav-links">
+              {links.map((link) => (
+                <li key={link.href}>
+                  <Link href={link.href} aria-current={pathname === link.href || pathname.startsWith(`${link.href}/`) ? "page" : undefined}>
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
 
-        <nav className="nav-links" style={{ display: "none", gap: 32, fontSize: 14, fontWeight: 500 }}>
-          {links.map((l) => (
-            <Link
-              key={l.href}
-              href={l.href}
-              style={{
-                color: textColor,
-                position: "relative",
-                padding: "4px 0",
-                transition: "color .15s ease",
-              }}
-            >
-              {l.label}
-            </Link>
-          ))}
-        </nav>
-
-        <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-          <Link
-            href="/#contact"
-            className="btn"
-            style={{
-              background: onDark ? "#fff" : "var(--ink)",
-              color: onDark ? "var(--ink)" : "#fff",
-              height: 44,
-              padding: "0 18px",
-              fontSize: 14,
-            }}
-          >
-            Get in touch
+          <Link href="/" className="nav-brand">
+            <Mark size={24} />
+            SamaHealth
           </Link>
-          <button
-            aria-label={open ? "Close menu" : "Open menu"}
-            aria-expanded={open}
-            aria-controls="mobile-nav"
-            onClick={() => setOpen((v) => !v)}
-            className="menu-btn"
-            style={{
-              display: "inline-flex",
-              alignItems: "center",
-              justifyContent: "center",
-              width: 44,
-              height: 44,
-              border: `1px solid ${onDark ? "rgba(255,255,255,0.2)" : "var(--ink-100)"}`,
-              borderRadius: 12,
-              background: "transparent",
-              color: textColor,
-            }}
-          >
-            <span style={{ display: "grid", gap: 4 }}>
-              <span style={{ width: 16, height: 1.5, background: "currentColor", display: "block" }} />
-              <span style={{ width: 16, height: 1.5, background: "currentColor", display: "block" }} />
-            </span>
-          </button>
-        </div>
-      </div>
 
-      {/* Always mounted so the button's aria-controls target exists while
-          closed; capped and scrollable so every link stays reachable in
-          landscape, where the fixed header would otherwise clip them. */}
-      <div
-        id="mobile-nav"
-        hidden={!open}
-        style={{
-          borderTop: `1px solid ${onDark ? "rgba(255,255,255,0.08)" : "var(--ink-100)"}`,
-          background: onDark ? "rgba(7,9,14,0.96)" : "#fff",
-          maxHeight: "calc(100dvh - 72px)",
-          overflowY: "auto",
-        }}
-      >
-          <div className="container" style={{ display: "grid", gap: 0, padding: "8px 28px 20px" }}>
-            {links.map((l) => (
-              <Link
-                key={l.href}
-                href={l.href}
-                onClick={() => setOpen(false)}
-                style={{ padding: "14px 4px", borderBottom: `1px solid ${onDark ? "rgba(255,255,255,0.08)" : "var(--ink-100)"}`, fontWeight: 500, fontSize: 17, color: textColor }}
-              >
-                {l.label}
-              </Link>
-            ))}
+          <div className="nav-end">
+            <Link href="/#contact" className="btn btn-solid btn-sm">
+              Get in touch
+            </Link>
+            <button
+              ref={toggle}
+              type="button"
+              aria-label={open ? "Close menu" : "Open menu"}
+              aria-expanded={open}
+              aria-controls="mobile-nav"
+              onClick={() => setOpenedAt(open ? null : pathname)}
+              className="nav-menu-btn"
+            >
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" aria-hidden>
+                {open ? <path d="M5 5l10 10M15 5L5 15" /> : <path d="M3 7h14M3 13h14" />}
+              </svg>
+            </button>
           </div>
         </div>
 
-      <style>{`
-        .nav-links a { white-space: nowrap; }
-        @media (min-width: 1200px) {
-          .nav-links { display: flex !important; }
-          .menu-btn { display: none !important; }
-        }
-      `}</style>
+        {/* Always mounted so the button's aria-controls target exists while closed; capped and
+            scrollable so every link stays reachable in landscape. */}
+        <div id="mobile-nav" hidden={!open} className="nav-sheet" style={{ maxHeight: "calc(100dvh - 90px)", overflowY: "auto" }}>
+          {links.map((link) => (
+            <Link key={link.href} href={link.href} onClick={() => setOpenedAt(null)}>
+              {link.label}
+            </Link>
+          ))}
+        </div>
+      </div>
     </header>
-  );
-}
-
-function Logo({ dark }: { dark: boolean }) {
-  return (
-    <svg width="32" height="32" viewBox="0 0 32 32" aria-hidden>
-      <defs>
-        <linearGradient id="lg" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stopColor="#14B8A6" />
-          <stop offset="100%" stopColor="#0F766E" />
-        </linearGradient>
-      </defs>
-      <rect x="1" y="1" width="30" height="30" rx="9" fill="url(#lg)" />
-      <path
-        d="M7 17h4l2-6 3 12 3-9 2 3h4"
-        stroke={dark ? "#fff" : "#fff"}
-        strokeWidth="1.6"
-        fill="none"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
   );
 }

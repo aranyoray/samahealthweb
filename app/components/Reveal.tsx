@@ -36,6 +36,8 @@ export function RevealOnScroll() {
     return () => {
       io.disconnect();
       window.removeEventListener("hashchange", scrollToHash);
+      // A page without this component must not inherit hidden .reveal blocks.
+      document.body.classList.remove("js-ready");
     };
   }, []);
   return null;

@@ -37,7 +37,7 @@ export const metadata: Metadata = {
 export default function ResearchPage() {
   return (
     <>
-      <Nav variant="light" />
+      <Nav />
       <main id="main">
         <ResearchHero />
         <WhatItScreens />
@@ -108,7 +108,7 @@ function Validation() {
     { signal: "Atrial-fibrillation flag", metric: "AUC 0.94", reference: "vs clinician-confirmed ECG" },
   ];
   return (
-    <section id="validation" className="section" style={{ paddingTop: 0, background: "var(--paper-2)" }}>
+    <section id="validation" className="section on-soft" style={{ paddingTop: 0, background: "var(--paper-2)" }}>
       <div className="container" style={{ paddingTop: 96 }}>
         <h2 style={{ maxWidth: 760 }}>What the validation showed</h2>
         <p style={{ marginTop: 20, fontSize: 17, color: "var(--ink-500)", maxWidth: 680 }}>
@@ -136,7 +136,7 @@ function Validation() {
       </div>
       <style>{`
         .vrow { display: grid; grid-template-columns: 1.3fr 0.8fr 1.6fr; gap: 16px; padding: 18px 28px; align-items: center; font-size: 15px; }
-        .vhead { background: #fff; font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-400); border-bottom: 1px solid var(--ink-100); }
+        .vhead { background: #fff; font-size: 13px; font-weight: 500; color: var(--ink-500); border-bottom: 1px solid var(--ink-100); }
         @media (max-width: 720px) {
           .vhead { display: none; }
           .vrow { grid-template-columns: 1fr; gap: 4px; padding: 16px 20px; }
@@ -226,7 +226,7 @@ function ImagingChannel() {
     },
   ];
   return (
-    <section id="imaging" className="section" style={{ background: "var(--paper-2)", paddingTop: 96, paddingBottom: 96 }}>
+    <section id="imaging" className="section on-soft" style={{ background: "var(--paper-2)", paddingTop: 96, paddingBottom: 96 }}>
       <div className="container">
         <h2 style={{ maxWidth: 820 }}>What we are building next: reading single red cells</h2>
         <p style={{ marginTop: 20, fontSize: 17, color: "var(--ink-500)", maxWidth: 720 }}>
@@ -241,12 +241,9 @@ function ImagingChannel() {
         </p>
 
         <div className="grid grid-2" style={{ marginTop: 44 }}>
-          {steps.map((s, i) => (
+          {steps.map((s) => (
             <div key={s.k} className="card" style={{ padding: 26 }}>
-              <div className="mono" style={{ fontSize: 11, color: "var(--ink-400)", letterSpacing: "0.12em" }}>
-                STEP {i + 1}
-              </div>
-              <h3 style={{ fontSize: 18, marginTop: 10 }}>{s.k}</h3>
+              <h3 style={{ fontSize: 18 }}>{s.k}</h3>
               <p style={{ marginTop: 10, fontSize: 14.5, color: "var(--ink-500)" }}>{s.v}</p>
             </div>
           ))}

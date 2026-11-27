@@ -76,7 +76,7 @@ export default function BlogIndex() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLdScript(jsonLd) }} />
-      <Nav variant="light" />
+      <Nav />
       <main id="main">
         <header className="container" style={{ paddingTop: 128, paddingBottom: 8 }}>
           <h1 style={{ maxWidth: 900 }}>

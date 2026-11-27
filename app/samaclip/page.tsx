@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Nav } from "../components/Nav";
 import { Footer } from "../components/Footer";
 import { RevealOnScroll } from "../components/Reveal";
+import { ClosingCta } from "../components/ClosingCta";
 import { SamaClipFaq } from "./SamaClipFaq";
 import { GROUPS } from "./faq-data";
 import { jsonLdScript } from "../lib/jsonld";
@@ -65,7 +66,7 @@ export default function SamaClipPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: jsonLdScript(faqJsonLd) }}
       />
-      <Nav variant="hero" />
+      <Nav />
       <main id="main">
         <Hero />
         <StatStrip />
@@ -85,14 +86,14 @@ export default function SamaClipPage() {
 
 function Hero() {
   return (
-    <section className="hero-clinical" style={{ paddingTop: 120 }}>
+    <section className="hero-clinical" data-tone="dark">
       <div
         className="sc-hero-grid container"
         style={{
           position: "relative",
           zIndex: 2,
-          paddingTop: 72,
-          paddingBottom: 110,
+          paddingTop: 88,
+          paddingBottom: 88,
           display: "grid",
           gridTemplateColumns: "1.05fr 0.95fr",
           gap: 56,
@@ -103,23 +104,23 @@ function Hero() {
           <h1
             style={{
               color: "#fff",
-              fontSize: "clamp(40px, 5.4vw, 76px)",
-              lineHeight: 0.98,
+              fontSize: "clamp(40px, 4.8vw, 66px)",
+              lineHeight: 1.02,
               letterSpacing: "-0.04em",
               textWrap: "balance" as never,
             }}
           >
             One finger. 120 seconds. A full health screen.
           </h1>
-          <p style={{ marginTop: 26, fontSize: 19, color: "rgba(255,255,255,0.92)", lineHeight: 1.6, maxWidth: 620 }}>
+          <p style={{ marginTop: 24, fontSize: 18, color: "#CFCFCF", lineHeight: 1.55, maxWidth: 600 }}>
             SamaClip is a battery-free, smartphone-powered sensor that screens for anaemia, oxygen, diabetes risk,
             heart rhythm and autonomic vitals in a single painless test. It is built for women and families across West
             Bengal, where more than half the women we see are anaemic and most have never been screened for heart or
             metabolic risk.
           </p>
           <div style={{ display: "flex", gap: 14, marginTop: 36, flexWrap: "wrap" }}>
-            <Link href={DEMO} className="btn btn-light">Request a demo →</Link>
-            <Link href="#screens" className="btn" style={{ background: "transparent", color: "#fff", border: "1px solid rgba(255,255,255,0.45)" }}>
+            <Link href={DEMO} className="btn btn-light">Request a demo</Link>
+            <Link href="#screens" className="btn btn-ghost">
               See how it works
             </Link>
           </div>
@@ -132,10 +133,9 @@ function Hero() {
         <DeviceReadout />
       </div>
 
-      <BottomFade />
       <style>{`
         @media (max-width: 940px) {
-          .sc-hero-grid { grid-template-columns: 1fr !important; gap: 40px !important; padding-bottom: 90px !important; }
+          .sc-hero-grid { grid-template-columns: 1fr !important; gap: 40px !important; padding-top: 56px !important; padding-bottom: 56px !important; }
         }
       `}</style>
     </section>
@@ -144,18 +144,17 @@ function Hero() {
 
 function DeviceReadout() {
   const tiles = [
-    { k: "Hb / Anaemia", v: "10.8", u: "g/dL", chip: "Low", tone: "warn" as const },
-    { k: "SpO₂ / Oxygen", v: "98", u: "%", chip: "Normal", tone: "ok" as const },
-    { k: "A1c / Diabetes risk", v: "5.9", u: "%", chip: "Watch", tone: "warn" as const },
-    { k: "ECG / Rhythm", v: "Sinus", u: "76 bpm", chip: "Stable", tone: "ok" as const },
+    { k: "Haemoglobin", v: "10.8", u: "g/dL", chip: "Low", tone: "warn" as const },
+    { k: "Oxygen (SpO₂)", v: "98", u: "%", chip: "Normal", tone: "ok" as const },
+    { k: "HbA1c estimate", v: "5.9", u: "%", chip: "Watch", tone: "warn" as const },
+    { k: "Rhythm (ECG)", v: "Sinus", u: "76 bpm", chip: "Stable", tone: "ok" as const },
   ];
   return (
     <div
+      data-tone="light"
       style={{
         background: "#fff",
-        borderRadius: 24,
-        boxShadow: "0 50px 100px -40px rgba(0,0,0,0.45), 0 16px 40px -16px rgba(15,118,110,0.35)",
-        border: "1px solid rgba(255,255,255,0.5)",
+        borderRadius: 20,
         padding: 24,
         color: "var(--ink)",
         display: "grid",
@@ -168,14 +167,14 @@ function DeviceReadout() {
         </div>
       </div>
 
-      <div style={{ background: "var(--paper-2)", borderRadius: 16, padding: "14px 16px", border: "1px solid var(--ink-100)" }}>
+      <div style={{ background: "#F4F4F4", borderRadius: 16, padding: "14px 16px" }}>
         <WaveTrace />
       </div>
 
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10 }}>
         {tiles.map((t) => (
-          <div key={t.k} style={{ background: "#fff", border: "1px solid var(--ink-100)", borderRadius: 14, padding: "12px 14px" }}>
-            <div style={{ fontSize: 10.5, letterSpacing: "0.06em", color: "var(--ink-400)", textTransform: "uppercase", fontWeight: 600 }}>{t.k}</div>
+          <div key={t.k} style={{ background: "#F4F4F4", borderRadius: 14, padding: "12px 14px" }}>
+            <div style={{ fontSize: 13, color: "#4A4A4A" }}>{t.k}</div>
             <div style={{ marginTop: 6, display: "flex", alignItems: "baseline", gap: 5 }}>
               <span style={{ fontSize: 24, fontWeight: 600, fontFamily: "var(--font-display)", letterSpacing: "-0.02em", lineHeight: 1 }}>{t.v}</span>
               <span style={{ fontSize: 12, color: "var(--ink-400)" }}>{t.u}</span>
@@ -244,22 +243,6 @@ function WaveTrace() {
   );
 }
 
-function BottomFade() {
-  return (
-    <div
-      aria-hidden
-      style={{
-        position: "absolute",
-        bottom: -1,
-        left: 0,
-        right: 0,
-        height: 110,
-        background: "linear-gradient(to bottom, transparent, var(--paper) 92%)",
-        zIndex: 1,
-      }}
-    />
-  );
-}
 
 function StatStrip() {
   const stats = [
@@ -269,8 +252,8 @@ function StatStrip() {
     { n: "175", l: "Adults who completed our validation study at the centre" },
   ];
   return (
-    <section style={{ background: "var(--paper)", borderBottom: "1px solid var(--ink-100)" }}>
-      <div className="container" style={{ padding: "8px 28px 56px" }}>
+    <section>
+      <div className="container" style={{ paddingTop: 44, paddingBottom: 12 }}>
         <div className="sc-stat-grid" style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 0 }}>
           {stats.map((s, i) => (
             <div
@@ -328,7 +311,7 @@ function WhatItScreens() {
         <div className="grid grid-3">
           {params.map((p) => (
             <div key={p.title} className="card" style={{ padding: 30 }}>
-              <div style={{ width: 52, height: 52, borderRadius: 14, background: "var(--paper-3)", display: "grid", placeItems: "center", color: "var(--brand)" }}>
+              <div style={{ width: 48, height: 48, borderRadius: 14, background: "#fff", display: "grid", placeItems: "center", color: "var(--brand)" }}>
                 {p.icon}
               </div>
               <h3 style={{ marginTop: 20, fontSize: 21 }}>{p.title}</h3>
@@ -341,8 +324,7 @@ function WhatItScreens() {
           className="sc-autonomic"
           style={{
             marginTop: 24,
-            background: "linear-gradient(135deg, #ECFDF5 0%, #F0FBFF 100%)",
-            border: "1px solid rgba(15,118,110,0.16)",
+            background: "var(--tile)",
             borderRadius: 20,
             padding: 40,
             display: "grid",
@@ -368,7 +350,7 @@ function WhatItScreens() {
               { v: "Respiratory rate" },
               { v: "PPG and ECG together, one finger" },
             ].map((r) => (
-              <div key={r.v} style={{ background: "#fff", borderRadius: 12, padding: "14px 16px", border: "1px solid rgba(15,118,110,0.12)" }}>
+              <div key={r.v} style={{ background: "#fff", borderRadius: 12, padding: "14px 16px" }}>
                 <span style={{ fontSize: 14.5, color: "var(--ink-700)", fontWeight: 500 }}>{r.v}</span>
               </div>
             ))}
@@ -379,8 +361,8 @@ function WhatItScreens() {
           style={{
             marginTop: 24,
             padding: "22px 28px",
-            borderRadius: 16,
-            background: "var(--ink)",
+            borderRadius: 20,
+            background: "#000",
             color: "#fff",
           }}
         >
@@ -406,16 +388,7 @@ function TriageSignal() {
     { label: "↓ Oxygen", sub: "sometimes lower SpO₂" },
   ];
   return (
-    <section id="triage" className="reveal" style={{ background: "var(--ink)", color: "#fff", padding: "120px 0", position: "relative", overflow: "hidden" }}>
-      <div
-        aria-hidden
-        style={{
-          position: "absolute",
-          inset: 0,
-          background:
-            "radial-gradient(50% 50% at 15% 30%, rgba(20,184,166,0.16) 0%, transparent 60%), radial-gradient(45% 45% at 90% 80%, rgba(14,165,233,0.12) 0%, transparent 60%)",
-        }}
-      />
+    <section id="triage" data-tone="dark" className="reveal" style={{ background: "#000", color: "#fff", padding: "clamp(64px, 8vw, 104px) 0", margin: "0 10px", borderRadius: 20, position: "relative", overflow: "hidden" }}>
       <div className="container" style={{ position: "relative" }}>
         <div style={{ maxWidth: 820, marginBottom: 48 }}>
           <h2 style={{ color: "#fff" }}>
@@ -442,17 +415,16 @@ function TriageSignal() {
 
           <div
             style={{
-              background: "rgba(255,255,255,0.04)",
-              border: "1px solid rgba(255,255,255,0.1)",
+              background: "#1C1C1C",
               borderRadius: 20,
               padding: 28,
             }}
           >
             <div style={{ display: "grid", gap: 10 }}>
               {signals.map((s) => (
-                <div key={s.label} style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 12, background: "rgba(20,184,166,0.08)", border: "1px solid rgba(20,184,166,0.22)", borderRadius: 12, padding: "13px 16px" }}>
+                <div key={s.label} style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 12, background: "rgba(255,255,255,0.07)", borderRadius: 12, padding: "13px 16px" }}>
                   <span style={{ fontSize: 15, fontWeight: 600, color: "#fff" }}>{s.label}</span>
-                  <span style={{ fontSize: 12.5, color: "rgba(255,255,255,0.55)" }}>{s.sub}</span>
+                  <span style={{ fontSize: 13, color: "#B4B4B4" }}>{s.sub}</span>
                 </div>
               ))}
             </div>
@@ -466,7 +438,7 @@ function TriageSignal() {
                 <div style={{ fontSize: 12.5, color: "rgba(255,255,255,0.85)" }}>sputum testing, chest imaging</div>
               </div>
             </div>
-            <p style={{ marginTop: 16, fontSize: 12, color: "rgba(255,255,255,0.72)", lineHeight: 1.5 }}>
+            <p style={{ marginTop: 16, fontSize: 13, color: "#B4B4B4", lineHeight: 1.5 }}>
               A triage and referral signal, never a diagnosis.
             </p>
           </div>
@@ -483,7 +455,7 @@ function TriageSignal() {
 
 function Questions() {
   return (
-    <section id="questions" className="section reveal" style={{ background: "var(--paper-2)" }}>
+    <section id="questions" className="section reveal">
       <div className="container" style={{ maxWidth: 980 }}>
         <div style={{ maxWidth: 760, margin: "0 auto 48px", textAlign: "center", display: "grid", placeItems: "center" }}>
           <h2>
@@ -508,12 +480,11 @@ function Impact() {
             style={{
               margin: 0,
               textAlign: "center",
-              fontFamily: "var(--font-display)",
-              fontSize: "clamp(26px, 4vw, 46px)",
-              lineHeight: 1.18,
-              letterSpacing: "-0.025em",
+              fontSize: "clamp(26px, 3.4vw, 44px)",
+              lineHeight: 1.12,
+              letterSpacing: "-0.032em",
               color: "var(--ink)",
-              fontWeight: 500,
+              fontWeight: 400,
             }}
           >
             More than half the women who come to us for a routine blood test are anaemic. Most never knew.
@@ -573,7 +544,7 @@ function Model() {
     },
   ];
   return (
-    <section id="model" className="section reveal" style={{ background: "var(--paper-2)" }}>
+    <section id="model" className="section reveal on-soft" style={{ background: "var(--paper-2)" }}>
       <div className="container">
         <div style={{ maxWidth: 820, margin: "0 auto 56px", textAlign: "center", display: "grid", placeItems: "center" }}>
           <h2>
@@ -584,7 +555,6 @@ function Model() {
         <div className="grid grid-3">
           {steps.map((s) => (
             <div key={s.n} className="card" style={{ padding: 32, display: "grid", gap: 14 }}>
-              <span className="mono" style={{ fontSize: 12, color: "var(--brand)", letterSpacing: "0.16em" }}>{s.n}</span>
               <h3 style={{ fontSize: 24, fontFamily: "var(--font-display)", fontWeight: 500, letterSpacing: "-0.02em" }}>{s.title}</h3>
               <p style={{ color: "var(--ink-500)", fontSize: 15 }}>{s.body}</p>
             </div>
@@ -595,8 +565,7 @@ function Model() {
           style={{
             marginTop: 24,
             padding: "22px 26px",
-            borderRadius: 16,
-            border: "1px dashed var(--ink-200)",
+            borderRadius: 20,
             background: "#fff",
           }}
         >
@@ -604,7 +573,7 @@ function Model() {
             <strong style={{ color: "var(--ink-700)" }}>SamaBand</strong> is the wrist-worn companion for continuous,
             at-home monitoring of patients already flagged by SamaClip. It keeps an eye on people over time. It is not
             a diagnostic screening device, and the accuracy figures above belong to SamaClip alone.{" "}
-            <Link href="/homecare" style={{ color: "var(--brand)", fontWeight: 600 }}>See home care →</Link>
+            <Link href="/homecare" style={{ color: "var(--ink)", fontWeight: 500, textDecoration: "underline", textUnderlineOffset: 3 }}>See home care</Link>
           </p>
         </div>
       </div>
@@ -614,23 +583,13 @@ function Model() {
 
 function CTA() {
   return (
-    <section id="contact" className="section reveal" style={{ background: "linear-gradient(135deg, #052E2A 0%, #0F766E 100%)", color: "#fff", position: "relative", overflow: "hidden" }}>
-      <div className="container" style={{ position: "relative", maxWidth: 940, textAlign: "center" }}>
-        <h2 style={{ color: "#fff" }}>
-          Bring validated screening to your community.
-        </h2>
-        <p style={{ marginTop: 22, color: "rgba(255,255,255,0.82)", fontSize: 18, maxWidth: 660, margin: "22px auto 0", lineHeight: 1.6 }}>
-          Whether you are a health system, a funder, a researcher or a community partner, let&apos;s talk about
-          putting a full health screen within reach of the families who need it.
-        </p>
-        <div style={{ display: "flex", flexWrap: "wrap", gap: 14, marginTop: 36, justifyContent: "center" }}>
-          <Link href={DEMO} className="btn btn-light">Request a demo →</Link>
-          <Link href={PARTNER} className="btn" style={{ background: "transparent", color: "#fff", border: "1px solid rgba(255,255,255,0.45)" }}>
-            Partner with us
-          </Link>
-        </div>
-      </div>
-    </section>
+    <ClosingCta
+      title="Bring validated screening to your community."
+      lede="Whether you are a health system, a funder, a researcher or a community partner, let's talk about putting a full health screen within reach of the families who need it."
+    >
+      <Link href={DEMO} className="btn btn-light">Request a demo</Link>
+      <Link href={PARTNER} className="btn btn-ghost">Partner with us</Link>
+    </ClosingCta>
   );
 }
 
@@ -646,7 +605,7 @@ function NotesSources() {
     },
   ];
   return (
-    <section className="section-sm" style={{ background: "var(--paper)", borderTop: "1px solid var(--ink-100)" }}>
+    <section className="section-sm">
       <div className="container" style={{ maxWidth: 980 }}>
         <div style={{ display: "grid", gap: 14 }}>
           {notes.map((n) => (

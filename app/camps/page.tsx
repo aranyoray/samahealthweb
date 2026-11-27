@@ -85,15 +85,12 @@ export default function CampsPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: jsonLdScript(jsonLd) }}
       />
-      <Nav variant="light" />
+      <Nav />
       <main id="main">
         <header
           style={{
             paddingTop: 140,
             paddingBottom: 56,
-            background:
-              "radial-gradient(80% 60% at 50% 0%, rgba(20,184,166,0.10) 0%, transparent 70%), #fff",
-            borderBottom: "1px solid var(--ink-100)",
           }}
         >
           <div className="container" style={{ maxWidth: 920 }}>
@@ -123,7 +120,7 @@ export default function CampsPage() {
                 href="https://samawritten.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                style={{ color: "var(--brand)", borderBottom: "1px solid var(--brand-2)" }}
+                style={{ color: "var(--ink)", textDecoration: "underline", textUnderlineOffset: 3 }}
               >
                 SamaBeat
               </a>{" "}
@@ -161,7 +158,6 @@ function Stat({ label, value }: { label: string; value: string }) {
     <div
       style={{
         padding: "10px 16px",
-        border: "1px solid var(--ink-100)",
         borderRadius: 999,
         background: "var(--paper-2)",
       }}
